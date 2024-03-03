@@ -9,13 +9,21 @@
 /* Begin PBXBuildFile section */
 		435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6742B944BDA008276B6 /* AppDelegate.swift */; };
 		435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6762B944BDA008276B6 /* SceneDelegate.swift */; };
-		435CA6792B944BDA008276B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6782B944BDA008276B6 /* ViewController.swift */; };
-		435CA67C2B944BDA008276B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA67A2B944BDA008276B6 /* Main.storyboard */; };
+		435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6782B944BDA008276B6 /* MainViewController.swift */; };
 		435CA67E2B944BDC008276B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435CA67D2B944BDC008276B6 /* Assets.xcassets */; };
 		435CA6812B944BDC008276B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA67F2B944BDC008276B6 /* LaunchScreen.storyboard */; };
 		435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */; };
 		435CA6962B944BDD008276B6 /* SwiftGathering_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */; };
 		435CA6982B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */; };
+		43980E562B9477C500FBEBDA /* ChattingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43980E552B9477C500FBEBDA /* ChattingViewController.xib */; };
+		43980E582B9477D400FBEBDA /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43980E572B9477D400FBEBDA /* ChattingViewController.swift */; };
+		43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43980E592B947A8700FBEBDA /* WebSocketManager.swift */; };
+		43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEED2B94825B00047065 /* CanvasView.swift */; };
+		43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEEF2B94828C00047065 /* DrawingMode.swift */; };
+		43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */; };
+		43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF32B94848900047065 /* DrawingViewController.swift */; };
+		43B2CEF62B94848900047065 /* DrawingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CEF42B94848900047065 /* DrawingViewController.xib */; };
+		43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF72B94BA0700047065 /* DrawingInfoDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +47,7 @@
 		435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGathering_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6742B944BDA008276B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CA6762B944BDA008276B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		435CA6782B944BDA008276B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		435CA67B2B944BDA008276B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		435CA6782B944BDA008276B6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		435CA67D2B944BDC008276B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		435CA6802B944BDC008276B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		435CA6822B944BDC008276B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +56,15 @@
 		435CA6912B944BDD008276B6 /* SwiftGathering_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGathering_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITests.swift; sourceTree = "<group>"; };
 		435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		43980E552B9477C500FBEBDA /* ChattingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChattingViewController.xib; sourceTree = "<group>"; };
+		43980E572B9477D400FBEBDA /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		43980E592B947A8700FBEBDA /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		43B2CEED2B94825B00047065 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		43B2CEEF2B94828C00047065 /* DrawingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingMode.swift; sourceTree = "<group>"; };
+		43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPathInfo.swift; sourceTree = "<group>"; };
+		43B2CEF32B94848900047065 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		43B2CEF42B94848900047065 /* DrawingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingViewController.xib; sourceTree = "<group>"; };
+		43B2CEF72B94BA0700047065 /* DrawingInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInfoDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +117,19 @@
 			children = (
 				435CA6742B944BDA008276B6 /* AppDelegate.swift */,
 				435CA6762B944BDA008276B6 /* SceneDelegate.swift */,
-				435CA6782B944BDA008276B6 /* ViewController.swift */,
-				435CA67A2B944BDA008276B6 /* Main.storyboard */,
+				435CA6782B944BDA008276B6 /* MainViewController.swift */,
 				435CA67D2B944BDC008276B6 /* Assets.xcassets */,
 				435CA67F2B944BDC008276B6 /* LaunchScreen.storyboard */,
 				435CA6822B944BDC008276B6 /* Info.plist */,
+				43B2CEF32B94848900047065 /* DrawingViewController.swift */,
+				43B2CEF42B94848900047065 /* DrawingViewController.xib */,
+				43980E572B9477D400FBEBDA /* ChattingViewController.swift */,
+				43980E552B9477C500FBEBDA /* ChattingViewController.xib */,
+				43980E592B947A8700FBEBDA /* WebSocketManager.swift */,
+				43B2CEED2B94825B00047065 /* CanvasView.swift */,
+				43B2CEEF2B94828C00047065 /* DrawingMode.swift */,
+				43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */,
+				43B2CEF72B94BA0700047065 /* DrawingInfoDTO.swift */,
 			);
 			path = SwiftGathering_iOS;
 			sourceTree = "<group>";
@@ -232,8 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				435CA6812B944BDC008276B6 /* LaunchScreen.storyboard in Resources */,
+				43B2CEF62B94848900047065 /* DrawingViewController.xib in Resources */,
 				435CA67E2B944BDC008276B6 /* Assets.xcassets in Resources */,
-				435CA67C2B944BDA008276B6 /* Main.storyboard in Resources */,
+				43980E562B9477C500FBEBDA /* ChattingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				435CA6792B944BDA008276B6 /* ViewController.swift in Sources */,
+				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
+				43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */,
+				43980E582B9477D400FBEBDA /* ChattingViewController.swift in Sources */,
+				43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */,
+				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
+				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
+				435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */,
+				43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */,
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +329,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		435CA67A2B944BDA008276B6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				435CA67B2B944BDA008276B6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		435CA67F2B944BDC008276B6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -447,9 +471,9 @@
 				INFOPLIST_FILE = SwiftGathering_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,9 +499,9 @@
 				INFOPLIST_FILE = SwiftGathering_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
