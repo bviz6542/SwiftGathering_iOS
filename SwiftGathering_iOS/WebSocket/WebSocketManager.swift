@@ -13,10 +13,8 @@ class WebSocketManager {
     
     func connect() {
         guard let url = URL(string: "ws://localhost:8081/helloo") else { return }
-        let session = URLSession(configuration: .default)
-        webSocketTask = session.webSocketTask(with: url)
+        webSocketTask = URLSession(configuration: .default).webSocketTask(with: url)
         webSocketTask?.resume()
-        
         listenForMessages()
     }
     
@@ -32,9 +30,6 @@ class WebSocketManager {
                 
             case .success(let message):
                 switch message {
-                case .string(let text):
-                    self?.delegate?.onReceiveChatSuccess(text)
-                    
                 case .data(let data):
                     do {
                         let result = try JSONDecoder().decode(DrawingInfoDTO.self, from: data)
@@ -43,11 +38,8 @@ class WebSocketManager {
                     } catch {
                         
                     }
-                    
-                    //self?.delegate?.onReceiveChatSuccess("데이터 타입이 들어왔는뎁")
-                    
-                @unknown default:
-                    fatalError()
+                default:
+                    break
                 }
                 
                 self?.listenForMessages()
@@ -81,6 +73,5 @@ class WebSocketManager {
 protocol WebSocketManagerDelegate {
     func onFailure()
     func onSendSuccess(_ textContent: String)
-    func onReceiveChatSuccess(_ textContent: String)
     func onReceiveDrawingSuccess(_ drawingInfo: DrawingInfoDTO)
 }

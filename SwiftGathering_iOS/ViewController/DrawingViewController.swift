@@ -22,9 +22,6 @@ class DrawingViewController: UIViewController {
 }
 
 extension DrawingViewController: WebSocketManagerDelegate {
-    func onReceiveChatSuccess(_ textContent: String) {
-        
-    }
     
     func onReceiveDrawingSuccess(_ drawingInfo: DrawingInfoDTO) {
         DispatchQueue.main.async {
