@@ -125,7 +125,7 @@ class CanvasView: UIView {
         // Serialize and send the drawing info
         do {
             let data = try JSONEncoder().encode(drawingInfo)
-            webSocketManager.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeigth, x: drawingInfo.x, y: drawingInfo.y)
+            webSocketManager?.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeigth, x: drawingInfo.x, y: drawingInfo.y)
         } catch {
             print("Error encoding drawing data: \(error)")
         }
