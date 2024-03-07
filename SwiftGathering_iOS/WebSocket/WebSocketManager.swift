@@ -12,8 +12,9 @@ class WebSocketManager {
     var delegate: WebSocketManagerDelegate?
     
     func connect() {
-        guard let url = URL(string: "ws://localhost:8081/helloo") else { return }
-        webSocketTask = URLSession(configuration: .default).webSocketTask(with: url)
+        guard let url = URL(string: "ws://localhost:8080/helloo") else { return }
+        let session = URLSession(configuration: .default)
+        webSocketTask = session.webSocketTask(with: url)
         webSocketTask?.resume()
         listenForMessages()
     }
@@ -30,13 +31,23 @@ class WebSocketManager {
                 
             case .success(let message):
                 switch message {
+
+                case .string(let text):
+                    if let data = text.data(using: .utf8) {
+                        if let result = try? JSONDecoder().decode(DrawingInfoDTO.self, from: data) {
+                            self?.delegate?.onReceiveDrawingSuccess(result)
+                        }
+                    }
+                    
                 case .data(let data):
                     do {
-                        let result = try JSONDecoder().decode(DrawingInfoDTO.self, from: data)
-                        self?.delegate?.onReceiveDrawingSuccess(result)
+                        if let sss = String(bytes: data, encoding: .utf8) { print(sss) }
+                        
+                        let output = try JSONDecoder().decode(DrawingInfoDTO.self, from: data)
+                        self?.delegate?.onReceiveDrawingSuccess(output)
                         
                     } catch {
-                        
+                        print(error)
                     }
                 default:
                     break
@@ -55,9 +66,9 @@ class WebSocketManager {
         }
     }
     
-    func sendDrawing(fullWidth: CGFloat, fullHeight: CGFloat, x: CGFloat, y: CGFloat) {
+    func sendDrawing(fullWidth: CGFloat, fullHeight: CGFloat, x: CGFloat, y: CGFloat, event: String) {
         do {
-            let absolutePosition = ["fullWidth": fullWidth, "fullHeight": fullHeight, "x": x, "y": y]
+            let absolutePosition = ["fullWidth": "\(fullWidth)", "fullHeight": "\(fullHeight)", "x": "\(x)", "y": "\(y)", "event": event]
             let jsonData = try JSONEncoder().encode(absolutePosition)
             let message = URLSessionWebSocketTask.Message.data(jsonData)
             webSocketTask?.send(message) { [weak self] error in

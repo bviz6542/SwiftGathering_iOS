@@ -9,7 +9,7 @@ import Foundation
 
 struct DrawingInfoDTO: Codable {
     let fullWidth: CGFloat
-    let fullHeigth: CGFloat
+    let fullHeight: CGFloat
     let x: CGFloat
     let y: CGFloat
     let event: String

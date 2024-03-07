@@ -7,56 +7,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D5636EE4-581F-44B5-AC82-6D77A34D77E4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftGathering_iOS/WebSocketManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "listenForMessages()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D5636EE4-581F-44B5-AC82-6D77A34D77E4 - 31e72bea29aa6844"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;__C.NSURLSessionWebSocketTask.Message, Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.listenForMessages() -&gt; ()"
-                  moduleName = "SwiftGathering_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "1224">
-               </Location>
-               <Location
-                  uuid = "D5636EE4-581F-44B5-AC82-6D77A34D77E4 - 31e72bea29aa6844"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;__C.NSURLSessionWebSocketTask.Message, Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.listenForMessages() -&gt; ()"
-                  moduleName = "SwiftGathering_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "1232">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "84FB099C-9BE3-48BF-AE5F-FF4691AD049C"
-            shouldBeEnabled = "Yes"
+            uuid = "B7B9F2A1-96B7-447D-AC18-7FF9D7A7B023"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftGathering_iOS/WebSocketManager.swift"
@@ -68,7 +20,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "84FB099C-9BE3-48BF-AE5F-FF4691AD049C - 31e72bea29aa69c8"
+                  uuid = "B7B9F2A1-96B7-447D-AC18-7FF9D7A7B023 - 31e72bea29aa69c8"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -80,10 +32,10 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "36"
                   endingLineNumber = "36"
-                  offsetFromSymbolStart = "884">
+                  offsetFromSymbolStart = "956">
                </Location>
                <Location
-                  uuid = "84FB099C-9BE3-48BF-AE5F-FF4691AD049C - 31e72bea29aa69c8"
+                  uuid = "B7B9F2A1-96B7-447D-AC18-7FF9D7A7B023 - 31e72bea29aa69c8"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -95,7 +47,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "36"
                   endingLineNumber = "36"
-                  offsetFromSymbolStart = "892">
+                  offsetFromSymbolStart = "1140">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -103,20 +55,84 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "39A8CA9B-877A-4AD3-A086-EA3ADFADAF23"
+            uuid = "03986FDB-236D-4EDE-AC46-3025A9F50450"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftGathering_iOS/WebSocketManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "listenForMessages()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "03986FDB-236D-4EDE-AC46-3025A9F50450 - 31e72bea29aa6827"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.NSURLSessionWebSocketTask.Message, Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.listenForMessages() -&gt; ()"
+                  moduleName = "SwiftGathering_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "1156">
+               </Location>
+               <Location
+                  uuid = "03986FDB-236D-4EDE-AC46-3025A9F50450 - 31e72bea29aa6827"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.NSURLSessionWebSocketTask.Message, Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.listenForMessages() -&gt; ()"
+                  moduleName = "SwiftGathering_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "1484">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC814A76-F87D-4289-A96B-6094C41E9944"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftGathering_iOS/WebSocketManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "listenForMessages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFC5FD1E-10FE-4976-9F1F-6F61DDA74E7A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftGathering_iOS/WebSocketManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "listenForMessages()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "39A8CA9B-877A-4AD3-A086-EA3ADFADAF23 - 31e72bea29aa696d"
+                  uuid = "AFC5FD1E-10FE-4976-9F1F-6F61DDA74E7A - 31e72bea29aa6f5d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -126,12 +142,12 @@
                   urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "384">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "2248">
                </Location>
                <Location
-                  uuid = "39A8CA9B-877A-4AD3-A086-EA3ADFADAF23 - 31e72bea29aa696d"
+                  uuid = "AFC5FD1E-10FE-4976-9F1F-6F61DDA74E7A - 31e72bea29aa6f7e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -141,9 +157,9 @@
                   urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "392">
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "2204">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -151,65 +167,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "66C73DCA-214D-439A-BF6D-FBBA69EDC739"
-            shouldBeEnabled = "No"
+            uuid = "BE5271A8-CD6E-4A9B-BF4E-7675C0396DBD"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftGathering_iOS/WebSocketManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "sendDrawing(fullWidth:fullHeight:x:y:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "596A6775-76DB-4E07-8C81-D0454BFF4990"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftGathering_iOS/WebSocketManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "sendDrawing(fullWidth:fullHeight:x:y:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "listenForMessages()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "596A6775-76DB-4E07-8C81-D0454BFF4990 - 4b064b4591b4b6b9"
+                  uuid = "BE5271A8-CD6E-4A9B-BF4E-7675C0396DBD - 31e72bea29aa6f5d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SwiftGathering_iOS.WebSocketManager.sendDrawing(fullWidth: CoreGraphics.CGFloat, fullHeight: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.NSURLSessionWebSocketTask.Message, Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.listenForMessages() -&gt; ()"
                   moduleName = "SwiftGathering_iOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "924">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "2248">
                </Location>
                <Location
-                  uuid = "596A6775-76DB-4E07-8C81-D0454BFF4990 - acdc9a82430df8fa"
+                  uuid = "BE5271A8-CD6E-4A9B-BF4E-7675C0396DBD - 31e72bea29aa6f5d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.sendDrawing(fullWidth: CoreGraphics.CGFloat, fullHeight: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.NSURLSessionWebSocketTask.Message, Swift.Error&gt;) -&gt; () in SwiftGathering_iOS.WebSocketManager.listenForMessages() -&gt; ()"
                   moduleName = "SwiftGathering_iOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mraz9/Documents/GitHub/SwiftGathering_iOS/SwiftGathering_iOS/WebSocketManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "2324">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "236E9CD8-FE70-4B58-84B2-EFEFC1973010"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftGathering_iOS/DrawingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "onReceiveDrawingSuccess(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E840527-5BE1-4E3F-A023-D0C73E09BC03"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftGathering_iOS/WebSocketManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "listenForMessages()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

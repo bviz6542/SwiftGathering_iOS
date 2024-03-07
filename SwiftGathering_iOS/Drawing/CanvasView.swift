@@ -120,12 +120,12 @@ class CanvasView: UIView {
     
     func sendDrawingData(touchPoint: CGPoint, event: String) {
         let normalizedPoint = CGPoint(x: touchPoint.x / bounds.width, y: touchPoint.y / bounds.height)
-        let drawingInfo = DrawingInfoDTO(fullWidth: bounds.width, fullHeigth: bounds.height, x: normalizedPoint.x, y: normalizedPoint.y, event: event) // Assume DrawingInfoDTO now includes an 'event' property
+        let drawingInfo = DrawingInfoDTO(fullWidth: bounds.width, fullHeight: bounds.height, x: normalizedPoint.x, y: normalizedPoint.y, event: event) // Assume DrawingInfoDTO now includes an 'event' property
         
         // Serialize and send the drawing info
         do {
             let data = try JSONEncoder().encode(drawingInfo)
-            webSocketManager?.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeigth, x: drawingInfo.x, y: drawingInfo.y)
+            webSocketManager?.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeight, x: drawingInfo.x, y: drawingInfo.y, event: drawingInfo.event)
         } catch {
             print("Error encoding drawing data: \(error)")
         }
