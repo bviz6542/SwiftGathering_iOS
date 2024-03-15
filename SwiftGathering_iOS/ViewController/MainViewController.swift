@@ -11,9 +11,13 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let drawingViewController = DrawingViewController()
-        drawingViewController.modalPresentationStyle = .overCurrentContext
-        present(drawingViewController, animated: true)
+//        let drawingViewController = DrawingViewController()
+//        drawingViewController.modalPresentationStyle = .overCurrentContext
+//        present(drawingViewController, animated: true)
+        
+        let mapViewController = MapViewController()
+        mapViewController.modalPresentationStyle = .overCurrentContext
+        present(mapViewController, animated: true)
     }
 }
 
