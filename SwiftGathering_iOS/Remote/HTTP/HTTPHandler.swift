@@ -9,6 +9,7 @@ import Foundation
 
 class HTTPHandler {
     private var host: String = ""
+    private var port: Int?
     private var path: HTTPPath? = nil
     private var queryItems: [String: String] = [:]
     private var method: HTTPMethod? = nil
@@ -17,6 +18,11 @@ class HTTPHandler {
     
     func setHost(_ host: String) -> HTTPHandler {
         self.host = host
+        return self
+    }
+    
+    func setPort(_ port: Int) -> HTTPHandler {
+        self.port = port
         return self
     }
     
@@ -60,7 +66,11 @@ class HTTPHandler {
         urlComponent.scheme = "http"
         
         if host.isEmpty {
-            urlComponent.host = "localhost:80"
+            urlComponent.host = "localhost"
+        }
+        
+        if let port = port {
+            urlComponent.port = port
         }
         
         if let path = path {

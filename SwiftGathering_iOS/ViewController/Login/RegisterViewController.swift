@@ -22,8 +22,9 @@ class RegisterViewController: UIViewController {
             let registerInput = RegisterInput(id: id, password: password)
             
             await HTTPHandler()
+                .setPort(8080)
                 .setPath(.register)
-                .setMethod(.get)
+                .setMethod(.post)
                 .setRequestBody(registerInput)
                 .performNetworkOperation()
                 .onFailure { error in
