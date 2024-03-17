@@ -22,6 +22,20 @@
 		43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF32B94848900047065 /* DrawingViewController.swift */; };
 		43B2CEF62B94848900047065 /* DrawingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CEF42B94848900047065 /* DrawingViewController.xib */; };
 		43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF72B94BA0700047065 /* DrawingInfoDTO.swift */; };
+		43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF92BA69BCD00047065 /* LoginViewController.swift */; };
+		43B2CEFC2BA69BEC00047065 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CEFB2BA69BEC00047065 /* LoginViewController.xib */; };
+		43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */; };
+		43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF022BA69F7A00047065 /* HTTPHandler.swift */; };
+		43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF042BA69FB600047065 /* HTTPError.swift */; };
+		43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF062BA69FD400047065 /* HTTPMethod.swift */; };
+		43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF082BA69FEC00047065 /* HTTPPath.swift */; };
+		43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF0D2BA6A9A500047065 /* LoginInput.swift */; };
+		43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */; };
+		43B2CF122BA6B79F00047065 /* EmptyOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF112BA6B79F00047065 /* EmptyOutput.swift */; };
+		43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF152BA6B9A900047065 /* AlertBuilder.swift */; };
+		43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF182BA6BC1500047065 /* RegisterViewController.swift */; };
+		43B2CF1B2BA6BC1600047065 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CF192BA6BC1500047065 /* RegisterViewController.xib */; };
+		43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */; };
 		A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C05D2BA3FD290059572D /* MapViewController.swift */; };
 		A231C0602BA3FD290059572D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A231C05E2BA3FD290059572D /* MapViewController.xib */; };
 		A231C0632BA401090059572D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C0622BA401090059572D /* LocationManager.swift */; };
@@ -64,6 +78,20 @@
 		43B2CEF32B94848900047065 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		43B2CEF42B94848900047065 /* DrawingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingViewController.xib; sourceTree = "<group>"; };
 		43B2CEF72B94BA0700047065 /* DrawingInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInfoDTO.swift; sourceTree = "<group>"; };
+		43B2CEF92BA69BCD00047065 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		43B2CEFB2BA69BEC00047065 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		43B2CF022BA69F7A00047065 /* HTTPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
+		43B2CF042BA69FB600047065 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		43B2CF062BA69FD400047065 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		43B2CF082BA69FEC00047065 /* HTTPPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPath.swift; sourceTree = "<group>"; };
+		43B2CF0D2BA6A9A500047065 /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
+		43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtensions.swift; sourceTree = "<group>"; };
+		43B2CF112BA6B79F00047065 /* EmptyOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyOutput.swift; sourceTree = "<group>"; };
+		43B2CF152BA6B9A900047065 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		43B2CF182BA6BC1500047065 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		43B2CF192BA6BC1500047065 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInput.swift; sourceTree = "<group>"; };
 		A231C05D2BA3FD290059572D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A231C05E2BA3FD290059572D /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		A231C0622BA401090059572D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -119,9 +147,11 @@
 			children = (
 				A26B9AAC2B9579C800F46A4E /* Core */,
 				A26B9AAD2B957A0000F46A4E /* ViewController */,
+				43B2CF002BA69F0000047065 /* Remote */,
 				A231C0612BA400F10059572D /* Location */,
-				A26B9AAB2B95794800F46A4E /* WebSocket */,
 				A26B9AAA2B95793600F46A4E /* Drawing */,
+				43B2CEFD2BA69D7100047065 /* Extensions */,
+				43B2CF132BA6B96F00047065 /* Utilities */,
 			);
 			path = SwiftGathering_iOS;
 			sourceTree = "<group>";
@@ -141,6 +171,73 @@
 				435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */,
 			);
 			path = SwiftGathering_iOSUITests;
+			sourceTree = "<group>";
+		};
+		43B2CEFD2BA69D7100047065 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */,
+				43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		43B2CF002BA69F0000047065 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CF012BA69F1300047065 /* HTTP */,
+				A26B9AAB2B95794800F46A4E /* WebSocket */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		43B2CF012BA69F1300047065 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CF022BA69F7A00047065 /* HTTPHandler.swift */,
+				43B2CF082BA69FEC00047065 /* HTTPPath.swift */,
+				43B2CF062BA69FD400047065 /* HTTPMethod.swift */,
+				43B2CF042BA69FB600047065 /* HTTPError.swift */,
+				43B2CF0C2BA6A96F00047065 /* Models */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		43B2CF0C2BA6A96F00047065 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CF0D2BA6A9A500047065 /* LoginInput.swift */,
+				43B2CF112BA6B79F00047065 /* EmptyOutput.swift */,
+				43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		43B2CF132BA6B96F00047065 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CF142BA6B98B00047065 /* AlertBuilder */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		43B2CF142BA6B98B00047065 /* AlertBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CF152BA6B9A900047065 /* AlertBuilder.swift */,
+			);
+			path = AlertBuilder;
+			sourceTree = "<group>";
+		};
+		43B2CF172BA6BBE100047065 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CEF92BA69BCD00047065 /* LoginViewController.swift */,
+				43B2CEFB2BA69BEC00047065 /* LoginViewController.xib */,
+				43B2CF182BA6BC1500047065 /* RegisterViewController.swift */,
+				43B2CF192BA6BC1500047065 /* RegisterViewController.xib */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		A231C0612BA400F10059572D /* Location */ = {
@@ -190,6 +287,7 @@
 				43B2CEF42B94848900047065 /* DrawingViewController.xib */,
 				A231C05D2BA3FD290059572D /* MapViewController.swift */,
 				A231C05E2BA3FD290059572D /* MapViewController.xib */,
+				43B2CF172BA6BBE100047065 /* Login */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -298,10 +396,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B2CEFC2BA69BEC00047065 /* LoginViewController.xib in Resources */,
 				435CA6812B944BDC008276B6 /* LaunchScreen.storyboard in Resources */,
 				43B2CEF62B94848900047065 /* DrawingViewController.xib in Resources */,
 				435CA67E2B944BDC008276B6 /* Assets.xcassets in Resources */,
 				A231C0602BA3FD290059572D /* MapViewController.xib in Resources */,
+				43B2CF1B2BA6BC1600047065 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,16 +426,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
+				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
+				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
 				43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */,
+				43B2CF122BA6B79F00047065 /* EmptyOutput.swift in Sources */,
+				43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */,
 				43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */,
 				A231C0632BA401090059572D /* LocationManager.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
 				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
+				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
+				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
+				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */,
+				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
 				43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */,
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
+				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
+				43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */,
+				43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
