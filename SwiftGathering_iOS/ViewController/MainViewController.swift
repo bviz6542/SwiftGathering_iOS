@@ -19,8 +19,8 @@ class MainViewController: UIViewController {
 //        mapViewController.modalPresentationStyle = .overCurrentContext
 //        present(mapViewController, animated: true)
         
-        let loginViewController = LoginViewController()
-        navigationController?.pushViewController(loginViewController, animated: true)
+        let registerViewController = RegisterViewController()
+        navigationController?.pushViewController(registerViewController, animated: true)
     }
 }
 
