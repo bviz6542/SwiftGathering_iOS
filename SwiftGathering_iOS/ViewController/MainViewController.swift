@@ -45,6 +45,7 @@ class MainViewController: UIViewController {
         let loginInput = LoginInput(id: id, password: password)
         try await HTTPHandler()
             .setPath(.login)
+            .setPort(8080)
             .setMethod(.get)
             .setRequestBody(loginInput)
             .performNetworkOperation()

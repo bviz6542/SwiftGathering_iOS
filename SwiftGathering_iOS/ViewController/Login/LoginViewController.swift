@@ -22,7 +22,8 @@ class LoginViewController: UIViewController {
             let loginInput = LoginInput(id: id, password: password)
             let _ :Result<EmptyOutput, Error> = await HTTPHandler()
                 .setPath(.login)
-                .setMethod(.get)
+                .setPort(8080)
+                .setMethod(.post)
                 .setRequestBody(loginInput)
                 .performNetworkOperation()
                 .onFailure { error in
