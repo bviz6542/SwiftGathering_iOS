@@ -85,11 +85,11 @@ class HTTPHandler {
         var urlRequest = URLRequest(url: url)
         guard let method = method else { throw HTTPError.requestSetupError }
         urlRequest.httpMethod = method.rawValue
-        
+
+        headers.updateValue("application/json", forKey: "Content-Type")
         for (key, value) in headers {
             urlRequest.addValue(value, forHTTPHeaderField: key)
         }
-        headers.updateValue("application/json", forKey: "Content-Type")
         
         if let requestBody = requestBody {
             guard let jsonData = try? JSONEncoder().encode(requestBody) else { throw HTTPError.requestSetupError }
@@ -135,8 +135,10 @@ class HTTPHandler {
     
     private func decodeResponseData<OutputType: Codable>(data: Data) throws -> OutputType {
         do {
-            let responseData = try JSONDecoder().decode(OutputType.self, from: data)
-            return responseData
+            if OutputType.self is EmptyOutput.Type {
+                return EmptyOutput() as! OutputType
+            }
+            return try JSONDecoder().decode(OutputType.self, from: data)
         } catch {
             throw HTTPError.responseParsingError
         }
