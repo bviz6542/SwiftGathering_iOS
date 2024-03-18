@@ -34,12 +34,21 @@ class RegisterViewController: UIViewController {
                         .build(), animated: true)
                 }
                 .onSuccess { (_: EmptyOutput) in
+                    saveLoginInfoToLocal(with: id, and: password)
                     present(AlertBuilder()
                         .setTitle("Success")
                         .setMessage("register succeeded")
+                        .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
+                            self?.navigationController?.popViewController(animated: true)
+                        })
                         .build(), animated: true)
                 }
             
         }
+    }
+    
+    private func saveLoginInfoToLocal(with id: String, and password: String) {
+        UserDefaults.standard.setValue(id, forKey: "loginID")
+        UserDefaults.standard.setValue(password, forKey: "loginPassword")
     }
 }

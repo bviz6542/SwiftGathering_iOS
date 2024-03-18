@@ -36,6 +36,7 @@
 		43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF182BA6BC1500047065 /* RegisterViewController.swift */; };
 		43B2CF1B2BA6BC1600047065 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CF192BA6BC1500047065 /* RegisterViewController.xib */; };
 		43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */; };
+		43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1F2BA87F9F00047065 /* LoginError.swift */; };
 		A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C05D2BA3FD290059572D /* MapViewController.swift */; };
 		A231C0602BA3FD290059572D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A231C05E2BA3FD290059572D /* MapViewController.xib */; };
 		A231C0632BA401090059572D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C0622BA401090059572D /* LocationManager.swift */; };
@@ -92,6 +93,7 @@
 		43B2CF182BA6BC1500047065 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		43B2CF192BA6BC1500047065 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInput.swift; sourceTree = "<group>"; };
+		43B2CF1F2BA87F9F00047065 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		A231C05D2BA3FD290059572D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A231C05E2BA3FD290059572D /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		A231C0622BA401090059572D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -240,6 +242,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		43B2CF1E2BA87F9000047065 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				43B2CF1F2BA87F9F00047065 /* LoginError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		A231C0612BA400F10059572D /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 		A26B9AAD2B957A0000F46A4E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				43B2CF1E2BA87F9000047065 /* Errors */,
 				435CA6782B944BDA008276B6 /* MainViewController.swift */,
 				43B2CEF32B94848900047065 /* DrawingViewController.swift */,
 				43B2CEF42B94848900047065 /* DrawingViewController.xib */,
@@ -440,6 +451,7 @@
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
 				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
+				43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,

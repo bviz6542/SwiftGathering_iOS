@@ -20,8 +20,7 @@ class LoginViewController: UIViewController {
         
         Task {
             let loginInput = LoginInput(id: id, password: password)
-            
-            await HTTPHandler()
+            let _ :Result<EmptyOutput, Error> = await HTTPHandler()
                 .setPath(.login)
                 .setMethod(.get)
                 .setRequestBody(loginInput)
@@ -32,8 +31,15 @@ class LoginViewController: UIViewController {
                         .setMessage("failed to login\n\(error)")
                         .build(), animated: true)
                 }
-                .onSuccess { (_: EmptyOutput) in }
-            
+                .onSuccess { [weak self] (output: EmptyOutput) in
+                    self?.present(AlertBuilder()
+                        .setTitle("Success")
+                        .setMessage("login succeeded")
+                        .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
+                            self?.navigationController?.popViewController(animated: true)
+                        })
+                        .build(), animated: true)
+                }
         }
     }
 }
