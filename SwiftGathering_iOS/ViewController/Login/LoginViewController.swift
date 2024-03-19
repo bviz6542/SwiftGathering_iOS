@@ -43,4 +43,9 @@ class LoginViewController: UIViewController {
                 }
         }
     }
+    
+    @IBAction func onTouchedRegisterButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+        navigationController?.pushViewController(RegisterViewController(), animated: true)
+    }
 }

@@ -72,12 +72,21 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9dK-gq-M0j">
-                            <rect key="frame" x="89" y="213" width="78" height="35"/>
+                            <rect key="frame" x="153" y="213" width="78" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Submit"/>
                             <connections>
                                 <action selector="onTouchedSubmitButton:" destination="-1" eventType="touchUpInside" id="dfU-Db-MyE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vM-v4-rSZ">
+                            <rect key="frame" x="23" y="213" width="87" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Register"/>
+                            <connections>
+                                <action selector="onTouchedRegisterButton:" destination="-1" eventType="touchUpInside" id="fQf-RM-DIy"/>
                             </connections>
                         </button>
                     </subviews>

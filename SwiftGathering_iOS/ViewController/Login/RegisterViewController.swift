@@ -43,12 +43,16 @@ class RegisterViewController: UIViewController {
                         })
                         .build(), animated: true)
                 }
-            
         }
     }
     
     private func saveLoginInfoToLocal(with id: String, and password: String) {
         UserDefaults.standard.setValue(id, forKey: "loginID")
         UserDefaults.standard.setValue(password, forKey: "loginPassword")
+    }
+    
+    @IBAction func onTouchedLoginButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }

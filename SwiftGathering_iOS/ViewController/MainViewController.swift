@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
         try await HTTPHandler()
             .setPath(.login)
             .setPort(8080)
-            .setMethod(.get)
+            .setMethod(.post)
             .setRequestBody(loginInput)
             .performNetworkOperation()
             .onSuccess { (output: EmptyOutput) in
