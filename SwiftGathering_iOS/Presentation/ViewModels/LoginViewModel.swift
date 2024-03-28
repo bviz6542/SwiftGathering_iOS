@@ -9,7 +9,7 @@ import Combine
 
 class LoginViewModel {
     var loginUseCase: LoginUseCase
-    @Published var loginResult: Bool = false
+    var loginResult = PassthroughSubject<Void, Error>()
     
     init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
@@ -19,7 +19,6 @@ class LoginViewModel {
         Task {
             await loginUseCase.login(using: loginInput)
                 .onFailure { error in
-                    return loginResult
                     loginResult.send(completion: .failure(error))
                 }
                 .onSuccess { _ in

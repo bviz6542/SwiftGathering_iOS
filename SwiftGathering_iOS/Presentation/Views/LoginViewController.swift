@@ -21,12 +21,6 @@ class LoginViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        loginViewModel.$loginResult
-            .receive(on: DispatchQueue.main)
-            .sink { output in
-                <#code#>
-            }
-        
         loginViewModel.loginResult
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
@@ -36,12 +30,14 @@ class LoginViewController: UIViewController {
                         .setMessage("failed to login\n\(error)")
                         .build(), animated: true)
                 }
-            }, receiveValue: { [weak self] success in
-                if success {
-                    self?.presentAlert(withTitle: "Success", message: "Login succeeded")
-                } else {
-                    self?.presentAlert(withTitle: "Error", message: "Invalid credentials")
-                }
+            }, receiveValue: { [weak self] _ in
+                self?.present(AlertBuilder()
+                    .setTitle("Success")
+                    .setMessage("login succeeded")
+                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                        .build(), animated: true)
             })
             .store(in: &cancellables)
     }
@@ -49,31 +45,7 @@ class LoginViewController: UIViewController {
     @IBAction func onTouchedSubmitButton(_ sender: Any) {
         guard let id = idTextField.text, let password = passwordTextField.text else { return }
         let loginInput = LoginInput(id: id, password: password)
-        loginViewModel.login(with: loginInput)
-//        Task {
-//            let loginInput = LoginInput(id: id, password: password)
-//            let _ :Result<EmptyOutput, Error> = await HTTPHandler()
-//                .setPath(.login)
-//                .setPort(8080)
-//                .setMethod(.post)
-//                .setRequestBody(loginInput)
-//                .performNetworkOperation()
-//                .onFailure { error in
-//                    present(AlertBuilder()
-//                        .setTitle("Error")
-//                        .setMessage("failed to login\n\(error)")
-//                        .build(), animated: true)
-//                }
-//                .onSuccess { [weak self] (output: EmptyOutput) in
-//                    self?.present(AlertBuilder()
-//                        .setTitle("Success")
-//                        .setMessage("login succeeded")
-//                        .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
-//                            self?.navigationController?.popViewController(animated: true)
-//                        })
-//                        .build(), animated: true)
-//                }
-//        }
+        loginViewModel.login(using: loginInput)
     }
     
     @IBAction func onTouchedRegisterButton(_ sender: UIButton) {

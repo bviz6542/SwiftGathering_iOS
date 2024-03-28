@@ -17,7 +17,6 @@
 		435CA6982B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */; };
 		43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43980E592B947A8700FBEBDA /* WebSocketManager.swift */; };
 		439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */; };
-		439BB3332BB5B3D0006F34A5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB3322BB5B3D0006F34A5 /* User.swift */; };
 		439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */; };
 		439BB33C2BB5BBA2006F34A5 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB33B2BB5BBA2006F34A5 /* LoginInteractor.swift */; };
 		43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEED2B94825B00047065 /* CanvasView.swift */; };
@@ -78,7 +77,6 @@
 		435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		43980E592B947A8700FBEBDA /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		439BB3322BB5B3D0006F34A5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		439BB33B2BB5BBA2006F34A5 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		43B2CEED2B94825B00047065 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 		439BB3312BB5B3BA006F34A5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				439BB3322BB5B3D0006F34A5 /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -497,7 +494,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				439BB3332BB5B3D0006F34A5 /* User.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
