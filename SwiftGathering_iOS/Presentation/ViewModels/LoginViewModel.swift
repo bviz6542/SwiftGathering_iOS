@@ -9,21 +9,22 @@ import Combine
 
 class LoginViewModel {
     var loginUseCase: LoginUseCase
-    var loginResult = PassthroughSubject<Bool, Error>()
+    @Published var loginResult: Bool = false
     
     init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
     }
     
-    func login(with loginInput: LoginInput) {
+    func login(using loginInput: LoginInput) {
         Task {
-            let result = await loginUseCase.execute(loginInput: loginInput)
-            switch result {
-            case .success(let success):
-                self.loginResult.send(success)
-            case .failure(let error):
-                self.loginResult.send(completion: .failure(error))
-            }
+            await loginUseCase.login(using: loginInput)
+                .onFailure { error in
+                    return loginResult
+                    loginResult.send(completion: .failure(error))
+                }
+                .onSuccess { _ in
+                    loginResult.send()
+                }
         }
     }
 }

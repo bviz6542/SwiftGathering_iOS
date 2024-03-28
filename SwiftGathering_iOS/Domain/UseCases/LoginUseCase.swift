@@ -6,5 +6,5 @@
 //
 
 protocol LoginUseCase {
-    func execute(loginInput: LoginInput) async -> Result<Bool, Error>
+    func login(using loginInput: LoginInput) async -> Result<EmptyOutput, Error>
 }

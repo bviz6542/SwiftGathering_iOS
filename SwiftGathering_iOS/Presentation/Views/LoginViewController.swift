@@ -21,6 +21,12 @@ class LoginViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        loginViewModel.$loginResult
+            .receive(on: DispatchQueue.main)
+            .sink { output in
+                <#code#>
+            }
+        
         loginViewModel.loginResult
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
