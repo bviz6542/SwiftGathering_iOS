@@ -19,6 +19,7 @@
 		439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */; };
 		439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */; };
 		439BB33C2BB5BBA2006F34A5 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB33B2BB5BBA2006F34A5 /* LoginInteractor.swift */; };
+		439BB33F2BB860D2006F34A5 /* RabbitMQHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB33E2BB860D2006F34A5 /* RabbitMQHandler.swift */; };
 		43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEED2B94825B00047065 /* CanvasView.swift */; };
 		43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEEF2B94828C00047065 /* DrawingMode.swift */; };
 		43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */; };
@@ -79,6 +80,7 @@
 		439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		439BB33B2BB5BBA2006F34A5 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		439BB33E2BB860D2006F34A5 /* RabbitMQHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQHandler.swift; sourceTree = "<group>"; };
 		43B2CEED2B94825B00047065 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		43B2CEEF2B94828C00047065 /* DrawingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingMode.swift; sourceTree = "<group>"; };
 		43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPathInfo.swift; sourceTree = "<group>"; };
@@ -158,7 +160,6 @@
 				439BB32D2BB5AFA7006F34A5 /* Presentation */,
 				439BB32C2BB5AF9D006F34A5 /* Data */,
 				A26B9AAD2B957A0000F46A4E /* ViewController */,
-				43B2CF002BA69F0000047065 /* Remote */,
 				A231C0612BA400F10059572D /* Location */,
 				A26B9AAA2B95793600F46A4E /* Drawing */,
 				43B2CEFD2BA69D7100047065 /* Extensions */,
@@ -196,6 +197,7 @@
 		439BB32C2BB5AF9D006F34A5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				43B2CF002BA69F0000047065 /* Remote */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -244,6 +246,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		439BB33D2BB86060006F34A5 /* RabbitMQ */ = {
+			isa = PBXGroup;
+			children = (
+				439BB33E2BB860D2006F34A5 /* RabbitMQHandler.swift */,
+			);
+			path = RabbitMQ;
+			sourceTree = "<group>";
+		};
 		43B2CEFD2BA69D7100047065 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 		43B2CF002BA69F0000047065 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				439BB33D2BB86060006F34A5 /* RabbitMQ */,
 				43B2CF012BA69F1300047065 /* HTTP */,
 				A26B9AAB2B95794800F46A4E /* WebSocket */,
 			);
@@ -448,6 +459,8 @@
 				Base,
 			);
 			mainGroup = 435CA6682B944BDA008276B6;
+			packageReferences = (
+			);
 			productRefGroup = 435CA6722B944BDA008276B6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -506,6 +519,7 @@
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
 				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
+				439BB33F2BB860D2006F34A5 /* RabbitMQHandler.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
 				439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */,
 				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
@@ -705,6 +719,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3U2JR7F29N;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftGathering_iOS/Core/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -722,6 +737,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -733,6 +749,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3U2JR7F29N;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftGathering_iOS/Core/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -750,6 +767,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
