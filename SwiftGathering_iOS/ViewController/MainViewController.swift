@@ -60,4 +60,3 @@ class MainViewController: UIViewController {
         UserDefaults.standard.setValue(password, forKey: "loginPassword")
     }
 }
-
