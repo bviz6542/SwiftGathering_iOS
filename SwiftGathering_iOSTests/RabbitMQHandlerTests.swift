@@ -10,6 +10,8 @@ import XCTest
 
 final class RabbitMQHandlerTests: XCTestCase {
     var rabbitMQHandler = RabbitMQHandler()
+    var response: Codable?
+    var expectation: XCTestExpectation?
     
     override func setUpWithError() throws {
         rabbitMQHandler.initialize()
@@ -21,45 +23,25 @@ final class RabbitMQHandlerTests: XCTestCase {
     
     func testDefaultExchange() throws {
         // arrange
-        let mockDelegate = MockRabbitMQHandlerDelegate(testCase: self)
-        rabbitMQHandler.delegate = mockDelegate
+        rabbitMQHandler.delegate = self
         try rabbitMQHandler.listen(expecting: DrawingSampleOutput.self)
         let input = DrawingSampleInput(name: "testing default changes")
         
         // act
-        let expectation = mockDelegate.expectResponse()
+        expectation = self.expectation(description: "Expect response to arrive")
         try rabbitMQHandler.send(request: input)
         
         // assert
-        wait(for: [mockDelegate.expectation], timeout: 3.0)
-        
-        let result = try XCTUnwrap(mockDelegate.response) as! DrawingSampleOutput
-        XCTAssertEqual(result.name, DrawingSampleOutput(name: "testing default changes").name)
+        waitForExpectations(timeout: 3.0)
+        let result = try XCTUnwrap(response) as! DrawingSampleOutput
+        XCTAssertEqual(result.name, "testing default changes")
     }
 }
 
-class MockRabbitMQHandlerDelegate: RabbitMQHandlerDelegate {
-    var response: Codable?
-    var expectation: XCTestExpectation?
-    private let testCase: XCTestCase
-    
-    init(testCase: XCTestCase) {
-        self.testCase = testCase
-    }
-    
-    func expectResponse() -> XCTestExpectation {
-        let expectation = testCase.expectation(description: "Expect response to arrive")
-        self.expectation = expectation
-        return expectation
-    }
-    
-    func onReceive(response: any Codable) {
-        func onReceive(response: Codable) {
-//            if expectation != nil {
-                self.response = response
-//            }
-            expectation?.fulfill()
-            expectation = nil
-        }
+extension RabbitMQHandlerTests: RabbitMQHandlerDelegate {
+    func onReceive(response: Codable) {
+        self.response = response
+        expectation?.fulfill()
+        expectation = nil
     }
 }
