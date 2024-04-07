@@ -11,6 +11,7 @@
 		433AC07B2BC262A100BCEF6A /* DrawingSampleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC07A2BC262A100BCEF6A /* DrawingSampleInput.swift */; };
 		433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC07C2BC262AD00BCEF6A /* DrawingSampleOutput.swift */; };
 		433AC07F2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC07E2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift */; };
+		433AC0842BC29C3200BCEF6A /* MockRabbitMQHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC0832BC29C3200BCEF6A /* MockRabbitMQHandlerDelegate.swift */; };
 		435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6742B944BDA008276B6 /* AppDelegate.swift */; };
 		435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6762B944BDA008276B6 /* SceneDelegate.swift */; };
 		435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6782B944BDA008276B6 /* MainViewController.swift */; };
@@ -80,6 +81,7 @@
 		433AC07A2BC262A100BCEF6A /* DrawingSampleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSampleInput.swift; sourceTree = "<group>"; };
 		433AC07C2BC262AD00BCEF6A /* DrawingSampleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSampleOutput.swift; sourceTree = "<group>"; };
 		433AC07E2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQHandlerTests.swift; sourceTree = "<group>"; };
+		433AC0832BC29C3200BCEF6A /* MockRabbitMQHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRabbitMQHandlerDelegate.swift; sourceTree = "<group>"; };
 		435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGathering_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6742B944BDA008276B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CA6762B944BDA008276B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */,
 				433AC07E2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift */,
+				433AC0832BC29C3200BCEF6A /* MockRabbitMQHandlerDelegate.swift */,
 			);
 			path = SwiftGathering_iOSTests;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				433AC07F2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift in Sources */,
+				433AC0842BC29C3200BCEF6A /* MockRabbitMQHandlerDelegate.swift in Sources */,
 				435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
