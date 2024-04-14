@@ -8,10 +8,10 @@
 import Combine
 
 class LoginViewModel {
-    var loginUseCase: LoginUseCase
+    private var loginUseCase: LoginUseCaseProtocol
     var loginResult = PassthroughSubject<Void, Error>()
     
-    init(loginUseCase: LoginUseCase) {
+    init(loginUseCase: LoginUseCaseProtocol) {
         self.loginUseCase = loginUseCase
     }
     

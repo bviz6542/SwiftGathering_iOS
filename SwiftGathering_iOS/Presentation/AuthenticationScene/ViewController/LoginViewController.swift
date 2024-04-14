@@ -9,11 +9,20 @@ import UIKit
 import Combine
 
 class LoginViewController: UIViewController {
-    var loginViewModel: LoginViewModel!
+    private var loginViewModel: LoginViewModel
     private var cancellables = Set<AnyCancellable>()
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    init(loginViewModel: LoginViewModel) {
+        self.loginViewModel = loginViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("not intended")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
