@@ -26,7 +26,12 @@ class MainViewController: UIViewController {
                     .setTitle("Error")
                     .setMessage("failed to login\n\(error)")
                     .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
-                        self?.navigationController?.pushViewController(LoginViewController(), animated: true)
+                        
+                        let httpHandler = HTTPHandler()
+                        let loginRepository = LoginRepository(httpHandler: httpHandler)
+                        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
+                        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
+                        self?.navigationController?.pushViewController(LoginViewController(loginViewModel: loginViewModel), animated: true)
                     })
                     .build(), animated: true)
                 

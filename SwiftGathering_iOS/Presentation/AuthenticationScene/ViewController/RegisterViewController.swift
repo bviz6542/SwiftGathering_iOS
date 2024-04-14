@@ -53,6 +53,6 @@ class RegisterViewController: UIViewController {
     
     @IBAction func onTouchedLoginButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-        navigationController?.pushViewController(LoginViewController(), animated: true)
+//        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }
