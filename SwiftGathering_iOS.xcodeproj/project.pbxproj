@@ -197,15 +197,12 @@
 		435CA6732B944BDA008276B6 /* SwiftGathering_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A26B9AAC2B9579C800F46A4E /* Core */,
+				43FFDD4D2BCBC06C002D19B2 /* Application */,
+				43FFDD4E2BCBC089002D19B2 /* Resource */,
 				439BB32B2BB5AF90006F34A5 /* Domain */,
 				439BB32D2BB5AFA7006F34A5 /* Presentation */,
-				A26B9AAD2B957A0000F46A4E /* ViewController */,
 				43B2CF002BA69F0000047065 /* Remote */,
-				A231C0612BA400F10059572D /* Location */,
-				A26B9AAA2B95793600F46A4E /* Drawing */,
-				43B2CEFD2BA69D7100047065 /* Extensions */,
-				43B2CF132BA6B96F00047065 /* Utilities */,
+				43B2CF132BA6B96F00047065 /* Utility */,
 			);
 			path = SwiftGathering_iOS;
 			sourceTree = "<group>";
@@ -231,8 +228,7 @@
 		439BB32B2BB5AF90006F34A5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				439BB3352BB5B4D7006F34A5 /* UseCases */,
-				439BB3312BB5B3BA006F34A5 /* Entities */,
+				439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -240,6 +236,7 @@
 		439BB32D2BB5AFA7006F34A5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A26B9AAD2B957A0000F46A4E /* ViewController */,
 				439BB32E2BB5B32A006F34A5 /* ViewModels */,
 				439BB33A2BB5B689006F34A5 /* Views */,
 			);
@@ -253,21 +250,6 @@
 				439BB33B2BB5BBA2006F34A5 /* LoginInteractor.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		439BB3312BB5B3BA006F34A5 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		439BB3352BB5B4D7006F34A5 /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */,
-			);
-			path = UseCases;
 			sourceTree = "<group>";
 		};
 		439BB33A2BB5B689006F34A5 /* Views */ = {
@@ -322,12 +304,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		43B2CF132BA6B96F00047065 /* Utilities */ = {
+		43B2CF132BA6B96F00047065 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				A231C0612BA400F10059572D /* Location */,
+				A26B9AAA2B95793600F46A4E /* Drawing */,
+				43B2CEFD2BA69D7100047065 /* Extensions */,
 				43B2CF142BA6B98B00047065 /* AlertBuilder */,
 			);
-			path = Utilities;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		43B2CF142BA6B98B00047065 /* AlertBuilder */ = {
@@ -344,6 +329,25 @@
 				43B2CF1F2BA87F9F00047065 /* LoginError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		43FFDD4D2BCBC06C002D19B2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				435CA6742B944BDA008276B6 /* AppDelegate.swift */,
+				435CA6762B944BDA008276B6 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		43FFDD4E2BCBC089002D19B2 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				435CA67D2B944BDC008276B6 /* Assets.xcassets */,
+				435CA67F2B944BDC008276B6 /* LaunchScreen.storyboard */,
+				435CA6822B944BDC008276B6 /* Info.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		703C89E1D8CE3588DBF2417D /* Pods */ = {
@@ -384,18 +388,6 @@
 				43980E592B947A8700FBEBDA /* WebSocketManager.swift */,
 			);
 			path = WebSocket;
-			sourceTree = "<group>";
-		};
-		A26B9AAC2B9579C800F46A4E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				435CA6742B944BDA008276B6 /* AppDelegate.swift */,
-				435CA6762B944BDA008276B6 /* SceneDelegate.swift */,
-				435CA67D2B944BDC008276B6 /* Assets.xcassets */,
-				435CA67F2B944BDC008276B6 /* LaunchScreen.storyboard */,
-				435CA6822B944BDC008276B6 /* Info.plist */,
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		A26B9AAD2B957A0000F46A4E /* ViewController */ = {
