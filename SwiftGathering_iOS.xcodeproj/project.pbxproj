@@ -44,6 +44,10 @@
 		43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */; };
 		43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1F2BA87F9F00047065 /* LoginError.swift */; };
 		43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */; };
+		43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */; };
+		43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */; };
+		43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6C2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift */; };
+		43FFDD6F2BCD770A002D19B2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */; };
 		535D4708E2FE081918BEA864 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD64FA69935B1C88A6B5753F /* Pods_SwiftGathering_iOSTests.framework */; };
 		7FE79DA23AB112B8DF676F13 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA8AC4B891AB495DFB015C4 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */; };
 		A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C05D2BA3FD290059572D /* MapViewController.swift */; };
@@ -117,6 +121,10 @@
 		43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInput.swift; sourceTree = "<group>"; };
 		43B2CF1F2BA87F9F00047065 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		43FFDD6C2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		6F9838212A7D5C966AC5F610 /* Pods_SwiftGathering_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DEAA0E10C3674156A212D57 /* Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A231C05D2BA3FD290059572D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +294,7 @@
 		43B2CF132BA6B96F00047065 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				43FFDD672BCD7465002D19B2 /* Coordinator */,
 				43B2CEFD2BA69D7100047065 /* Extensions */,
 				43B2CF142BA6B98B00047065 /* AlertBuilder */,
 			);
@@ -481,6 +490,17 @@
 				43B2CF1F2BA87F9F00047065 /* LoginError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		43FFDD672BCD7465002D19B2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */,
+				43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */,
+				43FFDD6C2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift */,
+				43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		703C89E1D8CE3588DBF2417D /* Pods */ = {
@@ -786,6 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */,
+				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
@@ -801,14 +822,17 @@
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				A26FE1D82BBE6286004994BA /* RabbitMQHandler.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
+				43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */,
 				439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */,
 				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
 				43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */,
+				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
 				433AC07B2BC262A100BCEF6A /* DrawingSampleInput.swift in Sources */,
 				43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */,
+				43FFDD6F2BCD770A002D19B2 /* RootCoordinator.swift in Sources */,
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
 				433AC0792BC25CF600BCEF6A /* RabbitMQError.swift in Sources */,
 				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
