@@ -7,42 +7,23 @@
 
 import UIKit
 
-final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
-    var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    var childCoordinators: [CoordinatorProtocol] = []
-    
-    func start(animated: Bool) {
-        let httpHandler = HTTPHandler()
-        let loginRepository = LoginRepository(httpHandler: httpHandler)
-        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
-        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
-        let mainViewController = MainViewController()
-        navigationController.pushViewController(mainViewController, animated: animated)
-    }
-}
-
-extension RootCoordinator {
-    func navigateFromMain() {
-        
-    }
-    
-    private func navigateToMap() {
-        
-    }
-    
-    private func navigateToRegister() {
-        
-    }
-}
-
 //final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
-//
+//    
+//    var navigationController: UINavigationController
 //    var childCoordinators = [Coordinator]()
+//
+//    
+//    // MARK: - init & start
+//    init(navigationController: UINavigationController) {
+//        self.navigationController = navigationController
+//    }
+//    
+//    func start(animated: Bool) {
+//        let viewModel = SplashViewModel(coordinator: self)
+//        let fakeSplashVC = SplashScreenViewController()
+//        fakeSplashVC.viewModel = viewModel
+//        navigationController.pushViewController(fakeSplashVC, animated: animated)
+//    }
 //}
 //
 //extension RootCoordinator {
