@@ -48,6 +48,8 @@
 		43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */; };
 		43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6C2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift */; };
 		43FFDD6F2BCD770A002D19B2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */; };
+		43FFDD722BCECB54002D19B2 /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43FFDD712BCECB54002D19B2 /* SplashView.xib */; };
+		43FFDD742BCECC12002D19B2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD732BCECC12002D19B2 /* SplashViewController.swift */; };
 		535D4708E2FE081918BEA864 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD64FA69935B1C88A6B5753F /* Pods_SwiftGathering_iOSTests.framework */; };
 		7FE79DA23AB112B8DF676F13 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA8AC4B891AB495DFB015C4 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */; };
 		A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C05D2BA3FD290059572D /* MapViewController.swift */; };
@@ -125,6 +127,8 @@
 		43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		43FFDD6C2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		43FFDD712BCECB54002D19B2 /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
+		43FFDD732BCECC12002D19B2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6F9838212A7D5C966AC5F610 /* Pods_SwiftGathering_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DEAA0E10C3674156A212D57 /* Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A231C05D2BA3FD290059572D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		439BB32D2BB5AFA7006F34A5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				43FFDD702BCECB30002D19B2 /* SplashScene */,
 				43FFDD5E2BCBE5D5002D19B2 /* Common */,
 				43FFDD5C2BCBE59E002D19B2 /* MainScene */,
 				43FFDD622BCBE670002D19B2 /* DrawingScene */,
@@ -294,7 +299,8 @@
 		43B2CF132BA6B96F00047065 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				43FFDD672BCD7465002D19B2 /* Coordinator */,
+				43FFDD672BCD7465002D19B2 /* Coordinators */,
+				43FFDD752BCECDC7002D19B2 /* Constants */,
 				43B2CEFD2BA69D7100047065 /* Extensions */,
 				43B2CF142BA6B98B00047065 /* AlertBuilder */,
 			);
@@ -492,7 +498,7 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		43FFDD672BCD7465002D19B2 /* Coordinator */ = {
+		43FFDD672BCD7465002D19B2 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */,
@@ -500,7 +506,23 @@
 				43FFDD6C2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift */,
 				43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */,
 			);
-			path = Coordinator;
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		43FFDD702BCECB30002D19B2 /* SplashScene */ = {
+			isa = PBXGroup;
+			children = (
+				43FFDD712BCECB54002D19B2 /* SplashView.xib */,
+				43FFDD732BCECC12002D19B2 /* SplashViewController.swift */,
+			);
+			path = SplashScene;
+			sourceTree = "<group>";
+		};
+		43FFDD752BCECDC7002D19B2 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		703C89E1D8CE3588DBF2417D /* Pods */ = {
@@ -673,9 +695,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				43B2CEFC2BA69BEC00047065 /* LoginView.xib in Resources */,
+				43FFDD722BCECB54002D19B2 /* SplashView.xib in Resources */,
 				435CA6812B944BDC008276B6 /* LaunchScreen.storyboard in Resources */,
-				43B2CEF62B94848900047065 /* DrawingView.xib in Resources */,
 				435CA67E2B944BDC008276B6 /* Assets.xcassets in Resources */,
+				43B2CEF62B94848900047065 /* DrawingView.xib in Resources */,
 				A231C0602BA3FD290059572D /* MapView.xib in Resources */,
 				43B2CF1B2BA6BC1600047065 /* RegisterView.xib in Resources */,
 			);
@@ -808,6 +831,7 @@
 				43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */,
 				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
+				43FFDD742BCECC12002D19B2 /* SplashViewController.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
 				433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */,

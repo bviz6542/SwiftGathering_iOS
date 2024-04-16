@@ -17,12 +17,13 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol] = []
     
     func start(animated: Bool) {
-        let httpHandler = HTTPHandler()
-        let loginRepository = LoginRepository(httpHandler: httpHandler)
-        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
-        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
-        let mainViewController = MainViewController()
-        navigationController.pushViewController(mainViewController, animated: animated)
+        let splashViewController = SplashViewController()
+//        let httpHandler = HTTPHandler()
+//        let loginRepository = LoginRepository(httpHandler: httpHandler)
+//        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
+//        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
+//        let mainViewController = MainViewController()
+        navigationController.pushViewController(splashViewController, animated: animated)
     }
 }
 
