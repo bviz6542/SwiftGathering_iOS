@@ -17,63 +17,25 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol] = []
     
     func start(animated: Bool) {
-        let httpHandler = HTTPHandler()
-        let loginRepository = LoginRepository(httpHandler: httpHandler, userDefaults: UserDefaults.standard)
+        let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard)
         let loginUseCase = LoginUseCase(loginRepository: loginRepository)
         let splashViewModel = SplashViewModel(loginUseCase: loginUseCase)
         let splashViewController = SplashViewController(splashViewModel: splashViewModel)
+        splashViewController.coordinator = self
         navigationController.pushViewController(splashViewController, animated: animated)
     }
 }
 
 extension RootCoordinator {
-    func navigateFromMain() {
-        
+    func navigateToMap() {
+        navigationController.popViewController(animated: false)
+        let mapViewController = MapViewController()
+        navigationController.pushViewController(mapViewController, animated: false)
     }
     
-    private func navigateToMap() {
-        
-    }
-    
-    private func navigateToRegister() {
-        
+    func navigateTLogin() {
+        navigationController.popViewController(animated: false)
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        loginCoordinator.start(animated: true)
     }
 }
-
-//final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
-//
-//    var childCoordinators = [Coordinator]()
-//}
-//
-//extension RootCoordinator {
-//    
-//    // MARK: - nav From
-//    func navigateFromSplashVc(isLoggedIn: Bool, user: User? = nil) {
-//        if let user, isLoggedIn {
-//            navigateToApp(userData: user)
-//        } else {
-//            navigateToLogister()
-//        }
-//    }
-//
-//    
-//    // MARK: - nav To
-//    private func navigateToApp(userData: User) {
-//        let baseTabBarController = BaseTabBarController(currentUser: userData, coordinator: self)
-//        baseTabBarController.coordinator = self
-//        navigationController.pushViewController(baseTabBarController, animated: true)
-//    }
-//    
-//    private func navigateToLogister() {
-//        let logisterCoordinator = LogisterCoordinator(navigationController: navigationController)
-//        logisterCoordinator.parent = self
-//        addChildCoordinator(logisterCoordinator)
-//        logisterCoordinator.start(animated: true)
-//    }
-//    
-//    
-//    // MARK: - flow Finished
-//    func logisterFinished(user: User, animated: Bool) {
-//        navigateToApp(userData: user)
-//    }
-//}

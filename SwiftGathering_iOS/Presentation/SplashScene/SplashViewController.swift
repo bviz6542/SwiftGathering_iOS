@@ -12,6 +12,8 @@ class SplashViewController: UIViewController {
     @IBOutlet weak var latterImageYOffset: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    weak var coordinator: RootCoordinator?
+    
     private var splashViewModel: SplashViewModel
     
     init(splashViewModel: SplashViewModel) {
@@ -55,12 +57,10 @@ class SplashViewController: UIViewController {
         do {
             try await Task.sleep(nanoseconds: 2_000_000_000)
             try await splashViewModel.loginWithPreviousLoginInfo().getOrThrow()
+            coordinator?.navigateToMap()
             
         } catch {
-            present(AlertBuilder()
-                .setTitle("Warning")
-                .setMessage("login failed")
-                .build(), animated: true)
+            coordinator?.navigateTLogin()
         }
     }
 }
