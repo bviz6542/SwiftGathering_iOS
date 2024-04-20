@@ -21,28 +21,28 @@ class RegisterViewController: UIViewController {
         Task {
             let registerInput = RegisterInput(id: id, password: password)
             
-            await HTTPHandler()
-                .setPort(8080)
-                .setPath(.register)
-                .setMethod(.post)
-                .setRequestBody(registerInput)
-                .performNetworkOperation()
-                .onFailure { error in
-                    present(AlertBuilder()
-                        .setTitle("Error")
-                        .setMessage("failed to register\n\(error)")
-                        .build(), animated: true)
-                }
-                .onSuccess { (_: EmptyOutput) in
-                    saveLoginInfoToLocal(with: id, and: password)
-                    present(AlertBuilder()
-                        .setTitle("Success")
-                        .setMessage("register succeeded")
-                        .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
-                            self?.navigationController?.popViewController(animated: true)
-                        })
-                        .build(), animated: true)
-                }
+//            await HTTPHandler()
+//                .setPort(8080)
+//                .setPath(.register)
+//                .setMethod(.post)
+//                .setRequestBody(registerInput)
+//                .performNetworkOperation()
+//                .onFailure { error in
+//                    present(AlertBuilder()
+//                        .setTitle("Error")
+//                        .setMessage("failed to register\n\(error)")
+//                        .build(), animated: true)
+//                }
+//                .onSuccess { (_: EmptyOutput) in
+//                    saveLoginInfoToLocal(with: id, and: password)
+//                    present(AlertBuilder()
+//                        .setTitle("Success")
+//                        .setMessage("register succeeded")
+//                        .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
+//                            self?.navigationController?.popViewController(animated: true)
+//                        })
+//                        .build(), animated: true)
+//                }
         }
     }
     

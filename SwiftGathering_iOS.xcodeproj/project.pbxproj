@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432C70752BD3E83600B4F4CE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C70742BD3E83600B4F4CE /* SplashViewModel.swift */; };
+		432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */; };
+		432C707C2BD3F8DF00B4F4CE /* UserDefaultsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C707B2BD3F8DF00B4F4CE /* UserDefaultsError.swift */; };
 		433AC0792BC25CF600BCEF6A /* RabbitMQError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC0782BC25CF600BCEF6A /* RabbitMQError.swift */; };
 		433AC07B2BC262A100BCEF6A /* DrawingSampleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC07A2BC262A100BCEF6A /* DrawingSampleInput.swift */; };
 		433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC07C2BC262AD00BCEF6A /* DrawingSampleOutput.swift */; };
@@ -82,6 +85,9 @@
 		2687E2ED7AC99C6A27BD1668 /* Pods-SwiftGathering_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGathering_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftGathering_iOSTests/Pods-SwiftGathering_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		28D0FAC4A263B529BF61CB3F /* Pods-SwiftGathering_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGathering_iOS.release.xcconfig"; path = "Target Support Files/Pods-SwiftGathering_iOS/Pods-SwiftGathering_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		2AA8AC4B891AB495DFB015C4 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		432C70742BD3E83600B4F4CE /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
+		432C707B2BD3F8DF00B4F4CE /* UserDefaultsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsError.swift; sourceTree = "<group>"; };
 		433AC0782BC25CF600BCEF6A /* RabbitMQError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQError.swift; sourceTree = "<group>"; };
 		433AC07A2BC262A100BCEF6A /* DrawingSampleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSampleInput.swift; sourceTree = "<group>"; };
 		433AC07C2BC262AD00BCEF6A /* DrawingSampleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSampleOutput.swift; sourceTree = "<group>"; };
@@ -167,6 +173,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		432C70782BD3EEC500B4F4CE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		432C70792BD3F8CC00B4F4CE /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				432C707B2BD3F8DF00B4F4CE /* UserDefaultsError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		433AC0812BC27D2900BCEF6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				43FFDD662BCBE781002D19B2 /* Error */,
+				432C70782BD3EEC500B4F4CE /* Entity */,
 				43FFDD652BCBE777002D19B2 /* UseCase */,
 			);
 			path = Domain;
@@ -299,6 +322,7 @@
 		43B2CF132BA6B96F00047065 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				432C70792BD3F8CC00B4F4CE /* Errors */,
 				43FFDD672BCD7465002D19B2 /* Coordinators */,
 				43FFDD752BCECDC7002D19B2 /* Constants */,
 				43B2CEFD2BA69D7100047065 /* Extensions */,
@@ -514,6 +538,7 @@
 			children = (
 				43FFDD712BCECB54002D19B2 /* SplashView.xib */,
 				43FFDD732BCECC12002D19B2 /* SplashViewController.swift */,
+				432C70742BD3E83600B4F4CE /* SplashViewModel.swift */,
 			);
 			path = SplashScene;
 			sourceTree = "<group>";
@@ -832,8 +857,10 @@
 				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
 				43FFDD742BCECC12002D19B2 /* SplashViewController.swift in Sources */,
+				432C70752BD3E83600B4F4CE /* SplashViewModel.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
+				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
 				433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */,
 				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
 				43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */,
@@ -861,6 +888,7 @@
 				433AC0792BC25CF600BCEF6A /* RabbitMQError.swift in Sources */,
 				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
 				43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */,
+				432C707C2BD3F8DF00B4F4CE /* UserDefaultsError.swift in Sources */,
 				43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,

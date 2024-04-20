@@ -6,7 +6,8 @@
 //
 
 protocol LoginUseCaseProtocol {
-    func login(using loginInput: LoginInput) async -> Result<EmptyOutput, Error>
+    func login(using loginInfo: LoginInfo) async -> Result<Void, Error>
+    func loginWithPreviousLoginInfo() async -> Result<Void, Error>
 }
 
 class LoginUseCase: LoginUseCaseProtocol {
@@ -16,7 +17,18 @@ class LoginUseCase: LoginUseCaseProtocol {
         self.loginRepository = loginRepository
     }
 
-    func login(using loginInput: LoginInput) async -> Result<EmptyOutput, Error> {
-        return await loginRepository.login(using: loginInput)
+    func login(using loginInfo: LoginInfo) async -> Result<Void, Error> {
+        return await loginRepository.login(using: loginInfo)
+            .flatMap { _ in
+                return loginRepository.saveLoginInfo(using: loginInfo)
+            }
+    }
+    
+    func loginWithPreviousLoginInfo() async -> Result<Void, Error> {
+        guard let loginInfo = loginRepository.fetchPreviousLoginInfo().getOrNil() else { return .failure(LoginError.loginInfoSearchFailed) }
+        return await loginRepository.login(using: loginInfo)
+            .flatMap { _ in
+                return loginRepository.saveLoginInfo(using: loginInfo)
+            }
     }
 }

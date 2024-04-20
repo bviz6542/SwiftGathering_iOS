@@ -16,14 +16,14 @@ class LoginViewModel {
     }
     
     func login(using loginInput: LoginInput) {
-        Task {
-            await loginUseCase.login(using: loginInput)
-                .onFailure { error in
-                    loginResult.send(completion: .failure(error))
-                }
-                .onSuccess { _ in
-                    loginResult.send()
-                }
-        }
+//        Task {
+//            await loginUseCase.login(using: loginInput)
+//                .onFailure { error in
+//                    loginResult.send(completion: .failure(error))
+//                }
+//                .onSuccess { _ in
+//                    loginResult.send()
+//                }
+//        }
     }
 }

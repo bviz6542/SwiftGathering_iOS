@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
                 let (loginID, loginPassword) = try fetchLocalLoginInfo()
                 try await login(with: loginID, and: loginPassword)
                 
-            } catch LoginError.neverLoggedIn {
+            } catch LoginError.loginInfoSearchFailed {
                 navigationController?.pushViewController(RegisterViewController(), animated: true)
                 
             } catch let error as HTTPError {
@@ -28,7 +28,8 @@ class MainViewController: UIViewController {
                     .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
                         
                         let httpHandler = HTTPHandler()
-                        let loginRepository = LoginRepository(httpHandler: httpHandler)
+                        let userDefaults = UserDefaults.standard
+                        let loginRepository = LoginRepository(httpHandler: httpHandler, userDefaults: userDefaults)
                         let loginUseCase = LoginUseCase(loginRepository: loginRepository)
                         let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
                         self?.navigationController?.pushViewController(LoginViewController(loginViewModel: loginViewModel), animated: true)
@@ -42,7 +43,7 @@ class MainViewController: UIViewController {
     private func fetchLocalLoginInfo() throws -> (String, String) {
         guard let loginID = UserDefaults.standard.object(forKey: "loginID") as? String,
               let loginPassword = UserDefaults.standard.object(forKey: "loginPassword") as? String
-        else { throw LoginError.neverLoggedIn }
+        else { throw LoginError.loginInfoSearchFailed }
         return (loginID, loginPassword)
     }
     
@@ -53,7 +54,7 @@ class MainViewController: UIViewController {
             .setPort(8080)
             .setMethod(.post)
             .setRequestBody(loginInput)
-            .performNetworkOperation()
+            .send(expecting: EmptyOutput.self)
             .onSuccess { (output: EmptyOutput) in
                 saveLoginInfoToLocal(with: id, and: password)
             }

@@ -8,7 +8,7 @@
 extension Result {
     @discardableResult
     func onSuccess(handle: (Success) -> ()) -> Result {
-        switch self{
+        switch self {
         case .success(let success):
             handle(success)
             return self
@@ -19,12 +19,21 @@ extension Result {
     
     @discardableResult
     func onFailure(handle: (Failure) -> ()) -> Result {
-        switch self{
+        switch self {
         case .success(_):
             return self
         case .failure(let error):
             handle(error)
             return self
+        }
+    }
+    
+    func getOrNil() -> Success? {
+        switch self {
+        case .success(let success):
+            return success
+        case .failure(_):
+            return nil
         }
     }
     
@@ -37,5 +46,12 @@ extension Result {
             if let replacingError = replacingError { throw replacingError }
             else { throw occurredError }
         }
+    }
+    
+    func eraseToVoid() -> Result<Void, Failure> {
+        return self
+            .map { _ in
+                return ()
+            }
     }
 }

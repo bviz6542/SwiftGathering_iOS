@@ -6,5 +6,5 @@
 //
 
 enum LoginError: Error {
-    case neverLoggedIn
+    case loginInfoSearchFailed
 }

@@ -99,7 +99,7 @@ class HTTPHandler {
         return urlRequest
     }
     
-    func performNetworkOperation<OutputType: Codable>() async -> Result<OutputType, Error> {
+    func send<OutputType: Codable>(expecting outputType: OutputType.Type) async -> Result<OutputType, Error> {
         do {
             let urlRequest = try buildURLRequest()
             let (data, response) = try await sendRequestAndFetchResponse(with: urlRequest)
