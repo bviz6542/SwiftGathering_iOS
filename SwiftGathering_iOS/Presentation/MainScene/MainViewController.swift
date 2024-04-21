@@ -13,31 +13,31 @@ class MainViewController: UIViewController {
         
         navigationController?.pushViewController(MapViewController(), animated: true)
         
-        Task {
-            do {
-                let (loginID, loginPassword) = try fetchLocalLoginInfo()
-                try await login(with: loginID, and: loginPassword)
-                
-            } catch LoginError.loginInfoSearchFailed {
-                navigationController?.pushViewController(RegisterViewController(), animated: true)
-                
-            } catch let error as HTTPError {
-                present(AlertBuilder()
-                    .setTitle("Error")
-                    .setMessage("failed to login\n\(error)")
-                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
-                        
-                        let httpHandler = HTTPHandler()
-                        let userDefaults = UserDefaults.standard
-                        let loginRepository = LoginRepository(httpHandler: httpHandler, userDefaults: userDefaults)
-                        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
-                        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
-                        self?.navigationController?.pushViewController(LoginViewController(loginViewModel: loginViewModel), animated: true)
-                    })
-                    .build(), animated: true)
-                
-            } catch {}
-        }
+//        Task {
+//            do {
+//                let (loginID, loginPassword) = try fetchLocalLoginInfo()
+//                try await login(with: loginID, and: loginPassword)
+//                
+//            } catch LoginError.loginInfoSearchFailed {
+//                navigationController?.pushViewController(RegisterViewController(), animated: true)
+//                
+//            } catch let error as HTTPError {
+//                present(AlertBuilder()
+//                    .setTitle("Error")
+//                    .setMessage("failed to login\n\(error)")
+//                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
+//                        
+//                        let httpHandler = HTTPHandler()
+//                        let userDefaults = UserDefaults.standard
+//                        let loginRepository = LoginRepository(httpHandler: httpHandler, userDefaults: userDefaults)
+//                        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
+//                        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
+//                        self?.navigationController?.pushViewController(LoginViewController(loginViewModel: loginViewModel), animated: true)
+//                    })
+//                    .build(), animated: true)
+//                
+//            } catch {}
+//        }
     }
     
     private func fetchLocalLoginInfo() throws -> (String, String) {

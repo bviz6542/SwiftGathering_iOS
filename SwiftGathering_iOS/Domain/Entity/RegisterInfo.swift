@@ -1,11 +1,11 @@
 //
-//  RegisterInput.swift
+//  RegisterInfo.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 3/17/24.
+//  Created by 정준우 on 4/21/24.
 //
 
-struct RegisterInput: Codable {
+struct RegisterInfo: Codable {
     let id: String
     let password: String
     let age: String

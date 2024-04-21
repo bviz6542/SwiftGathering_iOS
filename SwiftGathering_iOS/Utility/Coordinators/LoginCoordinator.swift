@@ -34,11 +34,8 @@ extension LoginCoordinator {
     }
     
     func navigateToRegister() {
-        popViewController(animated: true)
-        let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard)
-        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
-        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
-        let mapViewController = LoginViewController(loginViewModel: loginViewModel)
-        navigationController.pushViewController(mapViewController, animated: false)
+        popViewController(animated: false)
+        let registerCoordinator = RegisterCoordinator(navigationController: navigationController)
+        registerCoordinator.start(animated: false)
     }
 }

@@ -36,6 +36,7 @@ extension RootCoordinator {
     func navigateTLogin() {
         popViewController(animated: true)
         let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        addChildCoordinator(loginCoordinator)
         loginCoordinator.start(animated: true)
     }
 }
