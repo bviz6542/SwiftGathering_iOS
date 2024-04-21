@@ -11,11 +11,12 @@ import Combine
 class LoginViewController: UIViewController {
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    @IBOutlet var keyboardHiddenConstraints: [NSLayoutConstraint]!
+    @IBOutlet var keyboardShownConstraints: [NSLayoutConstraint]!
+    
     weak var coordinator: LoginCoordinator?
     
     private var loginViewModel: LoginViewModel
-//    private var cancellables = Set<AnyCancellable>()
     
     init(loginViewModel: LoginViewModel) {
         self.loginViewModel = loginViewModel
@@ -26,35 +27,50 @@ class LoginViewController: UIViewController {
         fatalError("this view controller is not initialized via nib")
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        bindViewModel()
-//    }
-//    
-//    private func bindViewModel() {
-//        loginViewModel.loginResult
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { [weak self] completion in
-//                if case .failure(let error) = completion {
-//                    self?.present(AlertBuilder()
-//                        .setTitle("Error")
-//                        .setMessage("failed to login\n\(error)")
-//                        .build(), animated: true)
-//                }
-//            }, receiveValue: { [weak self] _ in
-//                self?.present(AlertBuilder()
-//                    .setTitle("Success")
-//                    .setMessage("login succeeded")
-//                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] action in
-//                        self?.navigationController?.popViewController(animated: true)
-//                    })
-//                        .build(), animated: true)
-//            })
-//            .store(in: &cancellables)
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unregisterKeyboardNotifications()
+    }
+    
+    private func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func unregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            if let keyboardShownConstraints = self?.keyboardShownConstraints,
+               let keyboardHiddenConstraints = self?.keyboardHiddenConstraints {
+                NSLayoutConstraint.deactivate(keyboardHiddenConstraints)
+                NSLayoutConstraint.activate(keyboardShownConstraints)
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            if let keyboardHiddenConstraints = self?.keyboardHiddenConstraints,
+               let keyboardShownConstraints = self?.keyboardShownConstraints {
+                NSLayoutConstraint.deactivate(keyboardShownConstraints)
+                NSLayoutConstraint.activate(keyboardHiddenConstraints)
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
     
     @IBAction func onTouchedSubmitButton(_ sender: Any) {
-        guard let id = idTextField.text, let password = passwordTextField.text 
+        guard let id = idTextField.text, let password = passwordTextField.text
         else {
             present(AlertBuilder()
                 .setTitle("Login Error")
@@ -78,7 +94,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onTouchedRegisterButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-        navigationController?.pushViewController(RegisterViewController(), animated: true)
+        coordinator?.navigateToRegister()
     }
 }

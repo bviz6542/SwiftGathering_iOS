@@ -28,13 +28,13 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
 
 extension RootCoordinator {
     func navigateToMap() {
-        navigationController.popViewController(animated: false)
+        popViewController(animated: true)
         let mapViewController = MapViewController()
         navigationController.pushViewController(mapViewController, animated: false)
     }
     
     func navigateTLogin() {
-        navigationController.popViewController(animated: false)
+        popViewController(animated: true)
         let loginCoordinator = LoginCoordinator(navigationController: navigationController)
         loginCoordinator.start(animated: true)
     }

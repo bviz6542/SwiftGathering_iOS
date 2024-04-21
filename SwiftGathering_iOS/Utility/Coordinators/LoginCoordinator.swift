@@ -28,13 +28,13 @@ final class LoginCoordinator: NSObject, ParentCoordinatorProtocol {
 
 extension LoginCoordinator {
     func navigateToMap() {
-        navigationController.popViewController(animated: false)
+        popViewController(animated: true)
         let mapViewController = MapViewController()
         navigationController.pushViewController(mapViewController, animated: false)
     }
     
     func navigateToRegister() {
-        navigationController.popViewController(animated: false)
+        popViewController(animated: true)
         let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard)
         let loginUseCase = LoginUseCase(loginRepository: loginRepository)
         let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
