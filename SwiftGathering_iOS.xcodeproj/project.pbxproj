@@ -23,6 +23,13 @@
 		435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */; };
 		435CA6962B944BDD008276B6 /* SwiftGathering_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */; };
 		435CA6982B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */; };
+		437FA54A2BDCEDF100447EE8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 437FA5492BDCEDF100447EE8 /* RxCocoa */; };
+		437FA54C2BDCEE0E00447EE8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */; };
+		437FA54E2BDD40F000447EE8 /* FriendLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA54D2BDD40F000447EE8 /* FriendLocation.swift */; };
+		437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5512BDD432A00447EE8 /* FriendInfo.swift */; };
+		437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5532BDD43B000447EE8 /* MapCoordinator.swift */; };
+		437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5552BDD458500447EE8 /* MapUseCase.swift */; };
+		437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5572BDD459A00447EE8 /* MapRepository.swift */; };
 		43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43980E592B947A8700FBEBDA /* WebSocketManager.swift */; };
 		439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */; };
 		439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */; };
@@ -111,6 +118,12 @@
 		435CA6912B944BDD008276B6 /* SwiftGathering_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGathering_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITests.swift; sourceTree = "<group>"; };
 		435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		437FA54D2BDD40F000447EE8 /* FriendLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLocation.swift; sourceTree = "<group>"; };
+		437FA5512BDD432A00447EE8 /* FriendInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfo.swift; sourceTree = "<group>"; };
+		437FA5532BDD43B000447EE8 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		437FA5552BDD458500447EE8 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
+		437FA5572BDD459A00447EE8 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
 		43980E592B947A8700FBEBDA /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
@@ -162,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				437FA54A2BDCEDF100447EE8 /* RxCocoa in Frameworks */,
 				BA5C0F2294F2DA21ED196F9C /* Pods_SwiftGathering_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +204,8 @@
 			children = (
 				432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */,
 				43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */,
+				437FA54D2BDD40F000447EE8 /* FriendLocation.swift */,
+				437FA5512BDD432A00447EE8 /* FriendInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -416,6 +432,7 @@
 			children = (
 				43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */,
 				43D3BD292BD4DB4900224669 /* RegisterRepository.swift */,
+				437FA5572BDD459A00447EE8 /* MapRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -452,6 +469,7 @@
 			children = (
 				A231C05E2BA3FD290059572D /* MapView.xib */,
 				A231C05D2BA3FD290059572D /* MapViewController.swift */,
+				437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */,
 			);
 			path = MapScene;
 			sourceTree = "<group>";
@@ -478,6 +496,7 @@
 			children = (
 				439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */,
 				43D3BD272BD4DB3D00224669 /* RegisterUseCase.swift */,
+				437FA5552BDD458500447EE8 /* MapUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -499,6 +518,7 @@
 				43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */,
 				432C707F2BD41BB400B4F4CE /* LoginCoordinator.swift */,
 				43D3BD252BD4DA7000224669 /* RegisterCoordinator.swift */,
+				437FA5532BDD43B000447EE8 /* MapCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -598,6 +618,9 @@
 			dependencies = (
 			);
 			name = SwiftGathering_iOS;
+			packageProductDependencies = (
+				437FA5492BDCEDF100447EE8 /* RxCocoa */,
+			);
 			productName = SwiftGathering_iOS;
 			productReference = 435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -673,6 +696,9 @@
 				Base,
 			);
 			mainGroup = 435CA6682B944BDA008276B6;
+			packageReferences = (
+				437FA5482BDCEDF000447EE8 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 435CA6722B944BDA008276B6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -834,9 +860,13 @@
 				433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */,
 				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
 				43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */,
+				437FA54C2BDCEE0E00447EE8 /* MapViewModel.swift in Sources */,
 				43B2CF122BA6B79F00047065 /* EmptyOutput.swift in Sources */,
 				43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */,
+				437FA54E2BDD40F000447EE8 /* FriendLocation.swift in Sources */,
 				43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */,
+				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
+				437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */,
 				A231C0632BA401090059572D /* LocationManager.swift in Sources */,
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
@@ -850,6 +880,7 @@
 				432C70802BD41BB400B4F4CE /* LoginCoordinator.swift in Sources */,
 				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
 				43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */,
+				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
@@ -868,6 +899,7 @@
 				43D3BD2A2BD4DB4900224669 /* RegisterRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
+				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,6 +1212,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3U2JR7F29N;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jun.SwiftGathering-iOSUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1203,6 +1240,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3U2JR7F29N;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 접근을 위해 권한이 필요합니다.";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jun.SwiftGathering-iOSUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1257,6 +1299,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		437FA5482BDCEDF000447EE8 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		437FA5492BDCEDF100447EE8 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 437FA5482BDCEDF000447EE8 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 435CA6692B944BDA008276B6 /* Project object */;
 }
