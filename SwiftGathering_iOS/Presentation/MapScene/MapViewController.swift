@@ -12,7 +12,6 @@ import RxSwift
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
-    private var currentLocation = CLLocation()
     private let disposeBag = DisposeBag()
     
     private var mapViewModel: MapViewModel
@@ -30,7 +29,6 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         LocationManager.shared.getUserLocation { [weak self] location in
-            self?.currentLocation = location
             self?.setRegion(using: location)
         }
         
@@ -41,25 +39,19 @@ class MapViewController: UIViewController {
         mapViewModel
             .userLocation
             .subscribe { [weak self] event in
-                DispatchQueue.main.async {
-                    guard let currentLocation = self?.currentLocation else { return }
-                    let randomX = Double(currentLocation.coordinate.latitude) + Double(Int.random(in: 1 ..< 10)%10)
-                    let randomY = Double(currentLocation.coordinate.longitude) + Double(Int.random(in: 1 ..< 10)%10)
-                    
-                    let newLocation = CLLocation(latitude: randomX, longitude: randomY)
-                    self?.currentLocation = newLocation
-                    print(newLocation)
-                    
-                    self?.setRegion(using: newLocation)
-                }
+                guard let newLatitude = event.element?.latitude, let newLongtitude = event.element?.longtitude else { return }
+                let newLocation = CLLocation(latitude: newLatitude, longitude: newLongtitude)
+                self?.setRegion(using: newLocation)
             }
             .disposed(by: disposeBag)
     }
     
     private func setRegion(using location: CLLocation) {
-        let pin = MKPointAnnotation()
-        pin.coordinate = location.coordinate
-        self.mapView.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)),animated: true)
-        self.mapView.addAnnotation(pin)
+        DispatchQueue.main.async { [weak self] in
+            let pin = MKPointAnnotation()
+            pin.coordinate = location.coordinate
+            self?.mapView.addAnnotation(pin)
+            self?.mapView.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)),animated: true)
+        }
     }
 }

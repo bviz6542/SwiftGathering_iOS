@@ -5,18 +5,24 @@
 //  Created by 정준우 on 4/27/24.
 //
 
+import RxSwift
+
 protocol MapUseCaseProtocol {
-//    func register(using registerInfo: RegisterInfo) async -> Result<Void, Error>
+    func fetchFriendLocation() -> Observable<FriendLocation>
 }
 
 class MapUseCase: MapUseCaseProtocol {
-    private var mapRepository: MapRepository
+    private var mapRepository: MapRepositoryProtocol
     
     init(mapRepository: MapRepository) {
         self.mapRepository = mapRepository
     }
     
-//    func register(using registerInfo: RegisterInfo) async -> Result<Void, Error> {
-//        return await registerRepository.register(using: registerInfo)
-//    }
+    func fetchFriendLocation() -> Observable<FriendLocation> {
+        return mapRepository.fetchFriendLocation()
+    }
+    
+    func sendMyLocation() {
+        // TODO: send my location to server
+    }
 }

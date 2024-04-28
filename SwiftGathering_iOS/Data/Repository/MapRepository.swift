@@ -5,28 +5,25 @@
 //  Created by 정준우 on 4/27/24.
 //
 
+import RxSwift
+
 protocol MapRepositoryProtocol {
-    func register(using registerInfo: RegisterInfo) async -> Result<Void, Error>
+    func sendMyLocation()
+    func fetchFriendLocation() -> Observable<FriendLocation>
 }
 
 class MapRepository: MapRepositoryProtocol {
-    private var httpHandler: HTTPHandler
+    private var rabbitMQHandler: RabbitMQHandler
     
-    init(httpHandler: HTTPHandler) {
-        self.httpHandler = httpHandler
+    init(rabbitMQHandler: RabbitMQHandler) {
+        self.rabbitMQHandler = rabbitMQHandler
     }
     
-    func register(using registerInfo: RegisterInfo) async -> Result<Void, Error> {
-        let registerInput = RegisterInput(id: registerInfo.id,
-                                          password: registerInfo.password,
-                                          age: registerInfo.age,
-                                          phoneNumber: registerInfo.phoneNumber)
-        return await httpHandler
-            .setPath(.register)
-            .setPort(8080)
-            .setMethod(.post)
-            .setRequestBody(registerInput)
-            .send(expecting: EmptyOutput.self)
-            .eraseToVoid()
+    func sendMyLocation() {
+        // TODO: send my location to server
+    }
+    
+    func fetchFriendLocation() -> Observable<FriendLocation> {
+        return rabbitMQHandler.listen(expecting: FriendLocation.self)
     }
 }
