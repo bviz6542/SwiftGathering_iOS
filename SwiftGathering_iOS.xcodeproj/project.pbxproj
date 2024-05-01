@@ -17,7 +17,6 @@
 		433AC07F2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433AC07E2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift */; };
 		435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6742B944BDA008276B6 /* AppDelegate.swift */; };
 		435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6762B944BDA008276B6 /* SceneDelegate.swift */; };
-		435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6782B944BDA008276B6 /* MainViewController.swift */; };
 		435CA67E2B944BDC008276B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435CA67D2B944BDC008276B6 /* Assets.xcassets */; };
 		435CA6812B944BDC008276B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA67F2B944BDC008276B6 /* LaunchScreen.storyboard */; };
 		435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */; };
@@ -109,7 +108,6 @@
 		435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGathering_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6742B944BDA008276B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CA6762B944BDA008276B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		435CA6782B944BDA008276B6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		435CA67D2B944BDC008276B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		435CA6802B944BDC008276B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		435CA6822B944BDC008276B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 			children = (
 				43FFDD702BCECB30002D19B2 /* SplashScene */,
 				43FFDD5E2BCBE5D5002D19B2 /* Common */,
-				43FFDD5C2BCBE59E002D19B2 /* MainScene */,
 				43FFDD622BCBE670002D19B2 /* DrawingScene */,
 				43FFDD5D2BCBE5A9002D19B2 /* MapScene */,
 				43FFDD502BCBC3AC002D19B2 /* AuthenticationScene */,
@@ -454,14 +451,6 @@
 				A26B9AAB2B95794800F46A4E /* WebSocket */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		43FFDD5C2BCBE59E002D19B2 /* MainScene */ = {
-			isa = PBXGroup;
-			children = (
-				435CA6782B944BDA008276B6 /* MainViewController.swift */,
-			);
-			path = MainScene;
 			sourceTree = "<group>";
 		};
 		43FFDD5D2BCBE5A9002D19B2 /* MapScene */ = {
@@ -882,7 +871,6 @@
 				43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */,
 				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
-				435CA6792B944BDA008276B6 /* MainViewController.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
 				43D3BD282BD4DB3D00224669 /* RegisterUseCase.swift in Sources */,

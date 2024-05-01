@@ -17,7 +17,7 @@ final class MapCoordinator: NSObject, ParentCoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol] = []
     
     func start(animated: Bool) {
-        let mapRepository = MapRepository(httpHandler: HTTPHandler())
+        let mapRepository = MapRepository(rabbitMQHandler: RabbitMQHandler())
         let mapUseCase = MapUseCase(mapRepository: mapRepository)
         let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
         let mapViewController = MapViewController(mapViewModel: mapViewModel)

@@ -29,7 +29,10 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
 extension RootCoordinator {
     func navigateToMap() {
         popViewController(animated: true)
-        let mapViewController = MapViewController()
+        let mapRepository = MapRepository(rabbitMQHandler: RabbitMQHandler())
+        let mapUseCase = MapUseCase(mapRepository: mapRepository)
+        let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
+        let mapViewController = MapViewController(mapViewModel: mapViewModel)
         navigationController.pushViewController(mapViewController, animated: false)
     }
     
