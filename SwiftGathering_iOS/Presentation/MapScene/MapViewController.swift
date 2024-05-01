@@ -27,22 +27,28 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        LocationManager.shared.getUserLocation { [weak self] location in
-            self?.setRegion(using: location)
-        }
-        
         bind()
     }
     
     private func bind() {
         mapViewModel
-            .userLocation
-            .subscribe { [weak self] event in
-                guard let newLatitude = event.element?.latitude, let newLongtitude = event.element?.longtitude else { return }
-                let newLocation = CLLocation(latitude: newLatitude, longitude: newLongtitude)
-                self?.setRegion(using: newLocation)
-            }
+            .friendLocation
+            .subscribe(onNext: { [weak self] location in
+                let newLocation = CLLocation(latitude: location.latitude,
+                                             longitude: location.longtitude)
+                print(newLocation)
+            }, onError: { error in
+                print(error)
+            })
+            .disposed(by: disposeBag)
+        
+        mapViewModel
+            .myLocation
+            .subscribe(onNext: { [weak self] location in
+                self?.setRegion(using: location)
+            }, onError: { error in
+                print(error)
+            })
             .disposed(by: disposeBag)
     }
     

@@ -6,24 +6,27 @@
 //
 
 import RxSwift
+import CoreLocation
 
 protocol MapRepositoryProtocol {
-    func sendMyLocation()
-    func fetchFriendLocation() -> Observable<FriendLocation>
+    func fetchMyLocation() -> Observable<CLLocation>
+    func fetchFriendLocation() -> Observable<FriendLocationOutput>
 }
 
 class MapRepository: MapRepositoryProtocol {
+    private var locationHandler: LocationHandler
     private var rabbitMQHandler: RabbitMQHandler
     
-    init(rabbitMQHandler: RabbitMQHandler) {
+    init(locationHandler: LocationHandler, rabbitMQHandler: RabbitMQHandler) {
+        self.locationHandler = locationHandler
         self.rabbitMQHandler = rabbitMQHandler
     }
     
-    func sendMyLocation() {
-        // TODO: send my location to server
+    func fetchMyLocation() -> Observable<CLLocation> {
+        return locationHandler.location
     }
     
-    func fetchFriendLocation() -> Observable<FriendLocation> {
-        return rabbitMQHandler.listen(expecting: FriendLocation.self)
+    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
+        return rabbitMQHandler.listen(expecting: FriendLocationOutput.self)
     }
 }

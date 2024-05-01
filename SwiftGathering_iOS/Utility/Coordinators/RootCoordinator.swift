@@ -29,7 +29,8 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
 extension RootCoordinator {
     func navigateToMap() {
         popViewController(animated: true)
-        let mapRepository = MapRepository(rabbitMQHandler: RabbitMQHandler())
+        let mapRepository = MapRepository(locationHandler: LocationHandler(),
+                                          rabbitMQHandler: RabbitMQHandler())
         let mapUseCase = MapUseCase(mapRepository: mapRepository)
         let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
         let mapViewController = MapViewController(mapViewModel: mapViewModel)

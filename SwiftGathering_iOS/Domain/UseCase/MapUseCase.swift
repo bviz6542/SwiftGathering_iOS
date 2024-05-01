@@ -6,23 +6,25 @@
 //
 
 import RxSwift
+import CoreLocation
 
 protocol MapUseCaseProtocol {
-    func fetchFriendLocation() -> Observable<FriendLocation>
+    func fetchMyLocation() -> Observable<CLLocation>
+    func fetchFriendLocation() -> Observable<FriendLocationOutput>
 }
 
 class MapUseCase: MapUseCaseProtocol {
     private var mapRepository: MapRepositoryProtocol
     
-    init(mapRepository: MapRepository) {
+    init(mapRepository: MapRepositoryProtocol) {
         self.mapRepository = mapRepository
     }
     
-    func fetchFriendLocation() -> Observable<FriendLocation> {
-        return mapRepository.fetchFriendLocation()
+    func fetchMyLocation() -> Observable<CLLocation> {
+        return mapRepository.fetchMyLocation()
     }
     
-    func sendMyLocation() {
-        // TODO: send my location to server
+    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
+        return mapRepository.fetchFriendLocation()
     }
 }
