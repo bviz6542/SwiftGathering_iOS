@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
                         .build(), animated: true)
                 }
                 .onSuccess { _ in
-                    coordinator?.navigateToMap()
+                    coordinator?.navigateToTabBar()
                 }
         }
     }
