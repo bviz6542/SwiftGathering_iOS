@@ -16,6 +16,8 @@ class MapViewController: UIViewController {
     
     private var mapViewModel: MapViewModel
     
+    private var isInitialLocationUpdate: Bool = true
+    
     init(mapViewModel: MapViewModel) {
         self.mapViewModel = mapViewModel
         super.init(nibName: nil, bundle: nil)
@@ -45,19 +47,44 @@ class MapViewController: UIViewController {
         mapViewModel
             .myLocation
             .subscribe(onNext: { [weak self] location in
-                self?.setRegion(using: location)
+                if self?.isInitialLocationUpdate == true {
+                    self?.setInitialRegion(using: location)
+                    self?.isInitialLocationUpdate = false
+                } else {
+                    self?.setRegion(using: location)
+                }
             }, onError: { error in
                 print(error)
             })
             .disposed(by: disposeBag)
     }
     
+    private func setInitialRegion(using location: CLLocation) {
+        DispatchQueue.main.async { [weak self] in
+            guard let mapView = self?.mapView else { return }
+            self?.updateMyLocation(to: location, in: mapView)
+            let currentSpan = mapView.region.span
+            mapView.setRegion(
+                MKCoordinateRegion(center: location.coordinate,
+                                   span: MKCoordinateSpan(latitudeDelta: 0.001,
+                                                          longitudeDelta: 0.001)
+                                  ),
+                animated: true)
+        }
+    }
+    
     private func setRegion(using location: CLLocation) {
         DispatchQueue.main.async { [weak self] in
-            let pin = MKPointAnnotation()
-            pin.coordinate = location.coordinate
-            self?.mapView.addAnnotation(pin)
-            self?.mapView.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)),animated: true)
+            guard let mapView = self?.mapView else { return }
+            self?.updateMyLocation(to: location, in: mapView)
         }
+    }
+    
+    private func updateMyLocation(to location: CLLocation, in mapView: MKMapView) {
+        let previousPins = mapView.annotations
+        let updatedPin = MKPointAnnotation()
+        updatedPin.coordinate = location.coordinate
+        mapView.addAnnotation(updatedPin)
+        mapView.removeAnnotations(previousPins)
     }
 }
