@@ -48,7 +48,7 @@ class SplashViewController: UIViewController {
     }
     
     private func showIndicator() {
-        UIView.animate(withDuration: 1, delay: 1) { [weak self] in
+        UIView.animate(withDuration: 1.3, delay: 0.7) { [weak self] in
             self?.activityIndicator.alpha = 1
         }
     }
@@ -57,7 +57,7 @@ class SplashViewController: UIViewController {
         do {
             try await Task.sleep(nanoseconds: 2_000_000_000)
             try await splashViewModel.loginWithPreviousLoginInfo().getOrThrow()
-            coordinator?.navigateToMap()
+            coordinator?.navigateToTabBar()
             
         } catch {
             coordinator?.navigateTLogin()

@@ -27,10 +27,10 @@ final class LoginCoordinator: NSObject, ParentCoordinatorProtocol {
 }
 
 extension LoginCoordinator {
-    func navigateToMap() {
+    func navigateToTabBar() {
         popViewController(animated: true)
-        let mapCoordinator = MapCoordinator(navigationController: navigationController)
-        mapCoordinator.start(animated: false)
+        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
+        tabBarCoordinator.start(animated: false)
     }
     
     func navigateToRegister() {

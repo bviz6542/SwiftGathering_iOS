@@ -22,6 +22,9 @@
 		435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */; };
 		435CA6962B944BDD008276B6 /* SwiftGathering_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */; };
 		435CA6982B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */; };
+		4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */; };
+		4376F4F12BE6222100049FE1 /* EmptyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */; };
+		4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */; };
 		437FA54A2BDCEDF100447EE8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 437FA5492BDCEDF100447EE8 /* RxCocoa */; };
 		437FA54C2BDCEE0E00447EE8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */; };
 		437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */; };
@@ -105,7 +108,7 @@
 		433AC07A2BC262A100BCEF6A /* DrawingSampleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSampleInput.swift; sourceTree = "<group>"; };
 		433AC07C2BC262AD00BCEF6A /* DrawingSampleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSampleOutput.swift; sourceTree = "<group>"; };
 		433AC07E2BC26B2E00BCEF6A /* RabbitMQHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQHandlerTests.swift; sourceTree = "<group>"; };
-		435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGathering_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		435CA6712B944BDA008276B6 /* Swift Gathering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Gathering.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6742B944BDA008276B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CA6762B944BDA008276B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		435CA67D2B944BDC008276B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +119,9 @@
 		435CA6912B944BDD008276B6 /* SwiftGathering_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGathering_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITests.swift; sourceTree = "<group>"; };
 		435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCoordinator.swift; sourceTree = "<group>"; };
+		4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemType.swift; sourceTree = "<group>"; };
 		437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLocationOutput.swift; sourceTree = "<group>"; };
 		437FA5512BDD432A00447EE8 /* FriendInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfo.swift; sourceTree = "<group>"; };
@@ -267,7 +273,7 @@
 		435CA6722B944BDA008276B6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */,
+				435CA6712B944BDA008276B6 /* Swift Gathering.app */,
 				435CA6872B944BDD008276B6 /* SwiftGathering_iOSTests.xctest */,
 				435CA6912B944BDD008276B6 /* SwiftGathering_iOSUITests.xctest */,
 			);
@@ -508,6 +514,9 @@
 				432C707F2BD41BB400B4F4CE /* LoginCoordinator.swift */,
 				43D3BD252BD4DA7000224669 /* RegisterCoordinator.swift */,
 				437FA5532BDD43B000447EE8 /* MapCoordinator.swift */,
+				4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */,
+				4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */,
+				4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -611,7 +620,7 @@
 				437FA5492BDCEDF100447EE8 /* RxCocoa */,
 			);
 			productName = SwiftGathering_iOS;
-			productReference = 435CA6712B944BDA008276B6 /* SwiftGathering_iOS.app */;
+			productReference = 435CA6712B944BDA008276B6 /* Swift Gathering.app */;
 			productType = "com.apple.product-type.application";
 		};
 		435CA6862B944BDD008276B6 /* SwiftGathering_iOSTests */ = {
@@ -838,6 +847,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4376F4F12BE6222100049FE1 /* EmptyCoordinator.swift in Sources */,
 				43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */,
 				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
@@ -884,9 +894,11 @@
 				43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */,
 				432C707C2BD3F8DF00B4F4CE /* UserDefaultsError.swift in Sources */,
 				43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */,
+				4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */,
 				43D3BD2A2BD4DB4900224669 /* RegisterRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
+				4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */,
 				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1092,7 +1104,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jun.SwiftGathering-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Swift Gathering";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1130,7 +1142,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jun.SwiftGathering-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Swift Gathering";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -27,14 +27,10 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
 }
 
 extension RootCoordinator {
-    func navigateToMap() {
+    func navigateToTabBar() {
         popViewController(animated: true)
-        let mapRepository = MapRepository(locationHandler: LocationHandler(),
-                                          rabbitMQHandler: RabbitMQHandler())
-        let mapUseCase = MapUseCase(mapRepository: mapRepository)
-        let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
-        let mapViewController = MapViewController(mapViewModel: mapViewModel)
-        navigationController.pushViewController(mapViewController, animated: false)
+        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
+        tabBarCoordinator.start(animated: false)
     }
     
     func navigateTLogin() {
