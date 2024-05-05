@@ -63,13 +63,12 @@ class MapViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             guard let mapView = self?.mapView else { return }
             self?.updateMyLocation(to: location, in: mapView)
-            let currentSpan = mapView.region.span
-            mapView.setRegion(
-                MKCoordinateRegion(center: location.coordinate,
-                                   span: MKCoordinateSpan(latitudeDelta: 0.001,
-                                                          longitudeDelta: 0.001)
-                                  ),
-                animated: true)
+            mapView.setRegion(MKCoordinateRegion(center: location.coordinate,
+                                                 span: MKCoordinateSpan(latitudeDelta: 0.001,
+                                                                        longitudeDelta: 0.001
+                                                                       )
+                                                ),
+                              animated: true)
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class HTTPHandler {
     private var host: String = ""
@@ -142,5 +143,52 @@ class HTTPHandler {
         } catch {
             throw HTTPError.responseParsingError
         }
+    }
+    
+    private func rxBuildURLRequest() -> Observable<URLRequest> {
+        do {
+            return .just(try buildURLRequest())
+        } catch {
+            return .error(error)
+        }
+    }
+    
+    private func rxSendRequestAndFetchResponse(with request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)> {
+        return URLSession.shared.rx.response(request: request)
+    }
+    
+    private func rxHandleHTTPSStatusCodes(in response: HTTPURLResponse) -> Observable<Void> {
+        if (200...399 ~= response.statusCode) {
+            return .just(())
+        } else if (400...599 ~= response.statusCode) {
+            return .error(HTTPError.serverSideError)
+        } else {
+            return .error(HTTPError.unexpectedError)
+        }
+    }
+    
+    private func rxDecodeResponseData<OutputType: Codable>(data: Data) -> Observable<OutputType> {
+        do {
+            return .just(try decodeResponseData(data: data))
+        } catch {
+            return .error(error)
+        }
+    }
+    
+    func rxSend<OutputType: Codable>(expecting outputType: OutputType.Type) -> Observable<OutputType> {
+        rxBuildURLRequest()
+            .withUnretained(self)
+            .flatMap { (owner: HTTPHandler, request: URLRequest) in
+                owner.rxSendRequestAndFetchResponse(with: request)
+            }
+            .withUnretained(self)
+            .flatMap { (owner: HTTPHandler, result: (response: HTTPURLResponse, data: Data)) in
+                owner.rxHandleHTTPSStatusCodes(in: result.response)
+                    .map { result.data }
+            }
+            .withUnretained(self)
+            .flatMap { (owner: HTTPHandler, data: Data) in
+                owner.rxDecodeResponseData(data: data)
+            }
     }
 }

@@ -11,6 +11,7 @@ protocol LoginRepositoryProtocol {
     func login(using loginInfo: LoginInfo) async -> Result<Void, Error>
     func fetchPreviousLoginInfo() -> Result<LoginInfo, Error>
     func saveLoginInfo(using loginInfo: LoginInfo) -> Result<Void, Error>
+    func saveMyInfo(using myInfo: MyInfo) -> Result<Void, Error>
 }
 
 class LoginRepository: LoginRepositoryProtocol {
@@ -46,6 +47,12 @@ class LoginRepository: LoginRepositoryProtocol {
     func saveLoginInfo(using loginInfo: LoginInfo) -> Result<Void, Error> {
         guard let encodedObject = try? JSONEncoder().encode(loginInfo) else { return .failure(UserDefaultsError.encodeFailed) }
         userDefaults.setValue(encodedObject, forKey: "loginInfo")
+        return .success(())
+    }
+    
+    func saveMyInfo(using myInfo: MyInfo) -> Result<Void, Error> {
+        guard let encodedObject = try? JSONEncoder().encode(myInfo) else { return .failure(UserDefaultsError.encodeFailed) }
+        userDefaults.setValue(encodedObject, forKey: "myInfo")
         return .success(())
     }
 }

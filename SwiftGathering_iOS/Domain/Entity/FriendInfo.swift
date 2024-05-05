@@ -6,5 +6,6 @@
 //
 
 struct FriendInfo: Codable {
-    // TODO: friends name, number, profile image, ...
+    let id: Int
+    // TODO: 값 추가해야 함
 }
