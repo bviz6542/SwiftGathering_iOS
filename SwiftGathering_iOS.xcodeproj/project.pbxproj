@@ -56,6 +56,16 @@
 		43B2CF1B2BA6BC1600047065 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CF192BA6BC1500047065 /* RegisterView.xib */; };
 		43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */; };
 		43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1F2BA87F9F00047065 /* LoginError.swift */; };
+		43D0E2A72BE7354100294A4A /* FriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2A62BE7354100294A4A /* FriendCoordinator.swift */; };
+		43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2AB2BE7430800294A4A /* FriendViewController.swift */; };
+		43D0E2AE2BE7431900294A4A /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */; };
+		43D0E2B02BE7466200294A4A /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2AF2BE7466200294A4A /* FriendRepository.swift */; };
+		43D0E2B22BE7468E00294A4A /* FriendUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2B12BE7468E00294A4A /* FriendUseCase.swift */; };
+		43D0E2B42BE749FC00294A4A /* FriendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D0E2B32BE749FC00294A4A /* FriendView.xib */; };
+		43D0E2B72BE74BDC00294A4A /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2B52BE74BDC00294A4A /* FriendTableViewCell.swift */; };
+		43D0E2B82BE74BDC00294A4A /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */; };
+		43D0E2BA2BE79FD700294A4A /* FriendsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2B92BE79FD700294A4A /* FriendsOutput.swift */; };
+		43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2BB2BE7B14A00294A4A /* MyInfo.swift */; };
 		43D3BD262BD4DA7000224669 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD252BD4DA7000224669 /* RegisterCoordinator.swift */; };
 		43D3BD282BD4DB3D00224669 /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD272BD4DB3D00224669 /* RegisterUseCase.swift */; };
 		43D3BD2A2BD4DB4900224669 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD292BD4DB4900224669 /* RegisterRepository.swift */; };
@@ -152,6 +162,16 @@
 		43B2CF192BA6BC1500047065 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInput.swift; sourceTree = "<group>"; };
 		43B2CF1F2BA87F9F00047065 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		43D0E2A62BE7354100294A4A /* FriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoordinator.swift; sourceTree = "<group>"; };
+		43D0E2AB2BE7430800294A4A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
+		43D0E2AF2BE7466200294A4A /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
+		43D0E2B12BE7468E00294A4A /* FriendUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendUseCase.swift; sourceTree = "<group>"; };
+		43D0E2B32BE749FC00294A4A /* FriendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendView.xib; sourceTree = "<group>"; };
+		43D0E2B52BE74BDC00294A4A /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		43D0E2B92BE79FD700294A4A /* FriendsOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsOutput.swift; sourceTree = "<group>"; };
+		43D0E2BB2BE7B14A00294A4A /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
 		43D3BD252BD4DA7000224669 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		43D3BD272BD4DB3D00224669 /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		43D3BD292BD4DB4900224669 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
@@ -208,6 +228,7 @@
 			children = (
 				432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */,
 				43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */,
+				43D0E2BB2BE7B14A00294A4A /* MyInfo.swift */,
 				437FA5512BDD432A00447EE8 /* FriendInfo.swift */,
 			);
 			path = Entity;
@@ -328,6 +349,7 @@
 				43FFDD5E2BCBE5D5002D19B2 /* Common */,
 				43FFDD622BCBE670002D19B2 /* DrawingScene */,
 				43FFDD5D2BCBE5A9002D19B2 /* MapScene */,
+				43D0E2AA2BE742EB00294A4A /* FriendScene */,
 				43FFDD502BCBC3AC002D19B2 /* AuthenticationScene */,
 			);
 			path = Presentation;
@@ -373,6 +395,18 @@
 			path = AlertBuilder;
 			sourceTree = "<group>";
 		};
+		43D0E2AA2BE742EB00294A4A /* FriendScene */ = {
+			isa = PBXGroup;
+			children = (
+				43D0E2B32BE749FC00294A4A /* FriendView.xib */,
+				43D0E2AB2BE7430800294A4A /* FriendViewController.swift */,
+				43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */,
+				43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */,
+				43D0E2B52BE74BDC00294A4A /* FriendTableViewCell.swift */,
+			);
+			path = FriendScene;
+			sourceTree = "<group>";
+		};
 		43FFDD4F2BCBC373002D19B2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */,
+				43D0E2B92BE79FD700294A4A /* FriendsOutput.swift */,
 				43B2CF112BA6B79F00047065 /* EmptyOutput.swift */,
 			);
 			path = Output;
@@ -436,6 +471,7 @@
 				43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */,
 				43D3BD292BD4DB4900224669 /* RegisterRepository.swift */,
 				437FA5572BDD459A00447EE8 /* MapRepository.swift */,
+				43D0E2AF2BE7466200294A4A /* FriendRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -492,6 +528,7 @@
 				439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */,
 				43D3BD272BD4DB3D00224669 /* RegisterUseCase.swift */,
 				437FA5552BDD458500447EE8 /* MapUseCase.swift */,
+				43D0E2B12BE7468E00294A4A /* FriendUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -513,10 +550,11 @@
 				43FFDD6E2BCD770A002D19B2 /* RootCoordinator.swift */,
 				432C707F2BD41BB400B4F4CE /* LoginCoordinator.swift */,
 				43D3BD252BD4DA7000224669 /* RegisterCoordinator.swift */,
-				437FA5532BDD43B000447EE8 /* MapCoordinator.swift */,
 				4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */,
 				4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */,
 				4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */,
+				437FA5532BDD43B000447EE8 /* MapCoordinator.swift */,
+				43D0E2A62BE7354100294A4A /* FriendCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -715,10 +753,12 @@
 			files = (
 				43B2CEFC2BA69BEC00047065 /* LoginView.xib in Resources */,
 				43FFDD722BCECB54002D19B2 /* SplashView.xib in Resources */,
+				43D0E2B42BE749FC00294A4A /* FriendView.xib in Resources */,
 				435CA6812B944BDC008276B6 /* LaunchScreen.storyboard in Resources */,
 				435CA67E2B944BDC008276B6 /* Assets.xcassets in Resources */,
 				43B2CEF62B94848900047065 /* DrawingView.xib in Resources */,
 				A231C0602BA3FD290059572D /* MapView.xib in Resources */,
+				43D0E2B82BE74BDC00294A4A /* FriendTableViewCell.xib in Resources */,
 				43B2CF1B2BA6BC1600047065 /* RegisterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -848,6 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4376F4F12BE6222100049FE1 /* EmptyCoordinator.swift in Sources */,
+				43D0E2B02BE7466200294A4A /* FriendRepository.swift in Sources */,
 				43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */,
 				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
@@ -856,6 +897,7 @@
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
+				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
 				433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */,
 				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
 				43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */,
@@ -865,6 +907,7 @@
 				437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */,
 				43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */,
 				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
+				43D0E2A72BE7354100294A4A /* FriendCoordinator.swift in Sources */,
 				437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */,
 				A231C0632BA401090059572D /* LocationHandler.swift in Sources */,
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
@@ -872,6 +915,7 @@
 				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				A26FE1D82BBE6286004994BA /* RabbitMQHandler.swift in Sources */,
+				43D0E2B72BE74BDC00294A4A /* FriendTableViewCell.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
 				43D3BD262BD4DA7000224669 /* RegisterCoordinator.swift in Sources */,
 				43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */,
@@ -892,11 +936,15 @@
 				433AC0792BC25CF600BCEF6A /* RabbitMQError.swift in Sources */,
 				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
 				43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */,
+				43D0E2AE2BE7431900294A4A /* FriendViewModel.swift in Sources */,
 				432C707C2BD3F8DF00B4F4CE /* UserDefaultsError.swift in Sources */,
+				43D0E2BA2BE79FD700294A4A /* FriendsOutput.swift in Sources */,
 				43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */,
+				43D0E2B22BE7468E00294A4A /* FriendUseCase.swift in Sources */,
 				4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */,
 				43D3BD2A2BD4DB4900224669 /* RegisterRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
+				43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
 				4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */,
 				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,

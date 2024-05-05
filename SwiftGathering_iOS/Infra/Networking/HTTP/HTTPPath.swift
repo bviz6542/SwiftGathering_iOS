@@ -8,6 +8,7 @@
 enum HTTPPath {
     case login
     case register
+    case friends(memberID: String)
     
     var stringValue: String {
         switch self {
@@ -15,6 +16,8 @@ enum HTTPPath {
             return "/login"
         case .register:
             return "/register"
+        case .friends(memberID: let memberID):
+            return "/members/\(memberID)/friends"
         }
     }
 }

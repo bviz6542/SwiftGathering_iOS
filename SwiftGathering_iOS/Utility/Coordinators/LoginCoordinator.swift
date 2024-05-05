@@ -17,7 +17,7 @@ final class LoginCoordinator: NSObject, ParentCoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol] = []
     
     func start(animated: Bool) {
-        let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard)
+        let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults())
         let loginUseCase = LoginUseCase(loginRepository: loginRepository)
         let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
         let loginViewController = LoginViewController(loginViewModel: loginViewModel)

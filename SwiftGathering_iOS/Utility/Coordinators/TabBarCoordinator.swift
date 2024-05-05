@@ -61,8 +61,8 @@ extension TabBarCoordinator {
             let mapCoordinator = MapCoordinator(navigationController: tabNavigationController)
             mapCoordinator.start(animated: false)
         case .friend:
-            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
-            emptyCoordinator.start(animated: false)
+            let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController)
+            friendCoordinator.start(animated: false)
         case .unknown:
             let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
             emptyCoordinator.start(animated: false)

@@ -30,5 +30,9 @@ class LoginUseCase: LoginUseCaseProtocol {
             .flatMap { _ in
                 return loginRepository.saveLoginInfo(using: loginInfo)
             }
+            .flatMap { _ in
+                // TODO: 서버에서 제대로 된 값 주게 수정
+                return loginRepository.saveMyInfo(using: MyInfo(id: "1"))
+            }
     }
 }
