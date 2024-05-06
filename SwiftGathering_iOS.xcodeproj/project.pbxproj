@@ -25,6 +25,7 @@
 		4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */; };
 		4376F4F12BE6222100049FE1 /* EmptyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */; };
 		4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */; };
+		437A46BB2BE93BA100CDB3C9 /* LoginOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437A46BA2BE93BA100CDB3C9 /* LoginOutput.swift */; };
 		437FA54A2BDCEDF100447EE8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 437FA5492BDCEDF100447EE8 /* RxCocoa */; };
 		437FA54C2BDCEE0E00447EE8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */; };
 		437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */; };
@@ -132,6 +133,7 @@
 		4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCoordinator.swift; sourceTree = "<group>"; };
 		4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemType.swift; sourceTree = "<group>"; };
+		437A46BA2BE93BA100CDB3C9 /* LoginOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOutput.swift; sourceTree = "<group>"; };
 		437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLocationOutput.swift; sourceTree = "<group>"; };
 		437FA5512BDD432A00447EE8 /* FriendInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfo.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			children = (
 				437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */,
 				43D0E2B92BE79FD700294A4A /* FriendsOutput.swift */,
+				437A46BA2BE93BA100CDB3C9 /* LoginOutput.swift */,
 				43B2CF112BA6B79F00047065 /* EmptyOutput.swift */,
 			);
 			path = Output;
@@ -945,6 +948,7 @@
 				43D3BD2A2BD4DB4900224669 /* RegisterRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */,
+				437A46BB2BE93BA100CDB3C9 /* LoginOutput.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
 				4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */,
 				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,

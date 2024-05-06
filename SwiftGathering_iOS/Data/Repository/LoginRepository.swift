@@ -24,7 +24,7 @@ class LoginRepository: LoginRepositoryProtocol {
     }
     
     func login(using loginInfo: LoginInfo) async -> Result<Void, Error> {
-        let loginInput = LoginInput(id: loginInfo.loginID, password: loginInfo.loginPassword)
+        let loginInput = LoginInput(loginId: loginInfo.loginId, loginPassword: loginInfo.loginPassword)
         return await httpHandler
             .setPath(.login)
             .setPort(8080)

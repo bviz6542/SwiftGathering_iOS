@@ -6,6 +6,6 @@
 //
 
 struct LoginInput: Codable {
-    let id: String
-    let password: String
+    let loginId: String
+    let loginPassword: String
 }

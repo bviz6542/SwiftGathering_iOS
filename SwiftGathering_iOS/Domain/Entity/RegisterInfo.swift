@@ -8,6 +8,5 @@
 struct RegisterInfo: Codable {
     let id: String
     let password: String
-    let age: String
-    let phoneNumber: String
+    let name: String
 }

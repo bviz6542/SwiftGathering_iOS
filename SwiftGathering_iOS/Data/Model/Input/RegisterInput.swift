@@ -6,8 +6,7 @@
 //
 
 struct RegisterInput: Codable {
-    let id: String
-    let password: String
-    let age: String
-    let phoneNumber: String
+    let loginId: String
+    let loginPassword: String
+    let name: String
 }
