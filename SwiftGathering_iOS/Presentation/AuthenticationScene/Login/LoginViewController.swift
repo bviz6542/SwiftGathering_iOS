@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
             return
         }
         Task {
-            let loginInfo = LoginInfo(loginID: id, loginPassword: password)
+            let loginInfo = LoginInfo(loginId: id, loginPassword: password)
             await loginViewModel.login(using: loginInfo)
                 .onFailure { error in
                     present(AlertBuilder()

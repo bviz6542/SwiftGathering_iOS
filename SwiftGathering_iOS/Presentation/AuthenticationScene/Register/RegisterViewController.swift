@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController {
         guard let id = idTextField.text, let password = passwordTextField.text else { return }
         
         Task {
-            let registerInfo = RegisterInfo(id: id, password: password, age: "", phoneNumber: "")
+            let registerInfo = RegisterInfo(id: id, password: password, name: "temp")
             await registerViewModel.register(using: registerInfo)
                 .onFailure { error in
                     present(AlertBuilder()

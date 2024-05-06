@@ -17,10 +17,9 @@ class RegisterRepository: RegisterRepositoryProtocol {
     }
     
     func register(using registerInfo: RegisterInfo) async -> Result<Void, Error> {
-        let registerInput = RegisterInput(id: registerInfo.id,
-                                          password: registerInfo.password,
-                                          age: registerInfo.age,
-                                          phoneNumber: registerInfo.phoneNumber)
+        let registerInput = RegisterInput(loginId: registerInfo.id,
+                                          loginPassword: registerInfo.password,
+                                          name: registerInfo.name)
         return await httpHandler
             .setPath(.register)
             .setPort(8080)
