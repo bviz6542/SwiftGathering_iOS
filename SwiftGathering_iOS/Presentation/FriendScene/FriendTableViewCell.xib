@@ -18,7 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cl5-Yu-jSU">
-                        <rect key="frame" x="16" y="12" width="288" height="21"/>
+                        <rect key="frame" x="16" y="12" width="105" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRr-1c-1fO">
+                        <rect key="frame" x="151" y="12" width="149" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -28,7 +35,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="nameLabel" destination="Cl5-Yu-jSU" id="UNb-ne-46O"/>
+                <outlet property="idLabel" destination="Cl5-Yu-jSU" id="eIx-5Y-G7Z"/>
+                <outlet property="nameLabel" destination="zRr-1c-1fO" id="dbR-ML-M0n"/>
             </connections>
             <point key="canvasLocation" x="100.76335877862596" y="19.718309859154932"/>
         </tableViewCell>

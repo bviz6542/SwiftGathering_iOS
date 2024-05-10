@@ -54,7 +54,8 @@ extension FriendViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else { return UITableViewCell() }
-        cell.nameLabel.text = String(friendInfos[indexPath.row].id)
+        cell.idLabel.text = String(friendInfos[indexPath.row].id)
+        cell.nameLabel.text = friendInfos[indexPath.row].name
         return cell
     }
 }

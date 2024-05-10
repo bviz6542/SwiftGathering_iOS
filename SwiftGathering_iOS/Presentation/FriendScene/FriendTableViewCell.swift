@@ -8,5 +8,6 @@
 import UIKit
 
 class FriendTableViewCell: UITableViewCell {
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
 }
