@@ -17,9 +17,15 @@ class RabbitMQHandler {
     }
     
     private func initializeConnection() {
-        connection = RMQConnection(delegate: RMQConnectionDelegateLogger())
+        connection = RMQConnection(uri: "amqp://guest:guest@localhost", delegate: RMQConnectionDelegateLogger())
         connection?.start()
         channel = connection?.createChannel()
+        
+        if let channel = channel {
+            let exchange = channel.direct("swift-gathering.exchange")
+            let queue = channel.queue("swift-gathering.queue", options: .durable)
+            queue.bind(exchange, routingKey: "swift-gathering.routing")
+        }
     }
     
     func listen<T: Codable>(expecting responseType: T.Type) -> Observable<T> {
@@ -28,9 +34,10 @@ class RabbitMQHandler {
                 observer.onError(RabbitMQError.channelDoesNotExist)
                 return Disposables.create()
             }
-            let queue = channel.queue("swift-gathering")
-            queue.subscribe { message in
+            let queue = channel.queue("swift-gathering.queue", options: .durable)
+            queue.subscribe(withAckMode: .manual) { message in
                 do {
+                    print("received message: \(String(describing: String(bytes: message.body, encoding: .utf8)))")
                     let response = try JSONDecoder().decode(responseType, from: message.body)
                     observer.onNext(response)
                 } catch {
@@ -46,8 +53,8 @@ class RabbitMQHandler {
             do {
                 guard let channel = self?.channel else { throw RabbitMQError.channelDoesNotExist }
                 let requestData = try JSONEncoder().encode(request)
-                let queue = channel.queue("swift-gathering")
-                channel.defaultExchange().publish(requestData, routingKey: queue.name, persistent: true)
+                let exchange = channel.direct("swift-gathering.exchange")
+                exchange.publish(requestData, routingKey: "swift-gathering.routing", persistent: true)
                 observer.onNext(())
                 observer.onCompleted()
                 
