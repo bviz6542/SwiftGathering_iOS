@@ -51,7 +51,7 @@ class FriendRepository: FriendRepositoryProtocol {
             .map { outputs in
                 return outputs
                     .map { output in
-                        FriendInfo(id: output.id)
+                        FriendInfo(id: output.id, name: output.name)
                     }
             }
     }
