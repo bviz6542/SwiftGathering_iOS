@@ -38,7 +38,7 @@ class FriendViewController: UIViewController {
         friendViewModel.friendInfos
             .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
                 cell.userImageView.image = UIImage(systemName: "person.fill")
-                cell.nameLabel.text = String(element.id)
+                cell.nameLabel.text = String(element.name)
             }
             .disposed(by: disposeBag)
         

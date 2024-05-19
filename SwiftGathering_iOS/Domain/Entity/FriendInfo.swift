@@ -7,5 +7,5 @@
 
 struct FriendInfo: Codable {
     let id: Int
-    // TODO: 값 추가해야 함
+    let name: String
 }
