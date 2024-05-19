@@ -13,9 +13,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     private let disposeBag = DisposeBag()
-    
     private var mapViewModel: MapViewModel
-    
     private var isInitialLocationUpdate: Bool = true
     
     init(mapViewModel: MapViewModel) {
@@ -44,8 +42,8 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mapViewModel
-            .myLocation
+        mapViewModel.myLocation
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
                 if self?.isInitialLocationUpdate == true {
                     self?.setInitialRegion(using: location)
@@ -60,23 +58,19 @@ class MapViewController: UIViewController {
     }
     
     private func setInitialRegion(using location: CLLocation) {
-        DispatchQueue.main.async { [weak self] in
-            guard let mapView = self?.mapView else { return }
-            self?.updateMyLocation(to: location, in: mapView)
-            mapView.setRegion(MKCoordinateRegion(center: location.coordinate,
-                                                 span: MKCoordinateSpan(latitudeDelta: 0.001,
-                                                                        longitudeDelta: 0.001
-                                                                       )
-                                                ),
-                              animated: true)
-        }
+        guard let mapView = mapView else { return }
+        updateMyLocation(to: location, in: mapView)
+        mapView.setRegion(MKCoordinateRegion(center: location.coordinate,
+                                             span: MKCoordinateSpan(latitudeDelta: 0.001,
+                                                                    longitudeDelta: 0.001
+                                                                   )
+                                            ),
+                          animated: true)
     }
     
     private func setRegion(using location: CLLocation) {
-        DispatchQueue.main.async { [weak self] in
-            guard let mapView = self?.mapView else { return }
-            self?.updateMyLocation(to: location, in: mapView)
-        }
+        guard let mapView = mapView else { return }
+        updateMyLocation(to: location, in: mapView)
     }
     
     private func updateMyLocation(to location: CLLocation, in mapView: MKMapView) {

@@ -36,6 +36,7 @@ class FriendViewController: UIViewController {
     
     private func bind() {
         friendViewModel.friendInfos
+            .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
                 cell.userImageView.image = UIImage(systemName: "person.fill")
                 cell.nameLabel.text = String(element.name)
@@ -44,7 +45,6 @@ class FriendViewController: UIViewController {
         
         tableView.rx
             .modelSelected(FriendInfo.self)
-            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] friendInfo in
                 self?.present(AlertBuilder()
                     .setTitle("")
@@ -62,7 +62,6 @@ class FriendViewController: UIViewController {
             .disposed(by: disposeBag)
         
         confirmSubject
-            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] friendInfo in
                 print("wow: \(friendInfo)")
             })

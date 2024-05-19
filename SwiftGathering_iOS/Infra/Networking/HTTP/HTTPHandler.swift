@@ -175,7 +175,7 @@ class HTTPHandler {
         }
     }
     
-    func rxSend<OutputType: Codable>(expecting outputType: OutputType.Type) -> Observable<OutputType> {
+    func rxSend<OutputType: Codable>(expecting outputType: OutputType.Type) -> Single<OutputType> {
         rxBuildURLRequest()
             .withUnretained(self)
             .flatMap { (owner: HTTPHandler, request: URLRequest) in
@@ -187,8 +187,9 @@ class HTTPHandler {
                     .map { result.data }
             }
             .withUnretained(self)
-            .flatMap { (owner: HTTPHandler, data: Data) in
+            .flatMap { (owner: HTTPHandler, data: Data) -> Observable<OutputType> in
                 owner.rxDecodeResponseData(data: data)
             }
+            .asSingle()
     }
 }
