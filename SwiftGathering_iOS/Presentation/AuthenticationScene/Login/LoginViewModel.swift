@@ -5,16 +5,40 @@
 //  Created by 정준우 on 3/28/24.
 //
 
-import Combine
+import RxSwift
+import RxCocoa
 
 class LoginViewModel {
-    private var loginUseCase: LoginUseCaseProtocol
+    var loginTap = PublishSubject<LoginInfo>()
+    
+    var loginState: Observable<Void> {
+        return loginStateSubject.asObservable().compactMap { $0 }
+    }
+    
+    private let loginStateSubject = BehaviorSubject<Void?>(value: nil)
+    private let loginErrorSubject = PublishSubject<Error>()
+    private let loginUseCase: LoginUseCaseProtocol
+    private let disposeBag = DisposeBag()
     
     init(loginUseCase: LoginUseCaseProtocol) {
         self.loginUseCase = loginUseCase
-    }
-    
-    func login(using loginInfo: LoginInfo) async -> Result<Void, Error> {
-        return await loginUseCase.login(using: loginInfo)
+        
+        loginTap
+            .withUnretained(self)
+            .flatMap { (owner, loginInfo) -> Observable<Result<Void, Error>> in
+                return owner.loginUseCase.login(using: loginInfo)
+                    .map { .success(()) }
+                    .catch { .just(.failure($0)) }
+                    .asObservable()
+            }
+            .subscribe(
+                with: self,
+                onNext: { (owner, loginInfo) in
+                    owner.loginStateSubject.onNext(())
+                },
+                onError: { (owner, error) in
+                    owner.loginErrorSubject.onNext(error)
+                })
+            .disposed(by: disposeBag)
     }
 }

@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Swift_Gathering" customModuleProvider="target">
             <connections>
                 <outlet property="idTextField" destination="gLM-1u-swQ" id="ity-Bq-lAO"/>
+                <outlet property="loginButton" destination="9dK-gq-M0j" id="13f-0g-Hfj"/>
                 <outlet property="passwordTextField" destination="CEu-ZP-XPL" id="c7e-gG-rYD"/>
+                <outlet property="registerButton" destination="1vM-v4-rSZ" id="U3c-Bk-yXr"/>
                 <outlet property="view" destination="iN0-l3-epB" id="uFb-ax-dYh"/>
                 <outletCollection property="keyboardHiddenConstraints" destination="ofZ-sd-J7v" collectionClass="NSMutableArray" id="Ndb-Rp-3wo"/>
                 <outletCollection property="keyboardShownConstraints" destination="EU7-Eu-BLr" collectionClass="NSMutableArray" id="Bar-mF-yj9"/>
@@ -165,9 +167,6 @@
                                     <real key="value" value="7"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="onTouchedSubmitButton:" destination="-1" eventType="touchUpInside" id="dfU-Db-MyE"/>
-                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vM-v4-rSZ">
                             <rect key="frame" x="213" y="310" width="87" height="35"/>
@@ -178,9 +177,6 @@
                             <buttonConfiguration key="configuration" style="plain" title="Register">
                                 <color key="baseForegroundColor" systemColor="linkColor"/>
                             </buttonConfiguration>
-                            <connections>
-                                <action selector="onTouchedRegisterButton:" destination="-1" eventType="touchUpInside" id="fQf-RM-DIy"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

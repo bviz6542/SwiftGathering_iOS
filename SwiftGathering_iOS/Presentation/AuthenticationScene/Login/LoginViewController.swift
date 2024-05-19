@@ -6,17 +6,21 @@
 //
 
 import UIKit
-import Combine
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet var keyboardHiddenConstraints: [NSLayoutConstraint]!
     @IBOutlet var keyboardShownConstraints: [NSLayoutConstraint]!
     
     weak var coordinator: LoginCoordinator?
     
-    private var loginViewModel: LoginViewModel
+    private let loginViewModel: LoginViewModel
+    private let disposeBag = DisposeBag()
     
     init(loginViewModel: LoginViewModel) {
         self.loginViewModel = loginViewModel
@@ -31,11 +35,49 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         registerKeyboardNotifications()
+        bind()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardNotifications()
+    }
+    
+    private func bind() {
+        loginButton.rx.tap
+            .withLatestFrom(Observable.combineLatest(idTextField.rx.text.orEmpty, passwordTextField.rx.text.orEmpty))
+            .flatMap { [weak self] id, password -> Observable<LoginInfo> in
+                guard let self = self else { return Observable.empty() }
+                if id.isEmpty || password.isEmpty {
+                    self.present(AlertBuilder()
+                        .setTitle("Login Error")
+                        .setMessage("ID and Password must not be empty.")
+                        .build(), animated: true)
+                    return Observable.empty()
+                } else {
+                    return Observable.just(LoginInfo(loginId: id, loginPassword: password))
+                }
+            }
+            .bind(to: loginViewModel.loginTap)
+            .disposed(by: disposeBag)
+        
+        loginViewModel.loginState
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.coordinator?.navigateToTabBar()
+            }, onError: { [weak self] _ in
+                self?.present(AlertBuilder()
+                    .setTitle("Login Error")
+                    .setMessage("Try once more")
+                    .build(), animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        registerButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.navigateToRegister()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func registerKeyboardNotifications() {
@@ -68,33 +110,5 @@ class LoginViewController: UIViewController {
                 self?.view.layoutIfNeeded()
             }
         }
-    }
-    
-    @IBAction func onTouchedSubmitButton(_ sender: Any) {
-        guard let id = idTextField.text, let password = passwordTextField.text
-        else {
-            present(AlertBuilder()
-                .setTitle("Login Error")
-                .setMessage("check input once more")
-                .build(), animated: true)
-            return
-        }
-        Task {
-            let loginInfo = LoginInfo(loginId: id, loginPassword: password)
-            await loginViewModel.login(using: loginInfo)
-                .onFailure { error in
-                    present(AlertBuilder()
-                        .setTitle("Login Error")
-                        .setMessage("try once more")
-                        .build(), animated: true)
-                }
-                .onSuccess { _ in
-                    coordinator?.navigateToTabBar()
-                }
-        }
-    }
-    
-    @IBAction func onTouchedRegisterButton(_ sender: UIButton) {
-        coordinator?.navigateToRegister()
     }
 }

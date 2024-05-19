@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SplashViewController: UIViewController {
     @IBOutlet weak var formerImageYOffset: NSLayoutConstraint!
@@ -14,7 +15,8 @@ class SplashViewController: UIViewController {
     
     weak var coordinator: RootCoordinator?
     
-    private var splashViewModel: SplashViewModel
+    private let splashViewModel: SplashViewModel
+    private let disposeBag = DisposeBag()
     
     init(splashViewModel: SplashViewModel) {
         self.splashViewModel = splashViewModel
@@ -27,40 +29,54 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Task {
-            moveIconImageDownwards()
-            showIndicator()
-            
-            await login()
-        }
+        bind()
     }
     
-    private func moveIconImageDownwards() {
-        view.layoutIfNeeded()
-        NSLayoutConstraint.deactivate([formerImageYOffset])
-        UIView.animate(withDuration: 2) { [weak self] in
-            if let newConstraint = self?.latterImageYOffset {
-                NSLayoutConstraint.activate([newConstraint])
-                self?.view.layoutIfNeeded()
+    private func bind() {
+        Completable.zip(
+            moveIconImageDownwards(), showIndicator()
+        )
+        .andThen(splashViewModel.loginState)
+        .subscribe(
+            onNext: { [weak self] _ in
+                self?.coordinator?.navigateToTabBar()
+            },
+            onError: { [weak self] _ in
+                self?.coordinator?.navigateToLogin()
             }
-        }
+        )
+        .disposed(by: disposeBag)
     }
     
-    private func showIndicator() {
-        UIView.animate(withDuration: 1.3, delay: 0.7) { [weak self] in
-            self?.activityIndicator.alpha = 1
-        }
-    }
-    
-    private func login() async {
-        do {
-            try await Task.sleep(nanoseconds: 2_000_000_000)
-            try await splashViewModel.loginWithPreviousLoginInfo().getOrThrow()
-            coordinator?.navigateToTabBar()
+    private func moveIconImageDownwards() -> Completable {
+        return Completable.create { [weak self] completable in
+            guard let self = self else {
+                completable(.completed)
+                return Disposables.create()
+            }
             
-        } catch {
-            coordinator?.navigateTLogin()
+            self.view.layoutIfNeeded()
+            NSLayoutConstraint.deactivate([self.formerImageYOffset])
+            UIView.animate(withDuration: 2, animations: {
+                NSLayoutConstraint.activate([self.latterImageYOffset])
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                completable(.completed)
+            })
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func showIndicator() -> Completable {
+        return Completable.create { [weak self] completable in
+            UIView.animate(withDuration: 1.3, delay: 0.7, animations: {
+                self?.activityIndicator.alpha = 1
+            }, completion: { _ in
+                completable(.completed)
+            })
+            
+            return Disposables.create()
         }
     }
 }

@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol LoginRepositoryProtocol {
-    func login(using loginInfo: LoginInfo) async -> Result<Void, Error>
-    func fetchPreviousLoginInfo() -> Result<LoginInfo, Error>
-    func saveLoginInfo(using loginInfo: LoginInfo) -> Result<Void, Error>
-    func saveMyInfo(using myInfo: MyInfo) -> Result<Void, Error>
+    func login(using loginInfo: LoginInfo) -> Single<Void>
+    func fetchPreviousLoginInfo() -> Single<LoginInfo>
+    func saveLoginInfo(using loginInfo: LoginInfo) -> Single<Void>
+    func saveMyInfo(using myInfo: MyInfo) -> Single<Void>
 }
 
 class LoginRepository: LoginRepositoryProtocol {
@@ -23,36 +24,36 @@ class LoginRepository: LoginRepositoryProtocol {
         self.userDefaults = userDefaults
     }
     
-    func login(using loginInfo: LoginInfo) async -> Result<Void, Error> {
+    func login(using loginInfo: LoginInfo) -> Single<Void> {
         let loginInput = LoginInput(loginId: loginInfo.loginId, loginPassword: loginInfo.loginPassword)
-        return await httpHandler
+        return httpHandler
             .setPath(.login)
             .setPort(8080)
             .setMethod(.post)
             .setRequestBody(loginInput)
-            .send(expecting: EmptyOutput.self)
-            .eraseToVoid()
+            .rxSend(expecting: EmptyOutput.self)
+            .map { _ in }
     }
     
-    func fetchPreviousLoginInfo() -> Result<LoginInfo, Error> {
+    func fetchPreviousLoginInfo() -> Single<LoginInfo> {
         guard let fetchedObject = userDefaults.data(forKey: "loginInfo") else {
-            return .failure(UserDefaultsError.doesNotExist)
+            return .error(UserDefaultsError.doesNotExist)
         }
         guard let loginInfo = try? JSONDecoder().decode(LoginInfo.self, from: fetchedObject) else {
-            return .failure(UserDefaultsError.decodeFailed)
+            return .error(UserDefaultsError.decodeFailed)
         }
-        return .success(loginInfo)
+        return .just(loginInfo)
     }
     
-    func saveLoginInfo(using loginInfo: LoginInfo) -> Result<Void, Error> {
-        guard let encodedObject = try? JSONEncoder().encode(loginInfo) else { return .failure(UserDefaultsError.encodeFailed) }
+    func saveLoginInfo(using loginInfo: LoginInfo) -> Single<Void> {
+        guard let encodedObject = try? JSONEncoder().encode(loginInfo) else { return .error(UserDefaultsError.encodeFailed) }
         userDefaults.setValue(encodedObject, forKey: "loginInfo")
-        return .success(())
+        return .just(())
     }
     
-    func saveMyInfo(using myInfo: MyInfo) -> Result<Void, Error> {
-        guard let encodedObject = try? JSONEncoder().encode(myInfo) else { return .failure(UserDefaultsError.encodeFailed) }
+    func saveMyInfo(using myInfo: MyInfo) -> Single<Void> {
+        guard let encodedObject = try? JSONEncoder().encode(myInfo) else { return .error(UserDefaultsError.encodeFailed) }
         userDefaults.setValue(encodedObject, forKey: "myInfo")
-        return .success(())
+        return .just(())
     }
 }

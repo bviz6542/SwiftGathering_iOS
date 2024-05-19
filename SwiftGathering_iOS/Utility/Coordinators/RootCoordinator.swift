@@ -33,7 +33,7 @@ extension RootCoordinator {
         tabBarCoordinator.start(animated: false)
     }
     
-    func navigateTLogin() {
+    func navigateToLogin() {
         popViewController(animated: true)
         let loginCoordinator = LoginCoordinator(navigationController: navigationController)
         addChildCoordinator(loginCoordinator)
