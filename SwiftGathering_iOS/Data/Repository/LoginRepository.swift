@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol LoginRepositoryProtocol {
-    func login(using loginInfo: LoginInfo) -> Single<Void>
+    func login(using loginInfo: LoginInfo) -> Single<LoginOutput>
     func fetchPreviousLoginInfo() -> Single<LoginInfo>
     func saveLoginInfo(using loginInfo: LoginInfo) -> Single<Void>
     func saveMyInfo(using myInfo: MyInfo) -> Single<Void>
@@ -24,15 +24,14 @@ class LoginRepository: LoginRepositoryProtocol {
         self.userDefaults = userDefaults
     }
     
-    func login(using loginInfo: LoginInfo) -> Single<Void> {
+    func login(using loginInfo: LoginInfo) -> Single<LoginOutput> {
         let loginInput = LoginInput(loginId: loginInfo.loginId, loginPassword: loginInfo.loginPassword)
         return httpHandler
             .setPath(.login)
             .setPort(8080)
             .setMethod(.post)
             .setRequestBody(loginInput)
-            .rxSend(expecting: EmptyOutput.self)
-            .map { _ in }
+            .rxSend(expecting: LoginOutput.self)
     }
     
     func fetchPreviousLoginInfo() -> Single<LoginInfo> {

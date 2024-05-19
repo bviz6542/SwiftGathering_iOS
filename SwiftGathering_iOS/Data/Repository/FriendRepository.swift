@@ -42,7 +42,7 @@ class FriendRepository: FriendRepositoryProtocol {
     }
     
     func fetchFriends(using myInfo: MyInfo) -> Single<[FriendInfo]> {
-        let myID = myInfo.id
+        let myID = String(myInfo.id)
         return httpHandler
             .setPath(.friends(memberID: myID))
             .setPort(8080)

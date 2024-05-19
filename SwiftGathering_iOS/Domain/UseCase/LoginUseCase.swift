@@ -33,15 +33,16 @@ class LoginUseCase: LoginUseCaseProtocol {
             .asObservable().withUnretained(self)
             .flatMap({ (owner, loginInfo) in
                 owner.loginRepository.login(using: loginInfo)
-                    .flatMap { .just(loginInfo) }
+                    .map { (loginInfo, $0) }
             })
             .withUnretained(self)
-            .flatMap { (owner, loginInfo) in
-                owner.loginRepository.saveLoginInfo(using: loginInfo)
+            .flatMap { (owner, infosToSave) in
+                owner.loginRepository.saveLoginInfo(using: infosToSave.0)
+                    .map { infosToSave.1 }
             }
             .withUnretained(self)
-            .flatMap { (owner, _) in
-                owner.loginRepository.saveMyInfo(using: MyInfo(id: "1"))
+            .flatMap { (owner, loginOutput: LoginOutput) in
+                owner.loginRepository.saveMyInfo(using: MyInfo(id: loginOutput.id))
             }.asSingle()
     }
 }
