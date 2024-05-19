@@ -83,5 +83,6 @@ extension TabBarCoordinator {
         tabBarController.tabBar.backgroundColor = UIColor(named: "tabBarBackgroundColor")
         tabBarController.tabBar.tintColor = .opaqueSeparator
         tabBarController.tabBar.unselectedItemTintColor = .gray
+        tabBarController.navigationItem.hidesBackButton = true
     }
 }
