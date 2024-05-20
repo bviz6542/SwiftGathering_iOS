@@ -36,16 +36,27 @@ class SplashViewController: UIViewController {
         Completable.zip(
             moveIconImageDownwards(), showIndicator()
         )
-        .andThen(splashViewModel.loginState)
-        .subscribe(
-            onNext: { [weak self] _ in
-                self?.coordinator?.navigateToTabBar()
-            },
-            onError: { [weak self] _ in
-                self?.coordinator?.navigateToLogin()
-            }
-        )
+        .andThen(Completable.create { [weak self] completable in
+            self?.splashViewModel.loginInitiateInput.onNext(())
+            completable(.completed)
+            return Disposables.create()
+        })
+        .subscribe()
         .disposed(by: disposeBag)
+        
+        splashViewModel.loginSuccessOutput
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.navigateToTabBar()
+            })
+            .disposed(by: disposeBag)
+        
+        splashViewModel.loginErrorOutput
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] error in
+                self?.coordinator?.navigateToLogin()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func moveIconImageDownwards() -> Completable {

@@ -9,27 +9,39 @@ import RxSwift
 import RxCocoa
 
 class SplashViewModel {
-    var loginState: Observable<Void> {
-        return loginStateSubject.asObservable().compactMap { $0 }
+    var loginInitiateInput = PublishSubject<Void>()
+    
+    var loginSuccessOutput: Observable<Void> {
+        return loginSuccessSubject.asObservable()
     }
     
-    private let loginStateSubject = BehaviorSubject<Void?>(value: nil)
+    var loginErrorOutput: Observable<Error> {
+        return loginErrorSubject.asObservable()
+    }
+    
+    private let loginSuccessSubject = PublishSubject<Void>()
+    private let loginErrorSubject = PublishSubject<Error>()
     private let loginUseCase: LoginUseCaseProtocol
     private let disposeBag = DisposeBag()
     
     init(loginUseCase: LoginUseCaseProtocol) {
         self.loginUseCase = loginUseCase
         
-        loginUseCase.loginWithPreviousLoginInfo()
+        loginInitiateInput
+            .withUnretained(self)
+            .flatMap { (owner, _) -> Observable<Result<Void, Error>> in
+                return owner.loginUseCase.loginWithPreviousLoginInfo()
+                    .map { .success(()) }
+                    .catch { .just(.failure($0)) }
+                    .asObservable()
+            }
             .subscribe(
                 with: self,
-                onSuccess: { owner, _ in
-                    owner.loginStateSubject.onNext(())
-                },
-                onFailure: { owner, error in
-                    owner.loginStateSubject.onError(error)
-                }
-            )
+                onNext: { owner, _ in
+                    owner.loginSuccessSubject.onNext(())
+                }, onError: { owner, error in
+                    owner.loginErrorSubject.onError(error)
+                })
             .disposed(by: disposeBag)
     }
 }

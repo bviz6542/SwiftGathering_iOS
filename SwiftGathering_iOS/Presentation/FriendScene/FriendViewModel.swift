@@ -25,7 +25,7 @@ class FriendViewModel {
         friendUseCase.fetchFriends()
             .subscribe { [weak self] infos in
                 self?.friendInfoSubject.onNext(infos)
-            } onError: { [weak self] error in
+            } onFailure: { [weak self] error in
                 self?.friendInfoSubject.onError(error)
             }
             .disposed(by: disposeBag)
