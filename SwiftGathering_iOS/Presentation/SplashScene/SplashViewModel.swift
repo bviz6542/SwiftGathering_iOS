@@ -37,10 +37,13 @@ class SplashViewModel {
             }
             .subscribe(
                 with: self,
-                onNext: { owner, _ in
-                    owner.loginSuccessSubject.onNext(())
-                }, onError: { owner, error in
-                    owner.loginErrorSubject.onError(error)
+                onNext: { owner, result in
+                    result.onSuccess { _ in
+                        owner.loginSuccessSubject.onNext(())
+                    }
+                    .onFailure { error in
+                        owner.loginErrorSubject.onNext(error)
+                    }
                 })
             .disposed(by: disposeBag)
     }
