@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 protocol FriendRepositoryProtocol {
-    func fetchMyInfo() -> Single<MyInfo>
-    func saveMyInfo(using myInfo: MyInfo) -> Single<Void>
-    func fetchFriends(using myInfo: MyInfo) -> Single<[FriendInfo]>
+    func fetchMyInfo() -> Observable<MyInfo>
+    func saveMyInfo(using myInfo: MyInfo) -> Observable<Void>
+    func fetchFriends(using myInfo: MyInfo) -> Observable<[FriendInfo]>
 }
 
 class FriendRepository: FriendRepositoryProtocol {
@@ -23,7 +23,7 @@ class FriendRepository: FriendRepositoryProtocol {
         self.userDefaults = userDefaults
     }
     
-    func fetchMyInfo() -> Single<MyInfo> {
+    func fetchMyInfo() -> Observable<MyInfo> {
         guard let fetchedObject = userDefaults.data(forKey: "myInfo") else {
             return .error(UserDefaultsError.doesNotExist)
         }
@@ -33,7 +33,7 @@ class FriendRepository: FriendRepositoryProtocol {
         return .just(myInfo)
     }
     
-    func saveMyInfo(using myInfo: MyInfo) -> Single<Void> {
+    func saveMyInfo(using myInfo: MyInfo) -> Observable<Void> {
         guard let encodedObject = try? JSONEncoder().encode(myInfo) else {
             return .error(UserDefaultsError.encodeFailed)
         }
@@ -41,7 +41,7 @@ class FriendRepository: FriendRepositoryProtocol {
         return .just(())
     }
     
-    func fetchFriends(using myInfo: MyInfo) -> Single<[FriendInfo]> {
+    func fetchFriends(using myInfo: MyInfo) -> Observable<[FriendInfo]> {
         let myID = String(myInfo.id)
         return httpHandler
             .setPath(.friends(memberID: myID))

@@ -35,7 +35,10 @@ class FriendViewController: UIViewController {
     }
     
     private func bind() {
-        friendViewModel.friendInfos
+        friendViewModel.friendListInitiateInput
+            .onNext(())
+        
+        friendViewModel.friendInfosSuccessOutput
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
                 cell.userImageView.image = UIImage(systemName: "person.fill")

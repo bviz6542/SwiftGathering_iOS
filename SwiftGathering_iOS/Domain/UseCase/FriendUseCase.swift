@@ -8,7 +8,7 @@
 import RxSwift
 
 protocol FriendUseCaseProtocol {
-    func fetchFriends() -> Single<[FriendInfo]>
+    func fetchFriends() -> Observable<[FriendInfo]>
 }
 
 class FriendUseCase: FriendUseCaseProtocol {
@@ -18,12 +18,11 @@ class FriendUseCase: FriendUseCaseProtocol {
         self.friendRepository = friendRepository
     }
     
-    func fetchFriends() -> Single<[FriendInfo]> {
+    func fetchFriends() -> Observable<[FriendInfo]> {
         friendRepository.fetchMyInfo()
             .asObservable().withUnretained(self)
             .flatMap { owner, myInfo in
                 owner.friendRepository.fetchFriends(using: myInfo)
             }
-            .asSingle()
     }
 }
