@@ -33,15 +33,15 @@ class SplashViewController: UIViewController {
     }
     
     private func bind() {
-        Completable.zip(
+        Observable.zip(
             moveIconImageDownwards(), showIndicator()
         )
-        .andThen(Completable.create { [weak self] completable in
-            self?.splashViewModel.loginInitiateInput.onNext(())
-            completable(.completed)
-            return Disposables.create()
-        })
-        .subscribe()
+        .take(1)
+        .subscribe(
+            with: self,
+            onNext: { owner, _ in
+                owner.splashViewModel.loginInitiateInput.onNext(())
+            })
         .disposed(by: disposeBag)
         
         splashViewModel.loginSuccessOutput
@@ -59,34 +59,33 @@ class SplashViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func moveIconImageDownwards() -> Completable {
-        return Completable.create { [weak self] completable in
+    private func moveIconImageDownwards() -> Observable<Void> {
+        Observable.create { [weak self] observer in
             guard let self = self else {
-                completable(.completed)
+                observer.onError(NSError())
                 return Disposables.create()
             }
-            
             self.view.layoutIfNeeded()
             NSLayoutConstraint.deactivate([self.formerImageYOffset])
-            UIView.animate(withDuration: 2, animations: {
-                NSLayoutConstraint.activate([self.latterImageYOffset])
-                self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 2, animations: { [weak self] in
+                if let self = self {
+                    NSLayoutConstraint.activate([self.latterImageYOffset])
+                    self.view.layoutIfNeeded()
+                }
             }, completion: { _ in
-                completable(.completed)
+                observer.onNext(())
             })
-            
             return Disposables.create()
         }
     }
     
-    private func showIndicator() -> Completable {
-        return Completable.create { [weak self] completable in
+    private func showIndicator() -> Observable<Void> {
+        return Observable.create { [weak self] observer in
             UIView.animate(withDuration: 1.3, delay: 0.7, animations: {
                 self?.activityIndicator.alpha = 1
             }, completion: { _ in
-                completable(.completed)
+                observer.onNext(())
             })
-            
             return Disposables.create()
         }
     }
