@@ -10,16 +10,9 @@ import RxSwift
 class FriendViewModel {
     var friendListInitiateInput = PublishSubject<Void>()
     
-    var friendInfosSuccessOutput: Observable<[FriendInfo]> {
-        friendInfosSuccessSubject.asObservable()
-    }
+    var friendInfosSuccessSubject = PublishSubject<[FriendInfo]>()
+    var friendInfosFailureSubject = PublishSubject<Error>()
     
-    var friendInfosFailureOutput: Observable<Error> {
-        friendInfosFailureSubject.asObservable()
-    }
-    
-    private let friendInfosSuccessSubject = PublishSubject<[FriendInfo]>()
-    private let friendInfosFailureSubject = PublishSubject<Error>()
     private let friendUseCase: FriendUseCaseProtocol
     private let disposeBag = DisposeBag()
     
