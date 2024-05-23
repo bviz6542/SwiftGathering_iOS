@@ -8,8 +8,8 @@
 import RxSwift
 
 protocol LoginUseCaseProtocol {
-    func login(using loginInfo: LoginInfo) -> Single<Void>
-    func loginWithPreviousLoginInfo() -> Single<Void>
+    func login(using loginInfo: LoginInfo) -> Observable<Void>
+    func loginWithPreviousLoginInfo() -> Observable<Void>
 }
 
 class LoginUseCase: LoginUseCaseProtocol {
@@ -19,18 +19,18 @@ class LoginUseCase: LoginUseCaseProtocol {
         self.loginRepository = loginRepository
     }
     
-    func login(using loginInfo: LoginInfo) -> Single<Void> {
+    func login(using loginInfo: LoginInfo) -> Observable<Void> {
         loginRepository
             .login(using: loginInfo)
-            .asObservable().withUnretained(self)
+            .withUnretained(self)
             .flatMap { (owner, _) in
                 owner.loginRepository.saveLoginInfo(using: loginInfo)
-            }.asSingle()
+            }
     }
     
-    func loginWithPreviousLoginInfo() -> Single<Void> {
+    func loginWithPreviousLoginInfo() -> Observable<Void> {
         loginRepository.fetchPreviousLoginInfo()
-            .asObservable().withUnretained(self)
+            .withUnretained(self)
             .flatMap({ (owner, loginInfo) in
                 owner.loginRepository.login(using: loginInfo)
                     .map { (loginInfo, $0) }
@@ -43,6 +43,6 @@ class LoginUseCase: LoginUseCaseProtocol {
             .withUnretained(self)
             .flatMap { (owner, loginOutput: LoginOutput) in
                 owner.loginRepository.saveMyInfo(using: MyInfo(id: loginOutput.id))
-            }.asSingle()
+            }
     }
 }

@@ -8,11 +8,11 @@
 import RxSwift
 
 class FriendViewModel {
-    var friendInfos: Observable<[FriendInfo]> {
-        friendInfoSubject.asObservable().compactMap { $0 }
-    }
+    var friendListInitiateInput = PublishSubject<Void>()
     
-    private let friendInfoSubject = BehaviorSubject<[FriendInfo]?>(value: nil)
+    var friendInfosSuccessSubject = PublishSubject<[FriendInfo]>()
+    var friendInfosFailureSubject = PublishSubject<Error>()
+    
     private let friendUseCase: FriendUseCaseProtocol
     private let disposeBag = DisposeBag()
     
@@ -22,12 +22,24 @@ class FriendViewModel {
     }
     
     private func bind() {
-        friendUseCase.fetchFriends()
-            .subscribe { [weak self] infos in
-                self?.friendInfoSubject.onNext(infos)
-            } onError: { [weak self] error in
-                self?.friendInfoSubject.onError(error)
+        friendListInitiateInput
+            .withUnretained(self)
+            .flatMap { (owner, _) -> Observable<Result<[FriendInfo], Error>> in
+                return owner.friendUseCase.fetchFriends()
+                    .map { .success($0) }
+                    .catch { .just(.failure($0)) }
+                    .asObservable()
             }
+            .subscribe(
+                with: self,
+                onNext: { owner, result in
+                    result.onSuccess { friends in
+                        owner.friendInfosSuccessSubject.onNext(friends)
+                    }
+                    .onFailure { error in
+                        owner.friendInfosFailureSubject.onNext(error)
+                    }
+                })
             .disposed(by: disposeBag)
     }
 }
