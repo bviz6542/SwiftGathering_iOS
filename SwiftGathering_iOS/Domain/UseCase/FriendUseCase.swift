@@ -20,7 +20,7 @@ class FriendUseCase: FriendUseCaseProtocol {
     
     func fetchFriends() -> Observable<[FriendInfo]> {
         friendRepository.fetchMyInfo()
-            .asObservable().withUnretained(self)
+            .withUnretained(self)
             .flatMap { owner, myInfo in
                 owner.friendRepository.fetchFriends(using: myInfo)
             }
