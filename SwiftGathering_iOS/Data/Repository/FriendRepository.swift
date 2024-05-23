@@ -25,24 +25,24 @@ class FriendRepository: FriendRepositoryProtocol {
     
     func fetchMyInfo() -> Observable<MyInfo> {
         guard let fetchedObject = userDefaults.data(forKey: "myInfo") else {
-            return Observable.error(UserDefaultsError.doesNotExist)
+            return .error(UserDefaultsError.doesNotExist)
         }
         guard let myInfo = try? JSONDecoder().decode(MyInfo.self, from: fetchedObject) else {
-            return Observable.error(UserDefaultsError.decodeFailed)
+            return .error(UserDefaultsError.decodeFailed)
         }
-        return Observable.just(myInfo)
+        return .just(myInfo)
     }
     
     func saveMyInfo(using myInfo: MyInfo) -> Observable<Void> {
         guard let encodedObject = try? JSONEncoder().encode(myInfo) else {
-            return Observable.error(UserDefaultsError.encodeFailed)
+            return .error(UserDefaultsError.encodeFailed)
         }
         userDefaults.setValue(encodedObject, forKey: "myInfo")
-        return Observable.just(())
+        return .just(())
     }
     
     func fetchFriends(using myInfo: MyInfo) -> Observable<[FriendInfo]> {
-        let myID = myInfo.id
+        let myID = String(myInfo.id)
         return httpHandler
             .setPath(.friends(memberID: myID))
             .setPort(8080)
@@ -51,7 +51,7 @@ class FriendRepository: FriendRepositoryProtocol {
             .map { outputs in
                 return outputs
                     .map { output in
-                        FriendInfo(id: output.id)
+                        FriendInfo(id: output.id, name: output.name)
                     }
             }
     }

@@ -187,7 +187,7 @@ class HTTPHandler {
                     .map { result.data }
             }
             .withUnretained(self)
-            .flatMap { (owner: HTTPHandler, data: Data) in
+            .flatMap { (owner: HTTPHandler, data: Data) -> Observable<OutputType> in
                 owner.rxDecodeResponseData(data: data)
             }
     }

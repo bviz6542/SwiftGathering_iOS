@@ -6,6 +6,6 @@
 //
 
 struct MyInfo: Codable {
-    let id: String
+    let id: Int
     // TODO: 다른 값들도 병합
 }

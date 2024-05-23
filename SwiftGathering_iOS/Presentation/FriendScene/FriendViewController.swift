@@ -13,7 +13,7 @@ class FriendViewController: UIViewController {
     
     private let friendViewModel: FriendViewModel
     private let disposeBag = DisposeBag()
-    private var friendInfos: [FriendInfo] = []
+    private let confirmSubject = PublishSubject<FriendInfo>()
     
     init(friendViewModel: FriendViewModel) {
         self.friendViewModel = friendViewModel
@@ -35,26 +35,47 @@ class FriendViewController: UIViewController {
     }
     
     private func bind() {
-        friendViewModel.friendInfos
+        friendViewModel
+            .friendListInitiateInput
+            .onNext(())
+        
+        friendViewModel
+            .friendInfosSuccessSubject
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] infos in
-                self?.friendInfos = infos
-                self?.tableView.reloadData()
-            }, onError: { error in
-                print(error)
+            .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
+                cell.userImageView.image = UIImage(systemName: "person.fill")
+                cell.nameLabel.text = String(element.name)
+            }
+            .disposed(by: disposeBag)
+        
+        tableView.rx
+            .modelSelected(FriendInfo.self)
+            .subscribe(onNext: { [weak self] friendInfo in
+                self?.present(AlertBuilder()
+                    .setTitle("")
+                    .setMessage("Do you want to start gathering?")
+                    .setCancelAction(title: "No", style: .destructive)
+                    .setProceedAction(title: "Yes", style: .default, handler: { [weak self] action in
+                        self?.confirmSubject.onNext(friendInfo)
+                    })
+                    .build(), animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        tableView
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        confirmSubject
+            .subscribe(onNext: { [weak self] friendInfo in
+                print("wow: \(friendInfo)")
             })
             .disposed(by: disposeBag)
     }
 }
 
-extension FriendViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        friendInfos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else { return UITableViewCell() }
-        cell.nameLabel.text = String(friendInfos[indexPath.row].id)
-        return cell
+extension FriendViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
     }
 }

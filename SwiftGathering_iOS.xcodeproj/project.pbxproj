@@ -56,7 +56,6 @@
 		43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF182BA6BC1500047065 /* RegisterViewController.swift */; };
 		43B2CF1B2BA6BC1600047065 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B2CF192BA6BC1500047065 /* RegisterView.xib */; };
 		43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */; };
-		43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CF1F2BA87F9F00047065 /* LoginError.swift */; };
 		43D0E2A72BE7354100294A4A /* FriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2A62BE7354100294A4A /* FriendCoordinator.swift */; };
 		43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2AB2BE7430800294A4A /* FriendViewController.swift */; };
 		43D0E2AE2BE7431900294A4A /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */; };
@@ -163,7 +162,6 @@
 		43B2CF182BA6BC1500047065 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		43B2CF192BA6BC1500047065 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInput.swift; sourceTree = "<group>"; };
-		43B2CF1F2BA87F9F00047065 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		43D0E2A62BE7354100294A4A /* FriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoordinator.swift; sourceTree = "<group>"; };
 		43D0E2AB2BE7430800294A4A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
@@ -539,7 +537,6 @@
 		43FFDD662BCBE781002D19B2 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				43B2CF1F2BA87F9F00047065 /* LoginError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -925,7 +922,6 @@
 				439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */,
 				432C70802BD41BB400B4F4CE /* LoginCoordinator.swift in Sources */,
 				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
-				43B2CF202BA87F9F00047065 /* LoginError.swift in Sources */,
 				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
