@@ -29,14 +29,27 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
 extension RootCoordinator {
     func navigateToTabBar() {
         popViewController(animated: true)
-        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
+        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController, parentCoordinator: self)
+        addChildCoordinator(tabBarCoordinator)
         tabBarCoordinator.start(animated: false)
     }
     
     func navigateToLogin() {
         popViewController(animated: true)
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self)
         addChildCoordinator(loginCoordinator)
         loginCoordinator.start(animated: true)
+    }
+    
+    func childDidFinish(_ child: CoordinatorProtocol?) {
+        if child is TabBarCoordinator {
+            navigateToLogin()
+        }
+        if child is LoginCoordinator {
+            navigateToTabBar()
+        }
+        if let index = childCoordinators.firstIndex(where: { $0 === child }) {
+            childCoordinators.remove(at: index)
+        }
     }
 }

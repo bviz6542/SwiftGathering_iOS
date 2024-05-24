@@ -9,9 +9,11 @@ import UIKit
 
 final class TabBarCoordinator: NSObject, ParentCoordinatorProtocol {
     var navigationController: UINavigationController
+    weak var parentCoordinator: ParentCoordinatorProtocol?
         
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     var childCoordinators: [CoordinatorProtocol] = []
@@ -33,6 +35,12 @@ final class TabBarCoordinator: NSObject, ParentCoordinatorProtocol {
         let tabBarController = UITabBarController()
         configureTabBarController(tabBarController, using: tabNavigationControllers)
         navigationController.pushViewController(tabBarController, animated: animated)
+    }
+}
+
+extension TabBarCoordinator: ChildCoordinatorProtocol {
+    func coordinatorDidFinish() {
+        parentCoordinator?.childDidFinish(self)
     }
 }
 
@@ -59,16 +67,20 @@ extension TabBarCoordinator {
         switch tabBarItemType {
         case .map:
             let mapCoordinator = MapCoordinator(navigationController: tabNavigationController)
+            addChildCoordinator(mapCoordinator)
             mapCoordinator.start(animated: false)
         case .friend:
             let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController)
+            addChildCoordinator(friendCoordinator)
             friendCoordinator.start(animated: false)
         case .unknown:
             let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
+            addChildCoordinator(emptyCoordinator)
             emptyCoordinator.start(animated: false)
         case .profile:
-            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
-            emptyCoordinator.start(animated: false)
+            let profileCoordinator = ProfileCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            addChildCoordinator(profileCoordinator)
+            profileCoordinator.start(animated: false)
         }
     }
     
