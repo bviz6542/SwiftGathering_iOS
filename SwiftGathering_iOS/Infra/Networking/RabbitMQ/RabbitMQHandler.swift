@@ -8,38 +8,46 @@
 import RxSwift
 import RMQClient
 
-class RabbitMQHandler {
+class RabbitMQHandler: NSObject {
     private var connection: RMQConnection?
     private var channel: RMQChannel?
     
-    init() {
-        initializeConnection()
+    func initializeConnection(using clientId: String) -> (RMQExchange, RMQQueue) {
+        let connection = RMQConnection(uri: "amqp://guest:guest@localhost", delegate: RMQConnectionDelegateLogger())
+        connection.start()
+        let channel = connection.createChannel()
+        
+        self.connection = connection
+        self.channel = channel
+        
+        let exchange = channel.direct("swift-gathering.exchange", options: .durable)
+        let queue = channel.queue("swift-gathering.queue.\(clientId)", options: .durable)
+        queue.bind(exchange, routingKey: "swift-gathering.routing.\(clientId)")
+        
+        return (exchange, queue)
     }
     
-    private func initializeConnection() {
-        connection = RMQConnection(uri: "amqp://guest:guest@localhost", delegate: RMQConnectionDelegateLogger())
-        connection?.start()
-        channel = connection?.createChannel()
-        
-        if let channel = channel {
-            let exchange = channel.direct("swift-gathering.exchange")
-            let queue = channel.queue("swift-gathering.queue", options: .durable)
-            queue.bind(exchange, routingKey: "swift-gathering.routing")
+    func send(to exchange: RMQExchange, request: Codable, using clientId: String) -> Observable<Void>  {
+        return Observable.create { observer in
+            do {
+                let requestData = try JSONEncoder().encode(request)
+                exchange.publish(requestData, routingKey: "swift-gathering.routing.\(clientId)", persistent: false)
+                observer.onCompleted()
+                
+            } catch {
+                observer.onError(error)
+            }
+            return Disposables.create()
         }
     }
     
-    func listen<T: Codable>(expecting responseType: T.Type) -> Observable<T> {
-        return Observable.create { [weak self] observer in
-            guard let channel = self?.channel else {
-                observer.onError(RabbitMQError.channelDoesNotExist)
-                return Disposables.create()
-            }
-            let queue = channel.queue("swift-gathering.queue", options: .durable)
+    func listen<T: Codable>(to queue: RMQQueue, expecting responseType: T.Type) -> Observable<T> {
+        return Observable.create { observer in
             queue.subscribe(withAckMode: .manual) { message in
                 do {
-                    print("received message: \(String(describing: String(bytes: message.body, encoding: .utf8)))")
                     let response = try JSONDecoder().decode(responseType, from: message.body)
                     observer.onNext(response)
+                    
                 } catch {
                     observer.onError(error)
                 }
@@ -48,18 +56,17 @@ class RabbitMQHandler {
         }
     }
     
-    func send(request: Codable) -> Observable<Void>  {
-        return Observable.create { [weak self] observer in
-            do {
-                guard let channel = self?.channel else { throw RabbitMQError.channelDoesNotExist }
-                let requestData = try JSONEncoder().encode(request)
-                let exchange = channel.direct("swift-gathering.exchange")
-                exchange.publish(requestData, routingKey: "swift-gathering.routing", persistent: true)
-                observer.onNext(())
-                observer.onCompleted()
-                
-            } catch {
-                observer.onError(error)
+    func listen(to queue: RMQQueue) -> Observable<String> {
+        return Observable.create { observer in
+            queue.subscribe(withAckMode: .manual) { message in
+                do {
+                    guard let response = String(bytes: message.body, encoding: .utf8) 
+                    else { throw RabbitMQError.failedParsingResponse }
+                    observer.onNext(response)
+                    
+                } catch {
+                    observer.onError(error)
+                }
             }
             return Disposables.create()
         }

@@ -7,4 +7,5 @@
 
 enum RabbitMQError: Error {
     case channelDoesNotExist
+    case failedParsingResponse
 }
