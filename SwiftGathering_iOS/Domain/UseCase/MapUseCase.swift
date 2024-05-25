@@ -10,7 +10,8 @@ import CoreLocation
 
 protocol MapUseCaseProtocol {
     func fetchMyLocation() -> Observable<CLLocation>
-    func fetchFriendLocation() -> Observable<FriendLocationOutput>
+//    func fetchFriendLocation() -> Observable<FriendLocationOutput>
+    func listenToPrivateChannel() -> Observable<String>
 }
 
 class MapUseCase: MapUseCaseProtocol {
@@ -24,7 +25,11 @@ class MapUseCase: MapUseCaseProtocol {
         return mapRepository.fetchMyLocation()
     }
     
-    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
-        return mapRepository.fetchFriendLocation()
+//    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
+//        return mapRepository.fetchFriendLocation()
+//    }
+    
+    func listenToPrivateChannel() -> Observable<String> {
+        return mapRepository.listenToPrivateChannel()
     }
 }

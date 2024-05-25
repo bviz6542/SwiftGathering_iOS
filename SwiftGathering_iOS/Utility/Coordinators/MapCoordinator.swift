@@ -18,6 +18,7 @@ final class MapCoordinator: NSObject, ParentCoordinatorProtocol {
     
     func start(animated: Bool) {
         let mapRepository = MapRepository(locationHandler: LocationHandler(),
+                                          privateRabbitMQHandler: RabbitMQHandler(),
                                           rabbitMQHandler: RabbitMQHandler())
         let mapUseCase = MapUseCase(mapRepository: mapRepository)
         let mapViewModel = MapViewModel(mapUseCase: mapUseCase)

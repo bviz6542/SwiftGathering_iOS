@@ -32,17 +32,17 @@ class MapViewController: UIViewController {
     }
     
     private func bind() {
-        mapViewModel
-            .friendLocationOutput
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] location in
-                let newLocation = CLLocation(latitude: location.latitude,
-                                             longitude: location.longtitude)
-                print(newLocation)
-            }, onError: { error in
-                print(error)
-            })
-            .disposed(by: disposeBag)
+//        mapViewModel
+//            .friendLocationOutput
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] location in
+//                let newLocation = CLLocation(latitude: location.latitude,
+//                                             longitude: location.longtitude)
+//                print(newLocation)
+//            }, onError: { error in
+//                print(error)
+//            })
+//            .disposed(by: disposeBag)
         
         mapViewModel
             .myLocationOutput
@@ -57,6 +57,19 @@ class MapViewController: UIViewController {
             }, onError: { error in
                 print(error)
             })
+            .disposed(by: disposeBag)
+        
+        mapViewModel.privateChannelInput.onNext(())
+        
+        mapViewModel
+            .privateChannelOutput
+            .subscribe(
+                with: self,
+                onNext: { _, message in
+                    print(message)
+                }, onError: { _, error in
+                    print(error)
+                })
             .disposed(by: disposeBag)
     }
     

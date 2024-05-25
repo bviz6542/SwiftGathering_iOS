@@ -11,9 +11,11 @@ import CoreLocation
 class MapViewModel {
     let myLocationInitiateInput = PublishSubject<Void>()
     let friendLocationInitiateInput = PublishSubject<Void>()
+    let privateChannelInput = PublishSubject<Void>()
     
     let myLocationOutput = PublishSubject<CLLocation>()
     let friendLocationOutput = PublishSubject<FriendLocationOutput>()
+    let privateChannelOutput = PublishSubject<String>()
     
     private let mapUseCase: MapUseCaseProtocol
     private let disposeBag = DisposeBag()
@@ -41,19 +43,39 @@ class MapViewModel {
                 })
             .disposed(by: disposeBag)
         
-        myLocationInitiateInput
+//        friendLocationInitiateInput
+//            .withUnretained(self)
+//            .flatMap { (owner, _) -> Observable<Result<FriendLocationOutput, Error>> in
+//                return owner.mapUseCase.fetchFriendLocation()
+//                    .map { .success($0) }
+//                    .catch { .just(.failure($0)) }
+//                    .asObservable()
+//            }
+//            .subscribe(
+//                with: self,
+//                onNext: { owner, result in
+//                    result.onSuccess { output in
+//                        owner.friendLocationOutput.onNext(output)
+//                    }
+//                })
+//            .disposed(by: disposeBag)
+        
+        privateChannelInput
             .withUnretained(self)
-            .flatMap { (owner, _) -> Observable<Result<FriendLocationOutput, Error>> in
-                return owner.mapUseCase.fetchFriendLocation()
+            .flatMap { (owner, _) -> Observable<Result<String, Error>> in
+                return owner.mapUseCase.listenToPrivateChannel()
                     .map { .success($0) }
-                    .catch { .just(.failure($0)) }
+                    .catch{ .just(.failure($0)) }
                     .asObservable()
             }
             .subscribe(
                 with: self,
                 onNext: { owner, result in
-                    result.onSuccess { output in
-                        owner.friendLocationOutput.onNext(output)
+                    switch result {
+                    case .success(let message):
+                        owner.privateChannelOutput.onNext(message)
+                    case .failure(_):
+                        break
                     }
                 })
             .disposed(by: disposeBag)
