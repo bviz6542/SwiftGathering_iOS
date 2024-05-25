@@ -9,20 +9,14 @@ import RxSwift
 import CoreLocation
 
 class MapViewModel {
-    private let myLocationSubject = BehaviorSubject<CLLocation?>(value: nil)
-    private let friendLocationSubject = BehaviorSubject<FriendLocationOutput?>(value: nil)
-
-    var myLocation: Observable<CLLocation> {
-        return myLocationSubject.asObservable().compactMap { $0 }
-    }
+    let myLocationInitiateInput = PublishSubject<Void>()
+    let friendLocationInitiateInput = PublishSubject<Void>()
     
-    var friendLocation: Observable<FriendLocationOutput> {
-        return friendLocationSubject.asObservable().compactMap { $0 }
-    }
+    let myLocationOutput = PublishSubject<CLLocation>()
+    let friendLocationOutput = PublishSubject<FriendLocationOutput>()
     
+    private let mapUseCase: MapUseCaseProtocol
     private let disposeBag = DisposeBag()
-    
-    private var mapUseCase: MapUseCaseProtocol
     
     init(mapUseCase: MapUseCaseProtocol) {
         self.mapUseCase = mapUseCase
@@ -30,20 +24,38 @@ class MapViewModel {
     }
     
     private func bind() {
-        mapUseCase.fetchMyLocation()
-            .subscribe(onNext: { [weak self] location in
-                self?.myLocationSubject.onNext(location)
-            }, onError: { [weak self] error in
-                self?.myLocationSubject.onError(error)
-            })
+        myLocationInitiateInput
+            .withUnretained(self)
+            .flatMap { (owner, _) -> Observable<Result<CLLocation, Error>> in
+                return owner.mapUseCase.fetchMyLocation()
+                    .map { .success($0) }
+                    .catch { .just(.failure($0)) }
+                    .asObservable()
+            }
+            .subscribe(
+                with: self,
+                onNext: { owner, result in
+                    result.onSuccess { location in
+                        owner.myLocationOutput.onNext(location)
+                    }
+                })
             .disposed(by: disposeBag)
         
-        mapUseCase.fetchFriendLocation()
-            .subscribe(onNext: { [weak self] location in
-                self?.friendLocationSubject.onNext(location)
-            }, onError: { [weak self] error in
-                self?.friendLocationSubject.onError(error)
-            })
+        myLocationInitiateInput
+            .withUnretained(self)
+            .flatMap { (owner, _) -> Observable<Result<FriendLocationOutput, Error>> in
+                return owner.mapUseCase.fetchFriendLocation()
+                    .map { .success($0) }
+                    .catch { .just(.failure($0)) }
+                    .asObservable()
+            }
+            .subscribe(
+                with: self,
+                onNext: { owner, result in
+                    result.onSuccess { output in
+                        owner.friendLocationOutput.onNext(output)
+                    }
+                })
             .disposed(by: disposeBag)
     }
 }

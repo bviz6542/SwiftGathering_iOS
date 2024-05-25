@@ -8,11 +8,12 @@
 import RxSwift
 import RMQClient
 
-class RabbitMQHandler {
+class RabbitMQHandler: NSObject {
     private var connection: RMQConnection?
     private var channel: RMQChannel?
     
-    init() {
+    override init() {
+        super.init()
         initializeConnection()
     }
     
@@ -72,5 +73,61 @@ class RabbitMQHandler {
     private func disconnect() {
         channel?.close()
         connection?.close()
+    }
+}
+
+extension RabbitMQHandler: RMQConnectionDelegate {
+    func willStartRecovery(with connection: RMQConnection!) {
+        print("will recovery")
+    }
+    
+    func startingRecovery(with connection: RMQConnection!) {
+        print("starting recovery")
+    }
+    
+    func recoveredConnection(_ connection: RMQConnection!) {
+        print("recovered recovery")
+    }
+    
+    func channel(_ channel: (any RMQChannel)!, error: (any Error)!) {
+        print("any input")
+    }
+    
+    func connection(_ connection: RMQConnection, failedToConnectWithError reason: Error) {
+        print("Connection will start recovery with reason: \(reason.localizedDescription)")
+    }
+    
+    func connection(_ connection: RMQConnection, didStartRecoveryWith reason: Error) {
+        print("Connection did start recovery with reason: \(reason.localizedDescription)")
+    }
+    
+    func connection(_ connection: RMQConnection, didFailToRecoverWithError error: Error) {
+        print("Connection did fail to recover with error: \(error.localizedDescription)")
+    }
+    
+    func connection(_ connection: RMQConnection, didRecoverSuccessfully recovered: Bool) {
+        print("Connection did recover successfully: \(recovered)")
+        if recovered {
+            setupChannel()
+        }
+    }
+    
+    func connectionDidOpen(_ connection: RMQConnection) {
+        print("Connection did open")
+        setupChannel()
+    }
+    
+    func connection(_ connection: RMQConnection, disconnectedWithError reason: Error?) {
+        print("Connection did close with reason: \(String(describing: reason?.localizedDescription))")
+    }
+    
+    private func setupChannel() {
+        channel = connection?.createChannel()
+        
+        if let channel = channel {
+            let exchange = channel.direct("swift-gathering.exchange")
+            let queue = channel.queue("swift-gathering.queue", options: .durable)
+            queue.bind(exchange, routingKey: "swift-gathering.routing")
+        }
     }
 }

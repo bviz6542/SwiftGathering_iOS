@@ -12,9 +12,10 @@ import RxSwift
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
-    private let disposeBag = DisposeBag()
-    private var mapViewModel: MapViewModel
     private var isInitialLocationUpdate: Bool = true
+    
+    private var mapViewModel: MapViewModel
+    private let disposeBag = DisposeBag()
     
     init(mapViewModel: MapViewModel) {
         self.mapViewModel = mapViewModel
@@ -32,7 +33,8 @@ class MapViewController: UIViewController {
     
     private func bind() {
         mapViewModel
-            .friendLocation
+            .friendLocationOutput
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
                 let newLocation = CLLocation(latitude: location.latitude,
                                              longitude: location.longtitude)
@@ -42,7 +44,8 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mapViewModel.myLocation
+        mapViewModel
+            .myLocationOutput
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
                 if self?.isInitialLocationUpdate == true {
