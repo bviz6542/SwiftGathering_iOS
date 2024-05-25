@@ -17,7 +17,7 @@ final class LoginCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoco
         self.parentCoordinator = parentCoordinator
     }
         
-    func start(animated: Bool) {
+    func start(animated: Bool) {        
         let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults())
         let loginUseCase = LoginUseCase(loginRepository: loginRepository)
         let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
@@ -33,6 +33,7 @@ final class LoginCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoco
     
     func navigateToRegister() {
         let registerCoordinator = RegisterCoordinator(navigationController: navigationController, parentCoordinator: self)
+        addChildCoordinator(registerCoordinator)
         registerCoordinator.start(animated: false)
     }
 }

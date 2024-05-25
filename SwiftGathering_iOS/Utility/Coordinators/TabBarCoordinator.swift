@@ -57,11 +57,11 @@ final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoc
         guard let tabBarItemType: TabBarItemType = TabBarItemType(index: tabBarItemTag) else { return }
         switch tabBarItemType {
         case .map:
-            let mapCoordinator = MapCoordinator(navigationController: tabNavigationController)
+            let mapCoordinator = MapCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
             addChildCoordinator(mapCoordinator)
             mapCoordinator.start(animated: false)
         case .friend:
-            let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController)
+            let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
             addChildCoordinator(friendCoordinator)
             friendCoordinator.start(animated: false)
         case .unknown:
@@ -88,14 +88,9 @@ final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoc
         tabBarController.tabBar.unselectedItemTintColor = .gray
         tabBarController.navigationItem.hidesBackButton = true
     }
-}
-
-extension TabBarCoordinator {
+    
     func childDidFinish(_ child: CoordinatorProtocol?) {
-        print("tabbar coordinator alive..")
-        if let index = childCoordinators.firstIndex(where: { $0 === child }) {
-            childCoordinators.remove(at: index)
-        }
+        childCoordinators.removeAll()
         coordinatorDidFinish()
     }
 }

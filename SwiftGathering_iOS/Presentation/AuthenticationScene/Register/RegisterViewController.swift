@@ -41,4 +41,8 @@ class RegisterViewController: UIViewController {
                 }
         }
     }
+    
+    @IBAction func onTouchedLoginButton(_ sender: UIButton) {
+        coordinator?.navigateToLogin()
+    }
 }

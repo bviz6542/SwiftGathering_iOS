@@ -7,12 +7,13 @@
 
 import UIKit
 
-final class MapCoordinator: ParentCoordinatorProtocol {
+final class MapCoordinator: ChildCoordinatorProtocol {
     var navigationController: UINavigationController
-    var childCoordinators: [CoordinatorProtocol] = []
-    
-    init(navigationController: UINavigationController) {
+    weak var parentCoordinator: ParentCoordinatorProtocol?
+
+    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start(animated: Bool) {

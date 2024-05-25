@@ -21,4 +21,9 @@ final class ProfileCoordinator: ChildCoordinatorProtocol {
         profileViewController.coordinator = self
         navigationController.pushViewController(profileViewController, animated: animated)
     }
+    
+    func navigateToSplash() {
+        popViewController(animated: true)
+        coordinatorDidFinish()
+    }
 }

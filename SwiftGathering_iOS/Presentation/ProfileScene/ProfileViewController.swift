@@ -11,6 +11,6 @@ class ProfileViewController: UIViewController {
     var coordinator: ProfileCoordinator?
     
     @IBAction func onTouchedLogout(_ sender: UIButton) {
-        coordinator?.coordinatorDidFinish()
+        coordinator?.navigateToSplash()
     }
 }
