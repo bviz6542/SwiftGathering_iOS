@@ -14,17 +14,11 @@ final class ProfileCoordinator: ChildCoordinatorProtocol {
     init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
-        print(parentCoordinator)
     }
     
     func start(animated: Bool) {
         let profileViewController = ProfileViewController()
         profileViewController.coordinator = self
         navigationController.pushViewController(profileViewController, animated: animated)
-    }
-    
-    func coordinatorDidFinish() {
-        print("dd \(parentCoordinator)")
-        parentCoordinator?.childDidFinish(self)
     }
 }

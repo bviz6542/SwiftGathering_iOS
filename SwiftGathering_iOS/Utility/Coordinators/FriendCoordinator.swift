@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FriendCoordinator: NSObject, ParentCoordinatorProtocol {
+final class FriendCoordinator: ParentCoordinatorProtocol {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {

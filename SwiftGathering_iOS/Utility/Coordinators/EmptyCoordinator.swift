@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class EmptyCoordinator: NSObject, ParentCoordinatorProtocol {
+final class EmptyCoordinator: ChildCoordinatorProtocol {
     var navigationController: UINavigationController
+    weak var parentCoordinator: ParentCoordinatorProtocol?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
-    
-    var childCoordinators: [CoordinatorProtocol] = []
     
     func start(animated: Bool) {
         navigationController.pushViewController(UIViewController(), animated: false)

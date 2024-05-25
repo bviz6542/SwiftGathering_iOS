@@ -19,7 +19,6 @@ extension ParentCoordinatorProtocol {
     func addChildCoordinator(_ child: CoordinatorProtocol?) {
         if let child {
             childCoordinators.append(child)
-            print("child: \(childCoordinators)")
         }
     }
 

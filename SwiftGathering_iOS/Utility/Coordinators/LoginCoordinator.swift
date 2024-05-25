@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginCoordinator: NSObject, ParentCoordinatorProtocol {
+final class LoginCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtocol {
     var navigationController: UINavigationController
     weak var parentCoordinator: ParentCoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
@@ -25,19 +25,13 @@ final class LoginCoordinator: NSObject, ParentCoordinatorProtocol {
         loginViewController.coordinator = self
         navigationController.pushViewController(loginViewController, animated: false)
     }
-}
-
-extension LoginCoordinator: ChildCoordinatorProtocol {
-}
-
-extension LoginCoordinator {
+    
     func navigateToTabBar() {
         popViewController(animated: false)
         coordinatorDidFinish()
     }
     
     func navigateToRegister() {
-        popViewController(animated: false)
         let registerCoordinator = RegisterCoordinator(navigationController: navigationController, parentCoordinator: self)
         registerCoordinator.start(animated: false)
     }

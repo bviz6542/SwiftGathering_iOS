@@ -7,15 +7,14 @@
 
 import UIKit
 
-final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
+final class RootCoordinator: ParentCoordinatorProtocol {
     var navigationController: UINavigationController
-    
+    var childCoordinators: [CoordinatorProtocol] = []
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
-    var childCoordinators: [CoordinatorProtocol] = []
-    
+        
     func start(animated: Bool) {
         let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard)
         let loginUseCase = LoginUseCase(loginRepository: loginRepository)
@@ -24,9 +23,7 @@ final class RootCoordinator: NSObject, ParentCoordinatorProtocol {
         splashViewController.coordinator = self
         navigationController.pushViewController(splashViewController, animated: animated)
     }
-}
-
-extension RootCoordinator {
+    
     func navigateToTabBar() {
         popViewController(animated: true)
         let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController, parentCoordinator: self)

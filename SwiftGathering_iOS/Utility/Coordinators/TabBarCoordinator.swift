@@ -7,17 +7,16 @@
 
 import UIKit
 
-final class TabBarCoordinator: NSObject, ParentCoordinatorProtocol {
+final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtocol {
     var navigationController: UINavigationController
     weak var parentCoordinator: ParentCoordinatorProtocol?
-        
+    var childCoordinators: [CoordinatorProtocol] = []
+
     init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
     }
-    
-    var childCoordinators: [CoordinatorProtocol] = []
-    
+        
     func start(animated: Bool) {
         let tabNavigationControllers = TabBarItemType
             .allCases
@@ -36,15 +35,7 @@ final class TabBarCoordinator: NSObject, ParentCoordinatorProtocol {
         configureTabBarController(tabBarController, using: tabNavigationControllers)
         navigationController.pushViewController(tabBarController, animated: animated)
     }
-}
-
-extension TabBarCoordinator: ChildCoordinatorProtocol {
-    func coordinatorDidFinish() {
-        parentCoordinator?.childDidFinish(self)
-    }
-}
-
-extension TabBarCoordinator {
+    
     private func createTabBarItem(of tabType: TabBarItemType) -> UITabBarItem {
         return UITabBarItem(
             title: tabType.toName(),
@@ -74,7 +65,7 @@ extension TabBarCoordinator {
             addChildCoordinator(friendCoordinator)
             friendCoordinator.start(animated: false)
         case .unknown:
-            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
+            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
             addChildCoordinator(emptyCoordinator)
             emptyCoordinator.start(animated: false)
         case .profile:
@@ -96,5 +87,15 @@ extension TabBarCoordinator {
         tabBarController.tabBar.tintColor = .opaqueSeparator
         tabBarController.tabBar.unselectedItemTintColor = .gray
         tabBarController.navigationItem.hidesBackButton = true
+    }
+}
+
+extension TabBarCoordinator {
+    func childDidFinish(_ child: CoordinatorProtocol?) {
+        print("tabbar coordinator alive..")
+        if let index = childCoordinators.firstIndex(where: { $0 === child }) {
+            childCoordinators.remove(at: index)
+        }
+        coordinatorDidFinish()
     }
 }

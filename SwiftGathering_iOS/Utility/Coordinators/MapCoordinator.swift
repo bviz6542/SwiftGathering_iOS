@@ -7,14 +7,13 @@
 
 import UIKit
 
-final class MapCoordinator: NSObject, ParentCoordinatorProtocol {
+final class MapCoordinator: ParentCoordinatorProtocol {
     var navigationController: UINavigationController
+    var childCoordinators: [CoordinatorProtocol] = []
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
-    var childCoordinators: [CoordinatorProtocol] = []
     
     func start(animated: Bool) {
         let mapRepository = MapRepository(locationHandler: LocationHandler(),
