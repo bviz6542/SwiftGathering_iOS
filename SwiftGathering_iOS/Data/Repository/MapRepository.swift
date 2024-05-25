@@ -10,15 +10,22 @@ import CoreLocation
 
 protocol MapRepositoryProtocol {
     func fetchMyLocation() -> Observable<CLLocation>
-    func fetchFriendLocation() -> Observable<FriendLocationOutput>
+//    func fetchFriendLocation() -> Observable<FriendLocationOutput>
+    func listenToPrivateChannel() -> Observable<String>
 }
 
 class MapRepository: MapRepositoryProtocol {
     private var locationHandler: LocationHandler
+    private var privateRabbitMQHandler: RabbitMQHandler
     private var rabbitMQHandler: RabbitMQHandler
     
-    init(locationHandler: LocationHandler, rabbitMQHandler: RabbitMQHandler) {
+    init(
+        locationHandler: LocationHandler,
+        privateRabbitMQHandler: RabbitMQHandler,
+        rabbitMQHandler: RabbitMQHandler
+    ) {
         self.locationHandler = locationHandler
+        self.privateRabbitMQHandler = privateRabbitMQHandler
         self.rabbitMQHandler = rabbitMQHandler
     }
     
@@ -26,7 +33,13 @@ class MapRepository: MapRepositoryProtocol {
         return locationHandler.location
     }
     
-    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
-        return rabbitMQHandler.listen(expecting: FriendLocationOutput.self)
+//    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
+//        let (_, queue) = rabbitMQHandler.initializeConnection(using: "1")
+//        return rabbitMQHandler.listen(to: queue, expecting: FriendLocationOutput.self)
+//    }
+    
+    func listenToPrivateChannel() -> Observable<String> {
+        let (_, queue) = privateRabbitMQHandler.initializeConnection(using: "1")
+        return privateRabbitMQHandler.listen(to: queue)
     }
 }
