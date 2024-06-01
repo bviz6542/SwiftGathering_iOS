@@ -7,14 +7,15 @@
 
 import UIKit
 
-final class RegisterCoordinator: NSObject, ParentCoordinatorProtocol {
+final class RegisterCoordinator: ChildCoordinatorProtocol {
     var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
+    weak var parentCoordinator: ParentCoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
+    
+    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
+        self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
+    }
     
     func start(animated: Bool) {
         let registerRepository = RegisterRepository(httpHandler: HTTPHandler())
@@ -24,12 +25,9 @@ final class RegisterCoordinator: NSObject, ParentCoordinatorProtocol {
         registerViewController.coordinator = self
         navigationController.pushViewController(registerViewController, animated: true)
     }
-}
-
-extension RegisterCoordinator {
+    
     func navigateToLogin() {
         popViewController(animated: true)
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        loginCoordinator.start(animated: true)
+        coordinatorDidFinish()
     }
 }

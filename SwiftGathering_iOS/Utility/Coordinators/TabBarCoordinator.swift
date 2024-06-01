@@ -7,15 +7,16 @@
 
 import UIKit
 
-final class TabBarCoordinator: NSObject, ParentCoordinatorProtocol {
+final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtocol {
     var navigationController: UINavigationController
-        
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
+    weak var parentCoordinator: ParentCoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
-    
+
+    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
+        self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
+    }
+        
     func start(animated: Bool) {
         let tabNavigationControllers = TabBarItemType
             .allCases
@@ -34,9 +35,7 @@ final class TabBarCoordinator: NSObject, ParentCoordinatorProtocol {
         configureTabBarController(tabBarController, using: tabNavigationControllers)
         navigationController.pushViewController(tabBarController, animated: animated)
     }
-}
-
-extension TabBarCoordinator {
+    
     private func createTabBarItem(of tabType: TabBarItemType) -> UITabBarItem {
         return UITabBarItem(
             title: tabType.toName(),
@@ -58,17 +57,21 @@ extension TabBarCoordinator {
         guard let tabBarItemType: TabBarItemType = TabBarItemType(index: tabBarItemTag) else { return }
         switch tabBarItemType {
         case .map:
-            let mapCoordinator = MapCoordinator(navigationController: tabNavigationController)
+            let mapCoordinator = MapCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            addChildCoordinator(mapCoordinator)
             mapCoordinator.start(animated: false)
         case .friend:
-            let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController)
+            let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            addChildCoordinator(friendCoordinator)
             friendCoordinator.start(animated: false)
         case .unknown:
-            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
+            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            addChildCoordinator(emptyCoordinator)
             emptyCoordinator.start(animated: false)
         case .profile:
-            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController)
-            emptyCoordinator.start(animated: false)
+            let profileCoordinator = ProfileCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            addChildCoordinator(profileCoordinator)
+            profileCoordinator.start(animated: false)
         }
     }
     
@@ -84,5 +87,10 @@ extension TabBarCoordinator {
         tabBarController.tabBar.tintColor = .opaqueSeparator
         tabBarController.tabBar.unselectedItemTintColor = .gray
         tabBarController.navigationItem.hidesBackButton = true
+    }
+    
+    func childDidFinish(_ child: CoordinatorProtocol?) {
+        childCoordinators.removeAll()
+        coordinatorDidFinish()
     }
 }
