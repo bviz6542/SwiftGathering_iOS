@@ -1,15 +1,13 @@
 //
-//  RegisterRepository.swift
+//  RegisterRepositoryImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 4/21/24.
+//  Created by mraz on 6/14/24.
 //
 
-protocol RegisterRepositoryProtocol {
-    func register(using registerInfo: RegisterInfo) async -> Result<Void, Error>
-}
+import RxSwift
 
-class RegisterRepository: RegisterRepositoryProtocol {
+class RegisterRepositoryImpl: RegisterRepository {
     private var httpHandler: HTTPHandler
     
     init(httpHandler: HTTPHandler) {
@@ -29,3 +27,4 @@ class RegisterRepository: RegisterRepositoryProtocol {
             .eraseToVoid()
     }
 }
+

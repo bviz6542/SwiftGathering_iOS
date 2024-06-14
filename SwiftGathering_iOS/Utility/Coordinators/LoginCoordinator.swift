@@ -18,8 +18,8 @@ final class LoginCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoco
     }
         
     func start(animated: Bool) {        
-        let loginRepository = LoginRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults())
-        let loginUseCase = LoginUseCase(loginRepository: loginRepository)
+        let loginRepository = LoginRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults())
+        let loginUseCase = LoginUseCaseImpl(loginRepository: loginRepository)
         let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
         let loginViewController = LoginViewController(loginViewModel: loginViewModel)
         loginViewController.coordinator = self

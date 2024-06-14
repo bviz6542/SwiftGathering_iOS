@@ -17,10 +17,10 @@ class MapViewModel {
     let friendLocationOutput = PublishSubject<FriendLocationOutput>()
     let privateChannelOutput = PublishSubject<String>()
     
-    private let mapUseCase: MapUseCaseProtocol
+    private let mapUseCase: MapUseCase
     private let disposeBag = DisposeBag()
     
-    init(mapUseCase: MapUseCaseProtocol) {
+    init(mapUseCase: MapUseCase) {
         self.mapUseCase = mapUseCase
         bind()
     }

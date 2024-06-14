@@ -1,15 +1,13 @@
 //
-//  RegisterUseCase.swift
+//  RegisterUseCaseImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 4/21/24.
+//  Created by mraz on 6/14/24.
 //
 
-protocol RegisterUseCaseProtocol {
-    func register(using registerInfo: RegisterInfo) async -> Result<Void, Error>
-}
+import RxSwift
 
-class RegisterUseCase: RegisterUseCaseProtocol {
+class RegisterUseCaseImpl: RegisterUseCase {
     private var registerRepository: RegisterRepository
     
     init(registerRepository: RegisterRepository) {

@@ -1,20 +1,14 @@
 //
-//  MapRepository.swift
+//  MapRepositoryImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 4/27/24.
+//  Created by mraz on 6/14/24.
 //
 
 import RxSwift
 import CoreLocation
 
-protocol MapRepositoryProtocol {
-    func fetchMyLocation() -> Observable<CLLocation>
-//    func fetchFriendLocation() -> Observable<FriendLocationOutput>
-    func listenToPrivateChannel() -> Observable<String>
-}
-
-class MapRepository: MapRepositoryProtocol {
+class MapRepositoryImpl: MapRepository {
     private var locationHandler: LocationHandler
     private var privateRabbitMQHandler: RabbitMQHandler
     private var rabbitMQHandler: RabbitMQHandler
@@ -43,3 +37,4 @@ class MapRepository: MapRepositoryProtocol {
         return privateRabbitMQHandler.listen(to: queue)
     }
 }
+

@@ -1,23 +1,17 @@
 //
-//  MapUseCase.swift
+//  MapUseCaseImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 4/27/24.
+//  Created by mraz on 6/14/24.
 //
 
 import RxSwift
 import CoreLocation
 
-protocol MapUseCaseProtocol {
-    func fetchMyLocation() -> Observable<CLLocation>
-//    func fetchFriendLocation() -> Observable<FriendLocationOutput>
-    func listenToPrivateChannel() -> Observable<String>
-}
-
-class MapUseCase: MapUseCaseProtocol {
-    private var mapRepository: MapRepositoryProtocol
+class MapUseCaseImpl: MapUseCase {
+    private var mapRepository: MapRepository
     
-    init(mapRepository: MapRepositoryProtocol) {
+    init(mapRepository: MapRepository) {
         self.mapRepository = mapRepository
     }
     
@@ -33,3 +27,4 @@ class MapUseCase: MapUseCaseProtocol {
         return mapRepository.listenToPrivateChannel()
     }
 }
+
