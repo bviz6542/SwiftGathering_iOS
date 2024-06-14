@@ -6,9 +6,9 @@
 //
 
 class RegisterViewModel {
-    private var registerUseCase: RegisterUseCaseProtocol
+    private var registerUseCase: RegisterUseCase
     
-    init(registerUseCase: RegisterUseCaseProtocol) {
+    init(registerUseCase: RegisterUseCase) {
         self.registerUseCase = registerUseCase
     }
     

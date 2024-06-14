@@ -1,20 +1,14 @@
 //
-//  FriendRepository.swift
+//  FriendRepositoryImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 5/5/24.
+//  Created by mraz on 6/14/24.
 //
 
-import Foundation
 import RxSwift
+import Foundation
 
-protocol FriendRepositoryProtocol {
-    func fetchMyInfo() -> Observable<MyInfo>
-    func saveMyInfo(using myInfo: MyInfo) -> Observable<Void>
-    func fetchFriends(using myInfo: MyInfo) -> Observable<[FriendInfo]>
-}
-
-class FriendRepository: FriendRepositoryProtocol {
+class FriendRepositoryImpl: FriendRepository {
     private var httpHandler: HTTPHandler
     private var userDefaults: UserDefaults
     

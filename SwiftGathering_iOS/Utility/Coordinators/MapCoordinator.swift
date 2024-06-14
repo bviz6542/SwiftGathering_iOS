@@ -17,10 +17,10 @@ final class MapCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let mapRepository = MapRepository(locationHandler: LocationHandler(),
+        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(),
                                           privateRabbitMQHandler: RabbitMQHandler(),
                                           rabbitMQHandler: RabbitMQHandler())
-        let mapUseCase = MapUseCase(mapRepository: mapRepository)
+        let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
         let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
         let mapViewController = MapViewController(mapViewModel: mapViewModel)
         navigationController.pushViewController(mapViewController, animated: false)

@@ -17,8 +17,8 @@ final class FriendCoordinator: ChildCoordinatorProtocol {
     }
         
     func start(animated: Bool) {
-        let friendRepository = FriendRepository(httpHandler: HTTPHandler(), userDefaults: UserDefaults())
-        let friendUseCase = FriendUseCase(friendRepository: friendRepository)
+        let friendRepository = FriendRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults())
+        let friendUseCase = FriendUseCaseImpl(friendRepository: friendRepository)
         let friendViewModel = FriendViewModel(friendUseCase: friendUseCase)
         let friendViewController = FriendViewController(friendViewModel: friendViewModel)
         navigationController.pushViewController(friendViewController, animated: true)

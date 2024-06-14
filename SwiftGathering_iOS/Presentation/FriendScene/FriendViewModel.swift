@@ -13,10 +13,10 @@ class FriendViewModel {
     var friendInfosSuccessSubject = PublishSubject<[FriendInfo]>()
     var friendInfosFailureSubject = PublishSubject<Error>()
     
-    private let friendUseCase: FriendUseCaseProtocol
+    private let friendUseCase: FriendUseCase
     private let disposeBag = DisposeBag()
     
-    init(friendUseCase: FriendUseCaseProtocol) {
+    init(friendUseCase: FriendUseCase) {
         self.friendUseCase = friendUseCase
         bind()
     }

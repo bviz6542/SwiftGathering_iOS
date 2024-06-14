@@ -21,10 +21,10 @@ class SplashViewModel {
     
     private let loginSuccessSubject = PublishSubject<Void>()
     private let loginErrorSubject = PublishSubject<Error>()
-    private let loginUseCase: LoginUseCaseProtocol
+    private let loginUseCase: LoginUseCase
     private let disposeBag = DisposeBag()
     
-    init(loginUseCase: LoginUseCaseProtocol) {
+    init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
         
         loginInitiateInput

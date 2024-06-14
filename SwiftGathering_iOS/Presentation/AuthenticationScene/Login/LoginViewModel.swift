@@ -17,10 +17,10 @@ class LoginViewModel {
     
     private let loginStateSubject = BehaviorSubject<Void?>(value: nil)
     private let loginErrorSubject = PublishSubject<Error>()
-    private let loginUseCase: LoginUseCaseProtocol
+    private let loginUseCase: LoginUseCase
     private let disposeBag = DisposeBag()
     
-    init(loginUseCase: LoginUseCaseProtocol) {
+    init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
         
         loginTap

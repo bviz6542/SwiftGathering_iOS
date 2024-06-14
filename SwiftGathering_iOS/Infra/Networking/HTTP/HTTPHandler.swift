@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class HTTPHandler {
-    private var host: String = ""
+    private var host: String?
     private var port: Int?
     private var path: HTTPPath? = nil
     private var queryItems: [String: String] = [:]
@@ -64,15 +64,11 @@ class HTTPHandler {
     
     private func buildURLRequest() throws -> URLRequest {
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
+        urlComponent.scheme = HTTPConstant.defaultScheme
         
-        if host.isEmpty {
-            urlComponent.host = "localhost"
-        }
+        urlComponent.host = host ?? HTTPConstant.defaultHost
         
-        if let port = port {
-            urlComponent.port = port
-        }
+        urlComponent.port = port ?? HTTPConstant.defaultPort
         
         if let path = path {
             urlComponent.path = path.stringValue

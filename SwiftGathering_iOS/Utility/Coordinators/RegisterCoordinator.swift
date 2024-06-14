@@ -18,8 +18,8 @@ final class RegisterCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let registerRepository = RegisterRepository(httpHandler: HTTPHandler())
-        let registerUseCase = RegisterUseCase(registerRepository: registerRepository)
+        let registerRepository = RegisterRepositoryImpl(httpHandler: HTTPHandler())
+        let registerUseCase = RegisterUseCaseImpl(registerRepository: registerRepository)
         let registerViewModel = RegisterViewModel(registerUseCase: registerUseCase)
         let registerViewController = RegisterViewController(registerViewModel: registerViewModel)
         registerViewController.coordinator = self

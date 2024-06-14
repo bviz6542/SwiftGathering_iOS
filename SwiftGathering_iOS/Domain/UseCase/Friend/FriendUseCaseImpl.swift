@@ -1,20 +1,16 @@
 //
-//  FriendUseCase.swift
+//  FriendUseCaseImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 5/5/24.
+//  Created by mraz on 6/14/24.
 //
 
 import RxSwift
 
-protocol FriendUseCaseProtocol {
-    func fetchFriends() -> Observable<[FriendInfo]>
-}
-
-class FriendUseCase: FriendUseCaseProtocol {
-    private var friendRepository: FriendRepositoryProtocol
+class FriendUseCaseImpl: FriendUseCase {
+    private var friendRepository: FriendRepository
     
-    init(friendRepository: FriendRepositoryProtocol) {
+    init(friendRepository: FriendRepository) {
         self.friendRepository = friendRepository
     }
     

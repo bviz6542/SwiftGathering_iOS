@@ -1,21 +1,16 @@
 //
-//  LoginUseCase.swift
+//  LoginUseCaseImpl.swift
 //  SwiftGathering_iOS
 //
-//  Created by 정준우 on 3/28/24.
+//  Created by mraz on 6/14/24.
 //
 
 import RxSwift
 
-protocol LoginUseCaseProtocol {
-    func login(using loginInfo: LoginInfo) -> Observable<Void>
-    func loginWithPreviousLoginInfo() -> Observable<Void>
-}
-
-class LoginUseCase: LoginUseCaseProtocol {
-    private var loginRepository: LoginRepositoryProtocol
+class LoginUseCaseImpl: LoginUseCase {
+    private var loginRepository: LoginRepository
     
-    init(loginRepository: LoginRepositoryProtocol) {
+    init(loginRepository: LoginRepository) {
         self.loginRepository = loginRepository
     }
     
@@ -46,3 +41,4 @@ class LoginUseCase: LoginUseCaseProtocol {
             }
     }
 }
+
