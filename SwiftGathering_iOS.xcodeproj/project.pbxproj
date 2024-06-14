@@ -95,6 +95,7 @@
 		A28F846D2C1C50C800E1A177 /* RegisterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F846C2C1C50C800E1A177 /* RegisterRepositoryImpl.swift */; };
 		A28F846F2C1C514A00E1A177 /* FriendRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F846E2C1C514A00E1A177 /* FriendRepositoryImpl.swift */; };
 		A28F84712C1C51B800E1A177 /* MapRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F84702C1C51B800E1A177 /* MapRepositoryImpl.swift */; };
+		A28F84732C1C535800E1A177 /* HTTPConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F84722C1C535800E1A177 /* HTTPConstant.swift */; };
 		BA5C0F2294F2DA21ED196F9C /* Pods_SwiftGathering_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9838212A7D5C966AC5F610 /* Pods_SwiftGathering_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -212,6 +213,7 @@
 		A28F846C2C1C50C800E1A177 /* RegisterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepositoryImpl.swift; sourceTree = "<group>"; };
 		A28F846E2C1C514A00E1A177 /* FriendRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryImpl.swift; sourceTree = "<group>"; };
 		A28F84702C1C51B800E1A177 /* MapRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepositoryImpl.swift; sourceTree = "<group>"; };
+		A28F84722C1C535800E1A177 /* HTTPConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConstant.swift; sourceTree = "<group>"; };
 		FD08F8972B168A44C3A17742 /* Pods-SwiftGathering_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGathering_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftGathering_iOSTests/Pods-SwiftGathering_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		FD64FA69935B1C88A6B5753F /* Pods_SwiftGathering_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -392,6 +394,7 @@
 				43B2CF082BA69FEC00047065 /* HTTPPath.swift */,
 				43B2CF062BA69FD400047065 /* HTTPMethod.swift */,
 				43B2CF042BA69FB600047065 /* HTTPError.swift */,
+				A28F84722C1C535800E1A177 /* HTTPConstant.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -1052,6 +1055,7 @@
 				433AC07B2BC262A100BCEF6A /* DrawingSampleInput.swift in Sources */,
 				A222BAEA2C009165000A59FA /* ProfileCoordinator.swift in Sources */,
 				43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */,
+				A28F84732C1C535800E1A177 /* HTTPConstant.swift in Sources */,
 				43FFDD6F2BCD770A002D19B2 /* RootCoordinator.swift in Sources */,
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
 				433AC0792BC25CF600BCEF6A /* RabbitMQError.swift in Sources */,
