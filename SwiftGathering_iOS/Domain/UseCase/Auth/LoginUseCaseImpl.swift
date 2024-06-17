@@ -15,11 +15,12 @@ class LoginUseCaseImpl: LoginUseCase {
     }
     
     func login(using loginInfo: LoginInfo) -> Observable<Void> {
-        loginRepository
+        return loginRepository
             .login(using: loginInfo)
+            .debug()
             .withUnretained(self)
             .flatMap { (owner, _) in
-                owner.loginRepository.saveLoginInfo(using: loginInfo)
+                return owner.loginRepository.saveLoginInfo(using: loginInfo)
             }
     }
     
@@ -37,8 +38,12 @@ class LoginUseCaseImpl: LoginUseCase {
             }
             .withUnretained(self)
             .flatMap { (owner, loginOutput: LoginOutput) in
-                owner.loginRepository.saveMyInfo(using: MyInfo(id: loginOutput.id))
+                owner.loginRepository.saveToken(using: loginOutput)
             }
+//            .withUnretained(self)
+//            .flatMap { (owner, loginOutput: LoginOutput) in
+//                owner.loginRepository.saveMyInfo(using: MyInfo(id: loginOutput.id))
+//            }
     }
 }
 
