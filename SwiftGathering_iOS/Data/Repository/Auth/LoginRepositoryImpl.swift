@@ -18,10 +18,9 @@ class LoginRepositoryImpl: LoginRepository {
     }
     
     func login(using loginInfo: LoginInfo) -> Observable<LoginOutput> {
-        let loginInput = LoginInput(loginId: loginInfo.loginId, loginPassword: loginInfo.loginPassword)
+        let loginInput = LoginInput(username: loginInfo.loginId, password: loginInfo.loginPassword)
         return httpHandler
             .setPath(.login)
-            .setPort(8080)
             .setMethod(.post)
             .setRequestBody(loginInput)
             .rxSend(expecting: LoginOutput.self)
@@ -43,9 +42,14 @@ class LoginRepositoryImpl: LoginRepository {
         return .just(())
     }
     
-    func saveMyInfo(using myInfo: MyInfo) -> Observable<Void> {
-        guard let encodedObject = try? JSONEncoder().encode(myInfo) else { return .error(UserDefaultsError.encodeFailed) }
-        userDefaults.setValue(encodedObject, forKey: "myInfo")
+//    func saveMyInfo(using myInfo: MyInfo) -> Observable<Void> {
+//        guard let encodedObject = try? JSONEncoder().encode(myInfo) else { return .error(UserDefaultsError.encodeFailed) }
+//        userDefaults.setValue(encodedObject, forKey: "myInfo")
+//        return .just(())
+//    }
+    
+    func saveToken(using loginOutput: LoginOutput) -> Observable<Void> {
+        TokenHolder.shared.token = loginOutput.token
         return .just(())
     }
 }
