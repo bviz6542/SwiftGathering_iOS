@@ -29,6 +29,7 @@ class MapViewModel {
         myLocationInitiateInput
             .withUnretained(self)
             .flatMap { (owner, _) -> Observable<Result<CLLocation, Error>> in
+                owner.mapUseCase.setup()
                 return owner.mapUseCase.fetchMyLocation()
                     .map { .success($0) }
                     .catch { .just(.failure($0)) }
@@ -39,6 +40,7 @@ class MapViewModel {
                 onNext: { owner, result in
                     result.onSuccess { location in
                         owner.myLocationOutput.onNext(location)
+                        owner.mapUseCase.broadcastMyLocation()
                     }
                 })
             .disposed(by: disposeBag)

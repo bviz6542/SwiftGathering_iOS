@@ -17,8 +17,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         return locationSubject.asObservable()
     }
     
-    override init() {
-        super.init()
+    func start() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()

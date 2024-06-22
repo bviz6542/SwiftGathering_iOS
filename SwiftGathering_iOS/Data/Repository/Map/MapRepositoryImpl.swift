@@ -9,20 +9,38 @@ import RxSwift
 import CoreLocation
 
 class MapRepositoryImpl: MapRepository {
-    func listenToPrivateChannel() -> RxSwift.Observable<String> {
-        .just("d")
+    private var locationHandler: LocationHandler
+    private var stompHandler: STOMPHandler
+    
+    init(locationHandler: LocationHandler,stompHandler: STOMPHandler) {
+        self.locationHandler = locationHandler
+        self.stompHandler = stompHandler
     }
     
-    private var locationHandler: LocationHandler
-    
-    init(
-        locationHandler: LocationHandler
-    ) {
-        self.locationHandler = locationHandler
+    func setup() {
+        stompHandler.registerSockect()
+        stompHandler.subscribe()
+        locationHandler.start()
     }
     
     func fetchMyLocation() -> Observable<CLLocation> {
         return locationHandler.location
+    }
+    
+    func broadcastMyLocation() {
+        do {
+            try stompHandler.sendMessage()
+        } catch {
+            
+        }
+    }
+    
+//    func fetchFriendsLocation() -> Observable<CLLocation> {
+//        
+//    }
+
+    func listenToPrivateChannel() -> Observable<String> {
+        return .just("d")
     }
     
 //    func fetchFriendLocation() -> Observable<FriendLocationOutput> {

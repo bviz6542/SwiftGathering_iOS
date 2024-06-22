@@ -15,8 +15,16 @@ class MapUseCaseImpl: MapUseCase {
         self.mapRepository = mapRepository
     }
     
+    func setup() {
+        mapRepository.setup()
+    }
+    
     func fetchMyLocation() -> Observable<CLLocation> {
-        return mapRepository.fetchMyLocation()
+        mapRepository.fetchMyLocation()
+    }
+    
+    func broadcastMyLocation() {
+        mapRepository.broadcastMyLocation()
     }
     
 //    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
