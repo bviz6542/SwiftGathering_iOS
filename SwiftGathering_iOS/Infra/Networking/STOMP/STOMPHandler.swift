@@ -10,10 +10,10 @@ import RxSwift
 
 class STOMPHandler {
     private let client = StompClientLib()
-    private let friendsLocationSubject = PublishSubject<MockLocationInput>()
+    private let resultSubject = PublishSubject<Codable>()
 
-    var friendslocation: Observable<MockLocationInput> {
-        return friendsLocationSubject.asObservable()
+    var result: Observable<Codable> {
+        return resultSubject.asObservable()
     }
     
     func registerSockect() {
@@ -28,12 +28,11 @@ class STOMPHandler {
         client.subscribe(destination: "/topic/wow")
     }
     
-    func sendMessage() throws {
+    func send<T: Codable>(using input: T) throws {
         if !client.isConnected() {
             throw STOMPError.notConnectedError
         }
-        let locationInput = MockLocationInput(senderId: 1212, channelId: "wow", latitude: 33.0, longitude: 56.4)
-        client.sendJSONForCodable(input: locationInput, toDestination: "/pub/location")
+        client.sendJSONForCodable(input: input, toDestination: "/pub/location")
     }
     
     func disconnect() {

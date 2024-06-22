@@ -27,9 +27,10 @@ class MapRepositoryImpl: MapRepository {
         return locationHandler.location
     }
     
-    func broadcastMyLocation() {
+    func broadcastMyLocation(_ myLocation: MyLocation) {
         do {
-            try stompHandler.sendMessage()
+            let locationInput = MockLocationInput(senderId: 1212, channelId: "wow", latitude: myLocation.latitude, longitude: myLocation.longitude)
+            try stompHandler.send(using: locationInput)
         } catch {
             
         }

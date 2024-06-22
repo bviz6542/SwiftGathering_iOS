@@ -40,7 +40,7 @@ class MapViewModel {
                 onNext: { owner, result in
                     result.onSuccess { location in
                         owner.myLocationOutput.onNext(location)
-                        owner.mapUseCase.broadcastMyLocation()
+                        owner.mapUseCase.broadcastMyLocation(MyLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                     }
                 })
             .disposed(by: disposeBag)

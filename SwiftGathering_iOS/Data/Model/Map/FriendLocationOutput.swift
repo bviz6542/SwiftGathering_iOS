@@ -6,7 +6,8 @@
 //
 
 struct FriendLocationOutput: Codable {
-    let id: String
+    let senderId: Int
+    let channelId: String
     let latitude: Double
-    let longtitude: Double
+    let longitude: Double
 }

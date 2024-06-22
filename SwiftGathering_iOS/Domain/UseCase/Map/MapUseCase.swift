@@ -11,7 +11,7 @@ import CoreLocation
 protocol MapUseCase {
     func setup()
     func fetchMyLocation() -> Observable<CLLocation>
-    func broadcastMyLocation()
+    func broadcastMyLocation(_ myLocation: MyLocation)
     
 //    func fetchFriendLocation() -> Observable<FriendLocationOutput>
     func listenToPrivateChannel() -> Observable<String>

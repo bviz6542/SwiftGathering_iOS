@@ -23,8 +23,8 @@ class MapUseCaseImpl: MapUseCase {
         mapRepository.fetchMyLocation()
     }
     
-    func broadcastMyLocation() {
-        mapRepository.broadcastMyLocation()
+    func broadcastMyLocation(_ myLocation: MyLocation) {
+        mapRepository.broadcastMyLocation(myLocation)
     }
     
 //    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
