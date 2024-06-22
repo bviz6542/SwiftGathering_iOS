@@ -7,4 +7,5 @@
 
 struct LoginOutput: Codable {
     let token: String
+    let memberId: Int
 }
