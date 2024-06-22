@@ -19,7 +19,6 @@ class CanvasView: UIView {
     private var points = [CGPoint]()
     var savedImage: UIImage?
     
-    var webSocketManager: WebSocketManager?
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -125,7 +124,7 @@ class CanvasView: UIView {
         // Serialize and send the drawing info
         do {
             let data = try JSONEncoder().encode(drawingInfo)
-            webSocketManager?.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeight, x: drawingInfo.x, y: drawingInfo.y, event: drawingInfo.event)
+//            webSocketManager?.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeight, x: drawingInfo.x, y: drawingInfo.y, event: drawingInfo.event)
         } catch {
             print("Error encoding drawing data: \(error)")
         }

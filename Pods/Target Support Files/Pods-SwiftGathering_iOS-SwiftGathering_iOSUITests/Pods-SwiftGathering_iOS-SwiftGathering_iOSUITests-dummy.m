@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests : NSObject
-@end
-@implementation PodsDummy_Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests
-@end

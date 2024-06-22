@@ -9,18 +9,16 @@ import RxSwift
 import CoreLocation
 
 class MapRepositoryImpl: MapRepository {
+    func listenToPrivateChannel() -> RxSwift.Observable<String> {
+        .just("d")
+    }
+    
     private var locationHandler: LocationHandler
-    private var privateRabbitMQHandler: RabbitMQHandler
-    private var rabbitMQHandler: RabbitMQHandler
     
     init(
-        locationHandler: LocationHandler,
-        privateRabbitMQHandler: RabbitMQHandler,
-        rabbitMQHandler: RabbitMQHandler
+        locationHandler: LocationHandler
     ) {
         self.locationHandler = locationHandler
-        self.privateRabbitMQHandler = privateRabbitMQHandler
-        self.rabbitMQHandler = rabbitMQHandler
     }
     
     func fetchMyLocation() -> Observable<CLLocation> {
@@ -31,10 +29,10 @@ class MapRepositoryImpl: MapRepository {
 //        let (_, queue) = rabbitMQHandler.initializeConnection(using: "1")
 //        return rabbitMQHandler.listen(to: queue, expecting: FriendLocationOutput.self)
 //    }
-    
-    func listenToPrivateChannel() -> Observable<String> {
-        let (_, queue) = privateRabbitMQHandler.initializeConnection(using: "1")
-        return privateRabbitMQHandler.listen(to: queue)
-    }
+//    
+//    func listenToPrivateChannel() -> Observable<String> {
+//        let (_, queue) = privateRabbitMQHandler.initializeConnection(using: "1")
+//        return privateRabbitMQHandler.listen(to: queue)
+//    }
 }
 
