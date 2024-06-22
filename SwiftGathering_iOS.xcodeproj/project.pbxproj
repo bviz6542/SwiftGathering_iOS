@@ -34,6 +34,8 @@
 		437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5552BDD458500447EE8 /* MapUseCase.swift */; };
 		437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5572BDD459A00447EE8 /* MapRepository.swift */; };
 		43980E5A2B947A8700FBEBDA /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43980E592B947A8700FBEBDA /* WebSocketManager.swift */; };
+		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
+		439864742C26AB4E00EBAD6A /* MemberIdHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */; };
 		439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */; };
 		439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */; };
 		43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEED2B94825B00047065 /* CanvasView.swift */; };
@@ -152,6 +154,8 @@
 		437FA5552BDD458500447EE8 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		437FA5572BDD459A00447EE8 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
 		43980E592B947A8700FBEBDA /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
+		439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberIdHolder.swift; sourceTree = "<group>"; };
 		439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		43B2CEED2B94825B00047065 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -355,6 +359,15 @@
 			path = SwiftGathering_iOSUITests;
 			sourceTree = "<group>";
 		};
+		439864702C1F419200EBAD6A /* Holder */ = {
+			isa = PBXGroup;
+			children = (
+				439864712C1F41A300EBAD6A /* TokenHolder.swift */,
+				439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */,
+			);
+			path = Holder;
+			sourceTree = "<group>";
+		};
 		439BB32B2BB5AF90006F34A5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +446,7 @@
 		43FFDD4F2BCBC373002D19B2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				439864702C1F419200EBAD6A /* Holder */,
 				43FFDD562BCBDB88002D19B2 /* Repository */,
 				43FFDD572BCBDB92002D19B2 /* Model */,
 			);
@@ -1015,6 +1029,7 @@
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
+				439864742C26AB4E00EBAD6A /* MemberIdHolder.swift in Sources */,
 				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
 				433AC07D2BC262AD00BCEF6A /* DrawingSampleOutput.swift in Sources */,
 				A222BAE82C009031000A59FA /* ProfileViewController.swift in Sources */,
@@ -1029,6 +1044,7 @@
 				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
 				43D0E2A72BE7354100294A4A /* FriendCoordinator.swift in Sources */,
 				437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */,
+				439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */,
 				A231C0632BA401090059572D /* LocationHandler.swift in Sources */,
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,

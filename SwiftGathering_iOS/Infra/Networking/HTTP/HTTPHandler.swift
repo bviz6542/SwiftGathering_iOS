@@ -82,7 +82,7 @@ class HTTPHandler {
         var urlRequest = URLRequest(url: url)
         guard let method = method else { throw HTTPError.requestSetupError }
         urlRequest.httpMethod = method.rawValue
-
+        
         headers.updateValue("application/json", forKey: "Content-Type")
         for (key, value) in headers {
             urlRequest.addValue(value, forHTTPHeaderField: key)
@@ -163,14 +163,6 @@ class HTTPHandler {
         }
     }
     
-    private func rxDecodeResponseData<OutputType: Codable>(data: Data) -> Observable<OutputType> {
-        do {
-            return .just(try decodeResponseData(data: data))
-        } catch {
-            return .error(error)
-        }
-    }
-    
     func rxSend<OutputType: Codable>(expecting outputType: OutputType.Type) -> Observable<OutputType> {
         rxBuildURLRequest()
             .withUnretained(self)
@@ -186,5 +178,17 @@ class HTTPHandler {
             .flatMap { (owner: HTTPHandler, data: Data) -> Observable<OutputType> in
                 owner.rxDecodeResponseData(data: data)
             }
+    }
+    
+    private func rxDecodeResponseData<OutputType: Codable>(data: Data) -> Observable<OutputType> {
+        do {
+            if OutputType.self is EmptyOutput.Type {
+                return .just(EmptyOutput() as! OutputType)
+            }
+            return .just(try JSONDecoder().decode(OutputType.self, from: data))
+            
+        } catch {
+            return .error(HTTPError.responseParsingError)
+        }
     }
 }
