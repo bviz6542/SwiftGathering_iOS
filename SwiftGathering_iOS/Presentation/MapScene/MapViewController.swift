@@ -71,6 +71,8 @@ class MapViewController: UIViewController {
                     print(error)
                 })
             .disposed(by: disposeBag)
+        
+        mapViewModel.myLocationInitiateInput.onNext(())
     }
     
     private func setInitialRegion(using location: CLLocation) {

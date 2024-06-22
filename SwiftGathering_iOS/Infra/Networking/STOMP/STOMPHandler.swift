@@ -22,12 +22,10 @@ class STOMPHandler {
             request: NSURLRequest(url: url),
             delegate: self
         )
-        print("register tried")
     }
     
     func subscribe() {
         client.subscribe(destination: "/topic/wow")
-        print("subscribe tried")
     }
     
     func sendMessage() throws {
@@ -36,7 +34,6 @@ class STOMPHandler {
         }
         let locationInput = MockLocationInput(senderId: 1212, channelId: "wow", latitude: 33.0, longitude: 56.4)
         client.sendJSONForCodable(input: locationInput, toDestination: "/pub/location")
-        print("message sent")
     }
     
     func disconnect() {
@@ -50,10 +47,7 @@ extension STOMPHandler: StompClientLibDelegate {
         // friendsLocation.onNext
     }
     
-    func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-        print("stompClientJSONBody(")
-        // friendsLocation.onNext
-    }
+    func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {}
     
     func stompClientDidDisconnect(client: StompClientLib!) {}
     
