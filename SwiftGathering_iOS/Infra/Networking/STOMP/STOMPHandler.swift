@@ -16,7 +16,7 @@ class STOMPHandler {
         return resultSubject.asObservable()
     }
     
-    func registerSockect() {
+    func registerSocket() {
         let url = URL(string: "ws://localhost:8080/ws")!
         client.openSocketWithURLRequest(
             request: NSURLRequest(url: url),
@@ -24,7 +24,7 @@ class STOMPHandler {
         )
     }
     
-    func subscribe() {
+    private func subscribe() {
         client.subscribe(destination: "/topic/wow")
     }
     
@@ -59,7 +59,7 @@ extension STOMPHandler: StompClientLibDelegate {
     
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
         client.disconnect()
-        registerSockect()
+        registerSocket()
     }
     
     func serverDidSendPing() {}

@@ -30,6 +30,8 @@
 		437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5532BDD43B000447EE8 /* MapCoordinator.swift */; };
 		437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5552BDD458500447EE8 /* MapUseCase.swift */; };
 		437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5572BDD459A00447EE8 /* MapRepository.swift */; };
+		43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */; };
+		43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */; };
 		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
 		439864742C26AB4E00EBAD6A /* MemberIdHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */; };
 		439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864762C26CEDF00EBAD6A /* STOMPHandler.swift */; };
@@ -144,6 +146,8 @@
 		437FA5532BDD43B000447EE8 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		437FA5552BDD458500447EE8 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		437FA5572BDD459A00447EE8 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotation.swift; sourceTree = "<group>"; };
+		43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotationView.swift; sourceTree = "<group>"; };
 		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
 		439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberIdHolder.swift; sourceTree = "<group>"; };
 		439864762C26CEDF00EBAD6A /* STOMPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOMPHandler.swift; sourceTree = "<group>"; };
@@ -518,6 +522,8 @@
 				A231C05E2BA3FD290059572D /* MapView.xib */,
 				A231C05D2BA3FD290059572D /* MapViewController.swift */,
 				437FA54B2BDCEE0E00447EE8 /* MapViewModel.swift */,
+				43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */,
+				43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */,
 			);
 			path = MapScene;
 			sourceTree = "<group>";
@@ -1058,6 +1064,8 @@
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
 				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
 				A28F84602C1C4EA400E1A177 /* FriendUseCaseImpl.swift in Sources */,
+				43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */,
+				43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */,
 				43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */,
 				43D0E2AE2BE7431900294A4A /* FriendViewModel.swift in Sources */,
 				432C707C2BD3F8DF00B4F4CE /* UserDefaultsError.swift in Sources */,
