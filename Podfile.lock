@@ -1,24 +1,20 @@
 PODS:
-  - CocoaAsyncSocket (7.6.5)
-  - JKVValue (1.3.3)
-  - RMQClient (0.12.0):
-    - CocoaAsyncSocket (~> 7.6)
-    - JKVValue (~> 1.3)
+  - SocketRocket (0.7.0)
+  - StompClientLib (1.4.1):
+    - SocketRocket
 
 DEPENDENCIES:
-  - RMQClient (~> 0.12.0)
+  - StompClientLib
 
 SPEC REPOS:
   trunk:
-    - CocoaAsyncSocket
-    - JKVValue
-    - RMQClient
+    - SocketRocket
+    - StompClientLib
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  JKVValue: d7941071b1cf9ba35c194fd40bcf4c4d9b5462e9
-  RMQClient: 74776ee4d0f891f71667a2629f26a26de5ad3e90
+  SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
+  StompClientLib: ac40390e9660c574675f1c933bec81c8e2811a4f
 
-PODFILE CHECKSUM: c8068c5083d499122f4d5de04ee8dffb298657f8
+PODFILE CHECKSUM: d8b6167b0eeb96a9a78efa7f9fffaab18f3ecc68
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2

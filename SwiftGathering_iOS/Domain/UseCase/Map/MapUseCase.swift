@@ -9,7 +9,9 @@ import RxSwift
 import CoreLocation
 
 protocol MapUseCase {
+    func setup()
     func fetchMyLocation() -> Observable<CLLocation>
-//    func fetchFriendLocation() -> Observable<FriendLocationOutput>
+    func broadcastMyLocation(_ myLocation: MyLocation)    
+    func fetchFriendLocation() -> Observable<FriendLocation>
     func listenToPrivateChannel() -> Observable<String>
 }

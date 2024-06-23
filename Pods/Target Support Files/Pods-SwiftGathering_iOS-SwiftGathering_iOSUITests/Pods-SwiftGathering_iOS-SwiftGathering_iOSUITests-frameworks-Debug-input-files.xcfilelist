@@ -1,4 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework
-${BUILT_PRODUCTS_DIR}/JKVValue/JKVValue.framework
-${BUILT_PRODUCTS_DIR}/RMQClient/RMQClient.framework
+${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework
+${BUILT_PRODUCTS_DIR}/StompClientLib/StompClientLib.framework

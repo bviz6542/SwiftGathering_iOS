@@ -6,7 +6,17 @@
 //
 
 struct FriendLocationOutput: Codable {
-    let id: String
+    let senderId: Int
+    let channelId: String
     let latitude: Double
-    let longtitude: Double
+    let longitude: Double
+    
+    func toDomain() -> FriendLocation {
+        FriendLocation(
+            senderId: senderId,
+            channelId: channelId,
+            latitude: latitude,
+            longitude: longitude
+        )
+    }
 }

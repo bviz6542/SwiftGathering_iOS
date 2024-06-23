@@ -13,6 +13,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     private var isInitialLocationUpdate: Bool = true
+    private var friendAnnotations = [Int: MKPointAnnotation]()
     
     private var mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
@@ -32,17 +33,15 @@ class MapViewController: UIViewController {
     }
     
     private func bind() {
-//        mapViewModel
-//            .friendLocationOutput
-//            .observe(on: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] location in
-//                let newLocation = CLLocation(latitude: location.latitude,
-//                                             longitude: location.longtitude)
-//                print(newLocation)
-//            }, onError: { error in
-//                print(error)
-//            })
-//            .disposed(by: disposeBag)
+        mapViewModel
+            .friendLocationOutput
+            .observe(on: MainScheduler.instance)
+            .subscribe(
+                with: self,
+                onNext: { owner, location in
+                    owner.setRegion(using: CLLocation(latitude: location.latitude, longitude: location.longitude))
+                })
+            .disposed(by: disposeBag)
         
         mapViewModel
             .myLocationOutput
@@ -71,6 +70,8 @@ class MapViewController: UIViewController {
                     print(error)
                 })
             .disposed(by: disposeBag)
+        
+        mapViewModel.myLocationInitiateInput.onNext(())
     }
     
     private func setInitialRegion(using location: CLLocation) {
@@ -90,10 +91,56 @@ class MapViewController: UIViewController {
     }
     
     private func updateMyLocation(to location: CLLocation, in mapView: MKMapView) {
-        let previousPins = mapView.annotations
-        let updatedPin = MKPointAnnotation()
-        updatedPin.coordinate = location.coordinate
-        mapView.addAnnotation(updatedPin)
-        mapView.removeAnnotations(previousPins)
+        let myLocationPin = MKPointAnnotation()
+        myLocationPin.coordinate = location.coordinate
+        myLocationPin.title = "My Location"
+        mapView.removeAnnotations(mapView.annotations.filter { $0.title == "My Location" })
+        mapView.addAnnotation(myLocationPin)
+    }
+    
+    private func updateFriendLocation(_ location: FriendLocationOutput) {
+        guard let mapView = mapView else { return }
+        let friendId = location.senderId
+        
+        let friendPin: MKPointAnnotation
+        if let existingPin = friendAnnotations[friendId] {
+            friendPin = existingPin
+            friendPin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        } else {
+            friendPin = MKPointAnnotation()
+            friendPin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            friendPin.title = "Friend \(friendId)"
+            friendAnnotations[friendId] = friendPin
+            mapView.addAnnotation(friendPin)
+        }
+    }
+    
+    private func color(for friendId: Int) -> UIColor {
+        let colors: [UIColor] = [.red, .green, .blue, .orange, .purple, .yellow]
+        return colors[friendId % colors.count]
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let title = annotation.title, title == "My Location" || title?.contains("Friend") == true else {
+            return nil
+        }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        if let title = annotation.title, title?.contains("Friend") == true, let friendId = Int(title!.split(separator: " ")[1]) {
+            annotationView?.pinTintColor = color(for: friendId)
+        } else {
+            annotationView?.pinTintColor = .black
+        }
+        
+        return annotationView
     }
 }

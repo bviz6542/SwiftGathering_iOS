@@ -17,9 +17,7 @@ final class MapCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(),
-                                          privateRabbitMQHandler: RabbitMQHandler(),
-                                          rabbitMQHandler: RabbitMQHandler())
+        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIdHolder.shared)
         let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
         let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
         let mapViewController = MapViewController(mapViewModel: mapViewModel)
