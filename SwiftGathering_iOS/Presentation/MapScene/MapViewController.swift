@@ -13,7 +13,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     private var isInitialLocationUpdate: Bool = true
-    private var friendAnnotations = [Int: MKPointAnnotation]()
+    private var friendAnnotations = [Int: FriendAnnotation]()
     
     private var mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
@@ -39,7 +39,7 @@ class MapViewController: UIViewController {
             .subscribe(
                 with: self,
                 onNext: { owner, location in
-                    owner.setRegion(using: CLLocation(latitude: location.latitude, longitude: location.longitude))
+                    owner.updateFriendLocation(location)
                 })
             .disposed(by: disposeBag)
         
@@ -58,8 +58,6 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mapViewModel.privateChannelInput.onNext(())
-        
         mapViewModel
             .privateChannelOutput
             .subscribe(
@@ -71,12 +69,13 @@ class MapViewController: UIViewController {
                 })
             .disposed(by: disposeBag)
         
+        mapViewModel.privateChannelInput.onNext(())
         mapViewModel.myLocationInitiateInput.onNext(())
+        mapViewModel.friendLocationInitiateInput.onNext(())
     }
     
     private func setInitialRegion(using location: CLLocation) {
-        guard let mapView = mapView else { return }
-        updateMyLocation(to: location, in: mapView)
+        updateMyLocation(to: location)
         mapView.setRegion(MKCoordinateRegion(center: location.coordinate,
                                              span: MKCoordinateSpan(latitudeDelta: 0.001,
                                                                     longitudeDelta: 0.001
@@ -86,11 +85,10 @@ class MapViewController: UIViewController {
     }
     
     private func setRegion(using location: CLLocation) {
-        guard let mapView = mapView else { return }
-        updateMyLocation(to: location, in: mapView)
+        updateMyLocation(to: location)
     }
     
-    private func updateMyLocation(to location: CLLocation, in mapView: MKMapView) {
+    private func updateMyLocation(to location: CLLocation) {
         let myLocationPin = MKPointAnnotation()
         myLocationPin.coordinate = location.coordinate
         myLocationPin.title = "My Location"
@@ -98,49 +96,42 @@ class MapViewController: UIViewController {
         mapView.addAnnotation(myLocationPin)
     }
     
-    private func updateFriendLocation(_ location: FriendLocationOutput) {
-        guard let mapView = mapView else { return }
-        let friendId = location.senderId
-        
-        let friendPin: MKPointAnnotation
+    private func updateFriendLocation(_ locationInfo: FriendLocation) {
+        let friendId = locationInfo.senderId
         if let existingPin = friendAnnotations[friendId] {
-            friendPin = existingPin
-            friendPin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            existingPin.coordinate = CLLocationCoordinate2D(latitude: locationInfo.latitude, longitude: locationInfo.longitude)
         } else {
-            friendPin = MKPointAnnotation()
-            friendPin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            friendPin.title = "Friend \(friendId)"
-            friendAnnotations[friendId] = friendPin
-            mapView.addAnnotation(friendPin)
+            let coordinate = CLLocationCoordinate2D(latitude: locationInfo.latitude, longitude: locationInfo.longitude)
+            let annotation = FriendAnnotation(friendId: friendId, coordinate: coordinate)
+            friendAnnotations[friendId] = annotation
+            mapView.addAnnotation(annotation)
         }
     }
     
     private func color(for friendId: Int) -> UIColor {
-        let colors: [UIColor] = [.red, .green, .blue, .orange, .purple, .yellow]
+        let colors: [UIColor] = [.green, .blue, .orange, .purple, .yellow]
         return colors[friendId % colors.count]
     }
-    
+}
+
+extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let title = annotation.title, title == "My Location" || title?.contains("Friend") == true else {
-            return nil
+        if let friendAnnotation = annotation as? FriendAnnotation {
+            let identifier = FriendAnnotationView.identifier
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? FriendAnnotationView
+            
+            if annotationView == nil {
+                annotationView = FriendAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                annotationView?.annotation = annotation
+            }
+            
+            annotationView?.setTitle("Friend \(friendAnnotation.friendId)")
+            annotationView?.setColor(color(for: friendAnnotation.friendId))
+            
+            return annotationView
         }
         
-        let identifier = "Annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
-        
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-        } else {
-            annotationView?.annotation = annotation
-        }
-        
-        if let title = annotation.title, title?.contains("Friend") == true, let friendId = Int(title!.split(separator: " ")[1]) {
-            annotationView?.pinTintColor = color(for: friendId)
-        } else {
-            annotationView?.pinTintColor = .black
-        }
-        
-        return annotationView
+        return nil
     }
 }

@@ -13,15 +13,14 @@ class MapRepositoryImpl: MapRepository {
     private var stompHandler: STOMPHandler
     private var memberIdHolder: MemberIdHolder
     
-    init(locationHandler: LocationHandler,stompHandler: STOMPHandler, memberIdHolder: MemberIdHolder) {
+    init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIdHolder) {
         self.locationHandler = locationHandler
         self.stompHandler = stompHandler
         self.memberIdHolder = memberIdHolder
     }
     
     func setup() {
-        stompHandler.registerSockect()
-        stompHandler.subscribe()
+        stompHandler.registerSocket()
         locationHandler.start()
     }
     
@@ -42,9 +41,10 @@ class MapRepositoryImpl: MapRepository {
     func fetchFriendLocation() -> Observable<FriendLocation> {
         stompHandler
             .result
-            .compactMap { jsonObject in
+            .compactMap { [weak self] jsonObject in
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
-                   let message = try? JSONDecoder().decode(FriendLocationOutput.self, from: jsonData) {
+                   let message = try? JSONDecoder().decode(FriendLocationOutput.self, from: jsonData),
+                   self?.memberIdHolder.memberId != message.senderId {
                     return message
                 }
                 return nil
@@ -55,15 +55,4 @@ class MapRepositoryImpl: MapRepository {
     func listenToPrivateChannel() -> Observable<String> {
         return .just("d")
     }
-    
-//    func fetchFriendLocation() -> Observable<FriendLocationOutput> {
-//        let (_, queue) = rabbitMQHandler.initializeConnection(using: "1")
-//        return rabbitMQHandler.listen(to: queue, expecting: FriendLocationOutput.self)
-//    }
-//    
-//    func listenToPrivateChannel() -> Observable<String> {
-//        let (_, queue) = privateRabbitMQHandler.initializeConnection(using: "1")
-//        return privateRabbitMQHandler.listen(to: queue)
-//    }
 }
-
