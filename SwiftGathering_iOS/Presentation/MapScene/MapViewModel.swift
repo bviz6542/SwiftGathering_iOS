@@ -14,7 +14,7 @@ class MapViewModel {
     let privateChannelInput = PublishSubject<Void>()
     
     let myLocationOutput = PublishSubject<CLLocation>()
-    let friendLocationOutput = PublishSubject<FriendLocationOutput>()
+    let friendLocationOutput = PublishSubject<FriendLocation>()
     let privateChannelOutput = PublishSubject<String>()
     
     private let mapUseCase: MapUseCase
@@ -45,22 +45,22 @@ class MapViewModel {
                 })
             .disposed(by: disposeBag)
         
-//        friendLocationInitiateInput
-//            .withUnretained(self)
-//            .flatMap { (owner, _) -> Observable<Result<FriendLocationOutput, Error>> in
-//                return owner.mapUseCase.fetchFriendLocation()
-//                    .map { .success($0) }
-//                    .catch { .just(.failure($0)) }
-//                    .asObservable()
-//            }
-//            .subscribe(
-//                with: self,
-//                onNext: { owner, result in
-//                    result.onSuccess { output in
-//                        owner.friendLocationOutput.onNext(output)
-//                    }
-//                })
-//            .disposed(by: disposeBag)
+        friendLocationInitiateInput
+            .withUnretained(self)
+            .flatMap { (owner, _) -> Observable<Result<FriendLocation, Error>> in
+                return owner.mapUseCase.fetchFriendLocation()
+                    .map { .success($0) }
+                    .catch { .just(.failure($0)) }
+                    .asObservable()
+            }
+            .subscribe(
+                with: self,
+                onNext: { owner, result in
+                    result.onSuccess { output in
+                        owner.friendLocationOutput.onNext(output)
+                    }
+                })
+            .disposed(by: disposeBag)
         
         privateChannelInput
             .withUnretained(self)

@@ -10,9 +10,9 @@ import RxSwift
 
 class STOMPHandler {
     private let client = StompClientLib()
-    private let resultSubject = PublishSubject<Codable>()
+    private let resultSubject = PublishSubject<AnyObject>()
 
-    var result: Observable<Codable> {
+    var result: Observable<AnyObject> {
         return resultSubject.asObservable()
     }
     
@@ -42,8 +42,9 @@ class STOMPHandler {
 
 extension STOMPHandler: StompClientLibDelegate {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-        print("stompClient(")
-        // friendsLocation.onNext
+        if let jsonBody = jsonBody {
+            resultSubject.onNext(jsonBody)
+        }
     }
     
     func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {}

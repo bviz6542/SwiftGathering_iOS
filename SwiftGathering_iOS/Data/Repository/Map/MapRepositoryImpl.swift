@@ -11,10 +11,12 @@ import CoreLocation
 class MapRepositoryImpl: MapRepository {
     private var locationHandler: LocationHandler
     private var stompHandler: STOMPHandler
+    private var memberIdHolder: MemberIdHolder
     
-    init(locationHandler: LocationHandler,stompHandler: STOMPHandler) {
+    init(locationHandler: LocationHandler,stompHandler: STOMPHandler, memberIdHolder: MemberIdHolder) {
         self.locationHandler = locationHandler
         self.stompHandler = stompHandler
+        self.memberIdHolder = memberIdHolder
     }
     
     func setup() {
@@ -29,16 +31,26 @@ class MapRepositoryImpl: MapRepository {
     
     func broadcastMyLocation(_ myLocation: MyLocation) {
         do {
-            let locationInput = MockLocationInput(senderId: 1212, channelId: "wow", latitude: myLocation.latitude, longitude: myLocation.longitude)
+            let memberId = memberIdHolder.memberId
+            let locationInput = MockLocationInput(senderId: memberId, channelId: "wow", latitude: myLocation.latitude, longitude: myLocation.longitude)
             try stompHandler.send(using: locationInput)
         } catch {
             
         }
     }
     
-//    func fetchFriendsLocation() -> Observable<CLLocation> {
-//        
-//    }
+    func fetchFriendLocation() -> Observable<FriendLocation> {
+        stompHandler
+            .result
+            .compactMap { jsonObject in
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
+                   let message = try? JSONDecoder().decode(FriendLocationOutput.self, from: jsonData) {
+                    return message
+                }
+                return nil
+            }
+            .map{ $0.toDomain() }
+    }
 
     func listenToPrivateChannel() -> Observable<String> {
         return .just("d")

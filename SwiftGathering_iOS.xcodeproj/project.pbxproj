@@ -38,6 +38,7 @@
 		439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */; };
 		439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */; };
 		43AFD0012C271C9800897FA5 /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AFD0002C271C9800897FA5 /* MyLocation.swift */; };
+		43AFD0052C28682100897FA5 /* FriendLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AFD0042C28682100897FA5 /* FriendLocation.swift */; };
 		43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEED2B94825B00047065 /* CanvasView.swift */; };
 		43B2CEF02B94828C00047065 /* DrawingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEEF2B94828C00047065 /* DrawingMode.swift */; };
 		43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */; };
@@ -151,6 +152,7 @@
 		439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		43AFD0002C271C9800897FA5 /* MyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
+		43AFD0042C28682100897FA5 /* FriendLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLocation.swift; sourceTree = "<group>"; };
 		43B2CEED2B94825B00047065 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		43B2CEEF2B94828C00047065 /* DrawingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingMode.swift; sourceTree = "<group>"; };
 		43B2CEF12B94829E00047065 /* DrawingPathInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPathInfo.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				43AFD0002C271C9800897FA5 /* MyLocation.swift */,
+				43AFD0042C28682100897FA5 /* FriendLocation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1028,6 +1031,7 @@
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
 				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
+				43AFD0052C28682100897FA5 /* FriendLocation.swift in Sources */,
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				A28F845E2C1C4E0B00E1A177 /* RegisterUseCaseImpl.swift in Sources */,
 				43D0E2B72BE74BDC00294A4A /* FriendTableViewCell.swift in Sources */,
