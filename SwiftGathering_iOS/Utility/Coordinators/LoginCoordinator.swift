@@ -27,7 +27,6 @@ final class LoginCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoco
     }
     
     func navigateToTabBar() {
-        popViewController(animated: false)
         coordinatorDidFinish()
     }
     

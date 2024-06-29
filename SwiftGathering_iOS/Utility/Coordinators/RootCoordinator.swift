@@ -39,14 +39,14 @@ final class RootCoordinator: ParentCoordinatorProtocol {
     }
     
     func childDidFinish(_ child: CoordinatorProtocol?) {
+        if let index = childCoordinators.firstIndex(where: { $0 === child }) {
+            childCoordinators.remove(at: index)
+        }
         if child is TabBarCoordinator {
             navigateToLogin()
         }
         if child is LoginCoordinator {
             navigateToTabBar()
-        }
-        if let index = childCoordinators.firstIndex(where: { $0 === child }) {
-            childCoordinators.remove(at: index)
         }
     }
 }

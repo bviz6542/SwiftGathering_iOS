@@ -10,7 +10,7 @@ import UIKit
 final class ProfileCoordinator: ChildCoordinatorProtocol {
     var navigationController: UINavigationController
     weak var parentCoordinator: ParentCoordinatorProtocol?
-
+    
     init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
@@ -23,7 +23,6 @@ final class ProfileCoordinator: ChildCoordinatorProtocol {
     }
     
     func navigateToSplash() {
-        popViewController(animated: true)
         coordinatorDidFinish()
     }
 }
