@@ -18,9 +18,9 @@ final class RegisterCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let registerRepository = RegisterRepositoryImpl(httpHandler: HTTPHandler())
-        let registerUseCase = RegisterUseCaseImpl(registerRepository: registerRepository)
-        let registerViewModel = RegisterViewModel(registerUseCase: registerUseCase)
+        let memberRepository = MembereRepositoryImpl(httpHandler: HTTPHandler())
+        let memberUseCase = MemberUseCaseImpl(registerRepository: memberRepository)
+        let registerViewModel = RegisterViewModel(memberUseCase: memberUseCase)
         let registerViewController = RegisterViewController(registerViewModel: registerViewModel)
         registerViewController.coordinator = self
         navigationController.pushViewController(registerViewController, animated: true)

@@ -11,12 +11,11 @@ import RxCocoa
 class LoginViewModel {
     var loginTap = PublishSubject<LoginInfo>()
     
-    var loginState: Observable<Void> {
-        return loginStateSubject.asObservable().compactMap { $0 }
+    var loginState: Observable<Result<Void, Error>> {
+        return loginStateSubject.asObservable()
     }
     
-    private let loginStateSubject = BehaviorSubject<Void?>(value: nil)
-    private let loginErrorSubject = PublishSubject<Error>()
+    private let loginStateSubject = PublishSubject<Result<Void, Error>>()
     private let loginUseCase: LoginUseCase
     private let disposeBag = DisposeBag()
     
@@ -33,11 +32,8 @@ class LoginViewModel {
             }
             .subscribe(
                 with: self,
-                onNext: { (owner, loginInfo) in
-                    owner.loginStateSubject.onNext(())
-                },
-                onError: { (owner, error) in
-                    owner.loginErrorSubject.onNext(error)
+                onNext: { (owner, loginResult) in
+                    owner.loginStateSubject.onNext(loginResult)
                 })
             .disposed(by: disposeBag)
     }

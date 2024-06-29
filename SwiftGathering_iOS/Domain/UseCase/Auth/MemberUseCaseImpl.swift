@@ -1,5 +1,5 @@
 //
-//  RegisterUseCaseImpl.swift
+//  MemberUseCaseImpl.swift
 //  SwiftGathering_iOS
 //
 //  Created by mraz on 6/14/24.
@@ -7,10 +7,10 @@
 
 import RxSwift
 
-class RegisterUseCaseImpl: RegisterUseCase {
-    private var registerRepository: RegisterRepository
+class MemberUseCaseImpl: MemberUseCase {
+    private var registerRepository: MemberRepository
     
-    init(registerRepository: RegisterRepository) {
+    init(registerRepository: MemberRepository) {
         self.registerRepository = registerRepository
     }
     
