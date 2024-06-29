@@ -22,7 +22,7 @@ class LoginRepositoryImpl: LoginRepository {
     }
     
     func login(using loginInfo: LoginInfo) -> Observable<Void> {
-        let loginInput = LoginInput(loginId: loginInfo.loginId, loginPassword: loginInfo.loginPassword)
+        let loginInput = LoginInput(loginUsername: loginInfo.loginId, loginPassword: loginInfo.loginPassword)
         return httpHandler
             .setPath(.login)
             .setMethod(.post)

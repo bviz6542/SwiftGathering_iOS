@@ -8,9 +8,13 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    var coordinator: ProfileCoordinator?
+    weak var coordinator: ProfileCoordinator?
     
     @IBAction func onTouchedLogout(_ sender: UIButton) {
         coordinator?.navigateToSplash()
+    }
+    
+    deinit {
+        print("profile vc deinit")
     }
 }
