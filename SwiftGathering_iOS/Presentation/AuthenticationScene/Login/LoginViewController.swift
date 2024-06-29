@@ -63,13 +63,17 @@ class LoginViewController: UIViewController {
         
         loginViewModel.loginState
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.coordinator?.navigateToTabBar()
-            }, onError: { [weak self] _ in
-                self?.present(AlertBuilder()
-                    .setTitle("Login Error")
-                    .setMessage("Try once more")
-                    .build(), animated: true)
+            .subscribe(onNext: { [weak self] result in
+                result
+                    .onSuccess { _ in
+                        self?.coordinator?.navigateToTabBar()
+                    }
+                    .onFailure { error in
+                        self?.present(AlertBuilder()
+                            .setTitle("Login Error")
+                            .setMessage("Try once more")
+                            .build(), animated: true)
+                    }
             })
             .disposed(by: disposeBag)
         
