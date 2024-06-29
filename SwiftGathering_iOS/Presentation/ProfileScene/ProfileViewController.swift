@@ -13,8 +13,4 @@ class ProfileViewController: UIViewController {
     @IBAction func onTouchedLogout(_ sender: UIButton) {
         coordinator?.navigateToSplash()
     }
-    
-    deinit {
-        print("profile vc deinit")
-    }
 }

@@ -1,5 +1,5 @@
 //
-//  RegisterRepositoryImpl.swift
+//  MembereRepositoryImpl.swift
 //  SwiftGathering_iOS
 //
 //  Created by mraz on 6/14/24.
@@ -7,7 +7,7 @@
 
 import RxSwift
 
-class RegisterRepositoryImpl: RegisterRepository {
+class MembereRepositoryImpl: MemberRepository {
     private var httpHandler: HTTPHandler
     
     init(httpHandler: HTTPHandler) {

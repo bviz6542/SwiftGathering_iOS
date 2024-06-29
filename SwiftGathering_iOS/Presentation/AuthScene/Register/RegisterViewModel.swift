@@ -6,13 +6,13 @@
 //
 
 class RegisterViewModel {
-    private var registerUseCase: RegisterUseCase
+    private var memberUseCase: MemberUseCase
     
-    init(registerUseCase: RegisterUseCase) {
-        self.registerUseCase = registerUseCase
+    init(memberUseCase: MemberUseCase) {
+        self.memberUseCase = memberUseCase
     }
     
     func register(using registerInfo: RegisterInfo) async -> Result<Void, Error> {
-        return await registerUseCase.register(using: registerInfo)
+        return await memberUseCase.register(using: registerInfo)
     }
 }
