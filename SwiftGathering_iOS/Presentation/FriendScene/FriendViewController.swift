@@ -10,6 +10,7 @@ import RxSwift
 
 class FriendViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var gatheringButton: UIButton!
     
     private let friendViewModel: FriendViewModel
     private let disposeBag = DisposeBag()
@@ -72,9 +73,19 @@ class FriendViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        tableView
-            .rx.setDelegate(self)
+        tableView.rx
+            .setDelegate(self)
             .disposed(by: disposeBag)
+        
+//        gatheringButton.rx
+//            .tap
+//            .subscribe(
+//                with: self,
+//                onNext: { owner, _ in
+//                    
+//                })
+//        
+//        .disposed(by: disposeBag)
         
         confirmSubject
             .subscribe(onNext: { [weak self] friendInfo in
