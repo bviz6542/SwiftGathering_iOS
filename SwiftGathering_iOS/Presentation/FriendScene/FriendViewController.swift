@@ -36,16 +36,26 @@ class FriendViewController: UIViewController {
     
     private func bind() {
         friendViewModel
-            .friendListInitiateInput
-            .onNext(())
-        
-        friendViewModel
             .friendInfosSuccessSubject
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
                 cell.userImageView.image = UIImage(systemName: "person.fill")
                 cell.nameLabel.text = String(element.name)
             }
+            .disposed(by: disposeBag)
+        
+        friendViewModel
+            .friendInfosFailureSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(
+                with: self,
+                onNext: { owner, error in
+                    owner.present(AlertBuilder()
+                        .setTitle("Error")
+                        .setMessage("Failed fetching Friend list")
+                        .setProceedAction(title: "Yes", style: .default)
+                        .build(), animated: true)
+                })
             .disposed(by: disposeBag)
         
         tableView.rx
@@ -71,6 +81,9 @@ class FriendViewController: UIViewController {
                 print("wow: \(friendInfo)")
             })
             .disposed(by: disposeBag)
+        
+        friendViewModel
+            .friendListInitiateInput.onNext(())
     }
 }
 
