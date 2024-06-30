@@ -40,8 +40,7 @@ class FriendViewController: UIViewController {
             .friendInfosSuccessSubject
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
-                cell.userImageView.image = UIImage(systemName: "person.fill")
-                cell.nameLabel.text = String(element.name)
+                cell.setupUI(using: element)
             }
             .disposed(by: disposeBag)
         
@@ -100,6 +99,6 @@ class FriendViewController: UIViewController {
 
 extension FriendViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+        return 52
     }
 }

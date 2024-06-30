@@ -24,6 +24,18 @@ class FriendTableViewCell: UITableViewCell {
             }
     }
     
+    func setupUI(using friendInfo: FriendInfo) {
+        nameLabel.text = String(friendInfo.name)
+        
+        userImageView.image = UIImage(systemName: "person.fill")
+        userImageView.layer.cornerRadius = userImageView.frame.height / 2
+        userImageView.layer.borderWidth = 1
+        userImageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+        userImageView.layer.masksToBounds = false
+        userImageView.clipsToBounds = true
+        userImageView.layoutIfNeeded()
+    }
+    
     func showSelectedView() {
         selectedView.isHidden = false
     }
