@@ -7,5 +7,5 @@
 
 protocol MemberUseCase {
     func register(using registerInfo: RegisterInfo) async -> Result<Void, Error>
-    func resign(using registerInfo: RegisterInfo) async -> Result<Void, Error>
+//    func resign(using registerInfo: RegisterInfo) async -> Result<Void, Error>
 }

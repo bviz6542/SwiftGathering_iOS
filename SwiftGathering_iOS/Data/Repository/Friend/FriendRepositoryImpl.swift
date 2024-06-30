@@ -11,28 +11,18 @@ import Foundation
 class FriendRepositoryImpl: FriendRepository {
     private var httpHandler: HTTPHandler
     private var userDefaults: UserDefaults
+    private var tokenHolder: TokenHolder
+    private var memberIdHolder: MemberIdHolder
     
-    init(httpHandler: HTTPHandler, userDefaults: UserDefaults) {
+    init(httpHandler: HTTPHandler, userDefaults: UserDefaults, tokenHolder: TokenHolder, memberIdHolder: MemberIdHolder) {
         self.httpHandler = httpHandler
         self.userDefaults = userDefaults
+        self.tokenHolder = tokenHolder
+        self.memberIdHolder = memberIdHolder
     }
     
     func fetchMyInfo() -> Observable<MyInfo> {
-        guard let fetchedObject = userDefaults.data(forKey: "myInfo") else {
-            return .error(UserDefaultsError.doesNotExist)
-        }
-        guard let myInfo = try? JSONDecoder().decode(MyInfo.self, from: fetchedObject) else {
-            return .error(UserDefaultsError.decodeFailed)
-        }
-        return .just(myInfo)
-    }
-    
-    func saveMyInfo(using myInfo: MyInfo) -> Observable<Void> {
-        guard let encodedObject = try? JSONEncoder().encode(myInfo) else {
-            return .error(UserDefaultsError.encodeFailed)
-        }
-        userDefaults.setValue(encodedObject, forKey: "myInfo")
-        return .just(())
+        .just(MyInfo(id: memberIdHolder.memberId))
     }
     
     func fetchFriends(using myInfo: MyInfo) -> Observable<[FriendInfo]> {
@@ -41,11 +31,12 @@ class FriendRepositoryImpl: FriendRepository {
             .setPath(.friends(memberID: myID))
             .setPort(8080)
             .setMethod(.get)
+            .addHeader(key: "Authorization", value: "Bearer \(tokenHolder.token)")
             .rxSend(expecting: [FriendsOutput].self)
             .map { outputs in
                 return outputs
                     .map { output in
-                        FriendInfo(id: output.id, name: output.name)
+                        FriendInfo(id: output.id, name: output.name, isSelected: false)
                     }
             }
     }

@@ -8,13 +8,13 @@
 import RxSwift
 
 class MemberUseCaseImpl: MemberUseCase {
-    private var registerRepository: MemberRepository
+    private var memberRepository: MemberRepository
     
-    init(registerRepository: MemberRepository) {
-        self.registerRepository = registerRepository
+    init(memberRepository: MemberRepository) {
+        self.memberRepository = memberRepository
     }
     
     func register(using registerInfo: RegisterInfo) async -> Result<Void, Error> {
-        return await registerRepository.register(using: registerInfo)
+        return await memberRepository.register(using: registerInfo)
     }
 }

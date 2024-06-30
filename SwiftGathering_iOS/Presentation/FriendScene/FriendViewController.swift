@@ -10,6 +10,7 @@ import RxSwift
 
 class FriendViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var gatheringButton: UIButton!
     
     private let friendViewModel: FriendViewModel
     private let disposeBag = DisposeBag()
@@ -36,16 +37,25 @@ class FriendViewController: UIViewController {
     
     private func bind() {
         friendViewModel
-            .friendListInitiateInput
-            .onNext(())
-        
-        friendViewModel
             .friendInfosSuccessSubject
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
-                cell.userImageView.image = UIImage(systemName: "person.fill")
-                cell.nameLabel.text = String(element.name)
+                cell.setupUI(using: element)
             }
+            .disposed(by: disposeBag)
+        
+        friendViewModel
+            .friendInfosFailureSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(
+                with: self,
+                onNext: { owner, error in
+                    owner.present(AlertBuilder()
+                        .setTitle("Error")
+                        .setMessage("Failed fetching Friend list")
+                        .setProceedAction(title: "Yes", style: .default)
+                        .build(), animated: true)
+                })
             .disposed(by: disposeBag)
         
         tableView.rx
@@ -62,20 +72,33 @@ class FriendViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        tableView
-            .rx.setDelegate(self)
+        tableView.rx
+            .setDelegate(self)
             .disposed(by: disposeBag)
+        
+//        gatheringButton.rx
+//            .tap
+//            .subscribe(
+//                with: self,
+//                onNext: { owner, _ in
+//                    
+//                })
+//        
+//        .disposed(by: disposeBag)
         
         confirmSubject
             .subscribe(onNext: { [weak self] friendInfo in
                 print("wow: \(friendInfo)")
             })
             .disposed(by: disposeBag)
+        
+        friendViewModel
+            .friendListInitiateInput.onNext(())
     }
 }
 
 extension FriendViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+        return 52
     }
 }

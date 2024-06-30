@@ -9,6 +9,7 @@ import RxSwift
 
 class FriendViewModel {
     var friendListInitiateInput = PublishSubject<Void>()
+    var gatheringCreateInput = PublishSubject<Void>()
     
     var friendInfosSuccessSubject = PublishSubject<[FriendInfo]>()
     var friendInfosFailureSubject = PublishSubject<Error>()
@@ -41,5 +42,9 @@ class FriendViewModel {
                     }
                 })
             .disposed(by: disposeBag)
+        
+//        gatheringCreateInput
+//            .withUnretained(self)
+//            .flatMap(T##selector: ((FriendViewModel, Void)) throws -> ObservableConvertibleType##((FriendViewModel, Void)) throws -> ObservableConvertibleType)
     }
 }
