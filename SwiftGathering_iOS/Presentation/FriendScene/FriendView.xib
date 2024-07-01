@@ -12,56 +12,74 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendViewController" customModule="Swift_Gathering" customModuleProvider="target">
             <connections>
-                <outlet property="gatheringButton" destination="7ii-hc-5a5" id="vLA-v1-CFG"/>
+                <outlet property="addFriendsButton" destination="5FT-R5-VYp" id="FOV-Xk-WWh"/>
+                <outlet property="gatheringButton" destination="7ii-hc-5a5" id="rVB-Km-oRn"/>
+                <outlet property="headerView" destination="AnZ-rU-DQv" id="juC-yH-dUR"/>
                 <outlet property="tableView" destination="dJW-yN-bR0" id="6lf-Ny-O87"/>
                 <outlet property="view" destination="iN0-l3-epB" id="QAt-gJ-6CC"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnZ-rU-DQv">
+                <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnZ-rU-DQv">
                     <rect key="frame" x="0.0" y="59" width="393" height="45"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FT-R5-VYp">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5FT-R5-VYp">
                             <rect key="frame" x="333" y="-3" width="42" height="42"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="7SZ-l3-z2H"/>
+                                <constraint firstAttribute="height" constant="42" id="dTG-S5-8pv"/>
+                            </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal">
                                 <imageReference key="image" image="person.crop.circle.badge.plus" catalog="system" symbolScale="large"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ii-hc-5a5">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ii-hc-5a5">
                             <rect key="frame" x="289" y="-3" width="42" height="42"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="0Ut-Ad-MGZ"/>
+                                <constraint firstAttribute="height" constant="42" id="Iyl-XU-hDJ"/>
+                            </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal">
                                 <imageReference key="image" image="map.circle" catalog="system" symbolScale="large"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-FG-zBr">
-                            <rect key="frame" x="144" y="6" width="104" height="26"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-FG-zBr">
+                            <rect key="frame" x="152" y="6" width="90" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="5da-kB-IGJ"/>
+                                <constraint firstAttribute="height" constant="26" id="LdN-nn-w04"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZx-SE-1sa">
+                        <view clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZx-SE-1sa">
                             <rect key="frame" x="0.0" y="44" width="393" height="1"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7ii-hc-5a5" secondAttribute="trailing" constant="62" id="5ed-yo-gLa"/>
+                        <constraint firstItem="5FT-R5-VYp" firstAttribute="top" secondItem="AnZ-rU-DQv" secondAttribute="top" constant="-3" id="7tW-1N-ccv"/>
+                        <constraint firstAttribute="height" constant="45" id="Nco-Z3-Tm8"/>
+                        <constraint firstItem="5XE-FG-zBr" firstAttribute="top" secondItem="AnZ-rU-DQv" secondAttribute="top" constant="6" id="P5Q-O0-EqJ"/>
+                        <constraint firstAttribute="trailing" secondItem="5FT-R5-VYp" secondAttribute="trailing" constant="18" id="VDm-Xk-lYF"/>
+                        <constraint firstItem="5XE-FG-zBr" firstAttribute="centerX" secondItem="AnZ-rU-DQv" secondAttribute="centerX" id="XLR-lt-bnL"/>
+                        <constraint firstItem="7ii-hc-5a5" firstAttribute="top" secondItem="AnZ-rU-DQv" secondAttribute="top" constant="-3" id="bRp-NE-lmi"/>
+                    </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dJW-yN-bR0">
-                    <rect key="frame" x="0.0" y="112" width="393" height="706"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" style="plain" rowHeight="52" estimatedRowHeight="52" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="dJW-yN-bR0">
+                    <rect key="frame" x="0.0" y="104" width="393" height="748"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -69,15 +87,21 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="AnZ-rU-DQv" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="5JL-gk-HtO"/>
+                <constraint firstItem="dJW-yN-bR0" firstAttribute="top" secondItem="AnZ-rU-DQv" secondAttribute="bottom" id="BRQ-oz-zp5"/>
+                <constraint firstItem="dJW-yN-bR0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="a5V-xk-wro"/>
+                <constraint firstItem="AnZ-rU-DQv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="59" id="hz4-8Q-XWB"/>
+                <constraint firstItem="AnZ-rU-DQv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jaK-Jg-rSU"/>
+                <constraint firstItem="dJW-yN-bR0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="lva-Xb-tJH"/>
+                <constraint firstAttribute="bottom" secondItem="dJW-yN-bR0" secondAttribute="bottom" id="mfx-92-GKg"/>
+            </constraints>
             <point key="canvasLocation" x="23.664122137404579" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
         <image name="map.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="114"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
