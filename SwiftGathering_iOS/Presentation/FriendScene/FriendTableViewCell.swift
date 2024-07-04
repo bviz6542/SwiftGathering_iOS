@@ -13,19 +13,17 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var currentlySelectedImageView: UIImageView!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        subviews
-            .filter { view in
-                type(of: view).description() == "_UITableViewCellSeparatorView"
-            }
-            .forEach { view in
-                view.alpha = 1.0
-            }
-    }
-    
     func setupUI(using friendInfo: FriendInfo) {
-        nameLabel.text = String(friendInfo.name)
+        let (name, id) = (friendInfo.name, String(friendInfo.id))
+        let fullText = "\(name)  \(id)"
+        let attributedText = NSMutableAttributedString(string: fullText)
+        let nameRange = (fullText as NSString).range(of: name)
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 17.0), range: nameRange)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.black, range: nameRange)
+        let idRange = (fullText as NSString).range(of: id)
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 12.0), range: idRange)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.lightGray, range: idRange)
+        nameLabel.attributedText = attributedText
         
         userImageView.image = UIImage(systemName: "person.fill")
         userImageView.layer.cornerRadius = userImageView.frame.height / 2

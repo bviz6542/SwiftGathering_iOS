@@ -10,7 +10,6 @@ import RxSwift
 
 class FriendViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var gatheringButton: UIButton!
     @IBOutlet weak var addFriendsButton: UIButton!
     
@@ -30,15 +29,19 @@ class FriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupNavigationBar()
         bind()
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupTableView() {
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
-        
-//        headerView.isUserInteractionEnabled = true
-//        gatheringButton.isUserInteractionEnabled = true
-//        addFriendsButton.isUserInteractionEnabled = true
+        tableView.backgroundColor = .lightGray
     }
     
     private func bind() {
