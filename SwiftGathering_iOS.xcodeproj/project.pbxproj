@@ -76,6 +76,8 @@
 		43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD292BD4DB4900224669 /* MemberRepository.swift */; };
 		43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD2B2BD4DB5C00224669 /* RegisterViewModel.swift */; };
 		43D3BD2E2BD4DBCB00224669 /* RegisterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */; };
+		43FC61AB2C36F936000B3D58 /* GatheringRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FC61AA2C36F936000B3D58 /* GatheringRepositoryImpl.swift */; };
+		43FC61AE2C36FBAE000B3D58 /* CreateGatheringInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FC61AD2C36FBAE000B3D58 /* CreateGatheringInput.swift */; };
 		43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */; };
 		43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */; };
 		43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */; };
@@ -192,6 +194,8 @@
 		43D3BD292BD4DB4900224669 /* MemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepository.swift; sourceTree = "<group>"; };
 		43D3BD2B2BD4DB5C00224669 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfo.swift; sourceTree = "<group>"; };
+		43FC61AA2C36F936000B3D58 /* GatheringRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringRepositoryImpl.swift; sourceTree = "<group>"; };
+		43FC61AD2C36FBAE000B3D58 /* CreateGatheringInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGatheringInput.swift; sourceTree = "<group>"; };
 		43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -464,6 +468,15 @@
 		43DE90892C33015700462EDA /* Gathering */ = {
 			isa = PBXGroup;
 			children = (
+				43FC61AD2C36FBAE000B3D58 /* CreateGatheringInput.swift */,
+			);
+			path = Gathering;
+			sourceTree = "<group>";
+		};
+		43FC61AC2C36F966000B3D58 /* Gathering */ = {
+			isa = PBXGroup;
+			children = (
+				43FC61AA2C36F936000B3D58 /* GatheringRepositoryImpl.swift */,
 			);
 			path = Gathering;
 			sourceTree = "<group>";
@@ -511,6 +524,7 @@
 		43FFDD562BCBDB88002D19B2 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				43FC61AC2C36F966000B3D58 /* Gathering */,
 				A28F84672C1C500E00E1A177 /* Auth */,
 				A28F84692C1C502100E1A177 /* Friend */,
 				A28F84682C1C501C00E1A177 /* Map */,
@@ -1067,6 +1081,7 @@
 				43D0E2B72BE74BDC00294A4A /* FriendTableViewCell.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
 				43D3BD262BD4DA7000224669 /* RegisterCoordinator.swift in Sources */,
+				43FC61AB2C36F936000B3D58 /* GatheringRepositoryImpl.swift in Sources */,
 				43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */,
 				439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */,
 				432C70802BD41BB400B4F4CE /* LoginCoordinator.swift in Sources */,
@@ -1076,6 +1091,7 @@
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
+				43FC61AE2C36FBAE000B3D58 /* CreateGatheringInput.swift in Sources */,
 				A28F846B2C1C504000E1A177 /* LoginRepositoryImpl.swift in Sources */,
 				43D3BD282BD4DB3D00224669 /* MemberUseCase.swift in Sources */,
 				43D3BD2E2BD4DBCB00224669 /* RegisterInfo.swift in Sources */,

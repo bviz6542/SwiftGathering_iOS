@@ -101,6 +101,7 @@ class FriendViewController: UIViewController {
         
         confirmSubject
             .subscribe(onNext: { [weak self] friendInfo in
+//                self?.friendViewModel.gatheringCreateInput.onNext(<#T##element: Void##Void#>)
                 print("wow: \(friendInfo)")
             })
             .disposed(by: disposeBag)
