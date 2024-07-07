@@ -67,25 +67,25 @@
                             </constraints>
                         </view>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoG-wn-uB0" userLabel="Start Button">
-                            <rect key="frame" x="279" y="6.3333333333333286" width="49" height="37.666666666666664"/>
+                            <rect key="frame" x="281" y="10.333333333333327" width="49" height="29.333333333333329"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="49" id="Nzt-Lt-Cf5"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="play.circle" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                            </buttonConfiguration>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="play.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
+                            </state>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="fIz-fw-CuX" userLabel="Cancel Button">
-                            <rect key="frame" x="328" y="7.3333333333333286" width="50" height="35.333333333333336"/>
+                            <rect key="frame" x="328" y="9.6666666666666732" width="50" height="30.666666666666671"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="mjg-5o-xls"/>
                             </constraints>
                             <color key="tintColor" systemColor="systemRedColor"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18" weight="bold"/>
-                            </buttonConfiguration>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="xmark.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26" weight="bold"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,7 +101,7 @@
                         <constraint firstItem="ht2-70-g3d" firstAttribute="centerX" secondItem="avt-hq-i53" secondAttribute="centerX" id="V9N-ES-abU"/>
                         <constraint firstItem="ht2-70-g3d" firstAttribute="top" secondItem="avt-hq-i53" secondAttribute="top" constant="10" id="Xbd-Go-6KK"/>
                         <constraint firstItem="Eas-QL-OIg" firstAttribute="leading" secondItem="ycL-He-5lq" secondAttribute="trailing" constant="6" id="eLw-hh-1ms"/>
-                        <constraint firstItem="fIz-fw-CuX" firstAttribute="leading" secondItem="zoG-wn-uB0" secondAttribute="trailing" id="q18-7d-ZnH"/>
+                        <constraint firstItem="fIz-fw-CuX" firstAttribute="leading" secondItem="zoG-wn-uB0" secondAttribute="trailing" constant="-2" id="q18-7d-ZnH"/>
                         <constraint firstItem="ftB-7F-NId" firstAttribute="leading" secondItem="avt-hq-i53" secondAttribute="leading" id="rZh-gn-ERA"/>
                         <constraint firstAttribute="trailing" secondItem="ftB-7F-NId" secondAttribute="trailing" id="u4L-AI-89O"/>
                         <constraint firstItem="Eas-QL-OIg" firstAttribute="centerY" secondItem="avt-hq-i53" secondAttribute="centerY" id="ucc-ou-NNv"/>

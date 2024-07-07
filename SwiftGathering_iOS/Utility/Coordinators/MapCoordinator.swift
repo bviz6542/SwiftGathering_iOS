@@ -17,9 +17,11 @@ final class MapCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIdHolder.shared)
+        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIDHolder.shared)
+        let privateRepository = PrivateRepositoryImpl(stompHandler: PrivateSTOMPHandler(), memberIDHolder: MemberIDHolder.shared)
         let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
-        let mapViewModel = MapViewModel(mapUseCase: mapUseCase)
+        let privateUseCase = PrivateUseCaseImpl(repository: privateRepository)
+        let mapViewModel = MapViewModel(mapUseCase: mapUseCase, privateUseCase: privateUseCase)
         let mapViewController = MapViewController(mapViewModel: mapViewModel)
         navigationController.pushViewController(mapViewController, animated: false)
     }

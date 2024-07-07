@@ -10,9 +10,9 @@ import RxSwift
 class GatheringRepositoryImpl {
     private let httpHandler: HTTPHandler
     private let tokenHolder: TokenHolder
-    private let memberIdHolder: MemberIdHolder
+    private let memberIdHolder: MemberIDHolder
     
-    init(httpHandler: HTTPHandler, tokenHolder: TokenHolder, memberIdHolder: MemberIdHolder) {
+    init(httpHandler: HTTPHandler, tokenHolder: TokenHolder, memberIdHolder: MemberIDHolder) {
         self.httpHandler = httpHandler
         self.tokenHolder = tokenHolder
         self.memberIdHolder = memberIdHolder
