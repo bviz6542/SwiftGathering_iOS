@@ -12,9 +12,9 @@ class FriendRepositoryImpl: FriendRepository {
     private var httpHandler: HTTPHandler
     private var userDefaults: UserDefaults
     private var tokenHolder: TokenHolder
-    private var memberIdHolder: MemberIdHolder
+    private var memberIdHolder: MemberIDHolder
     
-    init(httpHandler: HTTPHandler, userDefaults: UserDefaults, tokenHolder: TokenHolder, memberIdHolder: MemberIdHolder) {
+    init(httpHandler: HTTPHandler, userDefaults: UserDefaults, tokenHolder: TokenHolder, memberIdHolder: MemberIDHolder) {
         self.httpHandler = httpHandler
         self.userDefaults = userDefaults
         self.tokenHolder = tokenHolder
@@ -36,7 +36,7 @@ class FriendRepositoryImpl: FriendRepository {
             .map { outputs in
                 return outputs
                     .map { output in
-                        FriendInfo(id: output.id, name: output.name, isSelected: false)
+                        FriendInfo(id: output.id, name: output.name)
                     }
             }
     }

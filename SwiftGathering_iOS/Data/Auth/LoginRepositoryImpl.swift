@@ -12,9 +12,9 @@ class LoginRepositoryImpl: LoginRepository {
     private let httpHandler: HTTPHandler
     private let userDefaults: UserDefaults
     private let tokenHolder: TokenHolder
-    private let memberIdHolder: MemberIdHolder
+    private let memberIdHolder: MemberIDHolder
     
-    init(httpHandler: HTTPHandler, userDefaults: UserDefaults, tokenHolder: TokenHolder, memberIdHolder: MemberIdHolder) {
+    init(httpHandler: HTTPHandler, userDefaults: UserDefaults, tokenHolder: TokenHolder, memberIdHolder: MemberIDHolder) {
         self.httpHandler = httpHandler
         self.userDefaults = userDefaults
         self.tokenHolder = tokenHolder

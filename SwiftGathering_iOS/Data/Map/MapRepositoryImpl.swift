@@ -11,9 +11,9 @@ import CoreLocation
 class MapRepositoryImpl: MapRepository {
     private var locationHandler: LocationHandler
     private var stompHandler: STOMPHandler
-    private var memberIdHolder: MemberIdHolder
+    private var memberIdHolder: MemberIDHolder
     
-    init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIdHolder) {
+    init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIDHolder) {
         self.locationHandler = locationHandler
         self.stompHandler = stompHandler
         self.memberIdHolder = memberIdHolder
@@ -50,9 +50,5 @@ class MapRepositoryImpl: MapRepository {
                 return nil
             }
             .map{ $0.toDomain() }
-    }
-
-    func listenToPrivateChannel() -> Observable<String> {
-        return .just("d")
     }
 }

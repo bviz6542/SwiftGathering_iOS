@@ -13,19 +13,27 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var currentlySelectedImageView: UIImageView!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        subviews
-            .filter { view in
-                type(of: view).description() == "_UITableViewCellSeparatorView"
-            }
-            .forEach { view in
-                view.alpha = 1.0
-            }
+    func setupNormalModeUI(using friendInfoUIModel: FriendInfoUIModel) {
+        hideSelectedView()
+        setupUI(using: friendInfoUIModel)
     }
     
-    func setupUI(using friendInfo: FriendInfo) {
-        nameLabel.text = String(friendInfo.name)
+    func setupGatheringModeUI(using friendInfoUIModel: FriendInfoUIModel) {
+        showSelectedView(using: friendInfoUIModel)
+        setupUI(using: friendInfoUIModel)
+    }
+    
+    private func setupUI(using friendInfoUIModel: FriendInfoUIModel) {
+        let (name, id) = (friendInfoUIModel.friendInfo.name, String(friendInfoUIModel.friendInfo.id))
+        let fullText = "\(name)  \(id)"
+        let attributedText = NSMutableAttributedString(string: fullText)
+        let nameRange = (fullText as NSString).range(of: name)
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 17.0), range: nameRange)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.black, range: nameRange)
+        let idRange = (fullText as NSString).range(of: id)
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 12.0), range: idRange)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.lightGray, range: idRange)
+        nameLabel.attributedText = attributedText
         
         userImageView.image = UIImage(systemName: "person.fill")
         userImageView.layer.cornerRadius = userImageView.frame.height / 2
@@ -36,19 +44,12 @@ class FriendTableViewCell: UITableViewCell {
         userImageView.layoutIfNeeded()
     }
     
-    func showSelectedView() {
+    private func showSelectedView(using friendInfoUIModel: FriendInfoUIModel) {
         selectedView.isHidden = false
+        currentlySelectedImageView.isHidden = !friendInfoUIModel.isSelected
     }
     
-    func hideSelectedView() {
+    private func hideSelectedView() {
         selectedView.isHidden = true
-    }
-    
-    func showIsCurrentlySelected() {
-        currentlySelectedImageView.isHidden = false
-    }
-    
-    func showIsNotCurrentlySelected() {
-        currentlySelectedImageView.isHidden = true
     }
 }

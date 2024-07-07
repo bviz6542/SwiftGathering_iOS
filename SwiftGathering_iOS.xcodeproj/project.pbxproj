@@ -19,6 +19,9 @@
 		435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */; };
 		435CA6962B944BDD008276B6 /* SwiftGathering_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */; };
 		435CA6982B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */; };
+		4365005C2C3A63F8005B244C /* FriendInfoUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */; };
+		4365005E2C3A747A005B244C /* ObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365005D2C3A747A005B244C /* ObservableExtension.swift */; };
+		436500612C3A9630005B244C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436500602C3A9630005B244C /* ActivityIndicator.swift */; };
 		4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */; };
 		4376F4F12BE6222100049FE1 /* EmptyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */; };
 		4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */; };
@@ -30,10 +33,18 @@
 		437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5532BDD43B000447EE8 /* MapCoordinator.swift */; };
 		437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5552BDD458500447EE8 /* MapUseCase.swift */; };
 		437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5572BDD459A00447EE8 /* MapRepository.swift */; };
+		43836DA42C3AA574000EFD71 /* FriendViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DA32C3AA574000EFD71 /* FriendViewMode.swift */; };
+		43836DA72C3AAC7D000EFD71 /* PrivateSTOMPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DA62C3AAC7D000EFD71 /* PrivateSTOMPHandler.swift */; };
+		43836DA92C3AACDA000EFD71 /* StompClientLibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DA82C3AACDA000EFD71 /* StompClientLibExtension.swift */; };
+		43836DB22C3AB11F000EFD71 /* PrivateRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DB12C3AB11F000EFD71 /* PrivateRepositoryImpl.swift */; };
+		43836DB42C3AB133000EFD71 /* PrivateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DB32C3AB133000EFD71 /* PrivateRepository.swift */; };
+		43836DBB2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBA2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift */; };
+		43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBC2C3AB6A4000EFD71 /* PrivateUseCase.swift */; };
+		43836DBF2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */; };
 		43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */; };
 		43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */; };
 		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
-		439864742C26AB4E00EBAD6A /* MemberIdHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */; };
+		439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864732C26AB4E00EBAD6A /* MemberIDHolder.swift */; };
 		439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864762C26CEDF00EBAD6A /* STOMPHandler.swift */; };
 		439864792C26D95500EBAD6A /* MockLocationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864782C26D95500EBAD6A /* MockLocationInput.swift */; };
 		4398647B2C26DFE900EBAD6A /* STOMPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4398647A2C26DFE900EBAD6A /* STOMPError.swift */; };
@@ -76,6 +87,8 @@
 		43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD292BD4DB4900224669 /* MemberRepository.swift */; };
 		43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD2B2BD4DB5C00224669 /* RegisterViewModel.swift */; };
 		43D3BD2E2BD4DBCB00224669 /* RegisterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */; };
+		43FC61AB2C36F936000B3D58 /* GatheringRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FC61AA2C36F936000B3D58 /* GatheringRepositoryImpl.swift */; };
+		43FC61AE2C36FBAE000B3D58 /* CreateGatheringInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FC61AD2C36FBAE000B3D58 /* CreateGatheringInput.swift */; };
 		43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */; };
 		43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */; };
 		43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */; };
@@ -136,6 +149,9 @@
 		435CA6912B944BDD008276B6 /* SwiftGathering_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGathering_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITests.swift; sourceTree = "<group>"; };
 		435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoUIModel.swift; sourceTree = "<group>"; };
+		4365005D2C3A747A005B244C /* ObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtension.swift; sourceTree = "<group>"; };
+		436500602C3A9630005B244C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCoordinator.swift; sourceTree = "<group>"; };
 		4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemType.swift; sourceTree = "<group>"; };
@@ -146,10 +162,18 @@
 		437FA5532BDD43B000447EE8 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		437FA5552BDD458500447EE8 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		437FA5572BDD459A00447EE8 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		43836DA32C3AA574000EFD71 /* FriendViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewMode.swift; sourceTree = "<group>"; };
+		43836DA62C3AAC7D000EFD71 /* PrivateSTOMPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateSTOMPHandler.swift; sourceTree = "<group>"; };
+		43836DA82C3AACDA000EFD71 /* StompClientLibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StompClientLibExtension.swift; sourceTree = "<group>"; };
+		43836DB12C3AB11F000EFD71 /* PrivateRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateRepositoryImpl.swift; sourceTree = "<group>"; };
+		43836DB32C3AB133000EFD71 /* PrivateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateRepository.swift; sourceTree = "<group>"; };
+		43836DBA2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedSessionRequestOutput.swift; sourceTree = "<group>"; };
+		43836DBC2C3AB6A4000EFD71 /* PrivateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateUseCase.swift; sourceTree = "<group>"; };
+		43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateUseCaseImpl.swift; sourceTree = "<group>"; };
 		43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotation.swift; sourceTree = "<group>"; };
 		43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotationView.swift; sourceTree = "<group>"; };
 		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
-		439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberIdHolder.swift; sourceTree = "<group>"; };
+		439864732C26AB4E00EBAD6A /* MemberIDHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberIDHolder.swift; sourceTree = "<group>"; };
 		439864762C26CEDF00EBAD6A /* STOMPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOMPHandler.swift; sourceTree = "<group>"; };
 		439864782C26D95500EBAD6A /* MockLocationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationInput.swift; sourceTree = "<group>"; };
 		4398647A2C26DFE900EBAD6A /* STOMPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOMPError.swift; sourceTree = "<group>"; };
@@ -192,6 +216,8 @@
 		43D3BD292BD4DB4900224669 /* MemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepository.swift; sourceTree = "<group>"; };
 		43D3BD2B2BD4DB5C00224669 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfo.swift; sourceTree = "<group>"; };
+		43FC61AA2C36F936000B3D58 /* GatheringRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringRepositoryImpl.swift; sourceTree = "<group>"; };
+		43FC61AD2C36FBAE000B3D58 /* CreateGatheringInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGatheringInput.swift; sourceTree = "<group>"; };
 		43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		43FFDD682BCD7489002D19B2 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		43FFDD6A2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -253,17 +279,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		432C70782BD3EEC500B4F4CE /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				A28F84542C1C4C6100E1A177 /* Auth */,
-				A28F84552C1C4C6E00E1A177 /* User */,
-				A28F84562C1C4C7600E1A177 /* Friend */,
-				43AFCFFF2C271C8200897FA5 /* Map */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
 		432C70792BD3F8CC00B4F4CE /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,11 +359,131 @@
 			path = SwiftGathering_iOSUITests;
 			sourceTree = "<group>";
 		};
+		4365005F2C3A9619005B244C /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				436500602C3A9630005B244C /* ActivityIndicator.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		43836DAA2C3AB050000EFD71 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */,
+				43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */,
+				439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */,
+				A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */,
+				43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */,
+				43D3BD272BD4DB3D00224669 /* MemberUseCase.swift */,
+				A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */,
+				43D3BD292BD4DB4900224669 /* MemberRepository.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		43836DAB2C3AB066000EFD71 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				43D0E2BB2BE7B14A00294A4A /* MyInfo.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		43836DAC2C3AB072000EFD71 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				437FA5512BDD432A00447EE8 /* FriendInfo.swift */,
+				43D0E2B12BE7468E00294A4A /* FriendUseCase.swift */,
+				A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */,
+				43D0E2AF2BE7466200294A4A /* FriendRepository.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		43836DAD2C3AB087000EFD71 /* Gathering */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gathering;
+			sourceTree = "<group>";
+		};
+		43836DAE2C3AB09F000EFD71 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				437FA5552BDD458500447EE8 /* MapUseCase.swift */,
+				A28F84612C1C4EEA00E1A177 /* MapUseCaseImpl.swift */,
+				437FA5572BDD459A00447EE8 /* MapRepository.swift */,
+				43AFD0002C271C9800897FA5 /* MyLocation.swift */,
+				43AFD0042C28682100897FA5 /* FriendLocation.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		43836DAF2C3AB0FC000EFD71 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				43836DBC2C3AB6A4000EFD71 /* PrivateUseCase.swift */,
+				43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */,
+				43836DB32C3AB133000EFD71 /* PrivateRepository.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		43836DB52C3AB4FB000EFD71 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				43836DB12C3AB11F000EFD71 /* PrivateRepositoryImpl.swift */,
+				43836DBA2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		43836DB62C3AB509000EFD71 /* Gathering */ = {
+			isa = PBXGroup;
+			children = (
+				43FC61AD2C36FBAE000B3D58 /* CreateGatheringInput.swift */,
+				43FC61AA2C36F936000B3D58 /* GatheringRepositoryImpl.swift */,
+			);
+			path = Gathering;
+			sourceTree = "<group>";
+		};
+		43836DB72C3AB52C000EFD71 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A28F84702C1C51B800E1A177 /* MapRepositoryImpl.swift */,
+				437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */,
+				439864782C26D95500EBAD6A /* MockLocationInput.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		43836DB82C3AB53E000EFD71 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				43D0E2B92BE79FD700294A4A /* FriendsOutput.swift */,
+				A28F846E2C1C514A00E1A177 /* FriendRepositoryImpl.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		43836DB92C3AB54F000EFD71 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A28F846A2C1C504000E1A177 /* LoginRepositoryImpl.swift */,
+				A28F846C2C1C50C800E1A177 /* MembereRepositoryImpl.swift */,
+				437A46BA2BE93BA100CDB3C9 /* LoginOutput.swift */,
+				43B2CF0D2BA6A9A500047065 /* LoginInput.swift */,
+				43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		439864702C1F419200EBAD6A /* Holder */ = {
 			isa = PBXGroup;
 			children = (
 				439864712C1F41A300EBAD6A /* TokenHolder.swift */,
-				439864732C26AB4E00EBAD6A /* MemberIdHolder.swift */,
+				439864732C26AB4E00EBAD6A /* MemberIDHolder.swift */,
 			);
 			path = Holder;
 			sourceTree = "<group>";
@@ -358,6 +493,8 @@
 			children = (
 				439864762C26CEDF00EBAD6A /* STOMPHandler.swift */,
 				4398647A2C26DFE900EBAD6A /* STOMPError.swift */,
+				43836DA62C3AAC7D000EFD71 /* PrivateSTOMPHandler.swift */,
+				43836DA82C3AACDA000EFD71 /* StompClientLibExtension.swift */,
 			);
 			path = STOMP;
 			sourceTree = "<group>";
@@ -365,8 +502,12 @@
 		439BB32B2BB5AF90006F34A5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				432C70782BD3EEC500B4F4CE /* Entity */,
-				43FFDD652BCBE777002D19B2 /* UseCase */,
+				43836DAF2C3AB0FC000EFD71 /* Private */,
+				43836DAA2C3AB050000EFD71 /* Auth */,
+				43836DAB2C3AB066000EFD71 /* User */,
+				43836DAC2C3AB072000EFD71 /* Friend */,
+				43836DAD2C3AB087000EFD71 /* Gathering */,
+				43836DAE2C3AB09F000EFD71 /* Map */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -385,20 +526,12 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		43AFCFFF2C271C8200897FA5 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				43AFD0002C271C9800897FA5 /* MyLocation.swift */,
-				43AFD0042C28682100897FA5 /* FriendLocation.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
 		43B2CEFD2BA69D7100047065 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */,
 				43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */,
+				4365005D2C3A747A005B244C /* ObservableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -437,11 +570,13 @@
 		43D0E2AA2BE742EB00294A4A /* FriendScene */ = {
 			isa = PBXGroup;
 			children = (
-				43D0E2B32BE749FC00294A4A /* FriendView.xib */,
 				43D0E2AB2BE7430800294A4A /* FriendViewController.swift */,
+				43D0E2B32BE749FC00294A4A /* FriendView.xib */,
 				43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */,
-				43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */,
+				4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */,
 				43D0E2B52BE74BDC00294A4A /* FriendTableViewCell.swift */,
+				43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */,
+				43836DA32C3AA574000EFD71 /* FriendViewMode.swift */,
 			);
 			path = FriendScene;
 			sourceTree = "<group>";
@@ -449,9 +584,13 @@
 		43FFDD4F2BCBC373002D19B2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				43836DB52C3AB4FB000EFD71 /* Private */,
+				43836DB62C3AB509000EFD71 /* Gathering */,
+				43836DB92C3AB54F000EFD71 /* Auth */,
+				43836DB82C3AB53E000EFD71 /* Friend */,
+				43836DB72C3AB52C000EFD71 /* Map */,
 				439864702C1F419200EBAD6A /* Holder */,
-				43FFDD562BCBDB88002D19B2 /* Repository */,
-				43FFDD572BCBDB92002D19B2 /* Model */,
+				A28F84642C1C4F9500E1A177 /* Common */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -486,27 +625,6 @@
 			path = Infra;
 			sourceTree = "<group>";
 		};
-		43FFDD562BCBDB88002D19B2 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				A28F84672C1C500E00E1A177 /* Auth */,
-				A28F84692C1C502100E1A177 /* Friend */,
-				A28F84682C1C501C00E1A177 /* Map */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		43FFDD572BCBDB92002D19B2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A28F84642C1C4F9500E1A177 /* Common */,
-				A28F84632C1C4F8400E1A177 /* Auth */,
-				A28F84662C1C4FAF00E1A177 /* Friend */,
-				A28F84652C1C4FA800E1A177 /* Map */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		43FFDD5A2BCBE2B8002D19B2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +649,7 @@
 		43FFDD5E2BCBE5D5002D19B2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4365005F2C3A9619005B244C /* ActivityIndicator */,
 				A26B9AAA2B95793600F46A4E /* Drawing */,
 			);
 			path = Common;
@@ -543,16 +662,6 @@
 				43B2CEF32B94848900047065 /* DrawingViewController.swift */,
 			);
 			path = DrawingScene;
-			sourceTree = "<group>";
-		};
-		43FFDD652BCBE777002D19B2 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				A28F84572C1C4C8900E1A177 /* Auth */,
-				A28F84592C1C4C9900E1A177 /* Friend */,
-				A28F845A2C1C4CAC00E1A177 /* Map */,
-			);
-			path = UseCase;
 			sourceTree = "<group>";
 		};
 		43FFDD672BCD7465002D19B2 /* Coordinators */ = {
@@ -635,122 +744,12 @@
 			path = Drawing;
 			sourceTree = "<group>";
 		};
-		A28F84542C1C4C6100E1A177 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				432C70762BD3EEBF00B4F4CE /* LoginInfo.swift */,
-				43D3BD2D2BD4DBCB00224669 /* RegisterInfo.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		A28F84552C1C4C6E00E1A177 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				43D0E2BB2BE7B14A00294A4A /* MyInfo.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		A28F84562C1C4C7600E1A177 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				437FA5512BDD432A00447EE8 /* FriendInfo.swift */,
-			);
-			path = Friend;
-			sourceTree = "<group>";
-		};
-		A28F84572C1C4C8900E1A177 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				439BB3362BB5B4EC006F34A5 /* LoginUseCase.swift */,
-				A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */,
-				43FFDD582BCBE08F002D19B2 /* LoginRepository.swift */,
-				43D3BD272BD4DB3D00224669 /* MemberUseCase.swift */,
-				A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */,
-				43D3BD292BD4DB4900224669 /* MemberRepository.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		A28F84592C1C4C9900E1A177 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				43D0E2B12BE7468E00294A4A /* FriendUseCase.swift */,
-				A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */,
-				43D0E2AF2BE7466200294A4A /* FriendRepository.swift */,
-			);
-			path = Friend;
-			sourceTree = "<group>";
-		};
-		A28F845A2C1C4CAC00E1A177 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				437FA5552BDD458500447EE8 /* MapUseCase.swift */,
-				A28F84612C1C4EEA00E1A177 /* MapUseCaseImpl.swift */,
-				437FA5572BDD459A00447EE8 /* MapRepository.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		A28F84632C1C4F8400E1A177 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				437A46BA2BE93BA100CDB3C9 /* LoginOutput.swift */,
-				43B2CF0D2BA6A9A500047065 /* LoginInput.swift */,
-				43B2CF1C2BA6BDD200047065 /* RegisterInput.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		A28F84642C1C4F9500E1A177 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				43B2CF112BA6B79F00047065 /* EmptyOutput.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		A28F84652C1C4FA800E1A177 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */,
-				439864782C26D95500EBAD6A /* MockLocationInput.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		A28F84662C1C4FAF00E1A177 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				43D0E2B92BE79FD700294A4A /* FriendsOutput.swift */,
-			);
-			path = Friend;
-			sourceTree = "<group>";
-		};
-		A28F84672C1C500E00E1A177 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				A28F846A2C1C504000E1A177 /* LoginRepositoryImpl.swift */,
-				A28F846C2C1C50C800E1A177 /* MembereRepositoryImpl.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		A28F84682C1C501C00E1A177 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				A28F84702C1C51B800E1A177 /* MapRepositoryImpl.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		A28F84692C1C502100E1A177 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				A28F846E2C1C514A00E1A177 /* FriendRepositoryImpl.swift */,
-			);
-			path = Friend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1011,13 +1010,14 @@
 				43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */,
 				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
+				4365005E2C3A747A005B244C /* ObservableExtension.swift in Sources */,
 				43FFDD742BCECC12002D19B2 /* SplashViewController.swift in Sources */,
 				432C70752BD3E83600B4F4CE /* SplashViewModel.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
 				439864792C26D95500EBAD6A /* MockLocationInput.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
-				439864742C26AB4E00EBAD6A /* MemberIdHolder.swift in Sources */,
+				439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */,
 				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
 				A222BAE82C009031000A59FA /* ProfileViewController.swift in Sources */,
 				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
@@ -1026,23 +1026,29 @@
 				437FA54C2BDCEE0E00447EE8 /* MapViewModel.swift in Sources */,
 				A28F84622C1C4EEA00E1A177 /* MapUseCaseImpl.swift in Sources */,
 				43B2CF122BA6B79F00047065 /* EmptyOutput.swift in Sources */,
+				43836DBB2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift in Sources */,
 				43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */,
 				439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */,
 				437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */,
 				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
+				43836DBF2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift in Sources */,
 				43D0E2A72BE7354100294A4A /* FriendCoordinator.swift in Sources */,
 				437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */,
 				439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */,
 				A231C0632BA401090059572D /* LocationHandler.swift in Sources */,
+				43836DA92C3AACDA000EFD71 /* StompClientLibExtension.swift in Sources */,
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
 				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
+				43836DA42C3AA574000EFD71 /* FriendViewMode.swift in Sources */,
 				43AFD0052C28682100897FA5 /* FriendLocation.swift in Sources */,
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				A28F845E2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift in Sources */,
 				43D0E2B72BE74BDC00294A4A /* FriendTableViewCell.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
+				43836DA72C3AAC7D000EFD71 /* PrivateSTOMPHandler.swift in Sources */,
 				43D3BD262BD4DA7000224669 /* RegisterCoordinator.swift in Sources */,
+				43FC61AB2C36F936000B3D58 /* GatheringRepositoryImpl.swift in Sources */,
 				43FFDD692BCD7489002D19B2 /* CoordinatorProtocol.swift in Sources */,
 				439BB3302BB5B35F006F34A5 /* LoginViewModel.swift in Sources */,
 				432C70802BD41BB400B4F4CE /* LoginCoordinator.swift in Sources */,
@@ -1050,8 +1056,10 @@
 				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
+				43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
+				43FC61AE2C36FBAE000B3D58 /* CreateGatheringInput.swift in Sources */,
 				A28F846B2C1C504000E1A177 /* LoginRepositoryImpl.swift in Sources */,
 				43D3BD282BD4DB3D00224669 /* MemberUseCase.swift in Sources */,
 				43D3BD2E2BD4DBCB00224669 /* RegisterInfo.swift in Sources */,
@@ -1059,8 +1067,10 @@
 				A222BAEA2C009165000A59FA /* ProfileCoordinator.swift in Sources */,
 				43B2CEF22B94829E00047065 /* DrawingPathInfo.swift in Sources */,
 				A28F84732C1C535800E1A177 /* HTTPConstant.swift in Sources */,
+				43836DB22C3AB11F000EFD71 /* PrivateRepositoryImpl.swift in Sources */,
 				43AFD0012C271C9800897FA5 /* MyLocation.swift in Sources */,
 				43FFDD6F2BCD770A002D19B2 /* RootCoordinator.swift in Sources */,
+				43836DB42C3AB133000EFD71 /* PrivateRepository.swift in Sources */,
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
 				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
 				A28F84602C1C4EA400E1A177 /* FriendUseCaseImpl.swift in Sources */,
@@ -1072,12 +1082,14 @@
 				43D0E2BA2BE79FD700294A4A /* FriendsOutput.swift in Sources */,
 				43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */,
 				43D0E2B22BE7468E00294A4A /* FriendUseCase.swift in Sources */,
+				436500612C3A9630005B244C /* ActivityIndicator.swift in Sources */,
 				4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */,
 				43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */,
 				437A46BB2BE93BA100CDB3C9 /* LoginOutput.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
+				4365005C2C3A63F8005B244C /* FriendInfoUIModel.swift in Sources */,
 				4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */,
 				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,
 				A28F84712C1C51B800E1A177 /* MapRepositoryImpl.swift in Sources */,

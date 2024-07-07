@@ -87,6 +87,8 @@ final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoc
         tabBarController.tabBar.tintColor = .opaqueSeparator
         tabBarController.tabBar.unselectedItemTintColor = .gray
         tabBarController.navigationItem.hidesBackButton = true
+        navigationController.isNavigationBarHidden = true
+        tabBarController.navigationController?.isNavigationBarHidden = true
     }
     
     func childDidFinish(_ child: CoordinatorProtocol?) {

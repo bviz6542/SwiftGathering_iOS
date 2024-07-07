@@ -29,10 +29,11 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind()
+        bindViewModel()
+        mapViewModel.onViewDidLoad.onNext(())
     }
     
-    private func bind() {
+    private func bindViewModel() {
         mapViewModel
             .friendLocationOutput
             .observe(on: MainScheduler.instance)
@@ -58,18 +59,12 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mapViewModel
-            .privateChannelOutput
-            .subscribe(
-                with: self,
-                onNext: { _, message in
-                    print(message)
-                }, onError: { _, error in
-                    print(error)
-                })
+        mapViewModel.onReceivedSessionRequest
+            .subscribe(onNext: { [weak self] message in
+                
+            })
             .disposed(by: disposeBag)
         
-        mapViewModel.privateChannelInput.onNext(())
         mapViewModel.myLocationInitiateInput.onNext(())
         mapViewModel.friendLocationInitiateInput.onNext(())
     }

@@ -16,7 +16,7 @@ final class RootCoordinator: ParentCoordinatorProtocol {
     }
         
     func start(animated: Bool) {
-        let loginRepository = LoginRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard, tokenHolder: TokenHolder.shared, memberIdHolder: MemberIdHolder.shared)
+        let loginRepository = LoginRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard, tokenHolder: TokenHolder.shared, memberIdHolder: MemberIDHolder.shared)
         let loginUseCase = LoginUseCaseImpl(loginRepository: loginRepository)
         let splashViewModel = SplashViewModel(loginUseCase: loginUseCase)
         let splashViewController = SplashViewController(splashViewModel: splashViewModel)

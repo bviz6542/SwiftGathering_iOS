@@ -30,9 +30,5 @@ class MapUseCaseImpl: MapUseCase {
     func fetchFriendLocation() -> Observable<FriendLocation> {
         mapRepository.fetchFriendLocation()
     }
-    
-    func listenToPrivateChannel() -> Observable<String> {
-        return mapRepository.listenToPrivateChannel()
-    }
 }
 

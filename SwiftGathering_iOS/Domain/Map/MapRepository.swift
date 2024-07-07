@@ -13,5 +13,4 @@ protocol MapRepository {
     func fetchMyLocation() -> Observable<CLLocation>
     func broadcastMyLocation(_ myLocation: MyLocation)
     func fetchFriendLocation() -> Observable<FriendLocation>
-    func listenToPrivateChannel() -> Observable<String>
 }
