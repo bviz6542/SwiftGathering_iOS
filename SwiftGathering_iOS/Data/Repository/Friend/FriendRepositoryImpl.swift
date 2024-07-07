@@ -36,7 +36,7 @@ class FriendRepositoryImpl: FriendRepository {
             .map { outputs in
                 return outputs
                     .map { output in
-                        FriendInfo(id: output.id, name: output.name, isSelected: false)
+                        FriendInfo(id: output.id, name: output.name)
                     }
             }
     }

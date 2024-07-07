@@ -19,6 +19,9 @@
 		435CA68C2B944BDD008276B6 /* SwiftGathering_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA68B2B944BDD008276B6 /* SwiftGathering_iOSTests.swift */; };
 		435CA6962B944BDD008276B6 /* SwiftGathering_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */; };
 		435CA6982B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */; };
+		4365005C2C3A63F8005B244C /* FriendInfoUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */; };
+		4365005E2C3A747A005B244C /* ObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365005D2C3A747A005B244C /* ObservableExtension.swift */; };
+		436500612C3A9630005B244C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436500602C3A9630005B244C /* ActivityIndicator.swift */; };
 		4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */; };
 		4376F4F12BE6222100049FE1 /* EmptyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */; };
 		4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */; };
@@ -30,6 +33,7 @@
 		437FA5542BDD43B000447EE8 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5532BDD43B000447EE8 /* MapCoordinator.swift */; };
 		437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5552BDD458500447EE8 /* MapUseCase.swift */; };
 		437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437FA5572BDD459A00447EE8 /* MapRepository.swift */; };
+		43836DA42C3AA574000EFD71 /* FriendViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DA32C3AA574000EFD71 /* FriendViewMode.swift */; };
 		43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */; };
 		43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */; };
 		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
@@ -138,6 +142,9 @@
 		435CA6912B944BDD008276B6 /* SwiftGathering_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGathering_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CA6952B944BDD008276B6 /* SwiftGathering_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITests.swift; sourceTree = "<group>"; };
 		435CA6972B944BDD008276B6 /* SwiftGathering_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGathering_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoUIModel.swift; sourceTree = "<group>"; };
+		4365005D2C3A747A005B244C /* ObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtension.swift; sourceTree = "<group>"; };
+		436500602C3A9630005B244C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		4376F4EB2BE61CDD00049FE1 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		4376F4F02BE6222100049FE1 /* EmptyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCoordinator.swift; sourceTree = "<group>"; };
 		4376F4F22BE63ACC00049FE1 /* TabbarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemType.swift; sourceTree = "<group>"; };
@@ -148,6 +155,7 @@
 		437FA5532BDD43B000447EE8 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		437FA5552BDD458500447EE8 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		437FA5572BDD459A00447EE8 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		43836DA32C3AA574000EFD71 /* FriendViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewMode.swift; sourceTree = "<group>"; };
 		43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotation.swift; sourceTree = "<group>"; };
 		43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotationView.swift; sourceTree = "<group>"; };
 		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
@@ -349,6 +357,14 @@
 			path = SwiftGathering_iOSUITests;
 			sourceTree = "<group>";
 		};
+		4365005F2C3A9619005B244C /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				436500602C3A9630005B244C /* ActivityIndicator.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
 		439864702C1F419200EBAD6A /* Holder */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +420,7 @@
 			children = (
 				43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */,
 				43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */,
+				4365005D2C3A747A005B244C /* ObservableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -442,11 +459,13 @@
 		43D0E2AA2BE742EB00294A4A /* FriendScene */ = {
 			isa = PBXGroup;
 			children = (
-				43D0E2B32BE749FC00294A4A /* FriendView.xib */,
 				43D0E2AB2BE7430800294A4A /* FriendViewController.swift */,
+				43D0E2B32BE749FC00294A4A /* FriendView.xib */,
 				43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */,
-				43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */,
+				4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */,
 				43D0E2B52BE74BDC00294A4A /* FriendTableViewCell.swift */,
+				43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */,
+				43836DA32C3AA574000EFD71 /* FriendViewMode.swift */,
 			);
 			path = FriendScene;
 			sourceTree = "<group>";
@@ -568,6 +587,7 @@
 		43FFDD5E2BCBE5D5002D19B2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4365005F2C3A9619005B244C /* ActivityIndicator */,
 				A26B9AAA2B95793600F46A4E /* Drawing */,
 			);
 			path = Common;
@@ -1049,6 +1069,7 @@
 				43FFDD592BCBE08F002D19B2 /* LoginRepository.swift in Sources */,
 				43FFDD6D2BCD759D002D19B2 /* ChildCoordinatorProtocol.swift in Sources */,
 				43B2CEFA2BA69BCD00047065 /* LoginViewController.swift in Sources */,
+				4365005E2C3A747A005B244C /* ObservableExtension.swift in Sources */,
 				43FFDD742BCECC12002D19B2 /* SplashViewController.swift in Sources */,
 				432C70752BD3E83600B4F4CE /* SplashViewModel.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
@@ -1075,6 +1096,7 @@
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
 				43B2CEEE2B94825B00047065 /* CanvasView.swift in Sources */,
+				43836DA42C3AA574000EFD71 /* FriendViewMode.swift in Sources */,
 				43AFD0052C28682100897FA5 /* FriendLocation.swift in Sources */,
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
 				A28F845E2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift in Sources */,
@@ -1112,12 +1134,14 @@
 				43D0E2BA2BE79FD700294A4A /* FriendsOutput.swift in Sources */,
 				43B2CF052BA69FB600047065 /* HTTPError.swift in Sources */,
 				43D0E2B22BE7468E00294A4A /* FriendUseCase.swift in Sources */,
+				436500612C3A9630005B244C /* ActivityIndicator.swift in Sources */,
 				4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */,
 				43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */,
 				437A46BB2BE93BA100CDB3C9 /* LoginOutput.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
+				4365005C2C3A63F8005B244C /* FriendInfoUIModel.swift in Sources */,
 				4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */,
 				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,
 				A28F84712C1C51B800E1A177 /* MapRepositoryImpl.swift in Sources */,

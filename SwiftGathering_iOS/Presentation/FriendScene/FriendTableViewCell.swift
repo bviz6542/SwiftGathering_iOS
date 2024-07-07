@@ -13,8 +13,18 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var currentlySelectedImageView: UIImageView!
     
-    func setupUI(using friendInfo: FriendInfo) {
-        let (name, id) = (friendInfo.name, String(friendInfo.id))
+    func setupNormalModeUI(using friendInfoUIModel: FriendInfoUIModel) {
+        hideSelectedView()
+        setupUI(using: friendInfoUIModel)
+    }
+    
+    func setupGatheringModeUI(using friendInfoUIModel: FriendInfoUIModel) {
+        showSelectedView(using: friendInfoUIModel)
+        setupUI(using: friendInfoUIModel)
+    }
+    
+    private func setupUI(using friendInfoUIModel: FriendInfoUIModel) {
+        let (name, id) = (friendInfoUIModel.friendInfo.name, String(friendInfoUIModel.friendInfo.id))
         let fullText = "\(name)  \(id)"
         let attributedText = NSMutableAttributedString(string: fullText)
         let nameRange = (fullText as NSString).range(of: name)
@@ -34,19 +44,12 @@ class FriendTableViewCell: UITableViewCell {
         userImageView.layoutIfNeeded()
     }
     
-    func showSelectedView() {
+    private func showSelectedView(using friendInfoUIModel: FriendInfoUIModel) {
         selectedView.isHidden = false
+        currentlySelectedImageView.isHidden = !friendInfoUIModel.isSelected
     }
     
-    func hideSelectedView() {
+    private func hideSelectedView() {
         selectedView.isHidden = true
-    }
-    
-    func showIsCurrentlySelected() {
-        currentlySelectedImageView.isHidden = false
-    }
-    
-    func showIsNotCurrentlySelected() {
-        currentlySelectedImageView.isHidden = true
     }
 }

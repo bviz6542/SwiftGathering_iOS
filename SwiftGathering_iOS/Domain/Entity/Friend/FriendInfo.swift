@@ -8,5 +8,4 @@
 struct FriendInfo: Codable {
     let id: Int
     let name: String
-    let isSelected: Bool
 }

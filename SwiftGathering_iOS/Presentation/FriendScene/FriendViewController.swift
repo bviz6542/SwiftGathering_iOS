@@ -10,12 +10,14 @@ import RxSwift
 
 class FriendViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var gatheringButton: UIButton!
+    @IBOutlet weak var gatheringModeButton: UIButton!
     @IBOutlet weak var addFriendsButton: UIButton!
+    @IBOutlet weak var gatheringStartButton: UIButton!
+    @IBOutlet weak var gatheringCancelButton: UIButton!
     
     private let friendViewModel: FriendViewModel
     private let disposeBag = DisposeBag()
-    private let confirmSubject = PublishSubject<FriendInfo>()
+    private var activityIndicator: ActivityIndicator?
     
     init(friendViewModel: FriendViewModel) {
         self.friendViewModel = friendViewModel
@@ -30,7 +32,9 @@ class FriendViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
-        bind()
+        
+        bindViewModel()
+        friendViewModel.onViewDidLoad.onNext(())
     }
     
     private func setupNavigationBar() {
@@ -44,70 +48,111 @@ class FriendViewController: UIViewController {
         tableView.backgroundColor = .lightGray
     }
     
-    private func bind() {
-        friendViewModel
-            .friendInfosSuccessSubject
-            .observe(on: MainScheduler.instance)
-            .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
-                cell.setupUI(using: element)
+    private func bindViewModel() {
+        Observable.combineLatest(
+            friendViewModel.onFetchFriendInfos,
+            friendViewModel.onChangeMode
+        )
+        .map { friendInfos, mode in
+            friendInfos.map { ($0, mode) }
+        }
+        .bind(to: tableView.rx.items(cellIdentifier: "FriendTableViewCell", cellType: FriendTableViewCell.self)) { (row, element, cell) in
+            let (friendInfo, mode) = element
+            switch mode {
+            case .normal:
+                cell.setupNormalModeUI(using: friendInfo)
+
+            case .gathering:
+                cell.setupGatheringModeUI(using: friendInfo)
             }
-            .disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
         
-        friendViewModel
-            .friendInfosFailureSubject
+        friendViewModel.onChangeMode
             .observe(on: MainScheduler.instance)
-            .subscribe(
-                with: self,
-                onNext: { owner, error in
-                    owner.present(AlertBuilder()
-                        .setTitle("Error")
-                        .setMessage("Failed fetching Friend list")
-                        .setProceedAction(title: "Yes", style: .default)
-                        .build(), animated: true)
-                })
+            .bind(onNext: { [weak self] mode in
+                switch mode {
+                case .normal:
+                    self?.gatheringModeButton.isHidden = false
+                    self?.addFriendsButton.isHidden = false
+                    self?.gatheringStartButton.isHidden = true
+                    self?.gatheringCancelButton.isHidden = true
+                    
+                case .gathering:
+                    self?.gatheringModeButton.isHidden = true
+                    self?.addFriendsButton.isHidden = true
+                    self?.gatheringStartButton.isHidden = false
+                    self?.gatheringCancelButton.isHidden = false
+                }
+            })
             .disposed(by: disposeBag)
         
-        tableView.rx
-            .modelSelected(FriendInfo.self)
-            .subscribe(onNext: { [weak self] friendInfo in
+        friendViewModel.onFetchFailFriendInfos
+            .bind(onNext: { [weak self] error in
                 self?.present(AlertBuilder()
-                    .setTitle("")
-                    .setMessage("Do you want to start gathering?")
-                    .setCancelAction(title: "No", style: .destructive)
-                    .setProceedAction(title: "Yes", style: .default, handler: { [weak self] action in
-                        self?.confirmSubject.onNext(friendInfo)
-                    })
+                    .setTitle("Error")
+                    .setMessage("Failed fetching Friend list")
+                    .setProceedAction(title: "Yes", style: .default)
                     .build(), animated: true)
             })
             .disposed(by: disposeBag)
         
-        tableView.rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
-        
-        gatheringButton.rx
-            .tap
-            .bind(onNext: { _ in
-                print("gatheringButton")
+        tableView.rx.itemSelected
+            .bind(onNext: { [weak self] indexPath in
+                self?.friendViewModel.onSelectFriendCell.onNext(indexPath.row)
             })
             .disposed(by: disposeBag)
         
-        addFriendsButton.rx
-            .tap
-            .bind(onNext: { _ in
-                print("addFriendsButton")
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        gatheringModeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.friendViewModel.onTappedGatheringButton.onNext(())
             })
             .disposed(by: disposeBag)
         
-        confirmSubject
-            .subscribe(onNext: { [weak self] friendInfo in
-//                self?.friendViewModel.gatheringCreateInput.onNext(<#T##element: Void##Void#>)
-                print("wow: \(friendInfo)")
+        addFriendsButton.rx.tap
+            .bind(onNext: {
+                ///
+                ///
+                ///
             })
             .disposed(by: disposeBag)
         
-        friendViewModel
-            .friendListInitiateInput.onNext(())
+        gatheringStartButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.friendViewModel.onTappedGatheringStartButton.onNext(())
+            })
+            .disposed(by: disposeBag)
+        
+        gatheringCancelButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.friendViewModel.onTappedGatheringCancelButton.onNext(())
+            })
+            .disposed(by: disposeBag)
+        
+        friendViewModel.onShowIndicator
+            .bind(onNext: { [weak self] in
+                self?.showIndicator()
+            })
+            .disposed(by: disposeBag)
+        
+        friendViewModel.onHideIndicator
+            .bind(onNext: { [weak self] in
+                self?.hideIndicator()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showIndicator() {
+        activityIndicator = ActivityIndicator()
+        activityIndicator?.show()
+    }
+    
+    private func hideIndicator() {
+        activityIndicator?.hide()
+        activityIndicator = nil
     }
 }
 

@@ -55,3 +55,18 @@ extension Result {
             }
     }
 }
+
+extension Result where Failure == Error {
+    enum ResultError: Error {
+        case selfIsNil
+    }
+    
+    func flatMapOptionalResult<NewSuccess>(_ transform: (Success) -> Result<NewSuccess, Failure>?) -> Result<NewSuccess, Failure> {
+        switch self {
+        case .success(let value):
+            return transform(value) ?? .failure(ResultError.selfIsNil)
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+}

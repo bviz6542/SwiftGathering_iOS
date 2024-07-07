@@ -8,11 +8,21 @@
 import RxSwift
 
 class FriendViewModel {
-    var friendListInitiateInput = PublishSubject<Void>()
-    var gatheringCreateInput = PublishSubject<Void>()
+    // Input
+    var onViewDidLoad = PublishSubject<Void>()
+    var onTappedGatheringButton = PublishSubject<Void>()
+    var onSelectFriendCell = PublishSubject<Int>()
+    var onTappedGatheringStartButton = PublishSubject<Void>()
+    var onTappedGatheringCancelButton = PublishSubject<Void>()
     
-    var friendInfosSuccessSubject = PublishSubject<[FriendInfo]>()
-    var friendInfosFailureSubject = PublishSubject<Error>()
+    // Output
+    var onFetchFriendInfos = PublishSubject<[FriendInfoUIModel]>()
+    var onFetchFailFriendInfos = PublishSubject<Error>()
+    var onChangeMode = PublishSubject<FriendViewMode>()
+    var onShowIndicator = PublishSubject<Void>()
+    var onHideIndicator = PublishSubject<Void>()
+    
+    private var friendInfoUIModelList: [FriendInfoUIModel] = []
     
     private let friendUseCase: FriendUseCase
     private let disposeBag = DisposeBag()
@@ -23,28 +33,55 @@ class FriendViewModel {
     }
     
     private func bind() {
-        friendListInitiateInput
-            .withUnretained(self)
-            .flatMap { (owner, _) -> Observable<Result<[FriendInfo], Error>> in
-                return owner.friendUseCase.fetchFriends()
-                    .map { .success($0) }
-                    .catch { .just(.failure($0)) }
-                    .asObservable()
+        onViewDidLoad
+            .flatMapOptionalResult { [weak self] in
+                self?.onShowIndicator.onNext(())
+                return self?.friendUseCase.fetchFriends().asResult()
             }
-            .subscribe(
-                with: self,
-                onNext: { owner, result in
-                    result.onSuccess { friends in
-                        owner.friendInfosSuccessSubject.onNext(friends)
+            .subscribe(onNext: { [weak self] result in
+                self?.onHideIndicator.onNext(())
+                result
+                    .onFailure { [weak self] error in
+                        self?.onFetchFailFriendInfos.onNext(error)
                     }
-                    .onFailure { error in
-                        owner.friendInfosFailureSubject.onNext(error)
+                    .onSuccess { friends in
+                        let friendInfoUIModels = friends.map { FriendInfoUIModel(friendInfo: $0, isSelected: false) }
+                        self?.friendInfoUIModelList = friendInfoUIModels
+                        self?.onFetchFriendInfos.onNext(friendInfoUIModels)
+                        self?.onChangeMode.onNext(.normal)
                     }
-                })
+            })
             .disposed(by: disposeBag)
         
-//        gatheringCreateInput
-//            .withUnretained(self)
-//            .flatMap(T##selector: ((FriendViewModel, Void)) throws -> ObservableConvertibleType##((FriendViewModel, Void)) throws -> ObservableConvertibleType)
+        onTappedGatheringButton
+            .subscribe(onNext: { [weak self] in
+                self?.onChangeMode.onNext(.gathering)
+            })
+            .disposed(by: disposeBag)
+        
+        onSelectFriendCell
+            .subscribe(onNext: { [weak self] index in
+                guard let friendInfoUIModelList = self?.friendInfoUIModelList else { return }
+                friendInfoUIModelList[index].isSelected.toggle()
+                self?.onFetchFriendInfos.onNext(friendInfoUIModelList)
+            })
+            .disposed(by: disposeBag)
+        
+        onTappedGatheringStartButton
+            .subscribe(onNext: { [weak self] in
+                ///
+                ///
+                ///
+            })
+            .disposed(by: disposeBag)
+        
+        onTappedGatheringCancelButton
+            .subscribe(onNext: { [weak self] in
+                let friendInfoUIModels = self?.friendInfoUIModelList.map { FriendInfoUIModel(friendInfo: $0.friendInfo, isSelected: false) } ?? []
+                self?.friendInfoUIModelList = friendInfoUIModels
+                self?.onFetchFriendInfos.onNext(friendInfoUIModels)
+                self?.onChangeMode.onNext(.normal)
+            })
+            .disposed(by: disposeBag)
     }
 }
