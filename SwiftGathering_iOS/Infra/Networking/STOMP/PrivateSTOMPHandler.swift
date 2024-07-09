@@ -24,14 +24,7 @@ class PrivateSTOMPHandler {
     
     private func subscribe() {
         guard let myID = myID else { return }
-        client.subscribe(destination: "/topic/\(myID)")
-    }
-    
-    func send<T: Codable>(using input: T) throws {
-        if !client.isConnected() {
-            throw STOMPError.notConnectedError
-        }
-        client.sendJSONForCodable(input: input, toDestination: "/pub/location")
+        client.subscribe(destination: "/topic/private/\(myID)")
     }
     
     func disconnect() {
