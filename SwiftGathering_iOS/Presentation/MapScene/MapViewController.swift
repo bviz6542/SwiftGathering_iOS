@@ -35,7 +35,7 @@ class MapViewController: UIViewController {
     
     private func bindViewModel() {
         mapViewModel
-            .friendLocationOutput
+            .onFetchFriendLocation
             .observe(on: MainScheduler.instance)
             .subscribe(
                 with: self,
@@ -45,7 +45,7 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mapViewModel
-            .myLocationOutput
+            .onFetchMyLocation
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
                 if self?.isInitialLocationUpdate == true {
@@ -61,12 +61,9 @@ class MapViewController: UIViewController {
         
         mapViewModel.onReceivedSessionRequest
             .subscribe(onNext: { [weak self] message in
-                
+                dump(message)
             })
             .disposed(by: disposeBag)
-        
-        mapViewModel.myLocationInitiateInput.onNext(())
-        mapViewModel.friendLocationInitiateInput.onNext(())
     }
     
     private func setInitialRegion(using location: CLLocation) {

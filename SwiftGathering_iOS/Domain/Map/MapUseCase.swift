@@ -13,4 +13,5 @@ protocol MapUseCase {
     func fetchMyLocation() -> Observable<CLLocation>
     func broadcastMyLocation(_ myLocation: MyLocation)    
     func fetchFriendLocation() -> Observable<FriendLocation>
+    func createGathering(with guestIDs: [Int]) -> Observable<Void>
 }

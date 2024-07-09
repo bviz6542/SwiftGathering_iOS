@@ -14,13 +14,8 @@ class MapViewModel {
     
     // Output
     let onReceivedSessionRequest = PublishSubject<ReceivedSessionRequestOutput>()
-    
-    // Legacy
-    let myLocationInitiateInput = PublishSubject<Void>()
-    let friendLocationInitiateInput = PublishSubject<Void>()
-    
-    let myLocationOutput = PublishSubject<CLLocation>()
-    let friendLocationOutput = PublishSubject<FriendLocation>()
+    let onFetchMyLocation = PublishSubject<CLLocation>()
+    let onFetchFriendLocation = PublishSubject<FriendLocation>()
     
     private let mapUseCase: MapUseCase
     private let privateUseCase: PrivateUseCase
@@ -33,14 +28,31 @@ class MapViewModel {
     }
     
     private func bind() {
-        myLocationInitiateInput
-            .flatMapOptionalResult({ [weak self] in
-                self?.mapUseCase.setup()
-                return self?.mapUseCase.fetchMyLocation().asResult()
+        onViewDidLoad
+            .subscribe(onNext: { [weak self] in
+                self?.startListening()
+                self?.fetchMyLocation()
+                self?.fetchFriendLocation()
             })
+            .disposed(by: disposeBag)
+        
+        privateUseCase.receivedSessionRequest()
+            .subscribe(onNext: { [weak self] sessionRequest in
+                self?.onReceivedSessionRequest.onNext(sessionRequest)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func startListening() {
+        privateUseCase.startListening()
+    }
+    
+    private func fetchMyLocation() {
+        mapUseCase.setup()
+        mapUseCase.fetchMyLocation().asResult()
             .subscribe(onNext: { [weak self] result in
                 result.onSuccess { [weak self] location in
-                    self?.myLocationOutput.onNext(location)
+                    self?.onFetchMyLocation.onNext(location)
                     self?.mapUseCase.broadcastMyLocation(
                         MyLocation(
                             latitude: location.coordinate.latitude,
@@ -50,27 +62,14 @@ class MapViewModel {
                 }
             })
             .disposed(by: disposeBag)
-        
-        friendLocationInitiateInput
-            .flatMapOptionalResult({ [weak self] in
-                self?.mapUseCase.fetchFriendLocation().asResult()
-            })
+    }
+    
+    private func fetchFriendLocation() {
+        mapUseCase.fetchFriendLocation().asResult()
             .subscribe(onNext: { [weak self] result in
                 result.onSuccess { location in
-                    self?.friendLocationOutput.onNext(location)
+                    self?.onFetchFriendLocation.onNext(location)
                 }
-            })
-            .disposed(by: disposeBag)
-        
-        onViewDidLoad
-            .subscribe(onNext: { [weak self] in
-                self?.privateUseCase.startListening()
-            })
-            .disposed(by: disposeBag)
-        
-        privateUseCase.receivedSessionRequest()
-            .subscribe(onNext: { [weak self] sessionRequest in
-                self?.onReceivedSessionRequest.onNext(sessionRequest)
             })
             .disposed(by: disposeBag)
     }

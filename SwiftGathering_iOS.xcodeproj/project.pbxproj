@@ -41,6 +41,8 @@
 		43836DBB2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBA2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift */; };
 		43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBC2C3AB6A4000EFD71 /* PrivateUseCase.swift */; };
 		43836DBF2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */; };
+		43836DC12C3D5868000EFD71 /* CreateSessionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DC02C3D5868000EFD71 /* CreateSessionInput.swift */; };
+		43836DC32C3D597C000EFD71 /* ParticipateSessionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DC22C3D597C000EFD71 /* ParticipateSessionInput.swift */; };
 		43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */; };
 		43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */; };
 		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
@@ -170,6 +172,8 @@
 		43836DBA2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedSessionRequestOutput.swift; sourceTree = "<group>"; };
 		43836DBC2C3AB6A4000EFD71 /* PrivateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateUseCase.swift; sourceTree = "<group>"; };
 		43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateUseCaseImpl.swift; sourceTree = "<group>"; };
+		43836DC02C3D5868000EFD71 /* CreateSessionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionInput.swift; sourceTree = "<group>"; };
+		43836DC22C3D597C000EFD71 /* ParticipateSessionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateSessionInput.swift; sourceTree = "<group>"; };
 		43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotation.swift; sourceTree = "<group>"; };
 		43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotationView.swift; sourceTree = "<group>"; };
 		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
@@ -454,6 +458,8 @@
 				A28F84702C1C51B800E1A177 /* MapRepositoryImpl.swift */,
 				437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */,
 				439864782C26D95500EBAD6A /* MockLocationInput.swift */,
+				43836DC02C3D5868000EFD71 /* CreateSessionInput.swift */,
+				43836DC22C3D597C000EFD71 /* ParticipateSessionInput.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1043,6 +1049,7 @@
 				43836DA42C3AA574000EFD71 /* FriendViewMode.swift in Sources */,
 				43AFD0052C28682100897FA5 /* FriendLocation.swift in Sources */,
 				43B2CF092BA69FEC00047065 /* HTTPPath.swift in Sources */,
+				43836DC32C3D597C000EFD71 /* ParticipateSessionInput.swift in Sources */,
 				A28F845E2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift in Sources */,
 				43D0E2B72BE74BDC00294A4A /* FriendTableViewCell.swift in Sources */,
 				43B2CEF52B94848900047065 /* DrawingViewController.swift in Sources */,
@@ -1055,6 +1062,7 @@
 				43B2CF162BA6B9A900047065 /* AlertBuilder.swift in Sources */,
 				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */,
+				43836DC12C3D5868000EFD71 /* CreateSessionInput.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,

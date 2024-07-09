@@ -6,6 +6,11 @@
 //
 
 struct ReceivedSessionRequestOutput: Codable {
-    let senderID: Int
-    let roomID: Int
+    let sessionID: Int
+    let participantIDs: [Int]
+    
+    private enum CodingKeys: String, CodingKey {
+        case sessionID = "sessionId"
+        case participantIDs = "participantIds"
+    }
 }

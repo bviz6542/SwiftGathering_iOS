@@ -25,10 +25,12 @@ class FriendViewModel {
     private var friendInfoUIModelList: [FriendInfoUIModel] = []
     
     private let friendUseCase: FriendUseCase
+    private let mapUseCase: MapUseCase
     private let disposeBag = DisposeBag()
     
-    init(friendUseCase: FriendUseCase) {
+    init(friendUseCase: FriendUseCase, mapUseCase: MapUseCase) {
         self.friendUseCase = friendUseCase
+        self.mapUseCase = mapUseCase
         bind()
     }
     

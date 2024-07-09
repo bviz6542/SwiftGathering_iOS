@@ -30,5 +30,9 @@ class MapUseCaseImpl: MapUseCase {
     func fetchFriendLocation() -> Observable<FriendLocation> {
         mapRepository.fetchFriendLocation()
     }
+    
+    func createGathering(with guestIDs: [Int]) -> Observable<Void> {
+        mapRepository.createGathering(with: guestIDs)
+    }
 }
 
