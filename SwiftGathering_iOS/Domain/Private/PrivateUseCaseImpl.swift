@@ -18,7 +18,7 @@ class PrivateUseCaseImpl: PrivateUseCase {
         repository.startListening()
     }
     
-    func receivedSessionRequest() -> RxSwift.Observable<ReceivedSessionRequestOutput> {
+    func receivedSessionRequest() -> Observable<ReceivedSessionRequestOutput> {
         repository.receivedSessionRequest()
     }
 }

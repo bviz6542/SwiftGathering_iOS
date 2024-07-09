@@ -18,8 +18,10 @@ final class FriendCoordinator: ChildCoordinatorProtocol {
         
     func start(animated: Bool) {
         let friendRepository = FriendRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults(), tokenHolder: TokenHolder.shared, memberIdHolder: MemberIDHolder.shared)
+        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIDHolder.shared, httpHandler: HTTPHandler(), tokenHolder: TokenHolder.shared)
         let friendUseCase = FriendUseCaseImpl(friendRepository: friendRepository)
-        let friendViewModel = FriendViewModel(friendUseCase: friendUseCase)
+        let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
+        let friendViewModel = FriendViewModel(friendUseCase: friendUseCase, mapUseCase: mapUseCase)
         let friendViewController = FriendViewController(friendViewModel: friendViewModel)
         navigationController.pushViewController(friendViewController, animated: true)
     }

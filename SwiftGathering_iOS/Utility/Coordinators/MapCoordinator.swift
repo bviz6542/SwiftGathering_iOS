@@ -17,7 +17,7 @@ final class MapCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIDHolder.shared)
+        let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIDHolder.shared, httpHandler: HTTPHandler(), tokenHolder: TokenHolder.shared)
         let privateRepository = PrivateRepositoryImpl(stompHandler: PrivateSTOMPHandler(), memberIDHolder: MemberIDHolder.shared)
         let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
         let privateUseCase = PrivateUseCaseImpl(repository: privateRepository)

@@ -11,12 +11,16 @@ import CoreLocation
 class MapRepositoryImpl: MapRepository {
     private var locationHandler: LocationHandler
     private var stompHandler: STOMPHandler
-    private var memberIdHolder: MemberIDHolder
+    private let memberIdHolder: MemberIDHolder
+    private let httpHandler: HTTPHandler
+    private let tokenHolder: TokenHolder
     
-    init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIDHolder) {
+    init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIDHolder, httpHandler: HTTPHandler, tokenHolder: TokenHolder) {
         self.locationHandler = locationHandler
         self.stompHandler = stompHandler
         self.memberIdHolder = memberIdHolder
+        self.httpHandler = httpHandler
+        self.tokenHolder = tokenHolder
     }
     
     func setup() {
@@ -50,5 +54,17 @@ class MapRepositoryImpl: MapRepository {
                 return nil
             }
             .map{ $0.toDomain() }
+    }
+    
+    func createGathering(with guestIDs: [Int]) -> Observable<Void> {
+        let input = CreateSessionInput(senderID: memberIdHolder.memberId, guestIDs: guestIDs)
+        return httpHandler
+            .setPath(.gathering)
+            .setPort(8080)
+            .setMethod(.post)
+            .addHeader(key: "Authorization", value: "Bearer \(tokenHolder.token)")
+            .setRequestBody(input)
+            .rxSend(expecting: EmptyOutput.self)
+            .map { _ in () }
     }
 }
