@@ -9,9 +9,9 @@ import RxSwift
 import CoreLocation
 
 protocol MapRepository {
-    func setup()
+    func setup(with sessionID: String)
     func fetchMyLocation() -> Observable<CLLocation>
     func broadcastMyLocation(_ myLocation: MyLocation)
     func fetchFriendLocation() -> Observable<FriendLocation>
-    func createGathering(with guestIDs: [Int]) -> Observable<Void>
+    func createGathering(with guestIDs: [Int]) -> Observable<CreatedSessionIdOutput>
 }

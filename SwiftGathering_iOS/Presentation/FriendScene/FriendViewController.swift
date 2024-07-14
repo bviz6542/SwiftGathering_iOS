@@ -97,6 +97,17 @@ class FriendViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        friendViewModel.onCreateFailGathering
+            .observe(on: MainScheduler.instance)
+            .bind(onNext: { [weak self] error in
+                self?.present(AlertBuilder()
+                    .setTitle("Error")
+                    .setMessage("Failed creating Gathering")
+                    .setProceedAction(title: "Yes", style: .default)
+                    .build(), animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         tableView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
                 self?.friendViewModel.onSelectFriendCell.onNext(indexPath.row)

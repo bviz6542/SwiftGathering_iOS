@@ -10,13 +10,14 @@ import CoreLocation
 
 class MapUseCaseImpl: MapUseCase {
     private var mapRepository: MapRepository
+    var sessionIDOutput = PublishSubject<CreatedSessionIdOutput>()
     
     init(mapRepository: MapRepository) {
         self.mapRepository = mapRepository
     }
     
-    func setup() {
-        mapRepository.setup()
+    func setup(with sessionID: String) {
+        mapRepository.setup(with: sessionID)
     }
     
     func fetchMyLocation() -> Observable<CLLocation> {
@@ -31,8 +32,13 @@ class MapUseCaseImpl: MapUseCase {
         mapRepository.fetchFriendLocation()
     }
     
-    func createGathering(with guestIDs: [Int]) -> Observable<Void> {
-        mapRepository.createGathering(with: guestIDs)
+    func createGathering(with guestIDs: [Int]) -> Observable<CreatedSessionIdOutput> {
+        let observableOutput = mapRepository.createGathering(with: guestIDs).debug()
+        print("ho")
+        _ = observableOutput.map { [weak self] output in
+            self?.sessionIDOutput.onNext(output)
+        }
+        return observableOutput
     }
 }
 

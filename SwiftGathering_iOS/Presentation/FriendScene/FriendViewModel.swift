@@ -18,6 +18,7 @@ class FriendViewModel {
     // Output
     var onFetchFriendInfos = PublishSubject<[FriendInfoUIModel]>()
     var onFetchFailFriendInfos = PublishSubject<Error>()
+    var onCreateFailGathering = PublishSubject<Error>()
     var onChangeMode = PublishSubject<FriendViewMode>()
     var onShowIndicator = PublishSubject<Void>()
     var onHideIndicator = PublishSubject<Void>()
@@ -71,9 +72,7 @@ class FriendViewModel {
         
         onTappedGatheringStartButton
             .subscribe(onNext: { [weak self] in
-                ///
-                ///
-                ///
+                self?.createSession()
             })
             .disposed(by: disposeBag)
         
@@ -84,6 +83,24 @@ class FriendViewModel {
                 self?.onFetchFriendInfos.onNext(friendInfoUIModels)
                 self?.onChangeMode.onNext(.normal)
             })
+            .disposed(by: disposeBag)
+    }
+    
+    private func createSession() {
+        let selectedFriendIds = friendInfoUIModelList
+            .filter { friendInfoUIModel in
+                friendInfoUIModel.isSelected
+            }
+            .map { friendInfo in
+                friendInfo.friendInfo.id
+            }
+        
+        mapUseCase.createGathering(with: selectedFriendIds)
+            .catch { [weak self] error in
+                self?.onCreateFailGathering.onNext(error)
+                return Observable.empty()
+            }
+            .subscribe()
             .disposed(by: disposeBag)
     }
 }

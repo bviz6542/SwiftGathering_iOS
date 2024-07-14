@@ -6,7 +6,7 @@
 //
 
 struct ReceivedSessionRequestOutput: Codable {
-    let sessionID: Int
+    let sessionID: String
     let participantIDs: [Int]
     
     private enum CodingKeys: String, CodingKey {

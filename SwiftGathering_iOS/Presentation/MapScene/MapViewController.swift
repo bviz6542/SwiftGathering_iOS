@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
     private var isInitialLocationUpdate: Bool = true
     private var friendAnnotations = [Int: FriendAnnotation]()
     
+    weak var coordinator: MapCoordinator?
+    
     private var mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
     
@@ -34,8 +36,7 @@ class MapViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        mapViewModel
-            .onFetchFriendLocation
+        mapViewModel.onFetchFriendLocation
             .observe(on: MainScheduler.instance)
             .subscribe(
                 with: self,
@@ -44,8 +45,7 @@ class MapViewController: UIViewController {
                 })
             .disposed(by: disposeBag)
         
-        mapViewModel
-            .onFetchMyLocation
+        mapViewModel.onFetchMyLocation
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
                 if self?.isInitialLocationUpdate == true {
@@ -60,8 +60,17 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mapViewModel.onReceivedSessionRequest
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] message in
-                dump(message)
+                self?.present(AlertBuilder()
+                    .setTitle("Start Gathering")
+                    .setMessage("Would you like to start the gathering?")
+                    .setCancelAction(title: "Cancel", style: .destructive)
+                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] _ in
+                        self?.coordinator?.navigateToMapPage()
+                        self?.mapViewModel.onConfirmStartGathering.onNext(message.sessionID)
+                    })
+                    .build(), animated: true)
             })
             .disposed(by: disposeBag)
     }
