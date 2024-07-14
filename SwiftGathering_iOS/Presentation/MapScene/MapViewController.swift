@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
     private var isInitialLocationUpdate: Bool = true
     private var friendAnnotations = [Int: FriendAnnotation]()
     
+    weak var coordinator: MapCoordinator?
+    
     private var mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
     
@@ -60,8 +62,16 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mapViewModel.onReceivedSessionRequest
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] message in
-                dump(message)
+                self?.present(AlertBuilder()
+                    .setTitle("Start Gathering")
+                    .setMessage("Would you like to start the gathering?")
+                    .setCancelAction(title: "Cancel", style: .destructive)
+                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] _ in
+                        self?.coordinator?.navigateToMapPage()
+                    })
+                    .build(), animated: true)
             })
             .disposed(by: disposeBag)
     }

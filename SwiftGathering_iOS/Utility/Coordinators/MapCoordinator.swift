@@ -23,12 +23,13 @@ final class MapCoordinator: ChildCoordinatorProtocol {
         let privateUseCase = PrivateUseCaseImpl(repository: privateRepository)
         let mapViewModel = MapViewModel(mapUseCase: mapUseCase, privateUseCase: privateUseCase)
         let mapViewController = MapViewController(mapViewModel: mapViewModel)
+        mapViewController.coordinator = self
         navigationController.pushViewController(mapViewController, animated: false)
     }
 }
 
 extension MapCoordinator {
-    func navigateToWhat() {
-     // TODO: navigate to what
+    func navigateToMapPage() {
+        navigationController.tabBarController?.selectedIndex = 0
     }
 }

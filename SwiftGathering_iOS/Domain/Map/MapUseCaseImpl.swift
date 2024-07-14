@@ -15,8 +15,8 @@ class MapUseCaseImpl: MapUseCase {
         self.mapRepository = mapRepository
     }
     
-    func setup() {
-        mapRepository.setup()
+    func setup(with sessionID: Int) {
+        mapRepository.setup(with: sessionID)
     }
     
     func fetchMyLocation() -> Observable<CLLocation> {

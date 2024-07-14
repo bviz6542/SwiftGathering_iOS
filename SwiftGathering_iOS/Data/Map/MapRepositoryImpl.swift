@@ -15,6 +15,8 @@ class MapRepositoryImpl: MapRepository {
     private let httpHandler: HTTPHandler
     private let tokenHolder: TokenHolder
     
+    private var sessionID: Int?
+    
     init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIDHolder, httpHandler: HTTPHandler, tokenHolder: TokenHolder) {
         self.locationHandler = locationHandler
         self.stompHandler = stompHandler
@@ -23,7 +25,9 @@ class MapRepositoryImpl: MapRepository {
         self.tokenHolder = tokenHolder
     }
     
-    func setup() {
+    func setup(with sessionID: Int) {
+        stompHandler.sessionID = sessionID
+        self.sessionID = sessionID
         stompHandler.registerSocket()
         locationHandler.start()
     }
@@ -34,12 +38,12 @@ class MapRepositoryImpl: MapRepository {
     
     func broadcastMyLocation(_ myLocation: MyLocation) {
         do {
+            guard let sessionID = stompHandler.sessionID else { return }
             let memberId = memberIdHolder.memberId
-            let locationInput = MockLocationInput(senderId: memberId, channelId: "wow", latitude: myLocation.latitude, longitude: myLocation.longitude)
+            let locationInput = MockLocationInput(senderId: memberId, channelId: String(sessionID), latitude: myLocation.latitude, longitude: myLocation.longitude)
             try stompHandler.send(using: locationInput)
-        } catch {
             
-        }
+        } catch {}
     }
     
     func fetchFriendLocation() -> Observable<FriendLocation> {
