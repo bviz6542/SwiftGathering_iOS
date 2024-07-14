@@ -11,7 +11,7 @@ import CoreLocation
 class MapViewModel {
     // Input
     let onViewDidLoad = PublishSubject<Void>()
-    let onConfirmStartGathering = PublishSubject<Int>()
+    let onConfirmStartGathering = PublishSubject<String>()
     
     // Output
     let onReceivedSessionRequest = PublishSubject<ReceivedSessionRequestOutput>()
@@ -49,6 +49,13 @@ class MapViewModel {
                 self?.onReceivedSessionRequest.onNext(sessionRequest)
             })
             .disposed(by: disposeBag)
+        
+        mapUseCase.sessionIDOutput
+            .subscribe(onNext: { [weak self] output in
+                self?.startListeningGathering(with: output.sessionID)
+                self?.fetchFriendLocation()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func startListeningPrivate() {
@@ -74,7 +81,7 @@ class MapViewModel {
             .disposed(by: disposeBag)
     }
     
-    private func startListeningGathering(with sessionID: Int) {
+    private func startListeningGathering(with sessionID: String) {
         isGathering = true
         mapUseCase.setup(with: sessionID)
     }

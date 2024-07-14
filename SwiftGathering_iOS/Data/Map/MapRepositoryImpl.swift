@@ -15,7 +15,7 @@ class MapRepositoryImpl: MapRepository {
     private let httpHandler: HTTPHandler
     private let tokenHolder: TokenHolder
     
-    private var sessionID: Int?
+    private var sessionID: String?
     
     init(locationHandler: LocationHandler, stompHandler: STOMPHandler, memberIdHolder: MemberIDHolder, httpHandler: HTTPHandler, tokenHolder: TokenHolder) {
         self.locationHandler = locationHandler
@@ -25,7 +25,7 @@ class MapRepositoryImpl: MapRepository {
         self.tokenHolder = tokenHolder
     }
     
-    func setup(with sessionID: Int) {
+    func setup(with sessionID: String) {
         stompHandler.sessionID = sessionID
         self.sessionID = sessionID
         stompHandler.registerSocket()
@@ -40,7 +40,7 @@ class MapRepositoryImpl: MapRepository {
         do {
             guard let sessionID = stompHandler.sessionID else { return }
             let memberId = memberIdHolder.memberId
-            let locationInput = MockLocationInput(senderId: memberId, channelId: String(sessionID), latitude: myLocation.latitude, longitude: myLocation.longitude)
+            let locationInput = MockLocationInput(senderId: memberId, channelId: sessionID, latitude: myLocation.latitude, longitude: myLocation.longitude)
             try stompHandler.send(using: locationInput)
             
         } catch {}
@@ -60,7 +60,7 @@ class MapRepositoryImpl: MapRepository {
             .map{ $0.toDomain() }
     }
     
-    func createGathering(with guestIDs: [Int]) -> Observable<Void> {
+    func createGathering(with guestIDs: [Int]) -> Observable<CreatedSessionIdOutput> {
         let input = CreateSessionInput(senderID: memberIdHolder.memberId, guestIDs: guestIDs)
         return httpHandler
             .setPath(.gathering)
@@ -68,7 +68,6 @@ class MapRepositoryImpl: MapRepository {
             .setMethod(.post)
             .addHeader(key: "Authorization", value: "Bearer \(tokenHolder.token)")
             .setRequestBody(input)
-            .rxSend(expecting: EmptyOutput.self)
-            .map { _ in () }
+            .rxSend(expecting: CreatedSessionIdOutput.self)
     }
 }

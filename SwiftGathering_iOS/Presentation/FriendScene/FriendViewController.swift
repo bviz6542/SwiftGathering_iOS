@@ -98,6 +98,7 @@ class FriendViewController: UIViewController {
             .disposed(by: disposeBag)
         
         friendViewModel.onCreateFailGathering
+            .observe(on: MainScheduler.instance)
             .bind(onNext: { [weak self] error in
                 self?.present(AlertBuilder()
                     .setTitle("Error")

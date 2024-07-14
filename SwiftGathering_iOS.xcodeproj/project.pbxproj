@@ -43,6 +43,7 @@
 		43836DBF2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */; };
 		43836DC12C3D5868000EFD71 /* CreateSessionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DC02C3D5868000EFD71 /* CreateSessionInput.swift */; };
 		43836DC32C3D597C000EFD71 /* ParticipateSessionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DC22C3D597C000EFD71 /* ParticipateSessionInput.swift */; };
+		43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DC82C43B2B6000EFD71 /* CreatedSessionIdOutput.swift */; };
 		43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */; };
 		43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */; };
 		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
@@ -174,6 +175,7 @@
 		43836DBE2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateUseCaseImpl.swift; sourceTree = "<group>"; };
 		43836DC02C3D5868000EFD71 /* CreateSessionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionInput.swift; sourceTree = "<group>"; };
 		43836DC22C3D597C000EFD71 /* ParticipateSessionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateSessionInput.swift; sourceTree = "<group>"; };
+		43836DC82C43B2B6000EFD71 /* CreatedSessionIdOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedSessionIdOutput.swift; sourceTree = "<group>"; };
 		43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotation.swift; sourceTree = "<group>"; };
 		43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotationView.swift; sourceTree = "<group>"; };
 		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				439864782C26D95500EBAD6A /* MockLocationInput.swift */,
 				43836DC02C3D5868000EFD71 /* CreateSessionInput.swift */,
 				43836DC22C3D597C000EFD71 /* ParticipateSessionInput.swift */,
+				43836DC82C43B2B6000EFD71 /* CreatedSessionIdOutput.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
 				439864792C26D95500EBAD6A /* MockLocationInput.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
+				43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */,
 				439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */,
 				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
 				A222BAE82C009031000A59FA /* ProfileViewController.swift in Sources */,

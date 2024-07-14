@@ -11,6 +11,8 @@ import RxSwift
 class STOMPHandler {
     private let client = StompClientLib()
     private let resultSubject = PublishSubject<AnyObject>()
+    
+    var sessionID: String?
 
     var result: Observable<AnyObject> {
         return resultSubject.asObservable()
@@ -25,7 +27,8 @@ class STOMPHandler {
     }
     
     private func subscribe() {
-        client.subscribe(destination: "/topic/wow")
+        guard let sessionID = sessionID else { return }
+        client.subscribe(destination: "/topic/\(sessionID)")
     }
     
     func send<T: Codable>(using input: T) throws {
