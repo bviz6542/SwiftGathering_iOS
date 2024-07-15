@@ -70,4 +70,24 @@ class MapRepositoryImpl: MapRepository {
             .setRequestBody(input)
             .rxSend(expecting: CreatedSessionIdOutput.self)
     }
+    
+    func broadcastMyDrawing(_ drawing: DrawingInfoDTO) {
+        do {
+            guard let sessionID = stompHandler.sessionID else { return }
+            try stompHandler.send(to: .drawing, using: drawing)
+
+        } catch {}
+    }
+    
+    func fetchFriendDrawing() -> Observable<DrawingInfoDTO> {
+        stompHandler
+            .result
+            .compactMap { jsonObject in
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
+                   let message = try? JSONDecoder().decode(DrawingInfoDTO.self, from: jsonData) {
+                    return message
+                }
+                return nil
+            }
+    }
 }

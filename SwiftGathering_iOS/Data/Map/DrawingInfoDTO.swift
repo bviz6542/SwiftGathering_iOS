@@ -8,10 +8,8 @@
 import Foundation
 
 struct DrawingInfoDTO: Codable {
-    var latitude: Double
-    var longitude: Double
+    var points: [DrawingPointDTO]
     var color: String
     var width: CGFloat
     var mode: String
-    var isEnd: Bool
 }

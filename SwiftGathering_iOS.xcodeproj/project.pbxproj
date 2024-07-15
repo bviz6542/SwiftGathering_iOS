@@ -46,6 +46,7 @@
 		43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DC82C43B2B6000EFD71 /* CreatedSessionIdOutput.swift */; };
 		43836DCD2C4548A1000EFD71 /* MapViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DCC2C4548A1000EFD71 /* MapViewController1.swift */; };
 		43836DCF2C454F18000EFD71 /* STOMPPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DCE2C454F18000EFD71 /* STOMPPath.swift */; };
+		43836DD12C4558B0000EFD71 /* DrawingPointDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43836DD02C4558B0000EFD71 /* DrawingPointDTO.swift */; };
 		43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */; };
 		43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */; };
 		439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439864712C1F41A300EBAD6A /* TokenHolder.swift */; };
@@ -178,6 +179,7 @@
 		43836DC82C43B2B6000EFD71 /* CreatedSessionIdOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedSessionIdOutput.swift; sourceTree = "<group>"; };
 		43836DCC2C4548A1000EFD71 /* MapViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController1.swift; sourceTree = "<group>"; };
 		43836DCE2C454F18000EFD71 /* STOMPPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOMPPath.swift; sourceTree = "<group>"; };
+		43836DD02C4558B0000EFD71 /* DrawingPointDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPointDTO.swift; sourceTree = "<group>"; };
 		43912CCB2C289CD700D1C3E6 /* FriendAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotation.swift; sourceTree = "<group>"; };
 		43912CCD2C289CEB00D1C3E6 /* FriendAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAnnotationView.swift; sourceTree = "<group>"; };
 		439864712C1F41A300EBAD6A /* TokenHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenHolder.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				43B2CEF72B94BA0700047065 /* DrawingInfoDTO.swift */,
+				43836DD02C4558B0000EFD71 /* DrawingPointDTO.swift */,
 				A28F84702C1C51B800E1A177 /* MapRepositoryImpl.swift */,
 				437FA54D2BDD40F000447EE8 /* FriendLocationOutput.swift */,
 				439864782C26D95500EBAD6A /* MockLocationInput.swift */,
@@ -1017,6 +1020,7 @@
 				43B2CEF82B94BA0800047065 /* DrawingInfoDTO.swift in Sources */,
 				439864792C26D95500EBAD6A /* MockLocationInput.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
+				43836DD12C4558B0000EFD71 /* DrawingPointDTO.swift in Sources */,
 				43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */,
 				439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */,
 				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
