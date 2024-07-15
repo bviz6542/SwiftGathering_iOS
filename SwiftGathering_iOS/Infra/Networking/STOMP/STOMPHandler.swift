@@ -28,14 +28,14 @@ class STOMPHandler {
     
     private func subscribe() {
         guard let sessionID = sessionID else { return }
-        client.subscribe(destination: "/topic/\(sessionID)")
+        client.subscribe(destination: STOMPPath.sessionChannel(sessionID: sessionID).stringValue)
     }
     
-    func send<T: Codable>(using input: T) throws {
+    func send<T: Codable>(to path: STOMPPath, using input: T) throws {
         if !client.isConnected() {
             throw STOMPError.notConnectedError
         }
-        client.sendJSONForCodable(input: input, toDestination: "/pub/location")
+        client.sendJSONForCodable(input: input, toDestination: path.stringValue)
     }
     
     func disconnect() {

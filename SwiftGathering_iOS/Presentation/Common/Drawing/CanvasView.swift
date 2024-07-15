@@ -47,8 +47,6 @@ class CanvasView: UIView {
         points = [touchPoint]
         drawingLine = DrawingPathInfo(mode: mode, color: lineColor, width: lineWidth)
         drawingLine?.path.move(to: touchPoint)
-        
-        sendDrawingData(touchPoint: touchPoint, event: "began")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,7 +68,6 @@ class CanvasView: UIView {
             }
         }
         setNeedsDisplay()
-        sendDrawingData(touchPoint: touchPoint, event: "moved")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -85,7 +82,6 @@ class CanvasView: UIView {
         
         convertPathsToImage()
         points.removeAll()
-        sendDrawingData(touchPoint: CGPoint.zero, event: "ended") // Using CGPoint.zero to indicate end
     }
     
     func convertPathsToImage() {
@@ -116,48 +112,33 @@ class CanvasView: UIView {
         savedImage = nil
         setNeedsDisplay()
     }
-    
-    func sendDrawingData(touchPoint: CGPoint, event: String) {
-        let normalizedPoint = CGPoint(x: touchPoint.x / bounds.width, y: touchPoint.y / bounds.height)
-        let drawingInfo = DrawingInfoDTO(fullWidth: bounds.width, fullHeight: bounds.height, x: normalizedPoint.x, y: normalizedPoint.y, event: event) // Assume DrawingInfoDTO now includes an 'event' property
-        
-        // Serialize and send the drawing info
-        do {
-            let data = try JSONEncoder().encode(drawingInfo)
-//            webSocketManager?.sendDrawing(fullWidth: drawingInfo.fullWidth, fullHeight: drawingInfo.fullHeight, x: drawingInfo.x, y: drawingInfo.y, event: drawingInfo.event)
-        } catch {
-            print("Error encoding drawing data: \(error)")
-        }
-    }
-    
-    // Add to CanvasView
 
-    func startDrawing(from dto: DrawingInfoDTO) {
-        let point = CGPoint(x: dto.x * bounds.width, y: dto.y * bounds.height)
-        points = [point]
-        drawingLine = DrawingPathInfo(mode: mode, color: lineColor, width: lineWidth)
-        drawingLine?.path.move(to: point)
-        setNeedsDisplay()
-    }
+//    func startDrawing(from dto: DrawingInfoDTO) {
+//        let point = CGPoint(x: dto.x * bounds.width, y: dto.y * bounds.height)
+//        points = [point]
+//        drawingLine = DrawingPathInfo(mode: mode, color: lineColor, width: lineWidth)
+//        drawingLine?.path.move(to: point)
+//        setNeedsDisplay()
+//    }
 
-    func continueDrawing(from dto: DrawingInfoDTO) {
-        let point = CGPoint(x: dto.x * bounds.width, y: dto.y * bounds.height)
-        guard let drawingLine = drawingLine else { return }
-        points.append(point)
-
-        if points.count == 2 {
-            drawingLine.path.addLine(to: point)
-        } else if points.count > 2 {
-            drawingLine.path.removeAllPoints()
-            drawingLine.path.move(to: points.first!)
-            for i in 1 ..< points.count - 1 {
-                let nextIndex = i + 1
-                let endPoint = CGPoint(x: (points[i].x + points[nextIndex].x)/2, y: (points[i].y + points[nextIndex].y)/2)
-                drawingLine.path.addQuadCurve(to: endPoint, controlPoint: points[i])
-            }
-        }
-        setNeedsDisplay()
-    }
+//    func continueDrawing(from dto: DrawingInfoDTO) {
+//        let point = CGPoint(x: dto.x * bounds.width, y: dto.y * bounds.height)
+//        guard let drawingLine = drawingLine else { return }
+//        points.append(point)
+//
+//        if points.count == 2 {
+//            drawingLine.path.addLine(to: point)
+//        } else if points.count > 2 {
+//            drawingLine.path.removeAllPoints()
+//            drawingLine.path.move(to: points.first!)
+//            for i in 1 ..< points.count - 1 {
+//                let nextIndex = i + 1
+//                let endPoint = CGPoint(x: (points[i].x + points[nextIndex].x)/2, y: (points[i].y + points[nextIndex].y)/2)
+//                drawingLine.path.addQuadCurve(to: endPoint, controlPoint: points[i])
+//            }
+//        }
+//        setNeedsDisplay()
+//    }
 
     func finishDrawing() {
         if let drawingLine = drawingLine {

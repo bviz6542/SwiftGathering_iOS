@@ -41,7 +41,7 @@ class MapRepositoryImpl: MapRepository {
             guard let sessionID = stompHandler.sessionID else { return }
             let memberId = memberIdHolder.memberId
             let locationInput = MockLocationInput(senderId: memberId, channelId: sessionID, latitude: myLocation.latitude, longitude: myLocation.longitude)
-            try stompHandler.send(using: locationInput)
+            try stompHandler.send(to: .location, using: locationInput)
             
         } catch {}
     }
