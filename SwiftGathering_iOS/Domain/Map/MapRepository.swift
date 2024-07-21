@@ -14,4 +14,6 @@ protocol MapRepository {
     func broadcastMyLocation(_ myLocation: MyLocation)
     func fetchFriendLocation() -> Observable<FriendLocation>
     func createGathering(with guestIDs: [Int]) -> Observable<CreatedSessionIdOutput>
+    func broadcastMyDrawing(_ drawing: DrawingInfoDTO)
+    func fetchFriendDrawing() -> Observable<DrawingInfoDTO>
 }

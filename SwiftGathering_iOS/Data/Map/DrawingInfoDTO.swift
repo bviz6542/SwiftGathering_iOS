@@ -8,9 +8,8 @@
 import Foundation
 
 struct DrawingInfoDTO: Codable {
-    let fullWidth: CGFloat
-    let fullHeight: CGFloat
-    let x: CGFloat
-    let y: CGFloat
-    let event: String
+    var points: [DrawingPointDTO]
+    var color: String
+    var width: CGFloat
+    var mode: String
 }

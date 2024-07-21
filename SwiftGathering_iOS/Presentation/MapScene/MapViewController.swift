@@ -8,12 +8,20 @@
 import UIKit
 import MapKit
 import RxSwift
+import RxCocoa
 
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var canvasView: CanvasView!
+    @IBOutlet weak var widthButtonContainerView: UIView!
+    @IBOutlet weak var colorPickerButtonContainerView: UIView!
+    @IBOutlet weak var colorPickerButtonColorView: UIView!
+    @IBOutlet weak var colorPickerButton: UIButton!
+    @IBOutlet weak var drawingModeButton: UIButton!
     
     private var isInitialLocationUpdate: Bool = true
     private var friendAnnotations = [Int: FriendAnnotation]()
+    private var isDrawingMode = false
     
     weak var coordinator: MapCoordinator?
     
@@ -31,6 +39,8 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setColorPickerButtonColor()
+        mapView.delegate = self
         bindViewModel()
         mapViewModel.onViewDidLoad.onNext(())
     }
@@ -70,9 +80,82 @@ class MapViewController: UIViewController {
                         self?.coordinator?.navigateToMapPage()
                         self?.mapViewModel.onConfirmStartGathering.onNext(message.sessionID)
                     })
-                    .build(), animated: true)
+                        .build(), animated: true)
             })
             .disposed(by: disposeBag)
+        
+        mapViewModel.onStartGathering
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.activateGathering()
+            })
+            .disposed(by: disposeBag)
+        
+        mapViewModel.onEndGathering
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.deactivateGathering()
+            })
+            .disposed(by: disposeBag)
+        
+        drawingModeButton.rx.tap
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.toggleDrawingMode()
+            })
+            .disposed(by: disposeBag)
+        
+        colorPickerButton.rx.tap
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.showColorPicker()
+            })
+            .disposed(by: disposeBag)
+        
+        canvasView.event
+            .asSignal()
+            .emit(onNext: { [weak self] event in
+                switch event {
+                case .onDraw(let canvasStroke): self?.addStrokeToMap(canvasStroke)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func activateGathering() {
+        canvasView.isHidden = true
+        drawingModeButton.isHidden = false
+        colorPickerButtonContainerView.isHidden = false
+        widthButtonContainerView.isHidden = false
+    }
+    
+    private func deactivateGathering() {
+        canvasView.isHidden = true
+        drawingModeButton.isHidden = true
+        colorPickerButtonContainerView.isHidden = true
+        widthButtonContainerView.isHidden = true
+    }
+    
+    private func toggleDrawingMode() {
+        isDrawingMode.toggle()
+        if isDrawingMode {
+            drawingModeButton.setImage(UIImage(systemName: "pencil.tip.crop.circle.fill"), for: .normal)
+            canvasView.isHidden = false
+            mapView.isUserInteractionEnabled = false
+            
+        } else {
+            drawingModeButton.setImage(UIImage(systemName: "pencil.tip.crop.circle"), for: .normal)
+            canvasView.isHidden = true
+            mapView.isUserInteractionEnabled = true
+        }
+    }
+    
+    func addStrokeToMap(_ canvasStroke: CanvasStroke) {
+        let overlay = SmoothLineOverlay(
+            stroke: MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
+        )
+        mapView.removeOverlay(overlay)
+        mapView.addOverlay(overlay)
     }
     
     private func setInitialRegion(using location: CLLocation) {
@@ -113,6 +196,17 @@ class MapViewController: UIViewController {
         let colors: [UIColor] = [.green, .blue, .orange, .purple, .yellow]
         return colors[friendId % colors.count]
     }
+    
+    private func showColorPicker() {
+        let colorPicker = UIColorPickerViewController()
+        colorPicker.delegate = self
+        colorPicker.selectedColor = canvasView.strokeState.color
+        present(colorPicker, animated: true, completion: nil)
+    }
+    
+    private func setColorPickerButtonColor() {
+        colorPickerButtonColorView.backgroundColor = canvasView.strokeState.color
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -134,5 +228,24 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is SmoothLineOverlay {
+            return SmoothLineOverlayRenderer(overlay: overlay)
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+}
+
+extension MapViewController: UIColorPickerViewControllerDelegate {
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        canvasView.strokeState.color = viewController.selectedColor
+        setColorPickerButtonColor()
+    }
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        canvasView.strokeState.color = viewController.selectedColor
+        setColorPickerButtonColor()
     }
 }

@@ -41,7 +41,7 @@ class MapRepositoryImpl: MapRepository {
             guard let sessionID = stompHandler.sessionID else { return }
             let memberId = memberIdHolder.memberId
             let locationInput = MockLocationInput(senderId: memberId, channelId: sessionID, latitude: myLocation.latitude, longitude: myLocation.longitude)
-            try stompHandler.send(using: locationInput)
+            try stompHandler.send(to: .location, using: locationInput)
             
         } catch {}
     }
@@ -69,5 +69,25 @@ class MapRepositoryImpl: MapRepository {
             .addHeader(key: "Authorization", value: "Bearer \(tokenHolder.token)")
             .setRequestBody(input)
             .rxSend(expecting: CreatedSessionIdOutput.self)
+    }
+    
+    func broadcastMyDrawing(_ drawing: DrawingInfoDTO) {
+        do {
+            guard let sessionID = stompHandler.sessionID else { return }
+            try stompHandler.send(to: .drawing, using: drawing)
+
+        } catch {}
+    }
+    
+    func fetchFriendDrawing() -> Observable<DrawingInfoDTO> {
+        stompHandler
+            .result
+            .compactMap { jsonObject in
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
+                   let message = try? JSONDecoder().decode(DrawingInfoDTO.self, from: jsonData) {
+                    return message
+                }
+                return nil
+            }
     }
 }

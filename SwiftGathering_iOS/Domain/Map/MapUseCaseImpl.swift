@@ -40,5 +40,13 @@ class MapUseCaseImpl: MapUseCase {
         }
         return observableOutput
     }
+    
+    func broadcastMyDrawing(_ drawing: DrawingInfoDTO) {
+        mapRepository.broadcastMyDrawing(drawing)
+    }
+    
+    func fetchFriendDrawing() -> Observable<DrawingInfoDTO> {
+        mapRepository.fetchFriendDrawing()
+    }
 }
 

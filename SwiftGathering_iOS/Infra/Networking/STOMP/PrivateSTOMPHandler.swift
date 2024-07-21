@@ -24,7 +24,7 @@ class PrivateSTOMPHandler {
     
     private func subscribe() {
         guard let myID = myID else { return }
-        client.subscribe(destination: "/topic/private.\(myID)")
+        client.subscribe(destination: STOMPPath.privateChannel(myID: String(myID)).stringValue)
     }
     
     func disconnect() {
