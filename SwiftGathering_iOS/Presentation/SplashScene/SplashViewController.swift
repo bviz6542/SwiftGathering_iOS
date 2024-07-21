@@ -12,14 +12,12 @@ class SplashViewController: UIViewController {
     @IBOutlet weak var formerImageYOffset: NSLayoutConstraint!
     @IBOutlet weak var latterImageYOffset: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    weak var coordinator: RootCoordinator?
-    
-    private let splashViewModel: SplashViewModel
+        
+    private let viewModel: SplashViewModel
     private let disposeBag = DisposeBag()
     
-    init(splashViewModel: SplashViewModel) {
-        self.splashViewModel = splashViewModel
+    init(viewModel: SplashViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,46 +35,34 @@ class SplashViewController: UIViewController {
             moveIconImageDownwards(), showIndicator()
         )
         .take(1)
-        .subscribe(
-            with: self,
-            onNext: { owner, _ in
-                owner.splashViewModel.loginInitiateInput.onNext(())
-            })
+        .asSignal(onErrorSignalWith: .empty())
+        .emit(onNext: { [weak self] _ in
+            self?.viewModel.login()
+        })
         .disposed(by: disposeBag)
-        
-        splashViewModel.loginSuccessOutput
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.navigateToTabBar()
-            })
-            .disposed(by: disposeBag)
-        
-        splashViewModel.loginErrorOutput
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] error in
-                self?.coordinator?.navigateToLogin()
-            })
-            .disposed(by: disposeBag)
     }
     
     private func moveIconImageDownwards() -> Observable<Void> {
         Observable.create { [weak self] observer in
-            guard let self = self else {
-                observer.onError(NSError())
-                return Disposables.create()
-            }
-            self.view.layoutIfNeeded()
-            NSLayoutConstraint.deactivate([self.formerImageYOffset])
+            self?.deactivateFormerImageYOffset()
             UIView.animate(withDuration: 2, animations: { [weak self] in
-                if let self = self {
-                    NSLayoutConstraint.activate([self.latterImageYOffset])
-                    self.view.layoutIfNeeded()
-                }
+                self?.activateLatterImageYOffset()
             }, completion: { _ in
                 observer.onNext(())
+                observer.onCompleted()
             })
             return Disposables.create()
         }
+    }
+    
+    private func deactivateFormerImageYOffset() {
+        view.layoutIfNeeded()
+        NSLayoutConstraint.deactivate([formerImageYOffset])
+    }
+    
+    private func activateLatterImageYOffset() {
+        NSLayoutConstraint.activate([latterImageYOffset])
+        view.layoutIfNeeded()
     }
     
     private func showIndicator() -> Observable<Void> {
@@ -85,6 +71,7 @@ class SplashViewController: UIViewController {
                 self?.activityIndicator.alpha = 1
             }, completion: { _ in
                 observer.onNext(())
+                observer.onCompleted()
             })
             return Disposables.create()
         }
