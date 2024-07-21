@@ -8,12 +8,17 @@
 import UIKit
 import MapKit
 import RxSwift
+import RxCocoa
 
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var canvasView: CanvasView!
+    @IBOutlet weak var drawingOptionsButton: UIButton!
+    @IBOutlet weak var drawingModeButton: UIButton!
     
     private var isInitialLocationUpdate: Bool = true
     private var friendAnnotations = [Int: FriendAnnotation]()
+    private var isDrawingMode = false
     
     weak var coordinator: MapCoordinator?
     
@@ -31,6 +36,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         bindViewModel()
         mapViewModel.onViewDidLoad.onNext(())
     }
@@ -70,9 +76,71 @@ class MapViewController: UIViewController {
                         self?.coordinator?.navigateToMapPage()
                         self?.mapViewModel.onConfirmStartGathering.onNext(message.sessionID)
                     })
-                    .build(), animated: true)
+                        .build(), animated: true)
             })
             .disposed(by: disposeBag)
+        
+        mapViewModel.onStartGathering
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.activateGathering()
+            })
+            .disposed(by: disposeBag)
+        
+        mapViewModel.onEndGathering
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.deactivateGathering()
+            })
+            .disposed(by: disposeBag)
+        
+        drawingModeButton.rx.tap
+            .asSignal()
+            .emit(onNext: { [weak self] in
+                self?.toggleDrawingMode()
+            })
+            .disposed(by: disposeBag)
+        
+        canvasView.event
+            .asSignal()
+            .emit(onNext: { [weak self] event in
+                switch event {
+                case .onDraw(let canvasStroke): self?.addStrokeToMap(canvasStroke)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func activateGathering() {
+        canvasView.isHidden = true
+        drawingModeButton.isHidden = false
+        drawingOptionsButton.isHidden = false
+    }
+    
+    private func deactivateGathering() {
+        canvasView.isHidden = true
+        drawingModeButton.isHidden = true
+        drawingOptionsButton.isHidden = true
+    }
+    
+    private func toggleDrawingMode() {
+        isDrawingMode.toggle()
+        if isDrawingMode {
+            canvasView.isHidden = false
+            mapView.isUserInteractionEnabled = false
+            
+        } else {
+            canvasView.isHidden = true
+            mapView.isUserInteractionEnabled = true
+        }
+    }
+    
+    func addStrokeToMap(_ canvasStroke: CanvasStroke) {
+        let overlay = SmoothLineOverlay(
+            stroke: MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
+        )
+        mapView.removeOverlay(overlay)
+        mapView.addOverlay(overlay)
     }
     
     private func setInitialRegion(using location: CLLocation) {
@@ -135,4 +203,27 @@ extension MapViewController: MKMapViewDelegate {
         
         return nil
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is SmoothLineOverlay {
+            return SmoothLineOverlayRenderer(overlay: overlay)
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
 }
+
+//extension MockMapViewController: UIColorPickerViewControllerDelegate {
+//    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+//        canvasStrokeState.color = viewController.selectedColor
+//    }
+//    
+//    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+//        canvasStrokeState.color = viewController.selectedColor
+//    }
+//}
+//@objc func showColorPicker() {
+//    let colorPicker = UIColorPickerViewController()
+//    colorPicker.delegate = self
+//    colorPicker.selectedColor = currentColor
+//    present(colorPicker, animated: true, completion: nil)
+//}

@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import CoreLocation
 
 class MapViewModel {
@@ -17,6 +18,8 @@ class MapViewModel {
     let onReceivedSessionRequest = PublishSubject<ReceivedSessionRequestOutput>()
     let onFetchMyLocation = PublishSubject<CLLocation>()
     let onFetchFriendLocation = PublishSubject<FriendLocation>()
+    let onStartGathering = PublishRelay<Void>()
+    let onEndGathering = PublishRelay<Void>()
     
     private var isGathering: Bool = false
     private let mapUseCase: MapUseCase
