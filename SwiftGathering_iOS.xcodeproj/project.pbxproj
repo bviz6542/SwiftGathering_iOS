@@ -122,6 +122,7 @@
 		B515D0762C4BEB2300BFBB53 /* MapStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0752C4BEB2300BFBB53 /* MapStroke.swift */; };
 		B515D0782C4BEB3600BFBB53 /* MapStrokeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0772C4BEB3600BFBB53 /* MapStrokeState.swift */; };
 		B515D07A2C4CFDF700BFBB53 /* CanvasViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */; };
+		B515D07E2C4D1EEC00BFBB53 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */; };
 		E92802C08C5B7965C45BE952 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -266,6 +267,7 @@
 		B515D0752C4BEB2300BFBB53 /* MapStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStroke.swift; sourceTree = "<group>"; };
 		B515D0772C4BEB3600BFBB53 /* MapStrokeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStrokeState.swift; sourceTree = "<group>"; };
 		B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewEvent.swift; sourceTree = "<group>"; };
+		B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A68007DB5B4FEC66401780 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -741,6 +743,7 @@
 			children = (
 				A222BAE52C009022000A59FA /* ProfileView.xib */,
 				A222BAE72C009031000A59FA /* ProfileViewController.swift */,
+				B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -1103,6 +1106,7 @@
 				435CA6752B944BDA008276B6 /* AppDelegate.swift in Sources */,
 				43B2CF072BA69FD400047065 /* HTTPMethod.swift in Sources */,
 				A28F84602C1C4EA400E1A177 /* FriendUseCaseImpl.swift in Sources */,
+				B515D07E2C4D1EEC00BFBB53 /* ProfileViewModel.swift in Sources */,
 				43912CCE2C289CEB00D1C3E6 /* FriendAnnotationView.swift in Sources */,
 				43912CCC2C289CD700D1C3E6 /* FriendAnnotation.swift in Sources */,
 				43B2CF032BA69F7A00047065 /* HTTPHandler.swift in Sources */,
