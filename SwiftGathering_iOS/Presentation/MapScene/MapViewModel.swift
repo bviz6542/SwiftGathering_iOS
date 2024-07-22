@@ -58,13 +58,6 @@ class MapViewModel {
             })
             .disposed(by: disposeBag)
         
-        mapUseCase.sessionIDOutput
-            .subscribe(onNext: { [weak self] output in
-                self?.startListeningGathering(with: output.sessionID)
-                self?.fetchFriendLocation()
-            })
-            .disposed(by: disposeBag)
-        
         gatheringUseCase.onStartGathering
             .asSignal()
             .emit(onNext: { [weak self] sessionID in
@@ -103,7 +96,7 @@ class MapViewModel {
             .disposed(by: disposeBag)
     }
     
-    private func broadcastMyDrawing(_ mapStroke: MapStroke) {
+    func broadcastMyDrawing(_ mapStroke: MapStroke) {
         mapUseCase.broadcastMyDrawing(mapStroke)
     }
     

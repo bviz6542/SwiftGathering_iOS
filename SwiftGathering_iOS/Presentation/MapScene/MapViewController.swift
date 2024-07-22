@@ -95,6 +95,13 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        mapViewModel.onReceiveFriendDrawing
+            .asSignal()
+            .emit(onNext: { [weak self] mapStroke in
+                self?.addFriendStrokeToMap(mapStroke)
+            })
+            .disposed(by: disposeBag)
+        
         drawingModeButton.rx.tap
             .asSignal()
             .emit(onNext: { [weak self] in
@@ -113,7 +120,7 @@ class MapViewController: UIViewController {
             .asSignal()
             .emit(onNext: { [weak self] event in
                 switch event {
-                case .onDraw(let canvasStroke): self?.addStrokeToMap(canvasStroke)
+                case .onDraw(let canvasStroke): self?.addAndSendMyStrokeToMap(canvasStroke)
                 }
             })
             .disposed(by: disposeBag)
@@ -147,10 +154,16 @@ class MapViewController: UIViewController {
         }
     }
     
-    func addStrokeToMap(_ canvasStroke: CanvasStroke) {
-        let overlay = SmoothLineOverlay(
-            stroke: MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
-        )
+    func addAndSendMyStrokeToMap(_ canvasStroke: CanvasStroke) {
+        let mapStroke = MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
+        let overlay = SmoothLineOverlay(stroke: mapStroke)
+        mapView.removeOverlay(overlay)
+        mapView.addOverlay(overlay)
+        mapViewModel.broadcastMyDrawing(mapStroke)
+    }
+    
+    func addFriendStrokeToMap(_ mapStroke: MapStroke) {
+        let overlay = SmoothLineOverlay(stroke: mapStroke)
         mapView.removeOverlay(overlay)
         mapView.addOverlay(overlay)
     }

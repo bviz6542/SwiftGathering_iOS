@@ -9,8 +9,6 @@ import RxSwift
 import CoreLocation
 
 protocol MapUseCase {
-    var sessionIDOutput: PublishSubject<CreatedSessionIdOutput> { get }
-    
     func setup(with sessionID: String)
     func fetchMyLocation() -> Observable<CLLocation>
     func broadcastMyLocation(_ myLocation: MyLocation)    

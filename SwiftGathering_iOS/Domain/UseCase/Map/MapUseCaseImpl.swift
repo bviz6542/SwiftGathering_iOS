@@ -10,7 +10,6 @@ import CoreLocation
 
 class MapUseCaseImpl: MapUseCase {
     private var mapRepository: MapRepository
-    var sessionIDOutput = PublishSubject<CreatedSessionIdOutput>()
     private let disposeBag = DisposeBag()
     
     init(mapRepository: MapRepository) {
@@ -34,13 +33,7 @@ class MapUseCaseImpl: MapUseCase {
     }
     
     func createGathering(with guestIDs: [Int]) -> Observable<CreatedSessionIdOutput> {
-        let observableOutput = mapRepository.createGathering(with: guestIDs).debug()
-        observableOutput
-            .subscribe(onNext: { [weak self] output in
-                self?.sessionIDOutput.onNext(output)
-            })
-            .disposed(by: disposeBag)
-        return observableOutput
+        mapRepository.createGathering(with: guestIDs).debug()
     }
     
     func broadcastMyDrawing(_ drawing: MapStroke) {
