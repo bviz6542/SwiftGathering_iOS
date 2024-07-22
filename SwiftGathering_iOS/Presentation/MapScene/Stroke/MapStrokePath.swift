@@ -17,4 +17,8 @@ struct MapStrokePath {
                 mapView.convert(point, toCoordinateFrom: targetView)
             }
     }
+    
+    init(coordinates: [CLLocationCoordinate2D]) {
+        self.coordinates = coordinates
+    }
 }

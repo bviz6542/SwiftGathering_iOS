@@ -20,6 +20,7 @@ class MapViewModel {
     let onFetchFriendLocation = PublishSubject<FriendLocation>()
     let onStartGathering = PublishRelay<Void>()
     let onEndGathering = PublishRelay<Void>()
+    let onReceiveFriendDrawing = PublishRelay<MapStroke>()
     
     private var isGathering: Bool = false
     private let mapUseCase: MapUseCase
@@ -84,6 +85,10 @@ class MapViewModel {
             .disposed(by: disposeBag)
     }
     
+    private func broadcastMyDrawing(_ mapStroke: MapStroke) {
+        mapUseCase.broadcastMyDrawing(mapStroke)
+    }
+    
     private func startListeningGathering(with sessionID: String) {
         isGathering = true
         mapUseCase.setup(with: sessionID)
@@ -95,6 +100,16 @@ class MapViewModel {
                 result.onSuccess { location in
                     print(location)
                     self?.onFetchFriendLocation.onNext(location)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func fetchFriendDrawing() {
+        mapUseCase.fetchFriendDrawing().asResult()
+            .subscribe(onNext: { [weak self] result in
+                result.onSuccess { [weak self] mapStroke in
+                    self?.onReceiveFriendDrawing.accept(mapStroke)
                 }
             })
             .disposed(by: disposeBag)
