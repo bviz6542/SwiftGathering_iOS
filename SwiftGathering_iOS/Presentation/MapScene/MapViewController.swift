@@ -22,9 +22,7 @@ class MapViewController: UIViewController {
     private var isInitialLocationUpdate: Bool = true
     private var friendAnnotations = [Int: FriendAnnotation]()
     private var isDrawingMode = false
-    
-    weak var coordinator: MapCoordinator?
-    
+        
     private var mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
     
@@ -77,8 +75,7 @@ class MapViewController: UIViewController {
                     .setMessage("Would you like to start the gathering?")
                     .setCancelAction(title: "Cancel", style: .destructive)
                     .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] _ in
-                        self?.coordinator?.navigateToMapPage()
-                        self?.mapViewModel.onConfirmStartGathering.onNext(message.sessionID)
+                        self?.mapViewModel.onConfirmStartGathering.accept(message.sessionID)
                     })
                         .build(), animated: true)
             })
@@ -95,6 +92,13 @@ class MapViewController: UIViewController {
             .asSignal()
             .emit(onNext: { [weak self] in
                 self?.deactivateGathering()
+            })
+            .disposed(by: disposeBag)
+        
+        mapViewModel.onReceiveFriendDrawing
+            .asSignal()
+            .emit(onNext: { [weak self] mapStroke in
+                self?.addFriendStrokeToMap(mapStroke)
             })
             .disposed(by: disposeBag)
         
@@ -116,7 +120,7 @@ class MapViewController: UIViewController {
             .asSignal()
             .emit(onNext: { [weak self] event in
                 switch event {
-                case .onDraw(let canvasStroke): self?.addStrokeToMap(canvasStroke)
+                case .onDraw(let canvasStroke): self?.addAndSendMyStrokeToMap(canvasStroke)
                 }
             })
             .disposed(by: disposeBag)
@@ -150,10 +154,16 @@ class MapViewController: UIViewController {
         }
     }
     
-    func addStrokeToMap(_ canvasStroke: CanvasStroke) {
-        let overlay = SmoothLineOverlay(
-            stroke: MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
-        )
+    func addAndSendMyStrokeToMap(_ canvasStroke: CanvasStroke) {
+        let mapStroke = MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
+        let overlay = SmoothLineOverlay(stroke: mapStroke)
+        mapView.removeOverlay(overlay)
+        mapView.addOverlay(overlay)
+        mapViewModel.broadcastMyDrawing(mapStroke)
+    }
+    
+    func addFriendStrokeToMap(_ mapStroke: MapStroke) {
+        let overlay = SmoothLineOverlay(stroke: mapStroke)
         mapView.removeOverlay(overlay)
         mapView.addOverlay(overlay)
     }

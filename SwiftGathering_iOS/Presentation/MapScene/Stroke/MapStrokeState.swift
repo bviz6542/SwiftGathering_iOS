@@ -19,4 +19,11 @@ struct MapStrokeState {
         self.alpha = canvasStrokeState.alpha
         self.blendMode = canvasStrokeState.blendMode
     }
+    
+    init(color: UIColor, width: CGFloat, alpha: CGFloat, blendMode: CGBlendMode) {
+        self.color = color
+        self.width = width
+        self.alpha = alpha
+        self.blendMode = blendMode
+    }
 }

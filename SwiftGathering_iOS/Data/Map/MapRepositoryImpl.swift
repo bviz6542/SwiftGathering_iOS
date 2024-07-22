@@ -40,7 +40,7 @@ class MapRepositoryImpl: MapRepository {
         do {
             guard let sessionID = stompHandler.sessionID else { return }
             let memberId = memberIdHolder.memberId
-            let locationInput = MockLocationInput(senderId: memberId, channelId: sessionID, latitude: myLocation.latitude, longitude: myLocation.longitude)
+            let locationInput = MyLocationInput(senderId: memberId, channelId: sessionID, latitude: myLocation.latitude, longitude: myLocation.longitude)
             try stompHandler.send(to: .location, using: locationInput)
             
         } catch {}
@@ -71,21 +71,23 @@ class MapRepositoryImpl: MapRepository {
             .rxSend(expecting: CreatedSessionIdOutput.self)
     }
     
-    func broadcastMyDrawing(_ drawing: DrawingInfoDTO) {
+    func broadcastMyDrawing(_ drawing: MapStroke) {
         do {
             guard let sessionID = stompHandler.sessionID else { return }
-            try stompHandler.send(to: .drawing, using: drawing)
+            let memberId = memberIdHolder.memberId
+            let input = DrawingDTO(mapStroke: drawing, senderId: memberId, channelId: sessionID)
+            try stompHandler.send(to: .drawing, using: input)
 
         } catch {}
     }
     
-    func fetchFriendDrawing() -> Observable<DrawingInfoDTO> {
+    func fetchFriendDrawing() -> Observable<MapStroke> {
         stompHandler
             .result
             .compactMap { jsonObject in
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
-                   let message = try? JSONDecoder().decode(DrawingInfoDTO.self, from: jsonData) {
-                    return message
+                   let message = try? JSONDecoder().decode(DrawingDTO.self, from: jsonData) {
+                    return message.toDomain()
                 }
                 return nil
             }
