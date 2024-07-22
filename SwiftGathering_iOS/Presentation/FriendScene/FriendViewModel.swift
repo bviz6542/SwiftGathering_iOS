@@ -27,11 +27,13 @@ class FriendViewModel {
     
     private let friendUseCase: FriendUseCase
     private let mapUseCase: MapUseCase
+    private let gatheringUseCase: GatheringUseCase
     private let disposeBag = DisposeBag()
     
-    init(friendUseCase: FriendUseCase, mapUseCase: MapUseCase) {
+    init(friendUseCase: FriendUseCase, mapUseCase: MapUseCase, gatheringUseCase: GatheringUseCase) {
         self.friendUseCase = friendUseCase
         self.mapUseCase = mapUseCase
+        self.gatheringUseCase = gatheringUseCase
         bind()
     }
     
@@ -100,7 +102,9 @@ class FriendViewModel {
                 self?.onCreateFailGathering.onNext(error)
                 return Observable.empty()
             }
-            .subscribe()
+            .subscribe(onNext: { [weak self] sessionId in
+                self?.gatheringUseCase.onStartGathering.accept(sessionId.sessionID)
+            })
             .disposed(by: disposeBag)
     }
 }

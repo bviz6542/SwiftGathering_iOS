@@ -22,9 +22,7 @@ class MapViewController: UIViewController {
     private var isInitialLocationUpdate: Bool = true
     private var friendAnnotations = [Int: FriendAnnotation]()
     private var isDrawingMode = false
-    
-    weak var coordinator: MapCoordinator?
-    
+        
     private var mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
     
@@ -77,8 +75,7 @@ class MapViewController: UIViewController {
                     .setMessage("Would you like to start the gathering?")
                     .setCancelAction(title: "Cancel", style: .destructive)
                     .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] _ in
-                        self?.coordinator?.navigateToMapPage()
-                        self?.mapViewModel.onConfirmStartGathering.onNext(message.sessionID)
+                        self?.mapViewModel.onConfirmStartGathering.accept(message.sessionID)
                     })
                         .build(), animated: true)
             })

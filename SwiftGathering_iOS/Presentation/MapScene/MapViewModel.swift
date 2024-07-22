@@ -12,7 +12,7 @@ import CoreLocation
 class MapViewModel {
     // Input
     let onViewDidLoad = PublishSubject<Void>()
-    let onConfirmStartGathering = PublishSubject<String>()
+    let onConfirmStartGathering = PublishRelay<String>()
     
     // Output
     let onReceivedSessionRequest = PublishSubject<ReceivedSessionRequestOutput>()
@@ -25,11 +25,15 @@ class MapViewModel {
     private var isGathering: Bool = false
     private let mapUseCase: MapUseCase
     private let privateUseCase: PrivateUseCase
+    private let gatheringUseCase: GatheringUseCase
     private let disposeBag = DisposeBag()
     
-    init(mapUseCase: MapUseCase, privateUseCase: PrivateUseCase) {
+    weak var coordinator: MapCoordinator?
+    
+    init(mapUseCase: MapUseCase, privateUseCase: PrivateUseCase, gatheringUseCase: GatheringUseCase) {
         self.mapUseCase = mapUseCase
         self.privateUseCase = privateUseCase
+        self.gatheringUseCase = gatheringUseCase
         bind()
     }
     
@@ -42,9 +46,9 @@ class MapViewModel {
             .disposed(by: disposeBag)
         
         onConfirmStartGathering
-            .subscribe(onNext: { [weak self] sessionID in
-                self?.startListeningGathering(with: sessionID)
-                self?.fetchFriendLocation()
+            .asSignal()
+            .emit(onNext: { [weak self] sessionID in
+                self?.startGathering(with: sessionID)
             })
             .disposed(by: disposeBag)
         
@@ -60,6 +64,20 @@ class MapViewModel {
                 self?.fetchFriendLocation()
             })
             .disposed(by: disposeBag)
+        
+        gatheringUseCase.onStartGathering
+            .asSignal()
+            .emit(onNext: { [weak self] sessionID in
+                self?.startGathering(with: sessionID)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func startGathering(with sessionID: String) {
+        coordinator?.navigateToMapPage()
+        startListeningGathering(with: sessionID)
+        fetchFriendLocation()
+        onStartGathering.accept(())
     }
     
     private func startListeningPrivate() {

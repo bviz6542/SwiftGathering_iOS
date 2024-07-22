@@ -123,6 +123,8 @@
 		B515D0832C4D303800BFBB53 /* DrawingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0822C4D303800BFBB53 /* DrawingDTO.swift */; };
 		B515D0852C4D30F000BFBB53 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */; };
 		B515D0872C4D310A00BFBB53 /* CGBlendModeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */; };
+		B515D08A2C4E973700BFBB53 /* GatheringUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */; };
+		B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */; };
 		E92802C08C5B7965C45BE952 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -268,6 +270,8 @@
 		B515D0822C4D303800BFBB53 /* DrawingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingDTO.swift; sourceTree = "<group>"; };
 		B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGBlendModeExtensions.swift; sourceTree = "<group>"; };
+		B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCase.swift; sourceTree = "<group>"; };
+		B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCaseImpl.swift; sourceTree = "<group>"; };
 		C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A68007DB5B4FEC66401780 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -777,12 +781,22 @@
 		B515D0812C4D2D6300BFBB53 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				B515D0882C4E972300BFBB53 /* Gathering */,
 				43836DAF2C3AB0FC000EFD71 /* Private */,
 				43836DAA2C3AB050000EFD71 /* Auth */,
 				43836DAC2C3AB072000EFD71 /* Friend */,
 				43836DAE2C3AB09F000EFD71 /* Map */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		B515D0882C4E972300BFBB53 /* Gathering */ = {
+			isa = PBXGroup;
+			children = (
+				B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */,
+				B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */,
+			);
+			path = Gathering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1064,6 +1078,7 @@
 				43836DBB2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift in Sources */,
 				43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */,
 				439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */,
+				B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */,
 				437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */,
 				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
 				43836DBF2C3AB6B0000EFD71 /* PrivateUseCaseImpl.swift in Sources */,
@@ -1073,6 +1088,7 @@
 				439864722C1F41A300EBAD6A /* TokenHolder.swift in Sources */,
 				A231C0632BA401090059572D /* LocationHandler.swift in Sources */,
 				43836DA92C3AACDA000EFD71 /* StompClientLibExtension.swift in Sources */,
+				B515D08A2C4E973700BFBB53 /* GatheringUseCase.swift in Sources */,
 				43D3BD2C2BD4DB5C00224669 /* RegisterViewModel.swift in Sources */,
 				A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */,
 				43836DA42C3AA574000EFD71 /* FriendViewMode.swift in Sources */,

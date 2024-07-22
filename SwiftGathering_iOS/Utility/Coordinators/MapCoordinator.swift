@@ -21,9 +21,9 @@ final class MapCoordinator: ChildCoordinatorProtocol {
         let privateRepository = PrivateRepositoryImpl(stompHandler: PrivateSTOMPHandler(), memberIDHolder: MemberIDHolder.shared)
         let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
         let privateUseCase = PrivateUseCaseImpl(repository: privateRepository)
-        let mapViewModel = MapViewModel(mapUseCase: mapUseCase, privateUseCase: privateUseCase)
+        let mapViewModel = MapViewModel(mapUseCase: mapUseCase, privateUseCase: privateUseCase, gatheringUseCase: GatheringStateHolder.shared)
+        mapViewModel.coordinator = self
         let mapViewController = MapViewController(mapViewModel: mapViewModel)
-        mapViewController.coordinator = self
         navigationController.pushViewController(mapViewController, animated: false)
     }
 }
