@@ -17,8 +17,9 @@ final class ProfileCoordinator: ChildCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        let profileViewController = ProfileViewController()
-        profileViewController.coordinator = self
+        let viewModel = ProfileViewModel()
+        viewModel.coordinator = self
+        let profileViewController = ProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(profileViewController, animated: animated)
     }
     

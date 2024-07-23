@@ -9,42 +9,27 @@ import RxSwift
 import RxCocoa
 
 class SplashViewModel {
-    var loginInitiateInput = PublishSubject<Void>()
-    
-    var loginSuccessOutput: Observable<Void> {
-        return loginSuccessSubject.asObservable()
-    }
-    
-    var loginErrorOutput: Observable<Error> {
-        return loginErrorSubject.asObservable()
-    }
-    
-    private let loginSuccessSubject = PublishSubject<Void>()
-    private let loginErrorSubject = PublishSubject<Error>()
     private let loginUseCase: LoginUseCase
     private let disposeBag = DisposeBag()
     
+    weak var coordinator: RootCoordinator?
+    
     init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
-        
-        loginInitiateInput
-            .withUnretained(self)
-            .flatMap { (owner, _) -> Observable<Result<Void, Error>> in
-                return owner.loginUseCase.loginWithPreviousLoginInfo()
-                    .map { .success(()) }
-                    .catch { .just(.failure($0)) }
-                    .asObservable()
-            }
-            .subscribe(
-                with: self,
-                onNext: { owner, result in
-                    result.onSuccess { _ in
-                        owner.loginSuccessSubject.onNext(())
+    }
+    
+    func login() {
+        loginUseCase.loginWithPreviousLoginInfo().asResult()
+            .asSignal(onErrorSignalWith: .empty())
+            .emit(onNext: { [weak self] result in
+                result
+                    .onSuccess { [weak self] in
+                        self?.coordinator?.navigateToTabBar()
                     }
-                    .onFailure { error in
-                        owner.loginErrorSubject.onNext(error)
+                    .onFailure { [weak self] error in
+                        self?.coordinator?.navigateToLogin()
                     }
-                })
+            })
             .disposed(by: disposeBag)
     }
 }
