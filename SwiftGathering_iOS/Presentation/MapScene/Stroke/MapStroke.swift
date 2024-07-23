@@ -16,4 +16,9 @@ struct MapStroke {
         self.state = MapStrokeState(canvasStrokeState: canvasStroke.state)
         self.path = MapStrokePath(canvasStrokePath: canvasStroke.path, mapView: mapView, targetView: targetView)
     }
+    
+    init(state: MapStrokeState, path: MapStrokePath) {
+        self.state = state
+        self.path = path
+    }
 }

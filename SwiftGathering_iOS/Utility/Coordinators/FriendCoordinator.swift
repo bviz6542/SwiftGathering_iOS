@@ -21,7 +21,7 @@ final class FriendCoordinator: ChildCoordinatorProtocol {
         let mapRepository = MapRepositoryImpl(locationHandler: LocationHandler(), stompHandler: STOMPHandler(), memberIdHolder: MemberIDHolder.shared, httpHandler: HTTPHandler(), tokenHolder: TokenHolder.shared)
         let friendUseCase = FriendUseCaseImpl(friendRepository: friendRepository)
         let mapUseCase = MapUseCaseImpl(mapRepository: mapRepository)
-        let friendViewModel = FriendViewModel(friendUseCase: friendUseCase, mapUseCase: mapUseCase)
+        let friendViewModel = FriendViewModel(friendUseCase: friendUseCase, mapUseCase: mapUseCase, gatheringUseCase: GatheringStateHolder.shared)
         let friendViewController = FriendViewController(friendViewModel: friendViewModel)
         navigationController.pushViewController(friendViewController, animated: true)
     }
