@@ -70,6 +70,7 @@ class MapViewModel {
         coordinator?.navigateToMapPage()
         startListeningGathering(with: sessionID)
         fetchFriendLocation()
+        fetchFriendDrawing()
         onStartGathering.accept(())
     }
     

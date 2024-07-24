@@ -48,7 +48,8 @@ class MapRepositoryImpl: MapRepository {
     
     func fetchFriendLocation() -> Observable<FriendLocation> {
         stompHandler
-            .result
+            .resultSubject
+            .share()
             .compactMap { [weak self] jsonObject in
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
                    let message = try? JSONDecoder().decode(FriendLocationOutput.self, from: jsonData),
@@ -83,7 +84,8 @@ class MapRepositoryImpl: MapRepository {
     
     func fetchFriendDrawing() -> Observable<MapStroke> {
         stompHandler
-            .result
+            .resultSubject
+            .share()
             .compactMap { jsonObject in
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject),
                    let message = try? JSONDecoder().decode(DrawingDTO.self, from: jsonData) {
