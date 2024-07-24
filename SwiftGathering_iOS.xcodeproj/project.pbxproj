@@ -132,10 +132,11 @@
 		B515D07A2C4CFDF700BFBB53 /* CanvasViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */; };
 		B515D07E2C4D1EEC00BFBB53 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */; };
 		B515D0832C4D303800BFBB53 /* DrawingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0822C4D303800BFBB53 /* DrawingDTO.swift */; };
-		B515D0852C4D30F000BFBB53 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */; };
 		B515D0872C4D310A00BFBB53 /* CGBlendModeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */; };
 		B515D08A2C4E973700BFBB53 /* GatheringUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */; };
 		B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */; };
+		B5CEB7E02C51631F0039517B /* CGColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */; };
+		B5CEB7E22C51638D0039517B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7E12C51638D0039517B /* StringExtensions.swift */; };
 		E92802C08C5B7965C45BE952 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -303,10 +304,11 @@
 		B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewEvent.swift; sourceTree = "<group>"; };
 		B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B515D0822C4D303800BFBB53 /* DrawingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingDTO.swift; sourceTree = "<group>"; };
-		B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGBlendModeExtensions.swift; sourceTree = "<group>"; };
 		B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCase.swift; sourceTree = "<group>"; };
 		B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCaseImpl.swift; sourceTree = "<group>"; };
+		B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
+		B5CEB7E12C51638D0039517B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A68007DB5B4FEC66401780 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -571,8 +573,9 @@
 				43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */,
 				43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */,
 				4365005D2C3A747A005B244C /* ObservableExtension.swift */,
-				B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */,
 				B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */,
+				B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */,
+				B5CEB7E12C51638D0039517B /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1139,6 +1142,7 @@
 				43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */,
 				439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */,
 				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
+				B5CEB7E22C51638D0039517B /* StringExtensions.swift in Sources */,
 				B515D0832C4D303800BFBB53 /* DrawingDTO.swift in Sources */,
 				A222BAE82C009031000A59FA /* ProfileViewController.swift in Sources */,
 				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
@@ -1187,7 +1191,6 @@
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */,
 				43836DCF2C454F18000EFD71 /* STOMPPath.swift in Sources */,
-				B515D0852C4D30F000BFBB53 /* UIColorExtensions.swift in Sources */,
 				A27B11F72C4F5AA500475090 /* RepositoryComponent.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
@@ -1225,6 +1228,7 @@
 				43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */,
+				B5CEB7E02C51631F0039517B /* CGColorExtensions.swift in Sources */,
 				437A46BB2BE93BA100CDB3C9 /* LoginOutput.swift in Sources */,
 				B515D0762C4BEB2300BFBB53 /* MapStroke.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,

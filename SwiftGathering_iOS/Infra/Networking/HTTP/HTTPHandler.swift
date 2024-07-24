@@ -66,7 +66,7 @@ class HTTPHandler {
         var urlComponent = URLComponents()
         urlComponent.scheme = HTTPConstant.defaultScheme
         
-        urlComponent.host = host ?? "192.168.219.125"
+        urlComponent.host = host ?? "localhost"
         
         urlComponent.port = port ?? HTTPConstant.defaultPort
         
