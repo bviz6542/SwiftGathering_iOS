@@ -154,7 +154,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    func addAndSendMyStrokeToMap(_ canvasStroke: CanvasStroke) {
+    private func addAndSendMyStrokeToMap(_ canvasStroke: CanvasStroke) {
         let mapStroke = MapStroke(canvasStroke: canvasStroke, mapView: mapView, targetView: canvasView)
         let overlay = SmoothLineOverlay(stroke: mapStroke)
         mapView.removeOverlay(overlay)
@@ -162,7 +162,7 @@ class MapViewController: UIViewController {
         mapViewModel.broadcastMyDrawing(mapStroke)
     }
     
-    func addFriendStrokeToMap(_ mapStroke: MapStroke) {
+    private func addFriendStrokeToMap(_ mapStroke: MapStroke) {
         let overlay = SmoothLineOverlay(stroke: mapStroke)
         mapView.removeOverlay(overlay)
         mapView.addOverlay(overlay)

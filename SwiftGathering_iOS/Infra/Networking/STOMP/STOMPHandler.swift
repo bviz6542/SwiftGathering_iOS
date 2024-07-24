@@ -10,18 +10,14 @@ import RxSwift
 
 class STOMPHandler {
     private let client = StompClientLib()
-    private let resultSubject = PublishSubject<AnyObject>()
+    let resultSubject = PublishSubject<AnyObject>()
     
     var sessionID: String?
-
-    var result: Observable<AnyObject> {
-        return resultSubject.asObservable()
-    }
     
     func registerSocket() {
-        let url = URL(string: "ws://localhost:8080/ws")!
+        let url = NSURL(string: "ws://localhost:8080/ws")!
         client.openSocketWithURLRequest(
-            request: NSURLRequest(url: url),
+            request: NSURLRequest(url: url as URL),
             delegate: self
         )
     }

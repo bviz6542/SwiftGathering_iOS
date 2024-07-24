@@ -34,9 +34,8 @@ struct DrawingDTO: Codable {
     init(mapStroke: MapStroke, senderId: Int, channelId: String) {
         self.senderId = senderId
         self.channelId = channelId
-        
         let state = StrokeState(
-            color: mapStroke.state.color.toHex(),
+            color: mapStroke.state.color.cgColor.toString(),
             width: Float(mapStroke.state.width),
             alpha: Float(mapStroke.state.alpha),
             blendMode: mapStroke.state.blendMode.toString()
@@ -49,18 +48,18 @@ struct DrawingDTO: Codable {
                 longitude: coordinate.longitude
             )
         }
-        self.path = StrokePath(coordinates: coordinates)
+        path = StrokePath(coordinates: coordinates)
     }
     
     func toDomain() -> MapStroke {
         let state = MapStrokeState(
-            color: UIColor(hex: self.state.color),
-            width: CGFloat(self.state.width),
-            alpha: CGFloat(self.state.alpha),
-            blendMode: CGBlendMode(self.state.blendMode)
+            color: UIColor(cgColor: state.color.toCGColor()),
+            width: CGFloat(state.width),
+            alpha: CGFloat(state.alpha),
+            blendMode: CGBlendMode(state.blendMode)
         )
         
-        let coordinates = self.path.coordinates.map { coordinate in
+        let coordinates = path.coordinates.map { coordinate in
             CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
         }
         let path = MapStrokePath(coordinates: coordinates)

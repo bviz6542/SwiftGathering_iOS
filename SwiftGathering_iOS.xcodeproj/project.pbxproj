@@ -101,6 +101,16 @@
 		A231C05F2BA3FD290059572D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C05D2BA3FD290059572D /* MapViewController.swift */; };
 		A231C0602BA3FD290059572D /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A231C05E2BA3FD290059572D /* MapView.xib */; };
 		A231C0632BA401090059572D /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231C0622BA401090059572D /* LocationHandler.swift */; };
+		A27B11EF2C4F597F00475090 /* NeedleFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A27B11EE2C4F597F00475090 /* NeedleFoundation.xcframework */; };
+		A27B11F02C4F597F00475090 /* NeedleFoundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A27B11EE2C4F597F00475090 /* NeedleFoundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A27B11F52C4F5A2400475090 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11F42C4F5A2400475090 /* RootComponent.swift */; };
+		A27B11F72C4F5AA500475090 /* RepositoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11F62C4F5AA500475090 /* RepositoryComponent.swift */; };
+		A27B11F92C4F5AB200475090 /* RepositoryDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11F82C4F5AB200475090 /* RepositoryDependency.swift */; };
+		A27B11FB2C4F5B5E00475090 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11FA2C4F5B5E00475090 /* NeedleGenerated.swift */; };
+		A27B11FD2C4F5C0400475090 /* UseCaseDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11FC2C4F5C0400475090 /* UseCaseDependency.swift */; };
+		A27B11FF2C4F5C1000475090 /* UseCaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11FE2C4F5C1000475090 /* UseCaseComponent.swift */; };
+		A27B12012C4F5C1D00475090 /* ViewDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12002C4F5C1D00475090 /* ViewDependency.swift */; };
+		A27B12062C4F5D5D00475090 /* SplashViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12052C4F5D5D00475090 /* SplashViewComponent.swift */; };
 		A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */; };
 		A28F845E2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */; };
 		A28F84602C1C4EA400E1A177 /* FriendUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */; };
@@ -122,10 +132,11 @@
 		B515D07A2C4CFDF700BFBB53 /* CanvasViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */; };
 		B515D07E2C4D1EEC00BFBB53 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */; };
 		B515D0832C4D303800BFBB53 /* DrawingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0822C4D303800BFBB53 /* DrawingDTO.swift */; };
-		B515D0852C4D30F000BFBB53 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */; };
 		B515D0872C4D310A00BFBB53 /* CGBlendModeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */; };
 		B515D08A2C4E973700BFBB53 /* GatheringUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */; };
 		B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */; };
+		B5CEB7E02C51631F0039517B /* CGColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */; };
+		B5CEB7E22C51638D0039517B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7E12C51638D0039517B /* StringExtensions.swift */; };
 		E92802C08C5B7965C45BE952 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +156,20 @@
 			remoteInfo = SwiftGathering_iOS;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A27B11F12C4F597F00475090 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A27B11F02C4F597F00475090 /* NeedleFoundation.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E7382CA5E19CC245F59733B /* Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests/Pods-SwiftGathering_iOS-SwiftGathering_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +274,15 @@
 		A231C05D2BA3FD290059572D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A231C05E2BA3FD290059572D /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		A231C0622BA401090059572D /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		A27B11EE2C4F597F00475090 /* NeedleFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NeedleFoundation.xcframework; path = Carthage/Build/NeedleFoundation.xcframework; sourceTree = "<group>"; };
+		A27B11F42C4F5A2400475090 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
+		A27B11F62C4F5AA500475090 /* RepositoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryComponent.swift; sourceTree = "<group>"; };
+		A27B11F82C4F5AB200475090 /* RepositoryDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDependency.swift; sourceTree = "<group>"; };
+		A27B11FA2C4F5B5E00475090 /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
+		A27B11FC2C4F5C0400475090 /* UseCaseDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseDependency.swift; sourceTree = "<group>"; };
+		A27B11FE2C4F5C1000475090 /* UseCaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseComponent.swift; sourceTree = "<group>"; };
+		A27B12002C4F5C1D00475090 /* ViewDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDependency.swift; sourceTree = "<group>"; };
+		A27B12052C4F5D5D00475090 /* SplashViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewComponent.swift; sourceTree = "<group>"; };
 		A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseImpl.swift; sourceTree = "<group>"; };
 		A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUseCaseImpl.swift; sourceTree = "<group>"; };
 		A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -270,10 +304,11 @@
 		B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewEvent.swift; sourceTree = "<group>"; };
 		B515D07D2C4D1EEC00BFBB53 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B515D0822C4D303800BFBB53 /* DrawingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingDTO.swift; sourceTree = "<group>"; };
-		B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGBlendModeExtensions.swift; sourceTree = "<group>"; };
 		B515D0892C4E973700BFBB53 /* GatheringUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCase.swift; sourceTree = "<group>"; };
 		B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCaseImpl.swift; sourceTree = "<group>"; };
+		B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
+		B5CEB7E12C51638D0039517B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A68007DB5B4FEC66401780 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -284,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437FA54A2BDCEDF100447EE8 /* RxCocoa in Frameworks */,
+				A27B11EF2C4F597F00475090 /* NeedleFoundation.xcframework in Frameworks */,
 				500ED829B51265E10071BDF6 /* Pods_SwiftGathering_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +401,7 @@
 				439BB32B2BB5AF90006F34A5 /* Domain */,
 				43FFDD4F2BCBC373002D19B2 /* Data */,
 				439BB32D2BB5AFA7006F34A5 /* Presentation */,
+				A27B11F22C4F59D200475090 /* App */,
 				43B2CF132BA6B96F00047065 /* Utility */,
 			);
 			path = SwiftGathering_iOS;
@@ -536,8 +573,9 @@
 				43B2CEFE2BA69DDE00047065 /* UIViewExtensions.swift */,
 				43B2CF0F2BA6AAF300047065 /* ResultExtensions.swift */,
 				4365005D2C3A747A005B244C /* ObservableExtension.swift */,
-				B515D0842C4D30F000BFBB53 /* UIColorExtensions.swift */,
 				B515D0862C4D310A00BFBB53 /* CGBlendModeExtensions.swift */,
+				B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */,
+				B5CEB7E12C51638D0039517B /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -558,7 +596,6 @@
 			isa = PBXGroup;
 			children = (
 				432C70792BD3F8CC00B4F4CE /* Errors */,
-				43FFDD672BCD7465002D19B2 /* Coordinators */,
 				43B2CEFD2BA69D7100047065 /* Extensions */,
 				43B2CF142BA6B98B00047065 /* AlertBuilder */,
 			);
@@ -710,6 +747,7 @@
 		7B19AF07F5B025B5A785700B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A27B11EE2C4F597F00475090 /* NeedleFoundation.xcframework */,
 				5190A3CA9CED555F883DCE7B /* Pods_SwiftGathering_iOS.framework */,
 				D3A68007DB5B4FEC66401780 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */,
 				C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */,
@@ -733,6 +771,38 @@
 				A231C0622BA401090059572D /* LocationHandler.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		A27B11F22C4F59D200475090 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A27B11F32C4F5A0800475090 /* Dependency */,
+				43FFDD672BCD7465002D19B2 /* Coordinators */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A27B11F32C4F5A0800475090 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				A27B11FA2C4F5B5E00475090 /* NeedleGenerated.swift */,
+				A27B11F42C4F5A2400475090 /* RootComponent.swift */,
+				A27B11F82C4F5AB200475090 /* RepositoryDependency.swift */,
+				A27B11F62C4F5AA500475090 /* RepositoryComponent.swift */,
+				A27B11FC2C4F5C0400475090 /* UseCaseDependency.swift */,
+				A27B11FE2C4F5C1000475090 /* UseCaseComponent.swift */,
+				A27B12002C4F5C1D00475090 /* ViewDependency.swift */,
+				A27B12042C4F5D4100475090 /* ViewComponents */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		A27B12042C4F5D4100475090 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A27B12052C4F5D5D00475090 /* SplashViewComponent.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		A28F84642C1C4F9500E1A177 /* Common */ = {
@@ -814,6 +884,7 @@
 				435CA66E2B944BDA008276B6 /* Frameworks */,
 				435CA66F2B944BDA008276B6 /* Resources */,
 				1C6DDED2A56425563215D0F3 /* [CP] Embed Pods Frameworks */,
+				A27B11F12C4F597F00475090 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1067,9 +1138,11 @@
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				439864792C26D95500EBAD6A /* MyLocationInput.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
+				A27B11FD2C4F5C0400475090 /* UseCaseDependency.swift in Sources */,
 				43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */,
 				439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */,
 				43D0E2BC2BE7B14A00294A4A /* MyInfo.swift in Sources */,
+				B5CEB7E22C51638D0039517B /* StringExtensions.swift in Sources */,
 				B515D0832C4D303800BFBB53 /* DrawingDTO.swift in Sources */,
 				A222BAE82C009031000A59FA /* ProfileViewController.swift in Sources */,
 				43B2CF0E2BA6A9A500047065 /* LoginInput.swift in Sources */,
@@ -1081,6 +1154,8 @@
 				43836DBB2C3AB58F000EFD71 /* ReceivedSessionRequestOutput.swift in Sources */,
 				43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */,
 				439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */,
+				A27B11F52C4F5A2400475090 /* RootComponent.swift in Sources */,
+				A27B11F92C4F5AB200475090 /* RepositoryDependency.swift in Sources */,
 				B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */,
 				437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */,
 				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
@@ -1111,12 +1186,15 @@
 				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */,
 				43836DC12C3D5868000EFD71 /* CreateSessionInput.swift in Sources */,
+				A27B12062C4F5D5D00475090 /* SplashViewComponent.swift in Sources */,
+				A27B11FF2C4F5C1000475090 /* UseCaseComponent.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */,
 				43836DCF2C454F18000EFD71 /* STOMPPath.swift in Sources */,
-				B515D0852C4D30F000BFBB53 /* UIColorExtensions.swift in Sources */,
+				A27B11F72C4F5AA500475090 /* RepositoryComponent.swift in Sources */,
 				43FFDD6B2BCD74FD002D19B2 /* ParentCoordinatorProtocol.swift in Sources */,
 				43B2CF1D2BA6BDD200047065 /* RegisterInput.swift in Sources */,
+				A27B12012C4F5C1D00475090 /* ViewDependency.swift in Sources */,
 				43FC61AE2C36FBAE000B3D58 /* CreateGatheringInput.swift in Sources */,
 				A28F846B2C1C504000E1A177 /* LoginRepositoryImpl.swift in Sources */,
 				43D3BD282BD4DB3D00224669 /* MemberUseCase.swift in Sources */,
@@ -1150,10 +1228,12 @@
 				43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */,
 				435CA6772B944BDA008276B6 /* SceneDelegate.swift in Sources */,
 				43D0E2AC2BE7430800294A4A /* FriendViewController.swift in Sources */,
+				B5CEB7E02C51631F0039517B /* CGColorExtensions.swift in Sources */,
 				437A46BB2BE93BA100CDB3C9 /* LoginOutput.swift in Sources */,
 				B515D0762C4BEB2300BFBB53 /* MapStroke.swift in Sources */,
 				439BB3372BB5B4EC006F34A5 /* LoginUseCase.swift in Sources */,
 				4365005C2C3A63F8005B244C /* FriendInfoUIModel.swift in Sources */,
+				A27B11FB2C4F5B5E00475090 /* NeedleGenerated.swift in Sources */,
 				4376F4F32BE63ACC00049FE1 /* TabbarItemType.swift in Sources */,
 				437FA5522BDD432A00447EE8 /* FriendInfo.swift in Sources */,
 				A28F84712C1C51B800E1A177 /* MapRepositoryImpl.swift in Sources */,

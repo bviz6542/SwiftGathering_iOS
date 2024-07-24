@@ -14,14 +14,16 @@ final class RootCoordinator: ParentCoordinatorProtocol {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
+    private lazy var splashViewComponent = {
+        RootComponent().repositoryComponent.useCaseComponent.splashViewComponent
+    }()
         
     func start(animated: Bool) {
-        let loginRepository = LoginRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults.standard, tokenHolder: TokenHolder.shared, memberIdHolder: MemberIDHolder.shared)
-        let loginUseCase = LoginUseCaseImpl(loginRepository: loginRepository)
-        let viewModel = SplashViewModel(loginUseCase: loginUseCase)
-        viewModel.coordinator = self
-        let splashViewController = SplashViewController(viewModel: viewModel)
-        navigationController.pushViewController(splashViewController, animated: animated)
+        registerProviderFactories()
+        let viewController = splashViewComponent.viewController
+        viewController.viewModel.coordinator = self
+        navigationController.pushViewController(viewController, animated: animated)
     }
     
     func navigateToTabBar() {

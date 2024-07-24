@@ -15,9 +15,9 @@ class PrivateSTOMPHandler {
     let resultSubject = PublishSubject<AnyObject>()
     
     func registerSocket() {
-        let url = URL(string: "ws://localhost/ws")!
+        let url = NSURL(string: "ws://localhost:8080/ws")!
         client.openSocketWithURLRequest(
-            request: NSURLRequest(url: url),
+            request: NSURLRequest(url: url as URL),
             delegate: self
         )
     }

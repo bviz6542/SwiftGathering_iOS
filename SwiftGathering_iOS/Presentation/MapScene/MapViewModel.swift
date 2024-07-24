@@ -70,6 +70,7 @@ class MapViewModel {
         coordinator?.navigateToMapPage()
         startListeningGathering(with: sessionID)
         fetchFriendLocation()
+        fetchFriendDrawing()
         onStartGathering.accept(())
     }
     
@@ -109,7 +110,6 @@ class MapViewModel {
         mapUseCase.fetchFriendLocation().asResult()
             .subscribe(onNext: { [weak self] result in
                 result.onSuccess { location in
-                    print(location)
                     self?.onFetchFriendLocation.onNext(location)
                 }
             })

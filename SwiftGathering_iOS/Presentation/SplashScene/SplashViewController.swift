@@ -13,7 +13,7 @@ class SplashViewController: UIViewController {
     @IBOutlet weak var latterImageYOffset: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
         
-    private let viewModel: SplashViewModel
+    let viewModel: SplashViewModel
     private let disposeBag = DisposeBag()
     
     init(viewModel: SplashViewModel) {
