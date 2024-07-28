@@ -137,6 +137,8 @@
 		B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */; };
 		B5CEB7E02C51631F0039517B /* CGColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */; };
 		B5CEB7E22C51638D0039517B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7E12C51638D0039517B /* StringExtensions.swift */; };
+		B5CEB7E42C560C770039517B /* MapViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7E32C560C770039517B /* MapViewEvent.swift */; };
+		B5CEB7E62C5614C30039517B /* FriendViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEB7E52C5614C30039517B /* FriendViewEvent.swift */; };
 		E92802C08C5B7965C45BE952 /* Pods_SwiftGathering_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -309,6 +311,8 @@
 		B515D08B2C4E974400BFBB53 /* GatheringUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheringUseCaseImpl.swift; sourceTree = "<group>"; };
 		B5CEB7DF2C51631F0039517B /* CGColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
 		B5CEB7E12C51638D0039517B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		B5CEB7E32C560C770039517B /* MapViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewEvent.swift; sourceTree = "<group>"; };
+		B5CEB7E52C5614C30039517B /* FriendViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewEvent.swift; sourceTree = "<group>"; };
 		C65B9DC7255E778DC227EFE4 /* Pods_SwiftGathering_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A68007DB5B4FEC66401780 /* Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftGathering_iOS_SwiftGathering_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -613,13 +617,14 @@
 		43D0E2AA2BE742EB00294A4A /* FriendScene */ = {
 			isa = PBXGroup;
 			children = (
-				43D0E2AB2BE7430800294A4A /* FriendViewController.swift */,
 				43D0E2B32BE749FC00294A4A /* FriendView.xib */,
+				43D0E2AB2BE7430800294A4A /* FriendViewController.swift */,
 				43D0E2AD2BE7431900294A4A /* FriendViewModel.swift */,
 				4365005B2C3A63F8005B244C /* FriendInfoUIModel.swift */,
 				43D0E2B52BE74BDC00294A4A /* FriendTableViewCell.swift */,
 				43D0E2B62BE74BDC00294A4A /* FriendTableViewCell.xib */,
 				43836DA32C3AA574000EFD71 /* FriendViewMode.swift */,
+				B5CEB7E52C5614C30039517B /* FriendViewEvent.swift */,
 			);
 			path = FriendScene;
 			sourceTree = "<group>";
@@ -689,6 +694,7 @@
 				B515D0682C4BD02800BFBB53 /* SmoothLineOverlayRenderer.swift */,
 				B515D06A2C4BD54800BFBB53 /* CanvasView.swift */,
 				B515D0792C4CFDF700BFBB53 /* CanvasViewEvent.swift */,
+				B5CEB7E32C560C770039517B /* MapViewEvent.swift */,
 				B515D0742C4BEB0700BFBB53 /* Stroke */,
 			);
 			path = MapScene;
@@ -1138,6 +1144,7 @@
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				439864792C26D95500EBAD6A /* MyLocationInput.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
+				B5CEB7E42C560C770039517B /* MapViewEvent.swift in Sources */,
 				A27B11FD2C4F5C0400475090 /* UseCaseDependency.swift in Sources */,
 				43836DC92C43B2B6000EFD71 /* CreatedSessionIdOutput.swift in Sources */,
 				439864742C26AB4E00EBAD6A /* MemberIDHolder.swift in Sources */,
@@ -1223,6 +1230,7 @@
 				B515D0782C4BEB3600BFBB53 /* MapStrokeState.swift in Sources */,
 				43D0E2B22BE7468E00294A4A /* FriendUseCase.swift in Sources */,
 				436500612C3A9630005B244C /* ActivityIndicator.swift in Sources */,
+				B5CEB7E62C5614C30039517B /* FriendViewEvent.swift in Sources */,
 				4376F4EC2BE61CDD00049FE1 /* TabBarCoordinator.swift in Sources */,
 				B515D0672C4BCFC400BFBB53 /* SmoothLineOverlay.swift in Sources */,
 				43D3BD2A2BD4DB4900224669 /* MemberRepository.swift in Sources */,
