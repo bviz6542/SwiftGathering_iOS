@@ -8,14 +8,14 @@
 enum TabBarItemType: String, CaseIterable {
     case map
     case friend
-    case unknown
+    case bookmark
     case profile
     
     init?(index: Int) {
         switch index {
         case 0: self = .map
         case 1: self = .friend
-        case 2: self = .unknown
+        case 2: self = .bookmark
         case 3: self = .profile
         default: return nil
         }
@@ -25,7 +25,7 @@ enum TabBarItemType: String, CaseIterable {
         switch self {
         case .map: return 0
         case .friend: return 1
-        case .unknown: return 2
+        case .bookmark: return 2
         case .profile: return 3
         }
     }
@@ -34,7 +34,7 @@ enum TabBarItemType: String, CaseIterable {
         switch self {
         case .map: return "Map"
         case .friend: return "Friend"
-        case .unknown: return "Unknown"
+        case .bookmark: return "Bookmark"
         case .profile: return "Profile"
         }
     }
@@ -43,7 +43,7 @@ enum TabBarItemType: String, CaseIterable {
         switch self {
         case .map: return "map.fill"
         case .friend: return "person.3.fill"
-        case .unknown: return "questionmark.circle.fill"
+        case .bookmark: return "bookmark.fill"
         case .profile: return "person.circle"
         }
     }

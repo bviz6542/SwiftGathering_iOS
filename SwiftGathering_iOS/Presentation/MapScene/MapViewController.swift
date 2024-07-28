@@ -132,8 +132,8 @@ class MapViewController: UIViewController {
     private func setInitialRegion(using location: CLLocation) {
         updateMyLocation(to: location)
         mapView.setRegion(MKCoordinateRegion(center: location.coordinate,
-                                             span: MKCoordinateSpan(latitudeDelta: 0.001,
-                                                                    longitudeDelta: 0.001
+                                             span: MKCoordinateSpan(latitudeDelta: 0.003,
+                                                                    longitudeDelta: 0.003
                                                                    )
                                             ),
                           animated: true)

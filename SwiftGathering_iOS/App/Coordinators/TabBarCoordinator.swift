@@ -64,7 +64,7 @@ final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoc
             let friendCoordinator = FriendCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
             addChildCoordinator(friendCoordinator)
             friendCoordinator.start(animated: false)
-        case .unknown:
+        case .bookmark:
             let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
             addChildCoordinator(emptyCoordinator)
             emptyCoordinator.start(animated: false)
