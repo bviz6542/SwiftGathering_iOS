@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     private var friendAnnotations = [Int: FriendAnnotation]()
     private var isDrawingMode = false
         
-    private var mapViewModel: MapViewModel
+    private let mapViewModel: MapViewModel
     private let disposeBag = DisposeBag()
     
     init(mapViewModel: MapViewModel) {
@@ -39,85 +39,37 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setColorPickerButtonColor()
         mapView.delegate = self
-        bindViewModel()
-        mapViewModel.onViewDidLoad.onNext(())
+        bind()
+        mapViewModel.startDataFetch()
     }
     
-    private func bindViewModel() {
-        mapViewModel.onFetchFriendLocation
-            .observe(on: MainScheduler.instance)
-            .subscribe(
-                with: self,
-                onNext: { owner, location in
-                    owner.updateFriendLocation(location)
-                })
-            .disposed(by: disposeBag)
-        
-        mapViewModel.onFetchMyLocation
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] location in
-                if self?.isInitialLocationUpdate == true {
-                    self?.setInitialRegion(using: location)
-                    self?.isInitialLocationUpdate = false
-                } else {
-                    self?.setRegion(using: location)
+    private func bind() {
+        mapViewModel.event.asSignal()
+            .emit(onNext: { [weak self] event in
+                switch event {
+                case .onReceivedSessionRequest(let request): self?.showGatheringInvitationMessage(request)
+                case .onFetchMyLocation(let location): self?.handleMyLocation(location)
+                case .onFetchFriendLocation(let location): self?.updateFriendLocation(location)
+                case .onStartGathering: self?.activateGathering()
+                case .onEndGathering: self?.deactivateGathering()
+                case .onReceiveFriendDrawing(let mapStroke):self?.addFriendStrokeToMap(mapStroke)
                 }
-            }, onError: { error in
-                print(error)
             })
             .disposed(by: disposeBag)
         
-        mapViewModel.onReceivedSessionRequest
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] message in
-                self?.present(AlertBuilder()
-                    .setTitle("Start Gathering")
-                    .setMessage("Would you like to start the gathering?")
-                    .setCancelAction(title: "Cancel", style: .destructive)
-                    .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] _ in
-                        self?.mapViewModel.onConfirmStartGathering.accept(message.sessionID)
-                    })
-                        .build(), animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        mapViewModel.onStartGathering
-            .asSignal()
-            .emit(onNext: { [weak self] in
-                self?.activateGathering()
-            })
-            .disposed(by: disposeBag)
-        
-        mapViewModel.onEndGathering
-            .asSignal()
-            .emit(onNext: { [weak self] in
-                self?.deactivateGathering()
-            })
-            .disposed(by: disposeBag)
-        
-        mapViewModel.onReceiveFriendDrawing
-            .asSignal()
-            .emit(onNext: { [weak self] mapStroke in
-                self?.addFriendStrokeToMap(mapStroke)
-            })
-            .disposed(by: disposeBag)
-        
-        drawingModeButton.rx.tap
-            .asSignal()
+        drawingModeButton.rx.tap.asSignal()
             .emit(onNext: { [weak self] in
                 self?.toggleDrawingMode()
             })
             .disposed(by: disposeBag)
         
-        colorPickerButton.rx.tap
-            .asSignal()
+        colorPickerButton.rx.tap.asSignal()
             .emit(onNext: { [weak self] in
                 self?.showColorPicker()
             })
             .disposed(by: disposeBag)
         
-        canvasView.event
-            .asSignal()
+        canvasView.event.asSignal()
             .emit(onNext: { [weak self] event in
                 switch event {
                 case .onDraw(let canvasStroke): self?.addAndSendMyStrokeToMap(canvasStroke)
@@ -168,11 +120,20 @@ class MapViewController: UIViewController {
         mapView.addOverlay(overlay)
     }
     
+    private func handleMyLocation(_ location: CLLocation) {
+        if isInitialLocationUpdate {
+            setInitialRegion(using: location)
+            isInitialLocationUpdate = false
+        } else {
+            setRegion(using: location)
+        }
+    }
+    
     private func setInitialRegion(using location: CLLocation) {
         updateMyLocation(to: location)
         mapView.setRegion(MKCoordinateRegion(center: location.coordinate,
-                                             span: MKCoordinateSpan(latitudeDelta: 0.001,
-                                                                    longitudeDelta: 0.001
+                                             span: MKCoordinateSpan(latitudeDelta: 0.003,
+                                                                    longitudeDelta: 0.003
                                                                    )
                                             ),
                           animated: true)
@@ -200,6 +161,17 @@ class MapViewController: UIViewController {
             friendAnnotations[friendId] = annotation
             mapView.addAnnotation(annotation)
         }
+    }
+    
+    private func showGatheringInvitationMessage(_ request: ReceivedSessionRequestOutput) {
+        present(AlertBuilder()
+            .setTitle("Start Gathering")
+            .setMessage("Would you like to start the gathering?")
+            .setCancelAction(title: "Cancel", style: .destructive)
+            .setProceedAction(title: "Confirm", style: .default, handler: { [weak self] _ in
+                self?.mapViewModel.startGathering(with: request.sessionID)
+            })
+                .build(), animated: true)
     }
     
     private func color(for friendId: Int) -> UIColor {
