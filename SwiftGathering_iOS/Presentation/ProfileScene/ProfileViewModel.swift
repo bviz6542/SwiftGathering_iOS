@@ -8,7 +8,7 @@
 class ProfileViewModel {
     weak var coordinator: ProfileCoordinator?
     
-    func navigateToSplash() {
+    func logout() {
         coordinator?.navigateToSplash()
     }
 }

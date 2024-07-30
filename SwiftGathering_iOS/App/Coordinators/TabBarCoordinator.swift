@@ -9,11 +9,13 @@ import UIKit
 
 final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtocol {
     var navigationController: UINavigationController
+    private let viewComponent: ViewComponent
     weak var parentCoordinator: ParentCoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
 
-    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
+    init(navigationController: UINavigationController, viewComponent: ViewComponent, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
+        self.viewComponent = viewComponent
         self.parentCoordinator = parentCoordinator
     }
         
@@ -65,11 +67,19 @@ final class TabBarCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtoc
             addChildCoordinator(friendCoordinator)
             friendCoordinator.start(animated: false)
         case .bookmark:
-            let emptyCoordinator = EmptyCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            let emptyCoordinator = EmptyCoordinator(
+                navigationController: tabNavigationController,
+                viewComponent: viewComponent,
+                parentCoordinator: self
+            )
             addChildCoordinator(emptyCoordinator)
             emptyCoordinator.start(animated: false)
         case .profile:
-            let profileCoordinator = ProfileCoordinator(navigationController: tabNavigationController, parentCoordinator: self)
+            let profileCoordinator = ProfileCoordinator(
+                navigationController: tabNavigationController,
+                viewComponent: viewComponent,
+                parentCoordinator: self
+            )
             addChildCoordinator(profileCoordinator)
             profileCoordinator.start(animated: false)
         }

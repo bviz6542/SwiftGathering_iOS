@@ -15,4 +15,8 @@ class ViewComponent: Component<ViewDependency> {
     var loginViewComponent: LoginViewComponent {
         LoginViewComponent(parent: self)
     }
+    
+    var profileViewComponent: ProfileViewComponent {
+        ProfileViewComponent(parent: self)
+    }
 }

@@ -11,7 +11,7 @@ import RxCocoa
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
-    private let viewModel: ProfileViewModel
+    let viewModel: ProfileViewModel
     private let disposeBag = DisposeBag()
     
     init(viewModel: ProfileViewModel) {
@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
         logoutButton.rx.tap
             .asSignal()
             .emit(onNext: { [weak self] in
-                self?.viewModel.navigateToSplash()
+                self?.viewModel.logout()
             })
             .disposed(by: disposeBag)
     }

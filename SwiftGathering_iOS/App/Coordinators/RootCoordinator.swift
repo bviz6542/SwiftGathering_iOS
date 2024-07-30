@@ -28,14 +28,22 @@ final class RootCoordinator: ParentCoordinatorProtocol {
     
     func navigateToTabBar() {
         popViewController(animated: true)
-        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController, parentCoordinator: self)
+        let tabBarCoordinator = TabBarCoordinator(
+            navigationController: navigationController,
+            viewComponent: viewComponent,
+            parentCoordinator: self
+        )
         addChildCoordinator(tabBarCoordinator)
         tabBarCoordinator.start(animated: false)
     }
     
     func navigateToLogin() {
         popViewController(animated: true)
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController, viewComponent: viewComponent, parentCoordinator: self)
+        let loginCoordinator = LoginCoordinator(
+            navigationController: navigationController,
+            viewComponent: viewComponent,
+            parentCoordinator: self
+        )
         addChildCoordinator(loginCoordinator)
         loginCoordinator.start(animated: true)
     }

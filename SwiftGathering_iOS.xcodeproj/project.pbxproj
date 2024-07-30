@@ -114,6 +114,7 @@
 		A27B12532C5893DE00475090 /* LoginViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12522C5893DE00475090 /* LoginViewComponent.swift */; };
 		A27B12552C58949200475090 /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12542C58949200475090 /* ViewComponent.swift */; };
 		A27B12572C58971300475090 /* LoginViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12562C58971300475090 /* LoginViewEvent.swift */; };
+		A27B12592C589DFD00475090 /* ProfileViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12582C589DFD00475090 /* ProfileViewComponent.swift */; };
 		A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */; };
 		A28F845E2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */; };
 		A28F84602C1C4EA400E1A177 /* FriendUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */; };
@@ -291,6 +292,7 @@
 		A27B12522C5893DE00475090 /* LoginViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewComponent.swift; sourceTree = "<group>"; };
 		A27B12542C58949200475090 /* ViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
 		A27B12562C58971300475090 /* LoginViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewEvent.swift; sourceTree = "<group>"; };
+		A27B12582C589DFD00475090 /* ProfileViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewComponent.swift; sourceTree = "<group>"; };
 		A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseImpl.swift; sourceTree = "<group>"; };
 		A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUseCaseImpl.swift; sourceTree = "<group>"; };
 		A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 			children = (
 				A27B12052C4F5D5D00475090 /* RootViewComponent.swift */,
 				A27B12522C5893DE00475090 /* LoginViewComponent.swift */,
+				A27B12582C589DFD00475090 /* ProfileViewComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -1172,6 +1175,7 @@
 				43B2CEFF2BA69DDE00047065 /* UIViewExtensions.swift in Sources */,
 				439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */,
 				A27B11F52C4F5A2400475090 /* RootComponent.swift in Sources */,
+				A27B12592C589DFD00475090 /* ProfileViewComponent.swift in Sources */,
 				A27B11F92C4F5AB200475090 /* RepositoryDependency.swift in Sources */,
 				A27B12552C58949200475090 /* ViewComponent.swift in Sources */,
 				B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */,

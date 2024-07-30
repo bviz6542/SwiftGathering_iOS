@@ -9,17 +9,19 @@ import UIKit
 
 final class ProfileCoordinator: ChildCoordinatorProtocol {
     var navigationController: UINavigationController
+    private let viewComponent: ViewComponent
     weak var parentCoordinator: ParentCoordinatorProtocol?
     
-    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
+    init(navigationController: UINavigationController, viewComponent: ViewComponent, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
+        self.viewComponent = viewComponent
         self.parentCoordinator = parentCoordinator
     }
     
     func start(animated: Bool) {
-        let viewModel = ProfileViewModel()
-        viewModel.coordinator = self
-        let profileViewController = ProfileViewController(viewModel: viewModel)
+        let profileViewController = viewComponent.profileViewComponent.viewController
+        let profileViewModel = profileViewController.viewModel
+        profileViewModel.coordinator = self
         navigationController.pushViewController(profileViewController, animated: animated)
     }
     

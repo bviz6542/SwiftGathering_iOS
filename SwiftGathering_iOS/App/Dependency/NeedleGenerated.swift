@@ -94,6 +94,19 @@ private class ViewDependencya066cca12a017381e547Provider: ViewDependency {
 private func factorydf14166407f8267db8d447637391edf639535c30(_ component: NeedleFoundation.Scope) -> AnyObject {
     return ViewDependencya066cca12a017381e547Provider(useCaseComponent: parent2(component) as! UseCaseComponent)
 }
+private class ViewDependency915e8bb5061576cf8943Provider: ViewDependency {
+    var loginUseCase: LoginUseCase {
+        return useCaseComponent.loginUseCase
+    }
+    private let useCaseComponent: UseCaseComponent
+    init(useCaseComponent: UseCaseComponent) {
+        self.useCaseComponent = useCaseComponent
+    }
+}
+/// ^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->ProfileViewComponent
+private func factorye1083ab469cee3a5626347637391edf639535c30(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return ViewDependency915e8bb5061576cf8943Provider(useCaseComponent: parent2(component) as! UseCaseComponent)
+}
 
 #else
 extension RootComponent: Registration {
@@ -136,6 +149,11 @@ extension LoginViewComponent: Registration {
         keyPathToName[\ViewDependency.loginUseCase] = "loginUseCase-LoginUseCase"
     }
 }
+extension ProfileViewComponent: Registration {
+    public func registerItems() {
+        keyPathToName[\ViewDependency.loginUseCase] = "loginUseCase-LoginUseCase"
+    }
+}
 
 
 #endif
@@ -158,6 +176,7 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
     registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent", factorybc1f70be8cdc74da692586232a38d99b994a7c3d)
     registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->RootViewComponent", factoryb962e1f756407c56d5c947637391edf639535c30)
     registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->LoginViewComponent", factorydf14166407f8267db8d447637391edf639535c30)
+    registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->ProfileViewComponent", factorye1083ab469cee3a5626347637391edf639535c30)
 }
 #endif
 
