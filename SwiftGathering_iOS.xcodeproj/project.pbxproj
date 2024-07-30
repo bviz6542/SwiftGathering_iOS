@@ -110,7 +110,10 @@
 		A27B11FD2C4F5C0400475090 /* UseCaseDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11FC2C4F5C0400475090 /* UseCaseDependency.swift */; };
 		A27B11FF2C4F5C1000475090 /* UseCaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B11FE2C4F5C1000475090 /* UseCaseComponent.swift */; };
 		A27B12012C4F5C1D00475090 /* ViewDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12002C4F5C1D00475090 /* ViewDependency.swift */; };
-		A27B12062C4F5D5D00475090 /* SplashViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12052C4F5D5D00475090 /* SplashViewComponent.swift */; };
+		A27B12062C4F5D5D00475090 /* RootViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12052C4F5D5D00475090 /* RootViewComponent.swift */; };
+		A27B12532C5893DE00475090 /* LoginViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12522C5893DE00475090 /* LoginViewComponent.swift */; };
+		A27B12552C58949200475090 /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12542C58949200475090 /* ViewComponent.swift */; };
+		A27B12572C58971300475090 /* LoginViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B12562C58971300475090 /* LoginViewEvent.swift */; };
 		A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */; };
 		A28F845E2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */; };
 		A28F84602C1C4EA400E1A177 /* FriendUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */; };
@@ -284,7 +287,10 @@
 		A27B11FC2C4F5C0400475090 /* UseCaseDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseDependency.swift; sourceTree = "<group>"; };
 		A27B11FE2C4F5C1000475090 /* UseCaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseComponent.swift; sourceTree = "<group>"; };
 		A27B12002C4F5C1D00475090 /* ViewDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDependency.swift; sourceTree = "<group>"; };
-		A27B12052C4F5D5D00475090 /* SplashViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewComponent.swift; sourceTree = "<group>"; };
+		A27B12052C4F5D5D00475090 /* RootViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewComponent.swift; sourceTree = "<group>"; };
+		A27B12522C5893DE00475090 /* LoginViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewComponent.swift; sourceTree = "<group>"; };
+		A27B12542C58949200475090 /* ViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
+		A27B12562C58971300475090 /* LoginViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewEvent.swift; sourceTree = "<group>"; };
 		A28F845B2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseImpl.swift; sourceTree = "<group>"; };
 		A28F845D2C1C4E0B00E1A177 /* MemberUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUseCaseImpl.swift; sourceTree = "<group>"; };
 		A28F845F2C1C4EA400E1A177 /* FriendUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -361,6 +367,7 @@
 				43B2CEFB2BA69BEC00047065 /* LoginView.xib */,
 				43B2CEF92BA69BCD00047065 /* LoginViewController.swift */,
 				439BB32F2BB5B35F006F34A5 /* LoginViewModel.swift */,
+				A27B12562C58971300475090 /* LoginViewEvent.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -798,6 +805,7 @@
 				A27B11FC2C4F5C0400475090 /* UseCaseDependency.swift */,
 				A27B11FE2C4F5C1000475090 /* UseCaseComponent.swift */,
 				A27B12002C4F5C1D00475090 /* ViewDependency.swift */,
+				A27B12542C58949200475090 /* ViewComponent.swift */,
 				A27B12042C4F5D4100475090 /* ViewComponents */,
 			);
 			path = Dependency;
@@ -806,7 +814,8 @@
 		A27B12042C4F5D4100475090 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				A27B12052C4F5D5D00475090 /* SplashViewComponent.swift */,
+				A27B12052C4F5D5D00475090 /* RootViewComponent.swift */,
+				A27B12522C5893DE00475090 /* LoginViewComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -1141,6 +1150,7 @@
 				B515D0692C4BD02800BFBB53 /* SmoothLineOverlayRenderer.swift in Sources */,
 				43FFDD742BCECC12002D19B2 /* SplashViewController.swift in Sources */,
 				432C70752BD3E83600B4F4CE /* SplashViewModel.swift in Sources */,
+				A27B12532C5893DE00475090 /* LoginViewComponent.swift in Sources */,
 				43B2CF1A2BA6BC1600047065 /* RegisterViewController.swift in Sources */,
 				439864792C26D95500EBAD6A /* MyLocationInput.swift in Sources */,
 				432C70772BD3EEC000B4F4CE /* LoginInfo.swift in Sources */,
@@ -1163,6 +1173,7 @@
 				439864772C26CEDF00EBAD6A /* STOMPHandler.swift in Sources */,
 				A27B11F52C4F5A2400475090 /* RootComponent.swift in Sources */,
 				A27B11F92C4F5AB200475090 /* RepositoryDependency.swift in Sources */,
+				A27B12552C58949200475090 /* ViewComponent.swift in Sources */,
 				B515D08C2C4E974400BFBB53 /* GatheringUseCaseImpl.swift in Sources */,
 				437FA54E2BDD40F000447EE8 /* FriendLocationOutput.swift in Sources */,
 				437FA5562BDD458500447EE8 /* MapUseCase.swift in Sources */,
@@ -1193,7 +1204,7 @@
 				437FA5582BDD459A00447EE8 /* MapRepository.swift in Sources */,
 				A28F845C2C1C4DCB00E1A177 /* LoginUseCaseImpl.swift in Sources */,
 				43836DC12C3D5868000EFD71 /* CreateSessionInput.swift in Sources */,
-				A27B12062C4F5D5D00475090 /* SplashViewComponent.swift in Sources */,
+				A27B12062C4F5D5D00475090 /* RootViewComponent.swift in Sources */,
 				A27B11FF2C4F5C1000475090 /* UseCaseComponent.swift in Sources */,
 				43B2CF102BA6AAF300047065 /* ResultExtensions.swift in Sources */,
 				43836DBD2C3AB6A4000EFD71 /* PrivateUseCase.swift in Sources */,
@@ -1207,6 +1218,7 @@
 				43D3BD282BD4DB3D00224669 /* MemberUseCase.swift in Sources */,
 				43D3BD2E2BD4DBCB00224669 /* RegisterInfo.swift in Sources */,
 				B515D06B2C4BD54800BFBB53 /* CanvasView.swift in Sources */,
+				A27B12572C58971300475090 /* LoginViewEvent.swift in Sources */,
 				A28F846F2C1C514A00E1A177 /* FriendRepositoryImpl.swift in Sources */,
 				A222BAEA2C009165000A59FA /* ProfileCoordinator.swift in Sources */,
 				A28F84732C1C535800E1A177 /* HTTPConstant.swift in Sources */,

@@ -12,6 +12,10 @@ private func parent1(_ component: NeedleFoundation.Scope) -> NeedleFoundation.Sc
     return component.parent
 }
 
+private func parent2(_ component: NeedleFoundation.Scope) -> NeedleFoundation.Scope {
+    return component.parent.parent
+}
+
 // MARK: - Providers
 
 #if !NEEDLE_DYNAMIC
@@ -51,7 +55,7 @@ private class RepositoryDependency7488f146cdfa18e51394Provider: RepositoryDepend
 private func factory89fed910da85ca3e434eb3a8f24c1d289f2c0f2e(_ component: NeedleFoundation.Scope) -> AnyObject {
     return RepositoryDependency7488f146cdfa18e51394Provider(rootComponent: parent1(component) as! RootComponent)
 }
-private class ViewDependency6450267bc925b4122ed2Provider: ViewDependency {
+private class ViewDependency7e2be0e2453dfb7da242Provider: ViewDependency {
     var loginUseCase: LoginUseCase {
         return useCaseComponent.loginUseCase
     }
@@ -60,9 +64,35 @@ private class ViewDependency6450267bc925b4122ed2Provider: ViewDependency {
         self.useCaseComponent = useCaseComponent
     }
 }
-/// ^->RootComponent->RepositoryComponent->UseCaseComponent->SplashViewComponent
-private func factory943d900e205fce6777be86232a38d99b994a7c3d(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return ViewDependency6450267bc925b4122ed2Provider(useCaseComponent: parent1(component) as! UseCaseComponent)
+/// ^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent
+private func factorybc1f70be8cdc74da692586232a38d99b994a7c3d(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return ViewDependency7e2be0e2453dfb7da242Provider(useCaseComponent: parent1(component) as! UseCaseComponent)
+}
+private class ViewDependency2d05baf2a225739e88ddProvider: ViewDependency {
+    var loginUseCase: LoginUseCase {
+        return useCaseComponent.loginUseCase
+    }
+    private let useCaseComponent: UseCaseComponent
+    init(useCaseComponent: UseCaseComponent) {
+        self.useCaseComponent = useCaseComponent
+    }
+}
+/// ^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->RootViewComponent
+private func factoryb962e1f756407c56d5c947637391edf639535c30(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return ViewDependency2d05baf2a225739e88ddProvider(useCaseComponent: parent2(component) as! UseCaseComponent)
+}
+private class ViewDependencya066cca12a017381e547Provider: ViewDependency {
+    var loginUseCase: LoginUseCase {
+        return useCaseComponent.loginUseCase
+    }
+    private let useCaseComponent: UseCaseComponent
+    init(useCaseComponent: UseCaseComponent) {
+        self.useCaseComponent = useCaseComponent
+    }
+}
+/// ^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->LoginViewComponent
+private func factorydf14166407f8267db8d447637391edf639535c30(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return ViewDependencya066cca12a017381e547Provider(useCaseComponent: parent2(component) as! UseCaseComponent)
 }
 
 #else
@@ -90,7 +120,18 @@ extension RepositoryComponent: Registration {
         localTable["loginRepository-LoginRepository"] = { [unowned self] in self.loginRepository as Any }
     }
 }
-extension SplashViewComponent: Registration {
+extension ViewComponent: Registration {
+    public func registerItems() {
+        keyPathToName[\ViewDependency.loginUseCase] = "loginUseCase-LoginUseCase"
+
+    }
+}
+extension RootViewComponent: Registration {
+    public func registerItems() {
+        keyPathToName[\ViewDependency.loginUseCase] = "loginUseCase-LoginUseCase"
+    }
+}
+extension LoginViewComponent: Registration {
     public func registerItems() {
         keyPathToName[\ViewDependency.loginUseCase] = "loginUseCase-LoginUseCase"
     }
@@ -114,7 +155,9 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
     registerProviderFactory("^->RootComponent", factoryEmptyDependencyProvider)
     registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent", factory4bd264da426f0f0f91de268771e90d305157e475)
     registerProviderFactory("^->RootComponent->RepositoryComponent", factory89fed910da85ca3e434eb3a8f24c1d289f2c0f2e)
-    registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->SplashViewComponent", factory943d900e205fce6777be86232a38d99b994a7c3d)
+    registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent", factorybc1f70be8cdc74da692586232a38d99b994a7c3d)
+    registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->RootViewComponent", factoryb962e1f756407c56d5c947637391edf639535c30)
+    registerProviderFactory("^->RootComponent->RepositoryComponent->UseCaseComponent->ViewComponent->LoginViewComponent", factorydf14166407f8267db8d447637391edf639535c30)
 }
 #endif
 

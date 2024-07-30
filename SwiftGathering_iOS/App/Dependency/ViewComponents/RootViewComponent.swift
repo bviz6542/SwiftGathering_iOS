@@ -1,5 +1,5 @@
 //
-//  SplashViewComponent.swift
+//  RootViewComponent.swift
 //  SwiftGathering_iOS
 //
 //  Created by mraz on 7/23/24.
@@ -7,7 +7,7 @@
 
 import NeedleFoundation
 
-class SplashViewComponent: Component<ViewDependency> {
+class RootViewComponent: Component<ViewDependency> {
     var viewModel: SplashViewModel {
         SplashViewModel(loginUseCase: dependency.loginUseCase)
     }
