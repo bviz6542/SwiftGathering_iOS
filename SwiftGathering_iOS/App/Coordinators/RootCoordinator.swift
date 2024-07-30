@@ -15,13 +15,13 @@ final class RootCoordinator: ParentCoordinatorProtocol {
         self.navigationController = navigationController
     }
     
-    private lazy var splashViewComponent = {
-        RootComponent().repositoryComponent.useCaseComponent.splashViewComponent
+    private lazy var viewComponent = {
+        RootComponent().repositoryComponent.useCaseComponent.viewComponent
     }()
         
     func start(animated: Bool) {
         registerProviderFactories()
-        let viewController = splashViewComponent.viewController
+        let viewController = viewComponent.rootViewComponent.viewController
         viewController.viewModel.coordinator = self
         navigationController.pushViewController(viewController, animated: animated)
     }
@@ -35,7 +35,7 @@ final class RootCoordinator: ParentCoordinatorProtocol {
     
     func navigateToLogin() {
         popViewController(animated: true)
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self)
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController, viewComponent: viewComponent, parentCoordinator: self)
         addChildCoordinator(loginCoordinator)
         loginCoordinator.start(animated: true)
     }

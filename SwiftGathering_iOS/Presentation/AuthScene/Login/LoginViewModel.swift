@@ -9,32 +9,32 @@ import RxSwift
 import RxCocoa
 
 class LoginViewModel {
-    var loginTap = PublishSubject<LoginInfo>()
-    
-    var loginState: Observable<Result<Void, Error>> {
-        return loginStateSubject.asObservable()
-    }
-    
-    private let loginStateSubject = PublishSubject<Result<Void, Error>>()
-    private let loginUseCase: LoginUseCase
+    let event = PublishRelay<LoginViewEvent>()
     private let disposeBag = DisposeBag()
+    
+    weak var coordinator: LoginCoordinator?
+    
+    private let loginUseCase: LoginUseCase
     
     init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
-        
-        loginTap
-            .withUnretained(self)
-            .flatMap { (owner, loginInfo) -> Observable<Result<Void, Error>> in
-                return owner.loginUseCase.login(using: loginInfo)
-                    .map { .success(()) }
-                    .catch { .just(.failure($0)) }
-                    .asObservable()
-            }
-            .subscribe(
-                with: self,
-                onNext: { (owner, loginResult) in
-                    owner.loginStateSubject.onNext(loginResult)
-                })
+    }
+    
+    func login(using loginInfo: LoginInfo) {
+        loginUseCase.login(using: loginInfo).asResult()
+            .subscribe(onNext: { [weak self] result in
+                result
+                    .onSuccess { _ in
+                        self?.coordinator?.navigateToTabBar()
+                    }
+                    .onFailure { error in
+                        self?.event.accept(.onFailureLogin(error))
+                    }
+            })
             .disposed(by: disposeBag)
+    }
+    
+    func register() {
+        coordinator?.navigateToRegister()
     }
 }

@@ -9,20 +9,20 @@ import UIKit
 
 final class LoginCoordinator: ParentCoordinatorProtocol, ChildCoordinatorProtocol {
     var navigationController: UINavigationController
+    private let viewComponent: ViewComponent
     weak var parentCoordinator: ParentCoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
     
-    init(navigationController: UINavigationController, parentCoordinator: ParentCoordinatorProtocol?) {
+    init(navigationController: UINavigationController, viewComponent: ViewComponent, parentCoordinator: ParentCoordinatorProtocol?) {
         self.navigationController = navigationController
+        self.viewComponent = viewComponent
         self.parentCoordinator = parentCoordinator
     }
         
     func start(animated: Bool) {        
-        let loginRepository = LoginRepositoryImpl(httpHandler: HTTPHandler(), userDefaults: UserDefaults(), tokenHolder: TokenHolder.shared, memberIdHolder: MemberIDHolder.shared)
-        let loginUseCase = LoginUseCaseImpl(loginRepository: loginRepository)
-        let loginViewModel = LoginViewModel(loginUseCase: loginUseCase)
-        let loginViewController = LoginViewController(loginViewModel: loginViewModel)
-        loginViewController.coordinator = self
+        let loginViewController = viewComponent.loginViewComponent.viewController
+        let loginViewModel = loginViewController.viewModel        
+        loginViewModel.coordinator = self
         navigationController.pushViewController(loginViewController, animated: false)
     }
     

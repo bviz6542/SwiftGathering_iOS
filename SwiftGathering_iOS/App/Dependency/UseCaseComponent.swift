@@ -11,8 +11,8 @@ class UseCaseComponent: Component<UseCaseDependency> {
     public var loginUseCase: LoginUseCase {
         LoginUseCaseImpl(loginRepository: dependency.loginRepository)
     }
-    
-    var splashViewComponent: SplashViewComponent {
-        SplashViewComponent(parent: self)
+
+    var viewComponent: ViewComponent {
+        ViewComponent(parent: self)
     }
 }
